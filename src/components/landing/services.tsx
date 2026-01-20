@@ -1,5 +1,8 @@
+"use client";
+
 import { ArrowRight } from 'lucide-react';
 import { AnimatedCounter } from '@/components/common/animated-counter';
+import { useState, useEffect, useRef } from 'react';
 
 const servicesData = [
   {
@@ -25,6 +28,37 @@ const servicesData = [
 ];
 
 export function Services() {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const serviceRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const index = parseInt(entry.target.getAttribute('data-index') || '0', 10);
+            setActiveIndex(index);
+          }
+        });
+      },
+      {
+        rootMargin: "-50% 0px -50% 0px", // Trigger when the element's center crosses the viewport's center
+        threshold: 0,
+      }
+    );
+
+    const refs = serviceRefs.current;
+    refs.forEach((ref) => {
+      if (ref) observer.observe(ref);
+    });
+
+    return () => {
+      refs.forEach((ref) => {
+        if (ref) observer.unobserve(ref);
+      });
+    };
+  }, []);
+
   return (
     <section id="services" className="bg-card text-card-foreground py-32 md:py-48 px-6 md:px-12 relative">
       <div className="max-w-[1400px] mx-auto w-full">
@@ -32,43 +66,51 @@ export function Services() {
           // Services
         </div>
 
-        {servicesData.map((service, index) => (
-          <div key={service.title} className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-32 mb-32 last:mb-0">
-            <div className="lg:col-span-4 relative select-none lg:sticky lg:top-32 self-start">
-                <AnimatedCounter
-                    end={index + 1}
-                    className="text-outline opacity-20 lg:opacity-100 lg:absolute lg:-top-32 lg:left-0 mix-blend-screen text-[18rem] md:text-[24rem] font-sans font-medium leading-none tracking-tighter"
-                />
-            </div>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-32">
+          <div className="lg:col-span-4 relative select-none lg:sticky lg:top-32 self-start h-96">
+            <AnimatedCounter
+              end={activeIndex + 1}
+              className="text-outline opacity-20 lg:opacity-100 lg:absolute lg:-top-32 lg:left-0 mix-blend-screen text-[18rem] md:text-[24rem] font-sans font-medium leading-none tracking-tighter"
+            />
+          </div>
 
-            <div className="lg:col-span-8 flex flex-col pt-8">
-              <div className="reveal-on-scroll">
-                <h3 className="text-5xl md:text-7xl font-medium tracking-tight mb-8">
-                  {service.title}
-                </h3>
-              </div>
-              <div className="reveal-on-scroll" style={{transitionDelay: '100ms'}}>
-                <p className="text-muted-foreground text-xl md:text-2xl mb-24 max-w-2xl leading-relaxed font-light">
-                  {service.description}
-                </p>
-              </div>
-              
-              <div className="w-full flex flex-col gap-2">
-                {service.items.map((item, itemIndex) => (
-                  <div key={item} className="reveal-on-scroll" style={{transitionDelay: `${100 + itemIndex * 75}ms`}}>
-                    <div className="group flex justify-between items-baseline py-10 border-b border-border/50 cursor-pointer hover:border-muted-foreground transition-colors">
-                      <span className="text-2xl md:text-4xl font-normal text-muted-foreground group-hover:text-card-foreground group-hover:translate-x-4 transition-all duration-300">{item}</span>
-                      <div className="flex items-center gap-4">
-                        <ArrowRight className="opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-accent h-8 w-8" />
-                        <span className="text-base font-code text-muted-foreground/60 group-hover:text-accent">{String(itemIndex + 1).padStart(2, '0')}</span>
+          <div className="lg:col-span-8 flex flex-col pt-8">
+            {servicesData.map((service, index) => (
+              <div
+                key={service.title}
+                ref={(el) => (serviceRefs.current[index] = el)}
+                data-index={index}
+                className="service-section mb-32 last:mb-0"
+                style={{minHeight: '70vh'}}
+              >
+                <div className="reveal-on-scroll">
+                  <h3 className="text-5xl md:text-7xl font-medium tracking-tight mb-8">
+                    {service.title}
+                  </h3>
+                </div>
+                <div className="reveal-on-scroll" style={{transitionDelay: '100ms'}}>
+                  <p className="text-muted-foreground text-xl md:text-2xl mb-24 max-w-2xl leading-relaxed font-light">
+                    {service.description}
+                  </p>
+                </div>
+                
+                <div className="w-full flex flex-col gap-2">
+                  {service.items.map((item, itemIndex) => (
+                    <div key={item} className="reveal-on-scroll" style={{transitionDelay: `${100 + itemIndex * 75}ms`}}>
+                      <div className="group flex justify-between items-baseline py-10 border-b border-border/50 cursor-pointer hover:border-muted-foreground transition-colors">
+                        <span className="text-2xl md:text-4xl font-normal text-muted-foreground group-hover:text-card-foreground group-hover:translate-x-4 transition-all duration-300">{item}</span>
+                        <div className="flex items-center gap-4">
+                          <ArrowRight className="opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-accent h-8 w-8" />
+                          <span className="text-base font-code text-muted-foreground/60 group-hover:text-accent">{String(itemIndex + 1).padStart(2, '0')}</span>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
-            </div>
+            ))}
           </div>
-        ))}
+        </div>
       </div>
     </section>
   );

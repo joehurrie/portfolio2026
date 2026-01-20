@@ -8,56 +8,44 @@ type AnimatedCounterProps = {
   className?: string;
 };
 
-export function AnimatedCounter({ end, duration = 800, className }: AnimatedCounterProps) {
+export function AnimatedCounter({ end, duration = 400, className }: AnimatedCounterProps) {
   const [count, setCount] = useState(0);
-  const ref = useRef<HTMLSpanElement>(null);
   const animationFrameId = useRef<number>();
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          let startTime: number | null = null;
+    const startValue = count;
+    let startTime: number | null = null;
 
-          const animate = (timestamp: number) => {
-            if (!startTime) startTime = timestamp;
-            const progress = timestamp - startTime;
-            const percentage = Math.min(progress / duration, 1);
-            
-            const newCount = Math.floor(percentage * end);
-            setCount(newCount);
+    const animate = (timestamp: number) => {
+      if (!startTime) startTime = timestamp;
+      const progress = timestamp - startTime;
+      const percentage = Math.min(progress / duration, 1);
+      
+      const newCount = Math.round(startValue + (end - startValue) * percentage);
+      setCount(newCount);
 
-            if (percentage < 1) {
-              animationFrameId.current = requestAnimationFrame(animate);
-            } else {
-              setCount(end); // Ensure it ends on the correct value
-            }
-          };
+      if (percentage < 1) {
+        animationFrameId.current = requestAnimationFrame(animate);
+      } else {
+        setCount(end);
+      }
+    };
 
-          animationFrameId.current = requestAnimationFrame(animate);
-          observer.unobserve(entry.target);
-        }
-      },
-      { threshold: 0.5 } // Start animation when 50% of the element is visible
-    );
-
-    const currentRef = ref.current;
-    if (currentRef) {
-      observer.observe(currentRef);
+    if (animationFrameId.current) {
+      cancelAnimationFrame(animationFrameId.current);
     }
+    animationFrameId.current = requestAnimationFrame(animate);
 
     return () => {
-      if (currentRef) {
-        observer.unobserve(currentRef);
-      }
       if (animationFrameId.current) {
         cancelAnimationFrame(animationFrameId.current);
       }
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [end, duration]);
 
   return (
-    <span ref={ref} className={className}>
+    <span className={className}>
       {String(count).padStart(2, '0')}
     </span>
   );
