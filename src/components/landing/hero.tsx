@@ -46,18 +46,18 @@ export function Hero() {
                   href={social.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-3 text-base md:text-lg font-medium text-foreground hover:text-accent transition-colors group"
+                  className="flex items-center gap-3 text-base md:text-lg font-medium text-white hover:text-accent transition-colors group"
                 >
-                  <social.icon className="h-6 w-6 text-muted-foreground group-hover:text-accent" />
+                  <social.icon className="h-6 w-6 text-neutral-300 group-hover:text-accent" />
                   <span>{social.name}</span>
                 </Link>
             ))}
           </div>
 
           <div className="text-right">
-            <h2 className="text-6xl md:text-7xl lg:text-8xl font-medium tracking-tighter leading-[0.9] text-foreground">
-              <span className="block opacity-60 text-3xl md:text-4xl lg:text-5xl mb-2 tracking-tight font-normal text-muted-foreground">// Web Designer</span>
-              Art Director
+            <h2 className="text-6xl md:text-7xl lg:text-8xl font-medium tracking-tighter leading-[0.9] text-white">
+              <span className="block opacity-60 text-3xl md:text-4xl lg:text-5xl mb-2 tracking-tight font-normal">//Product Designer</span>
+              UX Engineer
             </h2>
           </div>
         </div>
