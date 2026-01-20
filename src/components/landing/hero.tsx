@@ -1,10 +1,8 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { Linkedin, Twitter, Instagram } from 'lucide-react';
-import { PlaceHolderImages } from '@/lib/placeholder-images';
 
 export function Hero() {
-  const heroImage = PlaceHolderImages.find((img) => img.id === 'hero-background');
 
   const socialLinks = [
     { name: 'LinkedIn', icon: Linkedin, url: '#' },
@@ -15,25 +13,22 @@ export function Hero() {
   return (
     <header className="relative min-h-[110vh] w-full flex flex-col overflow-hidden bg-secondary">
       <div className="absolute inset-0 z-0 animate-clip-reveal origin-bottom">
-        {heroImage && (
-            <Image
-              src={heroImage.imageUrl}
-              alt={heroImage.description}
-              fill
-              className="w-full h-full object-cover grayscale contrast-125 object-[center_25%]"
-              data-ai-hint={heroImage.imageHint}
-              priority
-            />
-        )}
+        <Image
+          src="/hero.jpg"
+          alt="Joharie Kisiangani Profile"
+          fill
+          className="w-full h-full object-cover grayscale contrast-125 object-[center_25%]"
+          priority
+        />
         <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"></div>
       </div>
 
       <div className="absolute inset-0 z-10 flex items-center justify-center overflow-hidden pointer-events-none mix-blend-overlay">
         <div className="flex animate-hero-marquee">
-          <h1 className="shrink-0 text-huge font-semibold tracking-tighter leading-none text-outline px-8 whitespace-nowrap">
+          <h1 className="shrink-0 text-huge font-semibold tracking-tighter leading-none text-foreground px-8 whitespace-nowrap">
             joharie kisiangani
           </h1>
-          <h1 className="shrink-0 text-huge font-semibold tracking-tighter leading-none text-outline px-8 whitespace-nowrap" aria-hidden="true">
+          <h1 className="shrink-0 text-huge font-semibold tracking-tighter leading-none text-foreground px-8 whitespace-nowrap" aria-hidden="true">
             joharie kisiangani
           </h1>
         </div>
