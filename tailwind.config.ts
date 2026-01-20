@@ -115,7 +115,11 @@ export default {
         },
         'fadeIn': {
           to: { opacity: '1' }
-        }
+        },
+        'cursor-scale-in': {
+          '0%': { transform: 'translate(-50%, -50%) scale(0)' },
+          '100%': { transform: 'translate(-50%, -50%) scale(1)' }
+        },
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
@@ -125,6 +129,7 @@ export default {
         'marquee': 'marquee 25s linear infinite',
         'hero-marquee': 'hero-marquee 60s linear infinite',
         'fade-in': 'fadeIn 0.6s ease-in forwards',
+        'cursor-scale-in': 'cursor-scale-in 0.3s forwards',
       },
     },
   },
