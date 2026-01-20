@@ -33,7 +33,7 @@ export function Services() {
 
         {servicesData.map((service, index) => (
           <div key={service.title} className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-32 mb-32 last:mb-0">
-            <div className="lg:col-span-4 relative select-none reveal-on-scroll">
+            <div className="lg:col-span-4 relative select-none lg:sticky lg:top-32 self-start">
                 <div className="text-outline opacity-20 lg:opacity-100 lg:absolute lg:-top-32 lg:left-0 mix-blend-screen text-[18rem] md:text-[24rem] font-sans font-medium leading-none tracking-tighter">
                   {String(index + 1).padStart(2, '0')}
                 </div>
