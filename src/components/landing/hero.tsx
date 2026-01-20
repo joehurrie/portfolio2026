@@ -28,13 +28,15 @@ export function Hero() {
         <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"></div>
       </div>
 
-      <div className="absolute inset-0 flex items-center justify-center z-10 pointer-events-none mix-blend-overlay">
-        <h1 
-          className="text-huge font-semibold tracking-tighter leading-none text-foreground text-center w-full animate-slide-up-fade" 
-          style={{ animationDelay: '0.5s' }}
-        >
-          Joharie Kisiangani
-        </h1>
+      <div className="absolute inset-0 z-10 flex items-center justify-center overflow-hidden pointer-events-none mix-blend-overlay">
+        <div className="flex animate-hero-marquee">
+          <h1 className="shrink-0 text-huge font-semibold tracking-tighter leading-none text-outline px-8 whitespace-nowrap">
+            joharie kisiangani
+          </h1>
+          <h1 className="shrink-0 text-huge font-semibold tracking-tighter leading-none text-outline px-8 whitespace-nowrap" aria-hidden="true">
+            joharie kisiangani
+          </h1>
+        </div>
       </div>
 
       <div className="relative z-20 w-full h-full flex flex-col justify-end flex-grow px-6 pb-12 md:px-12">

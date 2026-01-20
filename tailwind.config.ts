@@ -109,6 +109,10 @@ export default {
             '0%': { transform: 'translateX(0%)' },
             '100%': { transform: 'translateX(-100%)' }
         },
+        'hero-marquee': {
+          '0%': { transform: 'translateX(0%)' },
+          '100%': { transform: 'translateX(-50%)' }
+        },
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
@@ -116,6 +120,7 @@ export default {
         'clip-reveal': 'clip-reveal 1.2s cubic-bezier(0.77, 0, 0.175, 1) both',
         'slide-up-fade': 'slide-up-fade 0.8s cubic-bezier(0.16, 1, 0.3, 1) both',
         'marquee': 'marquee 25s linear infinite',
+        'hero-marquee': 'hero-marquee 60s linear infinite',
       },
     },
   },
