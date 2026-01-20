@@ -8,7 +8,12 @@ export function AnimatedIntroText() {
   const containerRef = useRef<HTMLDivElement>(null);
 
   const originalText = "I'm a versatile <span class=\"text-accent\">designer who<br />partners with founders</span> to turn ideas into<br />real <span class=\"text-accent\">products.</span> I focus on clear interfaces,<br />sharp decisions, and fast execution.";
+  
   const textToProcess = originalText.replace(/&apos;/g, "'");
+
+  // This will be the background grey text. Spans remain for structure, but color class is removed.
+  const greyText = textToProcess.replace(/ class="text-accent"/g, '');
+
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -74,7 +79,7 @@ export function AnimatedIntroText() {
       <h2 className="text-4xl md:text-6xl lg:text-8xl font-medium leading-[1.05] tracking-tight max-w-7xl min-h-[4.5em]">
         <span
           className="text-muted-foreground/20"
-          dangerouslySetInnerHTML={{ __html: textToProcess }}
+          dangerouslySetInnerHTML={{ __html: greyText }}
         />
         
         <span className="absolute top-0 left-0 w-full h-full">
