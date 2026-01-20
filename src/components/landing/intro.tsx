@@ -1,6 +1,7 @@
 import { ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 import { Button } from '../ui/button';
+import { AnimatedIntroText } from './animated-intro-text';
 
 export function Intro() {
     return (
@@ -12,9 +13,7 @@ export function Intro() {
 
                 <div className="mt-20 flex flex-col gap-24">
                     <div className="reveal-on-scroll">
-                        <h2 className="text-4xl md:text-6xl lg:text-8xl font-medium leading-[1.05] tracking-tight text-center max-w-7xl mx-auto">
-                            I&apos;m a versatile <span className="text-accent">designer who<br />partners with founders</span> to turn ideas into<br />real <span className="text-accent">products.</span> I focus on clear interfaces,<br />sharp decisions, and fast execution.
-                        </h2>
+                        <AnimatedIntroText />
                     </div>
 
                     <div className="reveal-on-scroll" style={{ transitionDelay: '100ms' }}>
