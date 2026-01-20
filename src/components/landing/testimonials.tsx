@@ -27,11 +27,11 @@ const testimonials = [
 
 export function Testimonials() {
   return (
-    <section id="testimonials" className="py-20 sm:py-28 bg-card text-card-foreground">
+    <section id="testimonials" className="py-20 sm:py-28 bg-background text-foreground">
       <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <ScrollAnimationWrapper>
           <div className="text-center">
-            <h2 className="font-serif text-3xl font-bold tracking-tight sm:text-4xl">What My Clients Say</h2>
+            <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">What My Clients Say</h2>
             <p className="mt-4 text-lg text-muted-foreground">Stories of success and collaboration.</p>
           </div>
         </ScrollAnimationWrapper>
@@ -65,7 +65,7 @@ export function Testimonials() {
                           <blockquote className="max-w-2xl text-lg font-medium">
                             &ldquo;{testimonial.quote}&rdquo;
                           </blockquote>
-                          <p className="mt-4 font-bold font-serif">{testimonial.name}</p>
+                          <p className="mt-4 font-semibold">{testimonial.name}</p>
                           <p className="text-sm text-muted-foreground">{testimonial.company}</p>
                         </CardContent>
                       </Card>
@@ -74,8 +74,8 @@ export function Testimonials() {
                 );
               })}
             </CarouselContent>
-            <CarouselPrevious className="text-card-foreground border-muted-foreground hover:bg-muted" />
-            <CarouselNext className="text-card-foreground border-muted-foreground hover:bg-muted" />
+            <CarouselPrevious className="text-foreground border-muted-foreground hover:bg-muted" />
+            <CarouselNext className="text-foreground border-muted-foreground hover:bg-muted" />
           </Carousel>
         </ScrollAnimationWrapper>
       </div>

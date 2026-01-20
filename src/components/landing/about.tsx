@@ -24,7 +24,7 @@ export function About() {
           </ScrollAnimationWrapper>
           <ScrollAnimationWrapper delay={200}>
             <div>
-              <h2 className="font-serif text-3xl font-bold tracking-tight sm:text-4xl">About Me</h2>
+              <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">About Me</h2>
               <p className="mt-6 text-lg text-muted-foreground">
                 I am a passionate UX Engineer with a mission to create digital experiences that are not only beautiful but also functional, accessible, and enjoyable for everyone. With a background in both design and computer science, I thrive at the intersection of these two worlds.
               </p>

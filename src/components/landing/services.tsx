@@ -1,27 +1,23 @@
 import { ScrollAnimationWrapper } from '../common/scroll-animation-wrapper';
-import { Megaphone, Globe, Code, AppWindow, ArrowRight } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
 const servicesData = [
   {
-    icon: Megaphone,
     title: 'Branding & Marketing',
     description: 'Branding that builds trust and drives loyalty through clear visuals and messaging, transforming your business into an unforgettable online experience.',
-    items: ['Brand Strategy & Messaging', 'Logo Design', 'Visual Identity', 'Brand Guidelines & Frameworks', 'Marketing materials', 'Motion Design'],
+    items: ['Brand Strategy and Messaging', 'Logo Design', 'Visual Identity', 'Brand Guidelines', 'Motion Design'],
   },
   {
-    icon: Globe,
     title: 'Website Design',
     description: 'Developing logical, scalable design systems that are precisely tailored to web and app applications.',
     items: ['Landing Pages', 'Corporate Websites', 'Blogs', 'E-commerce', 'Complex Websites'],
   },
   {
-    icon: Code,
     title: 'Web Development',
     description: 'User-focused development that brings designs to life with clean, efficient code.',
     items: ['Framer, Webflow, or WordPress Builds', 'CMS Integration', 'SEO Optimization', 'Site Migrations'],
   },
   {
-    icon: AppWindow,
     title: 'Application Design',
     description: 'User-focused app design that maximizes usability and encourages retention.',
     items: ['Mobile Apps', 'Desktop Apps', 'Complex Systems', 'Design Systems Optimization'],
@@ -30,8 +26,8 @@ const servicesData = [
 
 export function Services() {
   return (
-    <section id="services" className="bg-card text-card-foreground py-20 sm:py-28">
-      <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <section id="services" className="bg-card text-card-foreground py-32 md:py-48 px-6 md:px-12 relative">
+      <div className="max-w-[1400px] mx-auto w-full">
         <ScrollAnimationWrapper>
           <div className="text-accent text-base md:text-lg font-code tracking-wide mb-24">
             // Services
@@ -50,7 +46,7 @@ export function Services() {
 
             <div className="lg:col-span-8 flex flex-col pt-8">
               <ScrollAnimationWrapper>
-                <h3 className="text-5xl md:text-7xl font-serif tracking-tight mb-8">
+                <h3 className="text-5xl md:text-7xl font-medium tracking-tight mb-8">
                   {service.title}
                 </h3>
               </ScrollAnimationWrapper>
@@ -67,7 +63,7 @@ export function Services() {
                       <span className="text-2xl md:text-4xl font-normal text-muted-foreground group-hover:text-card-foreground group-hover:translate-x-4 transition-all duration-300">{item}</span>
                       <div className="flex items-center gap-4">
                         <ArrowRight className="opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-accent h-8 w-8" />
-                        <span className="text-base font-code text-muted-foreground/50 group-hover:text-accent">{String(itemIndex + 1).padStart(2, '0')}</span>
+                        <span className="text-base font-code text-muted-foreground/60 group-hover:text-accent">{String(itemIndex + 1).padStart(2, '0')}</span>
                       </div>
                     </div>
                   </ScrollAnimationWrapper>

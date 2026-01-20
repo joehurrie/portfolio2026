@@ -64,8 +64,8 @@ export function Hero() {
 
           {/* Role/Subtitle */}
           <div className="text-right">
-            <h2 className="text-6xl md:text-7xl lg:text-8xl font-serif tracking-tighter leading-[0.9] text-foreground">
-              <span className="block opacity-60 text-3xl md:text-4xl lg:text-5xl mb-2 tracking-tight font-sans font-normal text-muted-foreground">// UX Engineer</span>
+            <h2 className="text-6xl md:text-7xl lg:text-8xl font-medium tracking-tighter leading-[0.9] text-foreground">
+              <span className="block opacity-60 text-3xl md:text-4xl lg:text-5xl mb-2 tracking-tight font-normal text-muted-foreground">// UX Engineer</span>
               Art Director
             </h2>
           </div>

@@ -27,11 +27,11 @@ const projects = [
 
 export function Projects() {
   return (
-    <section id="projects" className="py-20 sm:py-28 bg-card text-card-foreground">
+    <section id="projects" className="py-20 sm:py-28 bg-background text-foreground">
       <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <ScrollAnimationWrapper>
           <div className="text-center">
-            <h2 className="font-serif text-3xl font-bold tracking-tight sm:text-4xl">Selected Projects</h2>
+            <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">Selected Projects</h2>
             <p className="mt-4 text-lg text-muted-foreground">A glimpse into my work on intuitive digital products.</p>
           </div>
         </ScrollAnimationWrapper>
@@ -41,7 +41,7 @@ export function Projects() {
             const imageData = PlaceHolderImages.find((img) => img.id === project.id);
             return (
               <ScrollAnimationWrapper key={project.id} delay={index * 150}>
-                <Card className="h-full overflow-hidden group bg-background text-foreground">
+                <Card className="h-full overflow-hidden group bg-card text-card-foreground">
                   <div className="aspect-video overflow-hidden">
                     {imageData && (
                       <Image
@@ -55,7 +55,7 @@ export function Projects() {
                     )}
                   </div>
                   <CardHeader>
-                    <CardTitle className="font-serif">{project.title}</CardTitle>
+                    <CardTitle className="font-medium">{project.title}</CardTitle>
                     <CardDescription className="text-muted-foreground">{project.description}</CardDescription>
                   </CardHeader>
                   <CardContent>
