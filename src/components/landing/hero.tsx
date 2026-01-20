@@ -23,12 +23,12 @@ export function Hero() {
         <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"></div>
       </div>
 
-      <div className="absolute inset-0 z-10 flex items-center justify-center overflow-hidden pointer-events-none mix-blend-overlay">
+      <div className="absolute inset-0 z-10 flex items-center justify-center overflow-hidden pointer-events-none mix-blend-difference text-white">
         <div className="flex animate-hero-marquee">
-          <h1 className="shrink-0 text-huge font-semibold tracking-tighter leading-none text-foreground px-8 whitespace-nowrap">
+          <h1 className="shrink-0 text-huge font-semibold tracking-tighter leading-none px-8 whitespace-nowrap">
             joharie kisiangani
           </h1>
-          <h1 className="shrink-0 text-huge font-semibold tracking-tighter leading-none text-foreground px-8 whitespace-nowrap" aria-hidden="true">
+          <h1 className="shrink-0 text-huge font-semibold tracking-tighter leading-none px-8 whitespace-nowrap" aria-hidden="true">
             joharie kisiangani
           </h1>
         </div>
