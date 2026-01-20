@@ -6,7 +6,7 @@ import { PlaceHolderImages } from '@/lib/placeholder-images';
 
 export function Hero() {
   const heroImage = PlaceHolderImages.find((img) => img.id === 'hero-background');
-  const name = 'Joharie Kisiangani - ';
+  const name = 'joharie kisiangani - ';
   const repeatedName = Array(20).fill(name).join('');
 
   const socialLinks = [
@@ -34,11 +34,11 @@ export function Hero() {
       {/* Scrolling Text Overlay */}
       <div className="pointer-events-none absolute inset-0 z-10 bg-white mix-blend-multiply">
         <div className="absolute inset-0 flex items-center">
-          <div className="flex w-max animate-marquee-ltr whitespace-nowrap [animation-play-state:running]">
-            <span className="font-headline text-[10rem] font-black uppercase text-black lg:text-[14rem] xl:text-[18rem]">
+          <div className="flex w-max animate-marquee-rtl whitespace-nowrap [animation-play-state:running]">
+            <span className="font-headline text-[10rem] font-black lowercase text-black lg:text-[14rem] xl:text-[18rem]">
               {repeatedName}
             </span>
-            <span className="font-headline text-[10rem] font-black uppercase text-black lg:text-[14rem] xl:text-[18rem]">
+            <span className="font-headline text-[10rem] font-black lowercase text-black lg:text-[14rem] xl:text-[18rem]">
               {repeatedName}
             </span>
           </div>
