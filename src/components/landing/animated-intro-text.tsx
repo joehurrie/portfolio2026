@@ -7,7 +7,7 @@ export function AnimatedIntroText() {
   const [displayedHtml, setDisplayedHtml] = useState('');
   const containerRef = useRef<HTMLDivElement>(null);
 
-  const originalText = "I'm a versatile <span class=\"text-accent\">designer who<br />partners with founders</span> to turn ideas into<br />real <span class=\"text-accent\">products.</span> I focus on clear interfaces,<br />sharp decisions, and fast execution.";
+  const originalText = "I'm a versatile <span class=\"text-accent\">designer who partners with founders</span> to turn ideas into real <span class=\"text-accent\">products.</span> I focus on clear interfaces, sharp decisions, and fast execution.";
   
   const textToProcess = originalText.replace(/&apos;/g, "'");
 
