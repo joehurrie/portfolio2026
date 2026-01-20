@@ -59,7 +59,7 @@ export function AnimatedIntroText() {
             
             setDisplayedHtml(prev => prev + partToAdd);
             currentIndex = nextIndex;
-            timeout = setTimeout(type, 20); // Typing speed
+            timeout = setTimeout(type, 50); // Slower typing speed
           } else {
             setIsTyping(false); // Stop typing, hide cursor
           }
@@ -75,13 +75,13 @@ export function AnimatedIntroText() {
 
   return (
     <div ref={containerRef} className="relative w-full flex justify-end">
-      <h2 className="text-4xl md:text-6xl lg:text-8xl font-medium leading-[1.05] tracking-tight text-right max-w-7xl min-h-[4.5em]">
+      <h2 className="text-4xl md:text-6xl lg:text-8xl font-medium leading-[1.05] tracking-tight max-w-7xl min-h-[4.5em]">
         <span
           className="text-muted-foreground/20"
           dangerouslySetInnerHTML={{ __html: textToProcess }}
         />
         
-        <span className="absolute top-0 left-0 w-full h-full text-right">
+        <span className="absolute top-0 left-0 w-full h-full">
           <span dangerouslySetInnerHTML={{ __html: displayedHtml }} />
           {isTyping && <span className="inline-block w-[3px] ml-1 h-[.9em] translate-y-[0.05em] bg-accent animate-pulse" />}
         </span>
