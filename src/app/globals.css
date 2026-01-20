@@ -7,21 +7,21 @@
     --background: 0 0% 92.2%; /* #EBEBEB */
     --foreground: 0 0% 2%; /* #050505 */
     --card: 0 0% 2%;
-    --card-foreground: 0 0% 92.2%;
+    --card-foreground: 0 0% 98%;
     --popover: 0 0% 2%;
-    --popover-foreground: 0 0% 92.2%;
+    --popover-foreground: 0 0% 98%;
     --primary: 0 0% 2%;
     --primary-foreground: 0 0% 98%;
     --secondary: 0 0% 87.8%; /* #e0e0e0 */
     --secondary-foreground: 0 0% 2%;
-    --muted: 0 0% 90%;
-    --muted-foreground: 0 0% 40%;
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 63.9%;
     --accent: 345 100% 60%; /* #FF3366 */
     --accent-foreground: 0 0% 100%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 50%;
-    --input: 0 0% 50%;
+    --border: 0 0% 20%;
+    --input: 0 0% 20%;
     --ring: 345 100% 60%;
     --radius: 0rem;
   }
@@ -67,5 +67,12 @@
 
   ::selection {
     @apply bg-accent text-accent-foreground;
+  }
+}
+
+@layer utilities {
+  .text-outline {
+    -webkit-text-stroke: 1px hsl(var(--card-foreground));
+    color: transparent;
   }
 }

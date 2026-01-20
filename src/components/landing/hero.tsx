@@ -33,7 +33,7 @@ export function Hero() {
       {/* Massive Name Overlay */}
       <div className="absolute inset-0 flex items-center justify-center z-10 pointer-events-none mix-blend-overlay">
         <h1 
-          className="text-huge font-headline font-semibold tracking-tighter leading-none text-center w-full animate-slide-up-fade" 
+          className="text-huge font-semibold tracking-tighter leading-none text-foreground text-center w-full animate-slide-up-fade" 
           style={{ animationDelay: '0.5s' }}
         >
           Joharie Kisiangani
@@ -64,8 +64,8 @@ export function Hero() {
 
           {/* Role/Subtitle */}
           <div className="text-right">
-            <h2 className="text-6xl md:text-7xl lg:text-8xl font-headline font-medium tracking-tighter leading-[0.9] text-foreground">
-              <span className="block opacity-60 text-3xl md:text-4xl lg:text-5xl mb-2 tracking-tight font-body font-normal text-muted-foreground">// UX Engineer</span>
+            <h2 className="text-6xl md:text-7xl lg:text-8xl font-serif tracking-tighter leading-[0.9] text-foreground">
+              <span className="block opacity-60 text-3xl md:text-4xl lg:text-5xl mb-2 tracking-tight font-sans font-normal text-muted-foreground">// UX Engineer</span>
               Art Director
             </h2>
           </div>

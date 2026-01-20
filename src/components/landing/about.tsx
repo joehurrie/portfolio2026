@@ -6,7 +6,7 @@ export function About() {
   const aboutImage = PlaceHolderImages.find((img) => img.id === 'about-image');
 
   return (
-    <section id="about" className="py-20 sm:py-28">
+    <section id="about" className="py-20 sm:py-28 bg-card text-card-foreground">
       <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid items-center gap-12 md:grid-cols-2">
           <ScrollAnimationWrapper>
@@ -24,7 +24,7 @@ export function About() {
           </ScrollAnimationWrapper>
           <ScrollAnimationWrapper delay={200}>
             <div>
-              <h2 className="font-headline text-3xl font-bold tracking-tight sm:text-4xl">About Me</h2>
+              <h2 className="font-serif text-3xl font-bold tracking-tight sm:text-4xl">About Me</h2>
               <p className="mt-6 text-lg text-muted-foreground">
                 I am a passionate UX Engineer with a mission to create digital experiences that are not only beautiful but also functional, accessible, and enjoyable for everyone. With a background in both design and computer science, I thrive at the intersection of these two worlds.
               </p>

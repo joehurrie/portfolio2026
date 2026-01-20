@@ -10,8 +10,8 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        body: ['Inter', 'sans-serif'],
-        headline: ['Playfair Display', 'serif'],
+        sans: ['Inter', 'sans-serif'],
+        serif: ['Playfair Display', 'serif'],
         code: ['monospace'],
       },
       colors: {
@@ -115,7 +115,7 @@ export default {
         'accordion-up': 'accordion-up 0.2s ease-out',
         'clip-reveal': 'clip-reveal 1.2s cubic-bezier(0.77, 0, 0.175, 1) both',
         'slide-up-fade': 'slide-up-fade 0.8s cubic-bezier(0.16, 1, 0.3, 1) both',
-        'marquee': 'marquee 45s linear infinite',
+        'marquee': 'marquee 25s linear infinite',
       },
     },
   },

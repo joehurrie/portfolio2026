@@ -1,12 +1,11 @@
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { ScrollAnimationWrapper } from '../common/scroll-animation-wrapper';
-import { Megaphone, Globe, Code, AppWindow } from 'lucide-react';
+import { Megaphone, Globe, Code, AppWindow, ArrowRight } from 'lucide-react';
 
 const servicesData = [
   {
     icon: Megaphone,
     title: 'Branding & Marketing',
-    description: 'Branding that builds trust and drives loyalty through clear visuals and messaging.',
+    description: 'Branding that builds trust and drives loyalty through clear visuals and messaging, transforming your business into an unforgettable online experience.',
     items: ['Brand Strategy & Messaging', 'Logo Design', 'Visual Identity', 'Brand Guidelines & Frameworks', 'Marketing materials', 'Motion Design'],
   },
   {
@@ -31,40 +30,52 @@ const servicesData = [
 
 export function Services() {
   return (
-    <section id="services" className="py-20 sm:py-28 bg-card">
+    <section id="services" className="bg-card text-card-foreground py-20 sm:py-28">
       <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <ScrollAnimationWrapper>
-          <div className="text-center">
-            <h2 className="font-headline text-3xl font-bold tracking-tight sm:text-4xl">My Services</h2>
-            <p className="mt-4 text-lg text-muted-foreground">Crafting experiences from concept to code.</p>
+          <div className="text-accent text-base md:text-lg font-code tracking-wide mb-24">
+            // Services
           </div>
         </ScrollAnimationWrapper>
 
-        <div className="mt-16 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
-          {servicesData.map((service, index) => (
-            <ScrollAnimationWrapper key={service.title} delay={index * 150}>
-              <Card className="h-full flex flex-col relative overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-medium border hover:border-gray-800">
-                <div className="absolute -top-8 -left-4 font-headline font-black text-[12rem] text-primary/5 -z-0 select-none leading-none">
+        {servicesData.map((service, index) => (
+          <div key={service.title} className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-32 mb-32 last:mb-0">
+            <div className="lg:col-span-4 relative select-none">
+              <ScrollAnimationWrapper>
+                <div className="text-outline opacity-20 lg:opacity-100 lg:absolute lg:-top-32 lg:left-0 mix-blend-screen text-[18rem] md:text-[24rem] font-sans font-medium leading-none tracking-tighter">
                   {String(index + 1).padStart(2, '0')}
                 </div>
-                <CardHeader className="flex flex-row items-center gap-4 z-10">
-                  <service.icon className="h-8 w-8 text-accent" />
-                  <CardTitle className="font-headline text-xl">{service.title}</CardTitle>
-                </CardHeader>
-                <CardContent className="flex-grow flex flex-col z-10">
-                  <p className="text-muted-foreground mb-4">{service.description}</p>
-                  <ul className="space-y-2 text-sm mt-auto border-t pt-4">
-                    {service.items.map((item, itemIndex) => (
-                      <li key={itemIndex} className="flex items-start justify-between">
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </CardContent>
-              </Card>
-            </ScrollAnimationWrapper>
-          ))}
-        </div>
+              </ScrollAnimationWrapper>
+            </div>
+
+            <div className="lg:col-span-8 flex flex-col pt-8">
+              <ScrollAnimationWrapper>
+                <h3 className="text-5xl md:text-7xl font-serif tracking-tight mb-8">
+                  {service.title}
+                </h3>
+              </ScrollAnimationWrapper>
+              <ScrollAnimationWrapper delay={100}>
+                <p className="text-muted-foreground text-xl md:text-2xl mb-24 max-w-2xl leading-relaxed font-light">
+                  {service.description}
+                </p>
+              </ScrollAnimationWrapper>
+              
+              <div className="w-full flex flex-col gap-2">
+                {service.items.map((item, itemIndex) => (
+                  <ScrollAnimationWrapper key={item} delay={100 + itemIndex * 75}>
+                    <div className="group flex justify-between items-baseline py-10 border-b border-border/50 cursor-pointer hover:border-muted-foreground transition-colors">
+                      <span className="text-2xl md:text-4xl font-normal text-muted-foreground group-hover:text-card-foreground group-hover:translate-x-4 transition-all duration-300">{item}</span>
+                      <div className="flex items-center gap-4">
+                        <ArrowRight className="opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-accent h-8 w-8" />
+                        <span className="text-base font-code text-muted-foreground/50 group-hover:text-accent">{String(itemIndex + 1).padStart(2, '0')}</span>
+                      </div>
+                    </div>
+                  </ScrollAnimationWrapper>
+                ))}
+              </div>
+            </div>
+          </div>
+        ))}
       </div>
     </section>
   );
