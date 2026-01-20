@@ -2,9 +2,9 @@
   "placeholderImages": [
     {
       "id": "hero-background",
-      "description": "Black and white portrait of a man",
-      "imageUrl": "https://images.unsplash.com/photo-1531384441138-2736e62e0919?q=80&w=2574&auto=format&fit=crop",
-      "imageHint": "man portrait"
+      "description": "Black and white portrait of a woman",
+      "imageUrl": "https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=2574&auto=format&fit=crop",
+      "imageHint": "woman portrait"
     },
     {
       "id": "project-1",

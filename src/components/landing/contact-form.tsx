@@ -16,7 +16,6 @@ import {
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { useToast } from "@/hooks/use-toast"
-import { ScrollAnimationWrapper } from "../common/scroll-animation-wrapper"
 
 const formSchema = z.object({
   name: z.string().min(2, {
@@ -54,7 +53,7 @@ export function ContactForm() {
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-        <ScrollAnimationWrapper delay={200}>
+        <div className="reveal-on-scroll" style={{transitionDelay: '200ms'}}>
           <FormField
             control={form.control}
             name="name"
@@ -68,8 +67,8 @@ export function ContactForm() {
               </FormItem>
             )}
           />
-        </ScrollAnimationWrapper>
-        <ScrollAnimationWrapper delay={300}>
+        </div>
+        <div className="reveal-on-scroll" style={{transitionDelay: '300ms'}}>
           <FormField
             control={form.control}
             name="email"
@@ -83,8 +82,8 @@ export function ContactForm() {
               </FormItem>
             )}
           />
-        </ScrollAnimationWrapper>
-        <ScrollAnimationWrapper delay={400}>
+        </div>
+        <div className="reveal-on-scroll" style={{transitionDelay: '400ms'}}>
           <FormField
             control={form.control}
             name="message"
@@ -102,12 +101,12 @@ export function ContactForm() {
               </FormItem>
             )}
           />
-        </ScrollAnimationWrapper>
-        <ScrollAnimationWrapper delay={500}>
+        </div>
+        <div className="reveal-on-scroll" style={{transitionDelay: '500ms'}}>
           <Button type="submit" size="lg" className="w-full bg-accent text-accent-foreground hover:bg-accent/90">
             Send Message
           </Button>
-        </ScrollAnimationWrapper>
+        </div>
       </form>
     </Form>
   )

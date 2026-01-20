@@ -1,7 +1,6 @@
 import Image from 'next/image';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { ScrollAnimationWrapper } from '../common/scroll-animation-wrapper';
 import { Badge } from '@/components/ui/badge';
 
 const projects = [
@@ -29,18 +28,18 @@ export function Projects() {
   return (
     <section id="projects" className="py-20 sm:py-28 bg-background text-foreground">
       <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <ScrollAnimationWrapper>
+        <div className="reveal-on-scroll">
           <div className="text-center">
             <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">Selected Projects</h2>
             <p className="mt-4 text-lg text-muted-foreground">A glimpse into my work on intuitive digital products.</p>
           </div>
-        </ScrollAnimationWrapper>
+        </div>
 
         <div className="mt-16 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           {projects.map((project, index) => {
             const imageData = PlaceHolderImages.find((img) => img.id === project.id);
             return (
-              <ScrollAnimationWrapper key={project.id} delay={index * 150}>
+              <div key={project.id} className="reveal-on-scroll" style={{ transitionDelay: `${index * 150}ms` }}>
                 <Card className="h-full overflow-hidden group bg-card text-card-foreground">
                   <div className="aspect-video overflow-hidden">
                     {imageData && (
@@ -66,7 +65,7 @@ export function Projects() {
                     </div>
                   </CardContent>
                 </Card>
-              </ScrollAnimationWrapper>
+              </div>
             );
           })}
         </div>

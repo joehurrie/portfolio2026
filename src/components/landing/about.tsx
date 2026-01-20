@@ -1,6 +1,5 @@
 import Image from 'next/image';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
-import { ScrollAnimationWrapper } from '../common/scroll-animation-wrapper';
 
 export function About() {
   const aboutImage = PlaceHolderImages.find((img) => img.id === 'about-image');
@@ -9,7 +8,7 @@ export function About() {
     <section id="about" className="py-20 sm:py-28 bg-card text-card-foreground">
       <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid items-center gap-12 md:grid-cols-2">
-          <ScrollAnimationWrapper>
+          <div className="reveal-on-scroll">
             <div className="aspect-square relative overflow-hidden shadow-lg">
               {aboutImage && (
                 <Image
@@ -21,8 +20,8 @@ export function About() {
                 />
               )}
             </div>
-          </ScrollAnimationWrapper>
-          <ScrollAnimationWrapper delay={200}>
+          </div>
+          <div className="reveal-on-scroll" style={{transitionDelay: '200ms'}}>
             <div>
               <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">About Me</h2>
               <p className="mt-6 text-lg text-muted-foreground">
@@ -35,7 +34,7 @@ export function About() {
                 When I&apos;m not crafting pixels and code, you can find me exploring new technologies, contributing to open-source projects, or hiking in the great outdoors.
               </p>
             </div>
-          </ScrollAnimationWrapper>
+          </div>
         </div>
       </div>
     </section>

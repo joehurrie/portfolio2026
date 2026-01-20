@@ -2,7 +2,6 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 import Image from 'next/image';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
-import { ScrollAnimationWrapper } from '../common/scroll-animation-wrapper';
 
 const testimonials = [
   {
@@ -29,14 +28,14 @@ export function Testimonials() {
   return (
     <section id="testimonials" className="py-20 sm:py-28 bg-background text-foreground">
       <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <ScrollAnimationWrapper>
+        <div className="reveal-on-scroll">
           <div className="text-center">
             <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">What My Clients Say</h2>
             <p className="mt-4 text-lg text-muted-foreground">Stories of success and collaboration.</p>
           </div>
-        </ScrollAnimationWrapper>
+        </div>
 
-        <ScrollAnimationWrapper delay={200}>
+        <div className="reveal-on-scroll" style={{transitionDelay: '200ms'}}>
           <Carousel
             opts={{
               align: 'start',
@@ -77,7 +76,7 @@ export function Testimonials() {
             <CarouselPrevious className="text-foreground border-muted-foreground hover:bg-muted" />
             <CarouselNext className="text-foreground border-muted-foreground hover:bg-muted" />
           </Carousel>
-        </ScrollAnimationWrapper>
+        </div>
       </div>
     </section>
   );

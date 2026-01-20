@@ -1,5 +1,4 @@
 import { ContactForm } from './contact-form';
-import { ScrollAnimationWrapper } from '../common/scroll-animation-wrapper';
 import { Mail, Phone, Linkedin, Github } from 'lucide-react';
 import Link from 'next/link';
 
@@ -14,15 +13,15 @@ export function Contact() {
   return (
     <section id="contact" className="py-20 sm:py-28 bg-background text-foreground">
       <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <ScrollAnimationWrapper>
+        <div className="reveal-on-scroll">
           <div className="text-center">
             <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">Let&apos;s Connect</h2>
             <p className="mt-4 text-lg text-muted-foreground">Have a project in mind or just want to say hello? I&apos;d love to hear from you.</p>
           </div>
-        </ScrollAnimationWrapper>
+        </div>
         
         <div className="mt-16 grid max-w-4xl mx-auto gap-12 md:grid-cols-2">
-          <ScrollAnimationWrapper delay={100}>
+          <div className="reveal-on-scroll" style={{transitionDelay: '100ms'}}>
             <div className="flex flex-col gap-6">
               <h3 className="text-2xl font-semibold">Contact Information</h3>
               <ul className="space-y-4">
@@ -36,7 +35,7 @@ export function Contact() {
                 ))}
               </ul>
             </div>
-          </ScrollAnimationWrapper>
+          </div>
           
           <div>
             <ContactForm />
