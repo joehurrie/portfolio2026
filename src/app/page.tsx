@@ -6,6 +6,8 @@ import { Projects } from "@/components/landing/projects";
 import { Testimonials } from "@/components/landing/testimonials";
 import { About } from "@/components/landing/about";
 import { Contact } from "@/components/landing/contact";
+import { Intro } from "@/components/landing/intro";
+import { ClientTicker } from "@/components/landing/client-ticker";
 
 export default function Home() {
   return (
@@ -13,6 +15,8 @@ export default function Home() {
       <Header />
       <main>
         <Hero />
+        <Intro />
+        <ClientTicker />
         <Services />
         <Projects />
         <Testimonials />
