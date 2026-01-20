@@ -1,6 +1,12 @@
 {
   "placeholderImages": [
     {
+      "id": "hero-background",
+      "description": "Portrait of a man looking to the side",
+      "imageUrl": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxtYW4lMjBwb3J0cmFpdHxlbnwwfHx8fDE3MTc2MzA4ODN8MA&ixlib=rb-4.0.3&q=80&w=1080",
+      "imageHint": "man portrait"
+    },
+    {
       "id": "project-1",
       "description": "Screenshot of Project 1",
       "imageUrl": "https://images.unsplash.com/photo-1693279504914-d08266ecbe66?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHx0ZWNoJTIwcHJvZHVjdHxlbnwwfHx8fDE3Njg4Nzg0MzB8MA&ixlib=rb-4.1.0&q=80&w=1080",
