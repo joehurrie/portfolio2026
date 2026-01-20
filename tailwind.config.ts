@@ -93,7 +93,7 @@ export default {
             height: '0',
           },
         },
-        'marquee-right': {
+        'marquee-ltr': {
           '0%': { transform: 'translateX(-50%)' },
           '100%': { transform: 'translateX(0)' },
         }
@@ -101,7 +101,7 @@ export default {
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
-        'marquee-right': 'marquee-right 60s linear infinite',
+        'marquee-ltr': 'marquee-ltr 60s linear infinite',
       },
     },
   },

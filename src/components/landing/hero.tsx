@@ -1,65 +1,75 @@
-import { Button } from '@/components/ui/button';
-import Link from 'next/link';
-import { ScrollAnimationWrapper } from '../common/scroll-animation-wrapper';
 import Image from 'next/image';
+import Link from 'next/link';
+import { ArrowRight, Instagram, Linkedin, Twitter } from 'lucide-react';
+
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 
 export function Hero() {
   const heroImage = PlaceHolderImages.find((img) => img.id === 'hero-background');
   const name = 'Joharie Kisiangani - ';
-  // Repeat name to fill width for seamless scrolling
   const repeatedName = Array(20).fill(name).join('');
 
+  const socialLinks = [
+    { name: 'LinkedIn', icon: Linkedin, url: '#' },
+    { name: 'Twitter', icon: Twitter, url: '#' },
+    { name: 'Instagram', icon: Instagram, url: '#' },
+  ];
+
   return (
-    <section className="relative flex h-[calc(100vh-4rem)] min-h-[500px] items-center justify-center text-left overflow-hidden bg-black">
+    <section className="relative flex h-screen min-h-[700px] flex-col justify-end overflow-hidden bg-secondary text-foreground">
       {/* Background Image */}
       {heroImage && (
-        <Image
-          src={heroImage.imageUrl}
-          alt={heroImage.description}
-          fill
-          className="object-cover opacity-80"
-          data-ai-hint={heroImage.imageHint}
-          priority
-        />
+        <div className="absolute inset-0 z-0">
+          <Image
+            src={heroImage.imageUrl}
+            alt={heroImage.description}
+            fill
+            className="object-cover object-[80%_50%] opacity-80"
+            data-ai-hint={heroImage.imageHint}
+            priority
+          />
+        </div>
       )}
-      
+
       {/* Scrolling Text Overlay */}
-      <div className="absolute inset-0 z-10 mix-blend-multiply bg-white pointer-events-none">
+      <div className="pointer-events-none absolute inset-0 z-10 bg-white mix-blend-multiply">
         <div className="absolute inset-0 flex items-center">
-            <div className="w-max flex whitespace-nowrap animate-marquee-right [animation-play-state:running]">
-                <span className="font-headline text-[10rem] lg:text-[14rem] xl:text-[18rem] font-black uppercase text-black">
-                    {repeatedName}
-                </span>
-                <span className="font-headline text-[10rem] lg:text-[14rem] xl:text-[18rem] font-black uppercase text-black">
-                    {repeatedName}
-                </span>
-            </div>
+          <div className="flex w-max animate-marquee-ltr whitespace-nowrap [animation-play-state:running]">
+            <span className="font-headline text-[10rem] font-black uppercase text-black lg:text-[14rem] xl:text-[18rem]">
+              {repeatedName}
+            </span>
+            <span className="font-headline text-[10rem] font-black uppercase text-black lg:text-[14rem] xl:text-[18rem]">
+              {repeatedName}
+            </span>
+          </div>
         </div>
       </div>
-      
-      {/* Foreground Content */}
-      <div className="relative container mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 z-20">
-        <ScrollAnimationWrapper>
-          <h1 className="font-headline text-4xl font-bold tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl [text-shadow:_0_2px_4px_rgb(0_0_0_/_50%)]">
-            Blending Design &amp; Technology
-          </h1>
-        </ScrollAnimationWrapper>
-        <ScrollAnimationWrapper delay={200}>
-          <p className="mx-auto mt-6 max-w-2xl text-lg text-white sm:text-xl [text-shadow:_0_1px_2px_rgb(0_0_0_/_50%)]">
-            Hi, I&apos;m Joharie Kisiangani, a UX Engineer based at Ngazi. I specialize in building intuitive, user-centric digital products that bridge the gap between creative design and robust engineering.
-          </p>
-        </ScrollAnimationWrapper>
-        <ScrollAnimationWrapper delay={400}>
-          <div className="mt-8 flex justify-start gap-4">
-            <Button asChild size="lg" className='bg-white text-black hover:bg-gray-200'>
-              <Link href="#contact">Get In Touch</Link>
-            </Button>
-            <Button asChild variant="outline" size="lg" className="border-white text-white hover:bg-white/20">
-              <Link href="#projects">View My Work</Link>
-            </Button>
-          </div>
-        </ScrollAnimationWrapper>
+
+      {/* Bottom Content */}
+      <div className="relative z-20 container mx-auto flex w-full max-w-7xl items-end justify-between px-4 pb-8 sm:px-6 lg:px-8">
+        <div className="flex flex-col gap-3">
+          {socialLinks.map((social) => (
+            <Link
+              key={social.name}
+              href={social.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 text-sm font-medium text-foreground transition-colors hover:text-accent"
+            >
+              <social.icon className="h-4 w-4" />
+              <span>{social.name}</span>
+            </Link>
+          ))}
+        </div>
+
+        <div className="text-right">
+          <h2 className="font-body text-xl font-medium tracking-tight text-foreground">
+            // UX Engineer
+          </h2>
+          <h2 className="font-body text-xl font-medium tracking-tight text-foreground">
+            Art Director <ArrowRight className="inline h-5 w-5" />
+          </h2>
+        </div>
       </div>
     </section>
   );
