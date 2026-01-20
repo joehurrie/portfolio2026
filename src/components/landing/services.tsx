@@ -43,8 +43,8 @@ export function Services() {
       },
       {
         root: null,
-        rootMargin: "0px",
-        threshold: 1.0, // Update when the service is 100% in view
+        rootMargin: "-50% 0px -50% 0px",
+        threshold: 0,
       }
     );
 
