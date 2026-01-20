@@ -5,7 +5,6 @@ import { useState, useEffect, useRef } from 'react';
 export function AnimatedIntroText() {
   const [isVisible, setIsVisible] = useState(false);
   const [displayedHtml, setDisplayedHtml] = useState('');
-  const [isTyping, setIsTyping] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
   const originalText = "I&apos;m a versatile <span class=\"text-accent\">designer who<br />partners with founders</span> to turn ideas into<br />real <span class=\"text-accent\">products.</span> I focus on clear interfaces,<br />sharp decisions, and fast execution.";
@@ -40,7 +39,6 @@ export function AnimatedIntroText() {
 
       // Delay before starting animation
       timeout = setTimeout(() => {
-        setIsTyping(true);
         let currentIndex = 0;
         
         const type = () => {
@@ -59,9 +57,7 @@ export function AnimatedIntroText() {
             
             setDisplayedHtml(prev => prev + partToAdd);
             currentIndex = nextIndex;
-            timeout = setTimeout(type, 50); // Slower typing speed
-          } else {
-            setIsTyping(false); // Stop typing, hide cursor
+            timeout = setTimeout(type, 50);
           }
         };
         
@@ -83,7 +79,6 @@ export function AnimatedIntroText() {
         
         <span className="absolute top-0 left-0 w-full h-full">
           <span dangerouslySetInnerHTML={{ __html: displayedHtml }} />
-          {isTyping && <span className="inline-block w-[3px] ml-1 h-[.9em] translate-y-[0.05em] bg-accent animate-pulse" />}
         </span>
       </h2>
     </div>
