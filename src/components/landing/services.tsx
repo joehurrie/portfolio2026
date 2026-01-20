@@ -42,8 +42,9 @@ export function Services() {
         });
       },
       {
-        rootMargin: "-50% 0px -50% 0px", // Trigger when the element's center crosses the viewport's center
-        threshold: 0,
+        root: null,
+        rootMargin: "0px",
+        threshold: 1.0, // Update when the service is 100% in view
       }
     );
 
