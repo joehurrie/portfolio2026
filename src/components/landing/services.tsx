@@ -43,17 +43,19 @@ export function Services() {
         <div className="mt-16 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
           {servicesData.map((service, index) => (
             <ScrollAnimationWrapper key={service.title} delay={index * 150}>
-              <Card className="h-full flex flex-col">
-                <CardHeader className="flex flex-row items-center gap-4">
+              <Card className="h-full flex flex-col relative overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-medium border hover:border-gray-800">
+                <div className="absolute -top-8 -left-4 font-headline font-black text-[12rem] text-primary/5 -z-0 select-none leading-none">
+                  {String(index + 1).padStart(2, '0')}
+                </div>
+                <CardHeader className="flex flex-row items-center gap-4 z-10">
                   <service.icon className="h-8 w-8 text-accent" />
                   <CardTitle className="font-headline text-xl">{service.title}</CardTitle>
                 </CardHeader>
-                <CardContent className="flex-grow flex flex-col">
+                <CardContent className="flex-grow flex flex-col z-10">
                   <p className="text-muted-foreground mb-4">{service.description}</p>
-                  <ul className="space-y-2 text-sm mt-auto">
+                  <ul className="space-y-2 text-sm mt-auto border-t pt-4">
                     {service.items.map((item, itemIndex) => (
-                      <li key={itemIndex} className="flex items-start">
-                        <span className="text-accent font-bold text-xs mr-3 mt-1">{String(itemIndex + 1).padStart(2, '0')}</span>
+                      <li key={itemIndex} className="flex items-start justify-between">
                         <span>{item}</span>
                       </li>
                     ))}

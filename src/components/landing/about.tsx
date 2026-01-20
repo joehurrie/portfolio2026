@@ -10,7 +10,7 @@ export function About() {
       <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid items-center gap-12 md:grid-cols-2">
           <ScrollAnimationWrapper>
-            <div className="aspect-square relative rounded-lg overflow-hidden shadow-lg">
+            <div className="aspect-square relative overflow-hidden shadow-lg">
               {aboutImage && (
                 <Image
                   src={aboutImage.imageUrl}

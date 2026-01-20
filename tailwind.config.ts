@@ -11,7 +11,7 @@ export default {
     extend: {
       fontFamily: {
         body: ['Inter', 'sans-serif'],
-        headline: ['Space Grotesk', 'sans-serif'],
+        headline: ['Playfair Display', 'serif'],
         code: ['monospace'],
       },
       colors: {
@@ -70,6 +70,11 @@ export default {
         lg: 'var(--radius)',
         md: 'calc(var(--radius) - 2px)',
         sm: 'calc(var(--radius) - 4px)',
+      },
+      boxShadow: {
+        small: '0 2px 4px rgba(0,0,0,0.05)',
+        medium: '0 4px 12px rgba(0,0,0,0.08)',
+        large: '0 8px 24px rgba(0,0,0,0.12)',
       },
       keyframes: {
         'accordion-down': {
