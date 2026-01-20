@@ -82,7 +82,7 @@ export function Services() {
                 ref={(el) => (serviceRefs.current[index] = el)}
                 data-index={index}
                 className="service-section mb-32 last:mb-0"
-                style={{minHeight: '70vh'}}
+                style={{minHeight: '50vh'}}
               >
                 <div className="reveal-on-scroll">
                   <h3 className="text-5xl md:text-7xl font-medium tracking-tight mb-8">
