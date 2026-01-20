@@ -1,82 +1,86 @@
-import { Card, CardContent } from '@/components/ui/card';
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
+"use client";
+
 import Image from 'next/image';
+import { useState } from 'react';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
+import { AnimatedTestimonialText } from './animated-testimonial-text';
+import { cn } from '@/lib/utils';
 
 const testimonials = [
   {
     id: 'testimonial-1',
     name: 'Aisha Omar',
     company: 'CEO, Tech Innovators',
-    quote: 'Joharie has a unique talent for translating complex ideas into elegant, user-friendly designs. His work on our platform was transformative.',
+    quote: 'Joharie has a unique talent for translating <span class="text-accent">complex ideas into elegant</span>, user-friendly designs. His work on our platform was <span class="text-accent">transformative</span>.',
   },
   {
     id: 'testimonial-2',
     name: 'Ben Carter',
     company: 'Product Manager, Creative Solutions',
-    quote: "Working with Joharie was a pleasure. He's a true collaborator who deeply understands the intersection of design and development.",
+    quote: "Working with Joharie was a pleasure. He's a <span class=\"text-accent\">true collaborator</span> who deeply understands the intersection of <span class=\"text-accent\">design and development</span>.",
   },
   {
     id: 'testimonial-3',
     name: 'Samantha Chen',
     company: 'Founder, Digital Ventures',
-    quote: 'The design system Joharie built for us has streamlined our workflow and brought a new level of consistency to our products. Highly recommended!',
+    quote: 'The design system Joharie built for us has <span class=\"text-accent\">streamlined our workflow</span> and brought a new level of consistency to our products. <span class=\"text-accent\">Highly recommended!</span>',
   },
 ];
 
 export function Testimonials() {
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  const activeTestimonial = testimonials[activeIndex];
+
   return (
-    <section id="testimonials" className="py-20 sm:py-28 bg-background text-foreground">
-      <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="reveal-on-scroll">
-          <div className="text-center">
-            <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">What My Clients Say</h2>
-            <p className="mt-4 text-lg text-muted-foreground">Stories of success and collaboration.</p>
+    <section id="testimonials" className="bg-background text-foreground py-20 sm:py-28 min-h-screen flex flex-col justify-center relative overflow-hidden">
+      <div className="absolute top-8 left-6 md:left-12 text-accent text-base md:text-lg font-code tracking-wide z-10">
+        // Testimonials
+      </div>
+      
+      <div className="container mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 w-full">
+        <div className="flex flex-col gap-8">
+          <div className="font-code text-accent">
+              {String(activeIndex + 1).padStart(2, '0')} / {String(testimonials.length).padStart(2, '0')}
+          </div>
+
+          <AnimatedTestimonialText
+            key={activeIndex} 
+            text={activeTestimonial.quote}
+          />
+          
+          <div className="mt-4">
+            <p className="font-code text-foreground text-lg">// {activeTestimonial.name}</p>
+            <p className="font-code text-muted-foreground">{activeTestimonial.company}</p>
           </div>
         </div>
+      </div>
 
-        <div className="reveal-on-scroll" style={{transitionDelay: '200ms'}}>
-          <Carousel
-            opts={{
-              align: 'start',
-              loop: true,
-            }}
-            className="w-full max-w-4xl mx-auto mt-16"
-          >
-            <CarouselContent>
-              {testimonials.map((testimonial) => {
-                const imageData = PlaceHolderImages.find((img) => img.id === testimonial.id);
-                return (
-                  <CarouselItem key={testimonial.name}>
-                    <div className="p-1">
-                      <Card className="border-none shadow-none bg-transparent">
-                        <CardContent className="flex flex-col items-center justify-center p-6 text-center">
-                          {imageData && (
-                            <Image
-                              src={imageData.imageUrl}
-                              alt={`Avatar of ${testimonial.name}`}
-                              width={80}
-                              height={80}
-                              data-ai-hint={imageData.imageHint}
-                              className="rounded-full mb-4"
-                            />
-                          )}
-                          <blockquote className="max-w-2xl text-lg font-medium">
-                            &ldquo;{testimonial.quote}&rdquo;
-                          </blockquote>
-                          <p className="mt-4 font-semibold">{testimonial.name}</p>
-                          <p className="text-sm text-muted-foreground">{testimonial.company}</p>
-                        </CardContent>
-                      </Card>
-                    </div>
-                  </CarouselItem>
-                );
-              })}
-            </CarouselContent>
-            <CarouselPrevious className="text-foreground border-muted-foreground hover:bg-muted" />
-            <CarouselNext className="text-foreground border-muted-foreground hover:bg-muted" />
-          </Carousel>
-        </div>
+      <div className="absolute right-6 md:right-12 top-1/2 -translate-y-1/2 flex flex-col gap-4 z-20">
+        {testimonials.map((testimonial, index) => {
+          const imageData = PlaceHolderImages.find((img) => img.id === testimonial.id);
+          return (
+            <button
+              key={testimonial.id}
+              onClick={() => setActiveIndex(index)}
+              className={cn(
+                "w-12 h-12 md:w-16 md:h-16 rounded-full overflow-hidden transition-all duration-300 ring-offset-4 ring-offset-background",
+                activeIndex === index ? 'ring-2 ring-accent scale-110' : 'opacity-50 hover:opacity-100 hover:scale-105'
+              )}
+            >
+              {imageData && (
+                <Image
+                  src={imageData.imageUrl}
+                  alt={`Avatar of ${testimonial.name}`}
+                  width={64}
+                  height={64}
+                  data-ai-hint={imageData.imageHint}
+                  className="w-full h-full object-cover"
+                />
+              )}
+            </button>
+          );
+        })}
       </div>
     </section>
   );
