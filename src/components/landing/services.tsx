@@ -87,7 +87,7 @@ export function Services() {
                         className="service-section mb-48 last:mb-0 reveal-on-scroll"
                     >
                         
-                            <h3 className="text-5xl font-medium tracking-tight mb-6">
+                            <h3 className="text-4xl md:text-5xl font-medium tracking-tight mb-6">
                                 {service.title}
                             </h3>
                             <p className="text-muted-foreground text-xl mb-12 max-w-2xl leading-relaxed font-light">
