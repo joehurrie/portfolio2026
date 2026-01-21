@@ -29,7 +29,7 @@ export function Hero() {
             Joharie Kisiangani
           </h1>
           <h1 className="shrink-0 text-huge font-semibold tracking-tighter leading-none px-8 whitespace-nowrap" aria-hidden="true">
-            joharie kisiangani
+            Joharie Kisiangani
           </h1>
         </div>
       </div>
@@ -55,8 +55,8 @@ export function Hero() {
           </div>
 
           <div className="text-right">
-            <h2 className="text-5xl md:text-6xl lg:text-7xl font-medium tracking-tighter leading-[0.9] text-white">
-              <span className="block opacity-60 text-3xl md:text-4xl lg:text-5xl mb-2 tracking-tight font-normal">//Product Designer</span>
+            <h2 className="text-5xl md:text-6xl lg:text-7xl font-medium tracking-tighter leading-[0.9] mb-2 text-muted-foreground">
+              <span className="block text-white opacity-60 text-3xl md:text-4xl lg:text-5xl mb-2 tracking-tight font-normal">//Product Designer</span>
               UX Engineer
             </h2>
           </div>
