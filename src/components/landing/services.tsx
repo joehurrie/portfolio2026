@@ -73,7 +73,7 @@ export function Services() {
                     <div className="flex items-center justify-center lg:justify-start">
                         <AnimatedCounter
                             end={activeIndex + 1}
-                            className="text-outline text-[16rem] font-sans font-medium leading-none tracking-tighter"
+                            className="text-accent text-[16rem] font-sans font-bold leading-none tracking-tighter"
                         />
                     </div>
                 </div>
