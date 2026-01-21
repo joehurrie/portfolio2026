@@ -1,5 +1,4 @@
 import { Header } from "@/components/common/header";
-import { Contact } from "@/components/landing/contact";
 import Image from 'next/image';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 
@@ -45,7 +44,6 @@ export default function AboutPage() {
             </div>
           </div>
         </section>
-        <Contact />
       </main>
     </div>
   );
