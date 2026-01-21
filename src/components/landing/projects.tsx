@@ -49,8 +49,7 @@ export function Projects() {
       if (!section || !scrollContainer) return;
 
       const rect = section.getBoundingClientRect();
-      // Ensure the effect only runs when the section is precisely the full viewport height.
-      const isFullViewportHeight = Math.round(rect.height) === window.innerHeight;
+      const isFullViewportHeight = Math.abs(rect.height - window.innerHeight) <= 1;
       const isScrolledIntoView = rect.top <= 0 && rect.bottom >= window.innerHeight;
 
       if (isFullViewportHeight && isScrolledIntoView) {
