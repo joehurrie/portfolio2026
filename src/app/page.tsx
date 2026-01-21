@@ -3,7 +3,6 @@ import { Hero } from "@/components/landing/hero";
 import { Services } from "@/components/landing/services";
 import { Projects } from "@/components/landing/projects";
 import { Testimonials } from "@/components/landing/testimonials";
-import { About } from "@/components/landing/about";
 import { Contact } from "@/components/landing/contact";
 import { Intro } from "@/components/landing/intro";
 import { ClientTicker } from "@/components/landing/client-ticker";
@@ -19,7 +18,6 @@ export default function Home() {
         <Projects />
         <ClientTicker />
         <Testimonials />
-        <About />
         <Contact />
       </main>
     </div>
