@@ -39,7 +39,7 @@ export function Hero() {
           className="flex flex-col md:flex-row justify-between items-end w-full pb-8 md:pb-16 animate-slide-up-fade"
           style={{ animationDelay: '0.8s' }}
         >
-          <div className="flex flex-col gap-4 mb-12 md:mb-0">
+          <div className="flex flex-row md:flex-col gap-6 md:gap-4 mb-12 md:mb-0">
             {socialLinks.map((social) => (
                 <Link
                   key={social.name}
@@ -49,12 +49,12 @@ export function Hero() {
                   className="flex items-center gap-3 text-base md:text-lg font-medium text-white hover:text-accent transition-colors group"
                 >
                   <social.icon className="h-6 w-6 text-neutral-300 group-hover:text-accent" />
-                  <span>{social.name}</span>
+                  <span className="hidden md:inline">{social.name}</span>
                 </Link>
             ))}
           </div>
 
-          <div className="text-right">
+          <div className="text-left md:text-right">
             <h2 className="text-5xl md:text-6xl lg:text-7xl font-medium tracking-tighter leading-[0.9] mb-2 text-muted-foreground">
               <span className="block text-white opacity-60 text-3xl md:text-4xl lg:text-5xl mb-2 tracking-tight font-normal">//Product Designer</span>
               UX Engineer
