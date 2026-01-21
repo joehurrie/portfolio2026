@@ -42,7 +42,7 @@ export function Testimonials() {
       </div>
       
       <div className="h-full flex items-center px-6 md:px-12">
-        <div className="w-full max-w-5xl">
+        <div className="w-full max-w-7xl mx-auto">
           {/* Mobile: list view */}
           <div className="flex flex-col gap-16 md:hidden">
               {reversedTestimonials.map((testimonial, index) => (
@@ -60,50 +60,51 @@ export function Testimonials() {
           </div>
 
           {/* Desktop: single view */}
-          <div className="hidden md:flex flex-col gap-8">
-            <div className="font-code text-accent">
-                {String(activeIndex + 1).padStart(2, '0')} / {String(testimonials.length).padStart(2, '0')}
+          <div className="hidden md:grid grid-cols-[1fr_auto] gap-x-24 items-center">
+            <div className="flex flex-col gap-8">
+              <div className="font-code text-accent">
+                  {String(activeIndex + 1).padStart(2, '0')} / {String(testimonials.length).padStart(2, '0')}
+              </div>
+
+              <AnimatedTestimonialText
+                key={activeIndex} 
+                text={activeTestimonial.quote}
+              />
+              
+              <div className="mt-4">
+                <p className="font-code text-foreground text-lg">// {activeTestimonial.name}</p>
+                <p className="font-code text-muted-foreground">{activeTestimonial.company}</p>
+              </div>
             </div>
 
-            <AnimatedTestimonialText
-              key={activeIndex} 
-              text={activeTestimonial.quote}
-            />
-            
-            <div className="mt-4">
-              <p className="font-code text-foreground text-lg">// {activeTestimonial.name}</p>
-              <p className="font-code text-muted-foreground">{activeTestimonial.company}</p>
+            <div className="flex flex-col gap-6">
+              {testimonials.map((testimonial, index) => {
+                const imageData = PlaceHolderImages.find((img) => img.id === testimonial.id);
+                return (
+                  <button
+                    key={testimonial.id}
+                    onClick={() => setActiveIndex(index)}
+                    className={cn(
+                      "w-12 h-12 md:w-16 md:h-16 rounded-full overflow-hidden transition-all duration-300 ring-offset-4 ring-offset-background",
+                      activeIndex === index ? 'ring-2 ring-accent scale-110' : 'opacity-50 hover:opacity-100 hover:scale-105'
+                    )}
+                  >
+                    {imageData && (
+                      <Image
+                        src={imageData.imageUrl}
+                        alt={`Avatar of ${testimonial.name}`}
+                        width={64}
+                        height={64}
+                        data-ai-hint={imageData.imageHint}
+                        className="w-full h-full object-cover"
+                      />
+                    )}
+                  </button>
+                );
+              })}
             </div>
           </div>
         </div>
-      </div>
-
-
-      <div className="absolute right-6 md:right-12 top-1/2 -translate-y-1/2 flex-col gap-4 z-20 hidden md:flex">
-        {testimonials.map((testimonial, index) => {
-          const imageData = PlaceHolderImages.find((img) => img.id === testimonial.id);
-          return (
-            <button
-              key={testimonial.id}
-              onClick={() => setActiveIndex(index)}
-              className={cn(
-                "w-12 h-12 md:w-16 md:h-16 rounded-full overflow-hidden transition-all duration-300 ring-offset-4 ring-offset-background",
-                activeIndex === index ? 'ring-2 ring-accent scale-110' : 'opacity-50 hover:opacity-100 hover:scale-105'
-              )}
-            >
-              {imageData && (
-                <Image
-                  src={imageData.imageUrl}
-                  alt={`Avatar of ${testimonial.name}`}
-                  width={64}
-                  height={64}
-                  data-ai-hint={imageData.imageHint}
-                  className="w-full h-full object-cover"
-                />
-              )}
-            </button>
-          );
-        })}
       </div>
     </section>
   );
