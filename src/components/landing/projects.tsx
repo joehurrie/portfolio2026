@@ -50,9 +50,9 @@ export function Projects() {
 
       const rect = section.getBoundingClientRect();
       const isFullViewportHeight = Math.abs(rect.height - window.innerHeight) <= 1;
-      const isScrolledIntoView = rect.top <= 0 && rect.bottom >= window.innerHeight;
+      const isScrolledToTop = Math.abs(rect.top) <= 1;
 
-      if (isFullViewportHeight && isScrolledIntoView) {
+      if (isFullViewportHeight && isScrolledToTop) {
         const { deltaY } = e;
         const { scrollTop, scrollHeight, clientHeight } = scrollContainer;
 
@@ -97,7 +97,7 @@ export function Projects() {
   return (
     <section ref={sectionRef} id="projects" className="bg-card text-card-foreground relative md:h-screen py-24 md:py-0">
        <div className="sticky top-0 z-40 h-0">
-        <div className="absolute top-8 left-6 md:left-12 text-accent text-base md:text-lg font-code tracking-wide">
+        <div className="absolute top-8 left-6 md:left-12 text-accent text-base md:text-lg font-code tracking-wide mt-16 md:mt-0">
           // Projects
         </div>
       </div>
