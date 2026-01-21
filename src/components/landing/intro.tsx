@@ -5,7 +5,7 @@ import { AnimatedIntroText } from './animated-intro-text';
 
 export function Intro() {
     return (
-        <section className="bg-card text-card-foreground py-32 md:py-48 px-6 md:px-12 relative z-30 -mt-12 rounded-t-[3rem] md:rounded-t-[4rem]">
+        <section className="bg-background text-foreground py-32 md:py-48 px-6 md:px-12 relative z-30 -mt-12 rounded-t-[3rem] md:rounded-t-[4rem]">
             <div className="max-w-[1400px] mx-auto">
                 <div className="absolute top-16 left-6 md:left-12 text-accent text-base md:text-lg font-code tracking-wide reveal-on-scroll">
                     // Intro
@@ -19,14 +19,14 @@ export function Intro() {
                     <div className="reveal-on-scroll" style={{ transitionDelay: '100ms' }}>
                         <div className="w-full flex justify-end">
                             <p className="text-muted-foreground text-xl md:text-2xl max-w-2xl leading-relaxed text-right font-light">
-                                Bringing your vision to life quickly and efficiently—whether it&apos;s branding, apps, or websites—I&apos;ve got it covered, delivering smooth and effective solutions from start to finish.
+                                Bringing your vision to life quickly and efficiently—whether it's branding, apps, or websites—I've got it covered, delivering smooth and effective solutions from start to finish.
                             </p>
                         </div>
                     </div>
 
                     <div className="reveal-on-scroll" style={{ transitionDelay: '200ms' }}>
                         <div className="flex justify-center mt-12">
-                             <Button asChild size="lg" variant="outline" className="rounded-full border-muted-foreground/50 text-card-foreground hover:bg-background hover:text-foreground hover:border-background transition-all duration-300 group text-lg md:text-xl py-7 px-10">
+                             <Button asChild size="lg" variant="outline" className="rounded-full group text-lg md:text-xl py-7 px-10">
                                 <Link href="#projects" className="flex items-center gap-3">
                                     See my Work
                                     <ArrowRight className="h-6 w-6 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />

@@ -60,7 +60,7 @@ export function Services() {
   }, []);
 
   return (
-    <section id="services" className="bg-card text-card-foreground py-32 md:py-48 px-6 md:px-12 relative">
+    <section id="services" className="bg-background text-foreground py-32 md:py-48 px-6 md:px-12 relative">
       <div className="max-w-[1400px] mx-auto w-full">
         <div className="text-accent text-base md:text-lg font-code tracking-wide mb-24 reveal-on-scroll">
           // Services
@@ -99,7 +99,7 @@ export function Services() {
                   {service.items.map((item, itemIndex) => (
                     <div key={item} className="reveal-on-scroll" style={{transitionDelay: `${100 + itemIndex * 75}ms`}}>
                       <div className="flex justify-between items-baseline py-6 border-b border-border/50">
-                        <span className="text-xl font-normal text-card-foreground">{item}</span>
+                        <span className="text-xl font-normal text-foreground">{item}</span>
                         <span className="text-base font-code text-muted-foreground/60">{String(itemIndex + 1).padStart(2, '0')}</span>
                       </div>
                     </div>

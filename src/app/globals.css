@@ -72,7 +72,7 @@
 
 @layer utilities {
   .text-outline {
-    -webkit-text-stroke: 1px hsl(var(--card-foreground));
+    -webkit-text-stroke: 1px hsl(var(--foreground));
     color: transparent;
   }
   .reveal-on-scroll {
