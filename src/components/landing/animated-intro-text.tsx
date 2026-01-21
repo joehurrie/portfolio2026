@@ -76,7 +76,7 @@ export function AnimatedIntroText() {
 
   return (
     <div ref={containerRef} className="relative w-full flex justify-end">
-      <h2 className="text-4xl md:text-6xl lg:text-8xl font-medium leading-[1.05] tracking-tight max-w-7xl min-h-[4.5em]">
+      <h2 className="text-4xl md:text-5xl lg:text-6xl font-medium leading-[1.05] tracking-tight max-w-7xl min-h-[4.5em]">
         <span
           className="text-muted-foreground/20"
           dangerouslySetInnerHTML={{ __html: greyText }}

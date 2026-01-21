@@ -10,7 +10,7 @@ export default function ContactPage() {
           <div className="container mx-auto max-w-7xl">
             <div className="grid md:grid-cols-2 gap-16 items-center">
                 <div>
-                     <h2 className="text-7xl md:text-8xl lg:text-9xl font-semibold tracking-tighter text-card-foreground">
+                     <h2 className="text-6xl md:text-7xl lg:text-8xl font-semibold tracking-tighter text-card-foreground">
                         Reach Out
                     </h2>
                 </div>
