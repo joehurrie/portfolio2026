@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { Linkedin, Twitter, Instagram } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
 export function Footer() {
   const socialLinks = [
@@ -42,6 +43,14 @@ export function Footer() {
             - Reach out -
           </h1>
         </div>
+      </div>
+
+      <div className="absolute inset-0 z-20 flex flex-col items-center justify-center pt-32 sm:pt-48">
+        <Button asChild size="lg" className="rounded-full group text-lg md:text-xl py-8 px-12 bg-transparent border-2 border-accent text-accent animate-red-glow hover:bg-accent hover:text-accent-foreground transition-all">
+            <Link href="/contact">
+                Let's collaborate
+            </Link>
+        </Button>
       </div>
 
       <div className="relative z-20 w-full h-full flex flex-col justify-end flex-grow px-6 pb-12 md:px-12">

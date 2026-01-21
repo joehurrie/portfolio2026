@@ -120,6 +120,16 @@ export default {
           '0%': { transform: 'translate(-50%, -50%) scale(0)' },
           '100%': { transform: 'translate(-50%, -50%) scale(1)' }
         },
+        'red-glow': {
+          '0%, 100%': {
+            boxShadow: '0 0 5px hsl(var(--accent)), 0 0 10px hsl(var(--accent))',
+            borderColor: 'hsl(var(--accent))'
+          },
+          '50%': {
+            boxShadow: '0 0 20px hsl(var(--accent)), 0 0 30px hsl(var(--accent))',
+            borderColor: 'hsl(var(--accent))'
+          }
+        }
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
@@ -130,6 +140,7 @@ export default {
         'hero-marquee': 'hero-marquee 60s linear infinite',
         'fade-in': 'fadeIn 0.6s ease-in forwards',
         'cursor-scale-in': 'cursor-scale-in 0.3s forwards',
+        'red-glow': 'red-glow 4s ease-in-out infinite'
       },
     },
   },
