@@ -34,7 +34,7 @@ export function Testimonials() {
   const reversedTestimonials = [...testimonials].reverse();
 
   return (
-    <section id="testimonials" className="bg-background text-foreground relative py-24 md:py-32">
+    <section id="testimonials" className="bg-background text-foreground relative flex items-center min-h-screen">
       <div className="sticky top-0 z-40 h-0">
         <div className="absolute top-8 left-6 md:left-12 text-accent text-base md:text-lg font-code tracking-wide">
           // Testimonials
