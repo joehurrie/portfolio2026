@@ -34,14 +34,14 @@ export function Testimonials() {
   const reversedTestimonials = [...testimonials].reverse();
 
   return (
-    <section id="testimonials" className="bg-background text-foreground relative flex items-center h-screen">
+    <section id="testimonials" className="bg-background text-foreground relative flex items-center h-screen px-6 md:px-12">
       <div className="sticky top-0 z-40 h-0">
         <div className="absolute top-8 left-6 md:left-12 text-accent text-base md:text-lg font-code tracking-wide">
           // Testimonials
         </div>
       </div>
       
-      <div className="container mx-auto max-w-5xl px-6 md:px-12 w-full">
+      <div className="w-full max-w-5xl">
         {/* Mobile: list view */}
         <div className="flex flex-col gap-16 md:hidden">
             {reversedTestimonials.map((testimonial, index) => (
