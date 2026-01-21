@@ -42,15 +42,20 @@ export function Projects() {
 
     const observer = new IntersectionObserver(
       (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('is-in-view');
-          } else {
-            entry.target.classList.remove('is-in-view');
-          }
-        });
+        const intersectingEntry = entries.find((entry) => entry.isIntersecting);
+
+        if (intersectingEntry) {
+          // If an entry is intersecting, make it the only 'in-view' card.
+          cardRefs.current.forEach((ref) => {
+            if (ref === intersectingEntry.target) {
+              ref.classList.add('is-in-view');
+            } else {
+              ref.classList.remove('is-in-view');
+            }
+          });
+        }
       },
-      { rootMargin: '-30% 0px -30% 0px' }
+      { rootMargin: '-40% 0px -40% 0px', threshold: 0.5 }
     );
 
     const refs = cardRefs.current;
