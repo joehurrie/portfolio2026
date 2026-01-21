@@ -8,7 +8,7 @@ import { ClientTicker } from "@/components/landing/client-ticker";
 
 export default function Home() {
   return (
-    <div className="flex flex-col min-h-screen bg-background">
+    <div className="relative z-10 flex flex-col min-h-screen bg-background">
       <Header />
       <main className="relative z-10 bg-background">
         <Hero />
@@ -18,8 +18,8 @@ export default function Home() {
             <Services />
           </div>
           <Projects />
-          <Testimonials />
           <ClientTicker />
+          <Testimonials />
         </div>
       </main>
     </div>

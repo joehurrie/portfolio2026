@@ -16,7 +16,7 @@ export function Footer() {
   ]
 
   return (
-    <footer className="relative min-h-screen w-full flex flex-col overflow-hidden bg-secondary">
+    <footer className="sticky bottom-0 z-0 min-h-screen w-full flex flex-col overflow-hidden bg-secondary">
       <div className="absolute inset-0 z-0">
         <Image
           src="/hero.jpg"

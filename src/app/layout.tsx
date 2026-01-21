@@ -22,8 +22,10 @@ export default function RootLayout({
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;1,400&display=swap" rel="stylesheet" />
       </head>
       <body className="bg-background text-foreground antialiased selection:bg-accent selection:text-accent-foreground overflow-x-hidden">
-        {children}
-        <Footer />
+        <div className="relative">
+          {children}
+          <Footer />
+        </div>
         <Toaster />
         <ScrollHandler />
       </body>
