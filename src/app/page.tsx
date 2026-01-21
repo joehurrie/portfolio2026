@@ -11,10 +11,14 @@ export default function Home() {
       <Header />
       <main className="relative z-10 bg-background">
         <Hero />
-        <Intro />
-        <Services />
-        <Projects />
-        <Testimonials />
+        <div className="relative z-20 bg-background">
+          <Intro />
+          <div className="relative z-30">
+            <Services />
+          </div>
+          <Projects />
+          <Testimonials />
+        </div>
       </main>
     </div>
   );
