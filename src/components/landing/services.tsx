@@ -62,14 +62,14 @@ export function Services() {
   return (
     <section id="services" className="bg-background text-foreground relative py-24 md:py-32">
       <div className="sticky top-0 z-40 h-0">
-        <div className="absolute top-8 left-6 md:left-12 text-accent text-base md:text-lg font-code tracking-wide">
+        <div className="absolute top-8 left-12 text-accent text-base md:text-lg font-code tracking-wide">
           // Services
         </div>
       </div>
-      <div className="w-full px-6 md:px-12">
+      <div className="w-full px-12">
         <div className="w-full">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-8 pt-24">
-                <div className="hidden lg:col-span-5 relative select-none lg:sticky lg:top-32 self-start">
+                <div className="hidden lg:block lg:col-span-5 relative select-none lg:sticky lg:top-32 self-start">
                     <div className="flex items-center justify-center lg:justify-start">
                         <AnimatedCounter
                             end={activeIndex + 1}
@@ -84,9 +84,9 @@ export function Services() {
                         key={service.title}
                         ref={(el) => (serviceRefs.current[index] = el)}
                         data-index={index}
-                        className="service-section mb-48 last:mb-0"
+                        className="service-section mb-48 last:mb-0 reveal-on-scroll"
                     >
-                        <div className="reveal-on-scroll">
+                        
                             <h3 className="text-5xl font-medium tracking-tight mb-6">
                                 {service.title}
                             </h3>
@@ -102,7 +102,7 @@ export function Services() {
                                 </div>
                             ))}
                             </div>
-                        </div>
+                        
                     </div>
                     ))}
                 </div>
