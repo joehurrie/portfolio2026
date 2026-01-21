@@ -34,15 +34,15 @@ export function Testimonials() {
   const reversedTestimonials = [...testimonials].reverse();
 
   return (
-    <section id="testimonials" className="bg-background text-foreground relative h-screen">
+    <section id="testimonials" className="bg-background text-foreground relative md:h-screen py-24 md:py-0">
       <div className="sticky top-0 z-40 h-0">
         <div className="absolute top-8 left-6 md:left-12 text-accent text-base md:text-lg font-code tracking-wide">
           // Testimonials
         </div>
       </div>
       
-      <div className="h-full flex items-center px-6 md:px-12">
-        <div className="w-full max-w-7xl mx-auto">
+      <div className="md:h-full w-full flex md:items-center px-6 md:px-12">
+        <div className="w-full">
           {/* Mobile: list view */}
           <div className="flex flex-col gap-16 md:hidden">
               {reversedTestimonials.map((testimonial, index) => (
@@ -51,16 +51,31 @@ export function Testimonials() {
                           {String(testimonials.length - index).padStart(2, '0')} / {String(testimonials.length).padStart(2, '0')}
                       </div>
                       <AnimatedTestimonialText text={testimonial.quote} />
-                      <div className="mt-4">
-                          <p className="font-code text-foreground text-lg">// {testimonial.name}</p>
-                          <p className="font-code text-muted-foreground">{testimonial.company}</p>
+                      <div className="mt-8 flex items-center gap-4">
+                        {(() => {
+                          const imageData = PlaceHolderImages.find((img) => img.id === testimonial.id);
+                          return imageData ? (
+                            <Image
+                              src={imageData.imageUrl}
+                              alt={`Avatar of ${testimonial.name}`}
+                              width={48}
+                              height={48}
+                              data-ai-hint={imageData.imageHint}
+                              className="w-12 h-12 rounded-full object-cover"
+                            />
+                          ) : null;
+                        })()}
+                        <div>
+                            <p className="font-code text-foreground text-lg">// {testimonial.name}</p>
+                            <p className="font-code text-muted-foreground">{testimonial.company}</p>
+                        </div>
                       </div>
                   </div>
               ))}
           </div>
 
           {/* Desktop: single view */}
-          <div className="hidden md:grid grid-cols-[1fr_auto] gap-x-24 items-center">
+          <div className="hidden md:grid grid-cols-[1fr_auto] items-center gap-24">
             <div className="flex flex-col gap-8">
               <div className="font-code text-accent">
                   {String(activeIndex + 1).padStart(2, '0')} / {String(testimonials.length).padStart(2, '0')}
@@ -77,7 +92,7 @@ export function Testimonials() {
               </div>
             </div>
 
-            <div className="flex flex-col gap-6">
+            <div className="flex flex-col gap-8">
               {testimonials.map((testimonial, index) => {
                 const imageData = PlaceHolderImages.find((img) => img.id === testimonial.id);
                 return (
