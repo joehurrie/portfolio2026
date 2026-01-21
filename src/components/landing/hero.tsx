@@ -11,7 +11,7 @@ export function Hero() {
   ];
 
   return (
-    <header className="relative min-h-[110vh] w-full flex flex-col overflow-hidden bg-secondary">
+    <section className="relative h-screen w-full flex flex-col overflow-hidden bg-secondary">
       <div className="absolute inset-0 z-0 animate-clip-reveal origin-bottom">
         <Image
           src="/hero.jpg"
@@ -62,6 +62,6 @@ export function Hero() {
           </div>
         </div>
       </div>
-    </header>
+    </section>
   );
 }

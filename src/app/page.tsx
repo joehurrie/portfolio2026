@@ -9,7 +9,7 @@ export default function Home() {
   return (
     <div className="flex flex-col min-h-screen bg-background">
       <Header />
-      <main className="relative z-10 bg-background pb-[15vh]">
+      <main className="relative z-10 bg-background">
         <Hero />
         <Intro />
         <Services />

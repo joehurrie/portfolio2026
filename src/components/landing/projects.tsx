@@ -42,13 +42,13 @@ export function Projects() {
   };
 
   return (
-    <section id="projects" className="bg-card text-card-foreground relative">
+    <section id="projects" className="bg-card text-card-foreground relative h-screen">
       <div className="sticky top-0 z-40 h-0">
         <div className="absolute top-8 left-6 md:left-12 text-accent text-base md:text-lg font-code tracking-wide">
           // Projects
         </div>
       </div>
-      <div className="h-screen w-full snap-y snap-mandatory overflow-y-scroll scroll-smooth [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+      <div className="h-full w-full snap-y snap-mandatory overflow-y-scroll scroll-smooth [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
         {projects.map((project) => {
           const imageData = PlaceHolderImages.find((img) => img.id === project.id);
           return (

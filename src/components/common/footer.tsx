@@ -17,7 +17,7 @@ export function Footer() {
   ]
 
   return (
-    <footer className="relative min-h-[110vh] w-full flex flex-col overflow-hidden bg-secondary -mt-[15vh]">
+    <footer className="relative min-h-screen w-full flex flex-col overflow-hidden bg-secondary">
        <div className="pt-32">
         <ClientTicker />
        </div>
