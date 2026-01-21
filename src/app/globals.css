@@ -84,18 +84,4 @@
       opacity: 1;
       transform: translateY(0);
   }
-  .sticky-card {
-    @apply sticky;
-  }
-
-  .sticky-card .card-inner {
-    transform: scale(0.9);
-    opacity: 0;
-    @apply transition-all duration-700 ease-in-out;
-  }
-
-  .sticky-card.is-in-view .card-inner {
-    transform: scale(1);
-    opacity: 1;
-  }
 }

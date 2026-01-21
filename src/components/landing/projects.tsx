@@ -34,42 +34,6 @@ export function Projects() {
   const [hoveredProjectId, setHoveredProjectId] = useState<string | null>(null);
   const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
 
-  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const isMobile = useIsMobile();
-
-  useEffect(() => {
-    if (isMobile) return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const intersectingEntry = entries.find((entry) => entry.isIntersecting);
-
-        if (intersectingEntry) {
-          // If an entry is intersecting, make it the only 'in-view' card.
-          cardRefs.current.forEach((ref) => {
-            if (ref === intersectingEntry.target) {
-              ref.classList.add('is-in-view');
-            } else {
-              ref.classList.remove('is-in-view');
-            }
-          });
-        }
-      },
-      { rootMargin: '-40% 0px -40% 0px', threshold: 0.5 }
-    );
-
-    const refs = cardRefs.current;
-    refs.forEach((ref) => {
-      if (ref) observer.observe(ref);
-    });
-
-    return () => {
-      refs.forEach((ref) => {
-        if (ref) observer.unobserve(ref);
-      });
-    };
-  }, [isMobile]);
-
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const rect = e.currentTarget.getBoundingClientRect();
     setCursorPosition({
@@ -95,11 +59,9 @@ export function Projects() {
           return (
             <div 
               key={project.id}
-              ref={el => cardRefs.current[index] = el}
-              className="h-[90vh] w-full max-w-7xl flex items-center justify-center p-6 md:p-12 sticky-card"
-              style={{ top: `${(index * 4) + 10}vh`}}
+              className="h-[90vh] w-full max-w-7xl flex items-center justify-center p-6 md:p-12"
             >
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 w-full mx-auto bg-background text-foreground p-6 md:p-8 rounded-2xl shadow-large h-[85vh] max-h-[800px] card-inner">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 w-full mx-auto bg-background text-foreground p-6 md:p-8 rounded-2xl shadow-large h-[85vh] max-h-[800px]">
                 {/* Left Column - Image */}
                 <div
                   className="relative w-full h-full overflow-hidden rounded-lg cursor-none"
@@ -123,6 +85,7 @@ export function Projects() {
                         style={{
                           left: `${cursorPosition.x}px`,
                           top: `${cursorPosition.y}px`,
+                          transform: 'translate(-50%, -50%)',
                         }}
                       >
                         View
