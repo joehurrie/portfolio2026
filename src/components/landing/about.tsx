@@ -1,8 +1,5 @@
 import Image from 'next/image';
-import Link from 'next/link';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
-import { Button } from '@/components/ui/button';
-import { ArrowRight } from 'lucide-react';
 
 export function About() {
   const avatarImage = PlaceHolderImages.find((img) => img.id === 'testimonial-1');
@@ -39,17 +36,6 @@ export function About() {
             <p>
               Most of my work sits at the intersection of branding and product. Whether it&apos;s designing pitch decks that raise funding or interfaces that ship, I partner closely with founders and developers to bring bold ideas to life — fast and with intention.
             </p>
-          </div>
-        </div>
-
-        <div className="mt-24 flex justify-end">
-          <div className="reveal-on-scroll" style={{ transitionDelay: '400ms' }}>
-             <Button asChild size="lg" variant="outline" className="rounded-full border-muted-foreground/50 text-foreground hover:bg-card hover:text-card-foreground hover:border-card transition-all duration-300 group text-lg md:text-xl py-7 px-10">
-                <Link href="#contact" className="flex items-center gap-3">
-                    Let&apos;s Talk
-                    <ArrowRight className="h-6 w-6 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-                </Link>
-            </Button>
           </div>
         </div>
       </div>

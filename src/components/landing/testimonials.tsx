@@ -33,7 +33,7 @@ export function Testimonials() {
   const activeTestimonial = testimonials[activeIndex];
 
   return (
-    <section id="testimonials" className="bg-background text-foreground py-20 sm:py-28 min-h-screen flex flex-col justify-center relative overflow-hidden">
+    <section id="testimonials" className="bg-background text-foreground py-32 md:py-48 min-h-screen flex flex-col justify-center relative overflow-hidden">
       <div className="absolute top-8 left-6 md:left-12 text-accent text-base md:text-lg font-code tracking-wide z-10">
         // Testimonials
       </div>
