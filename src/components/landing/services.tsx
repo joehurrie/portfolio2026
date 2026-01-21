@@ -67,9 +67,9 @@ export function Services() {
         </div>
       </div>
       <div className="w-full px-6 md:px-12">
-        <div className="max-w-[1400px] mx-auto">
+        <div className="w-full">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-8 pt-24">
-                <div className="lg:col-span-5 relative select-none lg:sticky lg:top-32 self-start">
+                <div className="hidden lg:block lg:col-span-5 relative select-none lg:sticky lg:top-32 self-start">
                     <div className="flex items-center justify-center lg:justify-start">
                         <AnimatedCounter
                             end={activeIndex + 1}
