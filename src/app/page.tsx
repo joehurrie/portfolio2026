@@ -4,18 +4,16 @@ import { Services } from "@/components/landing/services";
 import { Projects } from "@/components/landing/projects";
 import { Testimonials } from "@/components/landing/testimonials";
 import { Intro } from "@/components/landing/intro";
-import { ClientTicker } from "@/components/landing/client-ticker";
 
 export default function Home() {
   return (
     <div className="flex flex-col min-h-screen bg-background">
       <Header />
-      <main>
+      <main className="relative z-10 bg-background pb-[15vh]">
         <Hero />
         <Intro />
         <Services />
         <Projects />
-        <ClientTicker />
         <Testimonials />
       </main>
     </div>

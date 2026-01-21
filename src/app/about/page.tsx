@@ -8,7 +8,7 @@ export default function AboutPage() {
   return (
     <div className="flex flex-col min-h-screen bg-background">
       <Header />
-      <main className="pt-24">
+      <main className="pt-24 relative z-10 bg-background pb-[15vh]">
         <section id="about" className="py-20 md:py-32 bg-background text-foreground">
           <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="reveal-on-scroll">

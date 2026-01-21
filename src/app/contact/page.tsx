@@ -5,7 +5,7 @@ export default function ContactPage() {
   return (
     <div className="flex flex-col min-h-screen bg-card text-card-foreground">
       <Header />
-      <main className="flex-grow flex items-center">
+      <main className="flex-grow flex items-center relative z-10 bg-card pb-[15vh]">
         <section className="w-full py-20 md:py-32 px-6 md:px-12">
           <div className="container mx-auto max-w-7xl">
             <div className="grid md:grid-cols-2 gap-16 items-center">
