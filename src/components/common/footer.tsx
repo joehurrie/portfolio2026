@@ -1,7 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { Linkedin, Twitter, Instagram } from 'lucide-react';
-import { ClientTicker } from '@/components/landing/client-ticker';
 
 export function Footer() {
   const socialLinks = [
@@ -18,9 +17,6 @@ export function Footer() {
 
   return (
     <footer className="relative min-h-screen w-full flex flex-col overflow-hidden bg-secondary">
-       <div className="pt-32">
-        <ClientTicker />
-       </div>
       <div className="absolute inset-0 z-0">
         <Image
           src="/hero.jpg"

@@ -4,6 +4,7 @@ import { Services } from "@/components/landing/services";
 import { Projects } from "@/components/landing/projects";
 import { Testimonials } from "@/components/landing/testimonials";
 import { Intro } from "@/components/landing/intro";
+import { ClientTicker } from "@/components/landing/client-ticker";
 
 export default function Home() {
   return (
@@ -17,6 +18,7 @@ export default function Home() {
             <Services />
           </div>
           <Projects />
+          <ClientTicker />
           <Testimonials />
         </div>
       </main>
