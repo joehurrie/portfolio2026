@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 const projects = [
   {
@@ -36,18 +37,16 @@ export function Projects() {
   const sectionRef = useRef<HTMLElement>(null);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const scrollTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const isMobile = useIsMobile();
 
   useEffect(() => {
+    if (isMobile) return;
+
     const handleWheel = (e: WheelEvent) => {
       const section = sectionRef.current;
       const scrollContainer = scrollContainerRef.current;
 
       if (!section || !scrollContainer) return;
-
-      if (scrollTimeoutRef.current) {
-        e.preventDefault();
-        return;
-      }
 
       const rect = section.getBoundingClientRect();
       const isFullyVisible = rect.top <= 0 && rect.bottom >= window.innerHeight;
@@ -80,7 +79,7 @@ export function Projects() {
         clearTimeout(scrollTimeoutRef.current);
       }
     };
-  }, []);
+  }, [isMobile]);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const rect = e.currentTarget.getBoundingClientRect();
@@ -91,15 +90,17 @@ export function Projects() {
   };
 
   return (
-    <section ref={sectionRef} id="projects" className="bg-card text-card-foreground relative h-screen">
+    <section ref={sectionRef} id="projects" className="bg-card text-card-foreground relative md:h-screen py-24 md:py-0">
       <div className="sticky top-0 z-40 h-0">
         <div className="absolute top-8 left-6 md:left-12 text-accent text-base md:text-lg font-code tracking-wide">
           // Projects
         </div>
       </div>
+      
+      {/* Desktop scroll view */}
       <div
         ref={scrollContainerRef}
-        className="h-full w-full snap-y snap-mandatory overflow-y-scroll scroll-smooth [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+        className="hidden md:block h-full w-full snap-y snap-mandatory overflow-y-scroll scroll-smooth [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
       >
         {projects.map((project) => {
           const imageData = PlaceHolderImages.find((img) => img.id === project.id);
@@ -156,6 +157,44 @@ export function Projects() {
               </div>
             </div>
           );
+        })}
+      </div>
+
+      {/* Mobile list view */}
+      <div className="md:hidden flex flex-col gap-12 px-6">
+        {projects.map((project) => {
+            const imageData = PlaceHolderImages.find((img) => img.id === project.id);
+            return (
+              <div key={project.id} className="w-full bg-background text-foreground p-6 rounded-2xl shadow-large">
+                <div className="relative w-full h-64 overflow-hidden rounded-lg mb-6">
+                  {imageData && (
+                      <Image
+                        src={imageData.imageUrl}
+                        alt={imageData.description}
+                        fill
+                        data-ai-hint={imageData.imageHint}
+                        className="object-cover"
+                      />
+                    )}
+                </div>
+                <div className="flex flex-col">
+                   <span className="font-code text-muted-foreground">{project.year}</span>
+                   <h3 className="text-3xl font-semibold tracking-tight mt-2">{project.title}</h3>
+                   <p className="mt-4 text-muted-foreground text-base leading-relaxed">
+                     {project.description}
+                   </p>
+                   <div className="mt-8 pt-8 border-t border-border/50 w-full">
+                     <ul className="flex flex-col">
+                       {project.tags.map(tag => (
+                         <li key={tag} className="py-3 border-b border-border/50 text-lg text-foreground/80 font-medium">
+                          {tag}
+                         </li>
+                       ))}
+                     </ul>
+                   </div>
+                </div>
+              </div>
+            );
         })}
       </div>
     </section>
