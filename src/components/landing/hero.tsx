@@ -17,17 +17,17 @@ export function Hero() {
           src="/hero.jpg"
           alt="Hero background"
           fill
-          className="w-full h-full object-cover contrast-125 object-[center_25%] lg:hidden"
+          className="w-full h-full object-cover object-[center_25%] lg:hidden"
           priority
         />
         <Image
           src="/et.png"
           alt="Hero background"
           fill
-          className="w-full h-full object-cover contrast-125 object-[center_25%] hidden lg:block"
+          className="w-full h-full object-cover object-[center_25%] hidden lg:block"
           priority
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-black/0 via-transparent to-transparent"></div>
       </div>
 
       <div className="absolute inset-0 z-10 flex items-center justify-center overflow-hidden pointer-events-none mix-blend-difference text-white">
@@ -63,8 +63,8 @@ export function Hero() {
 
           <div className="text-left lg:text-right">
             <h2 className="text-5xl md:text-6xl lg:text-7xl font-medium tracking-tighter leading-[0.9] mb-2">
-              <span className="block text-white opacity-60 text-3xl md:text-4xl lg:text-5xl mb-2 tracking-tight font-normal">//Product Designer</span>
-              <span className="text-muted-foreground">UX Engineer</span>
+              <span className="block text-accent text-3xl md:text-4xl lg:text-5xl mb-2 tracking-tight font-normal">//Product Designer</span>
+              <span className="text-accent">UX Engineer</span>
             </h2>
           </div>
         </div>

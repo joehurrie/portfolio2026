@@ -19,12 +19,12 @@ export function Footer() {
     <footer className="sticky bottom-0 z-0 min-h-screen w-full flex flex-col overflow-hidden bg-secondary">
       <div className="absolute inset-0 z-0">
         <Image
-          src="/hero.jpg"
+          src="/hero1.jpg"
           alt="Contact background"
           fill
           className="w-full h-full object-cover contrast-125 object-[center_25%]"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-black/0 via-transparent to-transparent"></div>
       </div>
 
       <div className="absolute inset-0 z-10 flex items-center justify-center overflow-hidden pointer-events-none mix-blend-difference text-white">
