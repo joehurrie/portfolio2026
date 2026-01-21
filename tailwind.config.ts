@@ -98,8 +98,8 @@ export default {
           },
         },
         'clip-reveal': {
-            '0%': { clipPath: 'inset(100% 0 0 0)', transform: 'translateY(5%)' },
-            '100%': { clipPath: 'inset(0 0 0 0)', transform: 'translateY(0)' }
+            '0%': { clipPath: 'inset(100% 0 0 0)', transform: 'translateY(5%) scale(1.1)' },
+            '100%': { clipPath: 'inset(0 0 0 0)', transform: 'translateY(0) scale(1)' }
         },
         'slide-up-fade': {
             '0%': { opacity: '0', transform: 'translateY(40px)' },

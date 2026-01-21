@@ -18,8 +18,8 @@ export default function Home() {
             <Services />
           </div>
           <Projects />
-          <ClientTicker />
           <Testimonials />
+          <ClientTicker />
         </div>
       </main>
     </div>
