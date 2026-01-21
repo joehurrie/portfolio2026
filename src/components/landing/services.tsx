@@ -60,7 +60,7 @@ export function Services() {
   }, []);
 
   return (
-    <section id="services" className="bg-background text-foreground h-screen px-6 md:px-12 relative flex flex-col justify-center">
+    <section id="services" className="bg-background text-foreground px-6 md:px-12 relative">
       <div className="sticky top-0 z-40 h-0">
         <div className="absolute top-8 left-6 md:left-12 text-accent text-base md:text-lg font-code tracking-wide">
           // Services
