@@ -44,7 +44,7 @@ export function Testimonials() {
       <div className="h-full w-full flex items-center px-6 md:px-12">
         <div className="w-full">
           {/* Mobile: list view */}
-          <div className="flex flex-col gap-16 md:hidden">
+          <div className="mt-16 flex flex-col gap-16 md:hidden">
               {reversedTestimonials.map((testimonial, index) => (
                   <div key={testimonial.id}>
                       <AnimatedTestimonialText text={testimonial.quote} />
@@ -77,7 +77,7 @@ export function Testimonials() {
           </div>
 
           {/* Desktop: single view */}
-          <div className="hidden md:grid grid-cols-[1fr_auto] gap-16 items-center">
+          <div className="hidden md:grid grid-cols-[1fr_auto] gap-24 items-center">
             <div className="flex flex-col gap-8">
               <div className="font-code text-accent">
                   {String(activeIndex + 1).padStart(2, '0')} / {String(testimonials.length).padStart(2, '0')}
@@ -94,7 +94,7 @@ export function Testimonials() {
               </div>
             </div>
 
-            <div className="flex flex-col gap-8">
+            <div className="flex flex-col items-center gap-8">
               {testimonials.map((testimonial, index) => {
                 const imageData = PlaceHolderImages.find((img) => img.id === testimonial.id);
                 return (
