@@ -90,7 +90,7 @@
 
   .sticky-card .card-inner {
     transform: scale(0.9);
-    opacity: 0.5;
+    opacity: 0;
     @apply transition-all duration-700 ease-in-out;
   }
 
