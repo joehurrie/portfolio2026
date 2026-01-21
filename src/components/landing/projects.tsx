@@ -49,9 +49,11 @@ export function Projects() {
       if (!section || !scrollContainer) return;
 
       const rect = section.getBoundingClientRect();
-      const isFullyVisible = rect.top <= 0 && rect.bottom >= window.innerHeight;
+      // Ensure the effect only runs when the section is precisely the full viewport height.
+      const isFullViewportHeight = Math.round(rect.height) === window.innerHeight;
+      const isScrolledIntoView = rect.top <= 0 && rect.bottom >= window.innerHeight;
 
-      if (isFullyVisible) {
+      if (isFullViewportHeight && isScrolledIntoView) {
         const { deltaY } = e;
         const { scrollTop, scrollHeight, clientHeight } = scrollContainer;
 
@@ -95,8 +97,8 @@ export function Projects() {
 
   return (
     <section ref={sectionRef} id="projects" className="bg-card text-card-foreground relative md:h-screen py-24 md:py-0">
-      <div className="sticky top-0 z-40 h-0">
-        <div className="absolute top-24 left-6 md:left-12 text-accent text-base md:text-lg font-code tracking-wide">
+       <div className="sticky top-0 z-40 h-0">
+        <div className="absolute top-8 left-6 md:left-12 text-accent text-base md:text-lg font-code tracking-wide">
           // Projects
         </div>
       </div>
@@ -165,7 +167,7 @@ export function Projects() {
       </div>
 
       {/* Mobile list view */}
-      <div className="md:hidden flex flex-col gap-12 px-6 mt-24">
+      <div className="md:hidden flex flex-col gap-12 px-6 mt-16">
         {projects.map((project) => {
             const imageData = PlaceHolderImages.find((img) => img.id === project.id);
             return (
