@@ -34,55 +34,34 @@ export function Projects() {
   const [hoveredProjectId, setHoveredProjectId] = useState<string | null>(null);
   const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
 
-  const sectionRef = useRef<HTMLElement>(null);
-  const scrollContainerRef = useRef<HTMLDivElement>(null);
-  const scrollTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
   const isMobile = useIsMobile();
 
   useEffect(() => {
     if (isMobile) return;
 
-    const handleWheel = (e: WheelEvent) => {
-      const section = sectionRef.current;
-      const scrollContainer = scrollContainerRef.current;
-
-      if (!section || !scrollContainer) return;
-
-      const rect = section.getBoundingClientRect();
-      const isFullViewportHeight = Math.abs(rect.height - window.innerHeight) <= 1;
-      const isScrolledToTop = Math.abs(rect.top) <= 1;
-
-      if (isFullViewportHeight && isScrolledToTop) {
-        const { deltaY } = e;
-        const { scrollTop, scrollHeight, clientHeight } = scrollContainer;
-
-        const atTop = scrollTop < 1;
-        const atBottom = scrollTop >= scrollHeight - clientHeight - 1;
-
-        if ((deltaY < 0 && !atTop) || (deltaY > 0 && !atBottom)) {
-          e.preventDefault();
-
-          if (scrollTimeoutRef.current) {
-            return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-in-view');
+          } else {
+            entry.target.classList.remove('is-in-view');
           }
+        });
+      },
+      { rootMargin: '-30% 0px -30% 0px' }
+    );
 
-          const scrollAmount = deltaY > 0 ? clientHeight : -clientHeight;
-          scrollContainer.scrollBy({ top: scrollAmount, behavior: 'smooth' });
-
-          scrollTimeoutRef.current = setTimeout(() => {
-            scrollTimeoutRef.current = null;
-          }, 800);
-        }
-      }
-    };
-
-    window.addEventListener('wheel', handleWheel, { passive: false });
+    const refs = cardRefs.current;
+    refs.forEach((ref) => {
+      if (ref) observer.observe(ref);
+    });
 
     return () => {
-      window.removeEventListener('wheel', handleWheel);
-      if (scrollTimeoutRef.current) {
-        clearTimeout(scrollTimeoutRef.current);
-      }
+      refs.forEach((ref) => {
+        if (ref) observer.unobserve(ref);
+      });
     };
   }, [isMobile]);
 
@@ -95,7 +74,7 @@ export function Projects() {
   };
 
   return (
-    <section ref={sectionRef} id="projects" className="bg-card text-card-foreground relative md:h-screen py-24 md:py-0">
+    <section id="projects" className="bg-card text-card-foreground relative py-24 md:py-32">
        <div className="sticky top-0 z-40 h-0">
         <div className="absolute top-8 left-6 md:left-12 text-accent text-base md:text-lg font-code tracking-wide mt-16 md:mt-0">
           // Projects
@@ -104,14 +83,18 @@ export function Projects() {
       
       {/* Desktop scroll view */}
       <div
-        ref={scrollContainerRef}
-        className="hidden md:block h-full w-full snap-y snap-mandatory overflow-y-scroll scroll-smooth [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+        className="hidden md:flex flex-col items-center"
       >
-        {projects.map((project) => {
+        {projects.map((project, index) => {
           const imageData = PlaceHolderImages.find((img) => img.id === project.id);
           return (
-            <div key={project.id} className="h-screen w-full snap-start flex items-center justify-center p-6 md:p-12">
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 w-full max-w-7xl mx-auto bg-background text-foreground p-6 md:p-8 rounded-2xl shadow-large h-[85vh] max-h-[800px]">
+            <div 
+              key={project.id}
+              ref={el => cardRefs.current[index] = el}
+              className="h-[90vh] w-full max-w-7xl flex items-center justify-center p-6 md:p-12 sticky-card"
+              style={{ top: `${(index * 4) + 10}vh`}}
+            >
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 w-full mx-auto bg-background text-foreground p-6 md:p-8 rounded-2xl shadow-large h-[85vh] max-h-[800px] card-inner">
                 {/* Left Column - Image */}
                 <div
                   className="relative w-full h-full overflow-hidden rounded-lg cursor-none"
