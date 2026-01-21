@@ -5,13 +5,13 @@ import { AnimatedIntroText } from './animated-intro-text';
 
 export function Intro() {
     return (
-        <section className="bg-background text-foreground min-h-screen px-6 md:px-12 relative flex flex-col justify-center">
+        <section className="bg-background text-foreground min-h-screen relative flex flex-col justify-center">
             <div className="sticky top-0 z-40 h-0">
                 <div className="absolute top-8 left-6 md:left-12 text-accent text-base md:text-lg font-code tracking-wide">
                     // Intro
                 </div>
             </div>
-            <div className="max-w-[1400px] mx-auto">
+            <div className="max-w-[1400px] mx-auto w-full px-6 md:px-12">
                 <div className="mt-20 flex flex-col gap-24">
                     <div className="reveal-on-scroll">
                         <AnimatedIntroText />

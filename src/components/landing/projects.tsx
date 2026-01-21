@@ -52,7 +52,7 @@ export function Projects() {
         {projects.map((project) => {
           const imageData = PlaceHolderImages.find((img) => img.id === project.id);
           return (
-            <div key={project.id} className="h-screen w-full snap-start flex items-center justify-center p-4 sm:p-8 md:p-12">
+            <div key={project.id} className="h-screen w-full snap-start flex items-center justify-center p-6 md:p-12">
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 w-full max-w-7xl mx-auto bg-background text-foreground p-6 md:p-8 rounded-2xl shadow-large h-[85vh] max-h-[800px]">
                 {/* Left Column - Image */}
                 <div
