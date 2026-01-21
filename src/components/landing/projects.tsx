@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 
 const projects = [
@@ -33,6 +33,55 @@ export function Projects() {
   const [hoveredProjectId, setHoveredProjectId] = useState<string | null>(null);
   const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
 
+  const sectionRef = useRef<HTMLElement>(null);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const scrollTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+  useEffect(() => {
+    const handleWheel = (e: WheelEvent) => {
+      const section = sectionRef.current;
+      const scrollContainer = scrollContainerRef.current;
+
+      if (!section || !scrollContainer) return;
+
+      if (scrollTimeoutRef.current) {
+        e.preventDefault();
+        return;
+      }
+
+      const rect = section.getBoundingClientRect();
+      const isFullyVisible = rect.top <= 0 && rect.bottom >= window.innerHeight;
+
+      if (isFullyVisible) {
+        const { deltaY } = e;
+        const { scrollTop, scrollHeight, clientHeight } = scrollContainer;
+
+        const atTop = scrollTop < 1;
+        const atBottom = scrollTop >= scrollHeight - clientHeight - 1;
+
+        if ((deltaY < 0 && !atTop) || (deltaY > 0 && !atBottom)) {
+          e.preventDefault();
+
+          const scrollAmount = deltaY > 0 ? clientHeight : -clientHeight;
+          scrollContainer.scrollBy({ top: scrollAmount, behavior: 'smooth' });
+
+          scrollTimeoutRef.current = setTimeout(() => {
+            scrollTimeoutRef.current = null;
+          }, 1000);
+        }
+      }
+    };
+
+    window.addEventListener('wheel', handleWheel, { passive: false });
+
+    return () => {
+      window.removeEventListener('wheel', handleWheel);
+      if (scrollTimeoutRef.current) {
+        clearTimeout(scrollTimeoutRef.current);
+      }
+    };
+  }, []);
+
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const rect = e.currentTarget.getBoundingClientRect();
     setCursorPosition({
@@ -42,13 +91,16 @@ export function Projects() {
   };
 
   return (
-    <section id="projects" className="bg-card text-card-foreground relative h-screen">
+    <section ref={sectionRef} id="projects" className="bg-card text-card-foreground relative h-screen">
       <div className="sticky top-0 z-40 h-0">
         <div className="absolute top-8 left-6 md:left-12 text-accent text-base md:text-lg font-code tracking-wide">
           // Projects
         </div>
       </div>
-      <div className="h-full w-full snap-y snap-mandatory overflow-y-scroll scroll-smooth [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+      <div
+        ref={scrollContainerRef}
+        className="h-full w-full snap-y snap-mandatory overflow-y-scroll scroll-smooth [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+      >
         {projects.map((project) => {
           const imageData = PlaceHolderImages.find((img) => img.id === project.id);
           return (
