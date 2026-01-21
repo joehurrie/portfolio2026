@@ -59,7 +59,8 @@ export function Projects() {
           return (
             <div 
               key={project.id}
-              className="h-[90vh] w-full max-w-7xl flex items-center justify-center p-6 md:p-12"
+              className="h-[90vh] w-full max-w-7xl flex items-center justify-center p-6 md:p-12 reveal-on-scroll"
+              style={{ transitionDelay: `${index * 150}ms` }}
             >
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 w-full mx-auto bg-background text-foreground p-6 md:p-8 rounded-2xl shadow-large h-[85vh] max-h-[800px]">
                 {/* Left Column - Image */}
@@ -118,10 +119,14 @@ export function Projects() {
 
       {/* Mobile list view */}
       <div className="md:hidden flex flex-col gap-12 px-6 mt-16">
-        {projects.map((project) => {
+        {projects.map((project, index) => {
             const imageData = PlaceHolderImages.find((img) => img.id === project.id);
             return (
-              <div key={project.id} className="w-full bg-background text-foreground p-6 rounded-2xl shadow-large">
+              <div 
+                key={project.id} 
+                className="w-full bg-background text-foreground p-6 rounded-2xl shadow-large reveal-on-scroll"
+                style={{ transitionDelay: `${index * 150}ms` }}
+              >
                 <div className="relative w-full h-64 overflow-hidden rounded-lg mb-6">
                   {imageData && (
                       <Image
