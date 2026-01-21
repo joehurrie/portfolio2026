@@ -34,47 +34,50 @@ export function Testimonials() {
   const reversedTestimonials = [...testimonials].reverse();
 
   return (
-    <section id="testimonials" className="bg-background text-foreground relative flex items-center h-screen px-6 md:px-12">
+    <section id="testimonials" className="bg-background text-foreground relative h-screen">
       <div className="sticky top-0 z-40 h-0">
         <div className="absolute top-8 left-6 md:left-12 text-accent text-base md:text-lg font-code tracking-wide">
           // Testimonials
         </div>
       </div>
       
-      <div className="w-full max-w-5xl">
-        {/* Mobile: list view */}
-        <div className="flex flex-col gap-16 md:hidden">
-            {reversedTestimonials.map((testimonial, index) => (
-                <div key={testimonial.id}>
-                    <div className="font-code text-accent mb-4">
-                        {String(testimonials.length - index).padStart(2, '0')} / {String(testimonials.length).padStart(2, '0')}
-                    </div>
-                    <AnimatedTestimonialText text={testimonial.quote} />
-                    <div className="mt-4">
-                        <p className="font-code text-foreground text-lg">// {testimonial.name}</p>
-                        <p className="font-code text-muted-foreground">{testimonial.company}</p>
-                    </div>
-                </div>
-            ))}
-        </div>
-
-        {/* Desktop: single view */}
-        <div className="hidden md:flex flex-col gap-8">
-          <div className="font-code text-accent">
-              {String(activeIndex + 1).padStart(2, '0')} / {String(testimonials.length).padStart(2, '0')}
+      <div className="h-full flex items-center px-6 md:px-12">
+        <div className="w-full max-w-5xl">
+          {/* Mobile: list view */}
+          <div className="flex flex-col gap-16 md:hidden">
+              {reversedTestimonials.map((testimonial, index) => (
+                  <div key={testimonial.id}>
+                      <div className="font-code text-accent mb-4">
+                          {String(testimonials.length - index).padStart(2, '0')} / {String(testimonials.length).padStart(2, '0')}
+                      </div>
+                      <AnimatedTestimonialText text={testimonial.quote} />
+                      <div className="mt-4">
+                          <p className="font-code text-foreground text-lg">// {testimonial.name}</p>
+                          <p className="font-code text-muted-foreground">{testimonial.company}</p>
+                      </div>
+                  </div>
+              ))}
           </div>
 
-          <AnimatedTestimonialText
-            key={activeIndex} 
-            text={activeTestimonial.quote}
-          />
-          
-          <div className="mt-4">
-            <p className="font-code text-foreground text-lg">// {activeTestimonial.name}</p>
-            <p className="font-code text-muted-foreground">{activeTestimonial.company}</p>
+          {/* Desktop: single view */}
+          <div className="hidden md:flex flex-col gap-8">
+            <div className="font-code text-accent">
+                {String(activeIndex + 1).padStart(2, '0')} / {String(testimonials.length).padStart(2, '0')}
+            </div>
+
+            <AnimatedTestimonialText
+              key={activeIndex} 
+              text={activeTestimonial.quote}
+            />
+            
+            <div className="mt-4">
+              <p className="font-code text-foreground text-lg">// {activeTestimonial.name}</p>
+              <p className="font-code text-muted-foreground">{activeTestimonial.company}</p>
+            </div>
           </div>
         </div>
       </div>
+
 
       <div className="absolute right-6 md:right-12 top-1/2 -translate-y-1/2 flex-col gap-4 z-20 hidden md:flex">
         {testimonials.map((testimonial, index) => {
