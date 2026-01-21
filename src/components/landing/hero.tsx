@@ -14,10 +14,17 @@ export function Hero() {
     <section className="relative h-screen w-full flex flex-col overflow-hidden bg-secondary">
       <div className="absolute inset-0 z-0 animate-clip-reveal origin-bottom">
         <Image
+          src="/hero.jpg"
+          alt="Hero background"
+          fill
+          className="w-full h-full object-cover contrast-125 object-[center_25%] lg:hidden"
+          priority
+        />
+        <Image
           src="/et.png"
           alt="Hero background"
           fill
-          className="w-full h-full object-cover grayscale contrast-125 object-[center_25%]"
+          className="w-full h-full object-cover contrast-125 object-[center_25%] hidden lg:block"
           priority
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"></div>
@@ -55,9 +62,9 @@ export function Hero() {
           </div>
 
           <div className="text-left lg:text-right">
-            <h2 className="text-5xl md:text-6xl lg:text-7xl font-medium tracking-tighter leading-[0.9] mb-2 text-muted-foreground">
+            <h2 className="text-5xl md:text-6xl lg:text-7xl font-medium tracking-tighter leading-[0.9] mb-2">
               <span className="block text-white opacity-60 text-3xl md:text-4xl lg:text-5xl mb-2 tracking-tight font-normal">//Product Designer</span>
-              UX Engineer
+              <span className="text-muted-foreground">UX Engineer</span>
             </h2>
           </div>
         </div>

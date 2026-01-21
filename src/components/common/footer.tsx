@@ -22,7 +22,7 @@ export function Footer() {
           src="/hero.jpg"
           alt="Contact background"
           fill
-          className="w-full h-full object-cover grayscale contrast-125 object-[center_25%]"
+          className="w-full h-full object-cover contrast-125 object-[center_25%]"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"></div>
       </div>
