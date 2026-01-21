@@ -61,12 +61,16 @@ export function Projects() {
         if ((deltaY < 0 && !atTop) || (deltaY > 0 && !atBottom)) {
           e.preventDefault();
 
+          if (scrollTimeoutRef.current) {
+            return;
+          }
+
           const scrollAmount = deltaY > 0 ? clientHeight : -clientHeight;
           scrollContainer.scrollBy({ top: scrollAmount, behavior: 'smooth' });
 
           scrollTimeoutRef.current = setTimeout(() => {
             scrollTimeoutRef.current = null;
-          }, 1000);
+          }, 800);
         }
       }
     };
@@ -92,7 +96,7 @@ export function Projects() {
   return (
     <section ref={sectionRef} id="projects" className="bg-card text-card-foreground relative md:h-screen py-24 md:py-0">
       <div className="sticky top-0 z-40 h-0">
-        <div className="absolute top-8 left-6 md:left-12 text-accent text-base md:text-lg font-code tracking-wide">
+        <div className="absolute top-24 left-6 md:left-12 text-accent text-base md:text-lg font-code tracking-wide">
           // Projects
         </div>
       </div>
@@ -161,7 +165,7 @@ export function Projects() {
       </div>
 
       {/* Mobile list view */}
-      <div className="md:hidden flex flex-col gap-12 px-6">
+      <div className="md:hidden flex flex-col gap-12 px-6 mt-24">
         {projects.map((project) => {
             const imageData = PlaceHolderImages.find((img) => img.id === project.id);
             return (
