@@ -49,7 +49,7 @@ export function AnimatedTestimonialText({ text }: AnimatedTestimonialTextProps) 
 
   return (
     <div className="relative">
-      <blockquote className="text-4xl md:text-5xl lg:text-6xl font-medium leading-tight tracking-tight min-h-[7em] lg:min-h-[6em]">
+      <blockquote className="text-3xl md:text-5xl font-medium leading-tight tracking-tight min-h-[8em] md:min-h-[6em]">
         <span
           className="text-muted-foreground/20"
           dangerouslySetInnerHTML={{ __html: greyText }}
