@@ -61,12 +61,13 @@ export function Services() {
 
   return (
     <section id="services" className="bg-background text-foreground py-32 md:py-48 px-6 md:px-12 relative">
-      <div className="max-w-[1400px] mx-auto w-full">
-        <div className="text-accent text-base md:text-lg font-code tracking-wide mb-24 reveal-on-scroll">
+      <div className="sticky top-0 z-40 h-0">
+        <div className="absolute top-8 left-6 md:left-12 text-accent text-base md:text-lg font-code tracking-wide">
           // Services
         </div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-8">
+      </div>
+      <div className="max-w-[1400px] mx-auto w-full">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-8 pt-24">
           <div className="lg:col-span-5 relative select-none lg:sticky lg:top-32 self-start">
             <div className="flex items-center justify-center lg:justify-start">
                  <AnimatedCounter

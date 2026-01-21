@@ -35,8 +35,10 @@ export function Testimonials() {
 
   return (
     <section id="testimonials" className="bg-background text-foreground py-32 md:py-48 md:min-h-screen flex flex-col md:justify-center relative overflow-hidden">
-      <div className="absolute top-8 left-6 md:left-12 text-accent text-base md:text-lg font-code tracking-wide z-10">
-        // Testimonials
+      <div className="sticky top-0 z-40 h-0">
+        <div className="absolute top-8 left-6 md:left-12 text-accent text-base md:text-lg font-code tracking-wide">
+          // Testimonials
+        </div>
       </div>
       
       <div className="container mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 w-full">

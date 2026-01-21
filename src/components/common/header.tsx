@@ -17,7 +17,7 @@ export function Header() {
 
   return (
     <header 
-      className="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-6 py-8 md:px-12 mix-blend-difference text-neutral-300 animate-slide-up-fade"
+      className="absolute top-0 left-0 w-full z-50 flex justify-between items-center px-6 py-8 md:px-12 mix-blend-difference text-neutral-300 animate-slide-up-fade"
       style={{ animationDelay: '0.2s' }}
     >
       <Link href="/" className="text-base md:text-lg font-medium tracking-tight">
