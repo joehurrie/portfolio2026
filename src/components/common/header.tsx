@@ -17,6 +17,7 @@ const navLinks = [
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isDesktopMenuOpen, setIsDesktopMenuOpen] = useState(false);
 
   return (
     <header 
@@ -28,17 +29,38 @@ export function Header() {
         Joharie Kisiangani
       </Link>
 
-      {/* Desktop Linear Navigation */}
-      <nav className="hidden md:flex items-center gap-10 lg:gap-14">
-        {navLinks.map((link) => (
-          <Link
-            key={link.href}
-            href={link.href}
-            className="text-[10px] md:text-xs uppercase tracking-[0.3em] font-code opacity-50 hover:opacity-100 hover:text-white transition-all duration-500"
-          >
-            {link.label}
-          </Link>
-        ))}
+      {/* Desktop Toggleable Linear Navigation */}
+      <nav className="hidden md:flex items-center">
+        <div 
+          className={cn(
+            "flex items-center gap-10 lg:gap-14 transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] overflow-hidden",
+            isDesktopMenuOpen 
+              ? "max-w-[600px] opacity-100 pr-12" 
+              : "max-w-0 opacity-0 pr-0"
+          )}
+        >
+          {navLinks.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className="text-[10px] md:text-xs uppercase tracking-[0.3em] font-code opacity-50 hover:opacity-100 hover:text-white transition-all duration-500 whitespace-nowrap"
+            >
+              {link.label}
+            </Link>
+          ))}
+        </div>
+        
+        <button 
+          onClick={() => setIsDesktopMenuOpen(!isDesktopMenuOpen)}
+          className={cn(
+            "text-[10px] md:text-xs uppercase tracking-[0.3em] font-code py-2.5 px-6 rounded-full transition-all duration-500 border border-white/10",
+            isDesktopMenuOpen 
+              ? "bg-white text-black border-white" 
+              : "bg-neutral-800 text-neutral-300 hover:bg-neutral-700"
+          )}
+        >
+          {isDesktopMenuOpen ? 'Close' : 'Menu'}
+        </button>
       </nav>
 
       {/* Mobile Menu Trigger */}
