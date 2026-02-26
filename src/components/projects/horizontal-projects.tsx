@@ -1,3 +1,4 @@
+
 "use client";
 
 import React, { useRef, useState, useEffect } from 'react';
@@ -9,69 +10,74 @@ const projects = [
   {
     id: 'project-1',
     year: '(2024)',
-    title: 'Formula Vintage',
+    title: 'Super Pro',
     description: 'A design that honors classic automotive heritage with a modern technical twist.',
-    tag: 'Landing Page',
+    tags: ['Desktop App', 'Mobile App'],
   },
   {
     id: 'project-2',
-    year: '(2024)',
-    title: 'Vibrent SOTD',
+    year: '(2023)',
+    title: 'Architech Buildings',
     description: 'A mobile-first social discovery platform engineered for high-performance interaction.',
-    tag: 'Mobile Design',
+    tags: ['Mobile App', 'Branding', 'Website Design'],
   },
   {
     id: 'project-3',
     year: '(2023)',
-    title: 'CoSpace HM',
+    title: 'Posnen Gallery',
     description: 'Future-forward collaborative workspace architecture focused on seamless navigation.',
-    tag: 'Web App',
+    tags: ['Desktop App', 'Branding'],
   },
   {
-    id: 'project-2', // Reusing placeholder IDs for layout
-    year: '(2023)',
-    title: 'Bio Sun Tech',
+    id: 'project-2',
+    year: '(2022)',
+    title: 'Fringe System',
     description: 'Minimalist interface for sustainable energy data visualization and monitoring.',
-    tag: 'Innovation',
+    tags: ['Desktop App', 'Entertainment', 'Branding'],
   },
   {
     id: 'project-1',
     year: '(2022)',
     title: 'Nocode Mate',
     description: 'Empowering creators with a scalable, accessible design system for modern web builds.',
-    tag: 'Design System',
+    tags: ['Design System', 'Development'],
   }
 ];
 
 export function HorizontalProjects() {
   const containerRef = useRef<HTMLDivElement>(null);
   const stickyRef = useRef<HTMLDivElement>(null);
+  const scrollContentRef = useRef<HTMLDivElement>(null);
+  
   const [translateX, setTranslateX] = useState(0);
   const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 });
   const [isOverImage, setIsOverImage] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      if (!containerRef.current || !stickyRef.current) return;
+      if (!containerRef.current || !stickyRef.current || !scrollContentRef.current) return;
       
       const containerTop = containerRef.current.offsetTop;
       const containerHeight = containerRef.current.offsetHeight;
       const windowHeight = window.innerHeight;
       const scrollPos = window.scrollY;
 
+      const totalHorizontalScroll = scrollContentRef.current.scrollWidth - window.innerWidth;
+
       if (scrollPos >= containerTop && scrollPos <= containerTop + containerHeight - windowHeight) {
         const relativeScroll = scrollPos - containerTop;
-        const totalHorizontalScroll = (projects.length) * window.innerWidth;
         const progress = relativeScroll / (containerHeight - windowHeight);
         setTranslateX(progress * totalHorizontalScroll);
       } else if (scrollPos < containerTop) {
         setTranslateX(0);
       } else {
-        setTranslateX((projects.length) * window.innerWidth);
+        setTranslateX(totalHorizontalScroll);
       }
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
+    // Initial call to set position
+    handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -105,12 +111,13 @@ export function HorizontalProjects() {
         </div>
 
         <div 
-          className="flex h-full w-full transition-transform duration-100 ease-out"
+          ref={scrollContentRef}
+          className="flex h-full items-center transition-transform duration-100 ease-out will-change-transform"
           style={{ transform: `translateX(-${translateX}px)` }}
         >
           {/* Section 0: Work Index Heading */}
           <section className="flex-shrink-0 w-screen h-full flex flex-col justify-center px-6 md:px-12">
-            <h1 className="text-7xl md:text-[15vw] font-bold tracking-tighter leading-none reveal-on-scroll is-visible">
+            <h1 className="text-7xl md:text-[15vw] font-bold tracking-tighter leading-none">
               Work Index
             </h1>
             <div className="mt-8 flex items-center gap-4 text-muted-foreground font-code">
@@ -125,12 +132,12 @@ export function HorizontalProjects() {
             return (
               <section 
                 key={`${project.id}-${index}`} 
-                className="flex-shrink-0 w-screen h-full flex items-center justify-center px-6 md:px-12"
+                className="flex-shrink-0 w-[85vw] md:w-[75vw] h-[85vh] flex items-center justify-center px-4 md:px-8"
               >
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-24 w-full max-w-7xl items-center">
+                <div className="flex flex-col w-full h-full bg-white rounded-[2.5rem] overflow-hidden shadow-large group">
                   {/* Image Side */}
                   <div 
-                    className="relative aspect-[4/5] md:aspect-square rounded-3xl overflow-hidden cursor-none group"
+                    className="relative flex-1 w-full overflow-hidden cursor-none"
                     onMouseEnter={() => setIsOverImage(true)}
                     onMouseLeave={() => setIsOverImage(false)}
                   >
@@ -139,38 +146,40 @@ export function HorizontalProjects() {
                         src={imageData.imageUrl}
                         alt={project.title}
                         fill
-                        className="object-cover transition-transform duration-700 group-hover:scale-105"
+                        className="object-cover transition-transform duration-700 group-hover:scale-105 grayscale hover:grayscale-0"
                         data-ai-hint={imageData.imageHint}
                       />
                     )}
-                    <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500" />
-                    <div className="absolute top-8 left-8">
-                       <span className="px-4 py-2 bg-black/20 backdrop-blur-md border border-white/10 rounded-full text-xs font-code text-white uppercase tracking-widest">
-                        {project.tag}
-                      </span>
-                    </div>
                   </div>
 
                   {/* Info Side */}
-                  <div className="flex flex-col">
-                    <span className="font-code text-accent mb-6 text-xl tracking-tighter">{project.year}</span>
-                    <h2 className="text-5xl md:text-8xl font-semibold tracking-tighter mb-8 leading-[0.9]">
-                      {project.title}
-                    </h2>
-                    <p className="text-muted-foreground text-xl md:text-2xl leading-relaxed max-w-lg font-light mb-12">
-                      {project.description}
-                    </p>
-                    <div className="flex items-center gap-4 group cursor-pointer w-fit">
-                      <div className="w-12 h-12 rounded-full border border-border flex items-center justify-center group-hover:bg-accent group-hover:border-accent transition-all duration-300">
-                        <span className="text-foreground group-hover:text-accent-foreground transition-colors">→</span>
+                  <div className="p-8 md:p-12 flex flex-col justify-between bg-white text-black min-h-[300px]">
+                    <div>
+                      <span className="font-code text-muted-foreground mb-4 block text-sm md:text-base">
+                        {project.year}
+                      </span>
+                      <h2 className="text-4xl md:text-6xl lg:text-7xl font-semibold tracking-tighter mb-6 leading-none">
+                        {project.title}
+                      </h2>
+                    </div>
+                    
+                    <div className="mt-auto">
+                      <div className="flex flex-wrap gap-2 pt-6 border-t border-black/10">
+                        {project.tags.map((tag) => (
+                          <span key={tag} className="text-sm md:text-lg font-light text-black/60 block w-full">
+                            {tag}
+                          </span>
+                        ))}
                       </div>
-                      <span className="text-lg font-medium tracking-tight">Case Study</span>
                     </div>
                   </div>
                 </div>
               </section>
             );
           })}
+          
+          {/* Spacer at the end */}
+          <div className="flex-shrink-0 w-[15vw] md:w-[25vw]" />
         </div>
       </div>
     </div>
