@@ -10,6 +10,7 @@ import { useState, useEffect, useRef } from 'react';
 export function Footer() {
   const footerRef = useRef<HTMLElement>(null);
   const [offset, setOffset] = useState(0);
+  const [marqueeX, setMarqueeX] = useState(0);
 
   const socialLinks = [
     { name: 'LinkedIn', icon: Linkedin, url: '#' },
@@ -28,12 +29,19 @@ export function Footer() {
       if (!footerRef.current) return;
       const rect = footerRef.current.getBoundingClientRect();
       const windowHeight = window.innerHeight;
+      const scrollY = window.scrollY;
       
-      // Calculate how much of the footer is visible
+      // Background Parallax
       if (rect.top < windowHeight) {
-        const scrolled = windowHeight - rect.top;
-        setOffset(scrolled * 0.15); // Adjust multiplier for parallax intensity
+        const scrolledIntoView = windowHeight - rect.top;
+        setOffset(scrolledIntoView * 0.15);
       }
+
+      // Marquee Scroll Effect
+      // We map the absolute scroll position to a translation.
+      // Scroll down (increase scrollY) -> Move Right (positive X)
+      // Scroll up (decrease scrollY) -> Move Left (towards negative X relative to previous)
+      setMarqueeX(scrollY * 0.4); 
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
@@ -65,14 +73,17 @@ export function Footer() {
         </div>
       </div>
 
-      {/* Top Marquee Text Layer - Large Blend Effect Text */}
+      {/* Top Marquee Text Layer - Scroll Reactive */}
       <div className="absolute top-0 left-0 right-0 z-10 flex items-start justify-center pt-24 md:pt-32 overflow-hidden pointer-events-none mix-blend-difference text-white">
-        <div className="flex animate-hero-marquee">
-          <h1 className="shrink-0 text-7xl md:text-8xl lg:text-[10vw] font-semibold tracking-tighter leading-none px-8 whitespace-nowrap">
-            Reach Out — Reach Out —
+        <div 
+          className="flex whitespace-nowrap will-change-transform"
+          style={{ transform: `translateX(calc(-25% + ${marqueeX % 1000}px))` }}
+        >
+          <h1 className="shrink-0 text-7xl md:text-8xl lg:text-[10vw] font-semibold tracking-tighter leading-none px-8">
+            Reach Out — Reach Out — Reach Out —
           </h1>
-          <h1 className="shrink-0 text-7xl md:text-8xl lg:text-[10vw] font-semibold tracking-tighter leading-none px-8 whitespace-nowrap" aria-hidden="true">
-            Reach Out — Reach Out —
+          <h1 className="shrink-0 text-7xl md:text-8xl lg:text-[10vw] font-semibold tracking-tighter leading-none px-8" aria-hidden="true">
+            Reach Out — Reach Out — Reach Out —
           </h1>
         </div>
       </div>
