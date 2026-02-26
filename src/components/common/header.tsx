@@ -1,4 +1,3 @@
-
 "use client";
 
 import Link from 'next/link';
@@ -18,9 +17,9 @@ const navLinks = [
 
 const MenuIcon = () => (
   <div className="flex flex-col gap-1 w-6 py-1">
-    <div className="h-[2px] w-full bg-current" />
-    <div className="h-[2px] w-full bg-current" />
-    <div className="h-[2px] w-full bg-current" />
+    <div className="h-[2.5px] w-full bg-current rounded-full" />
+    <div className="h-[2.5px] w-full bg-current rounded-full" />
+    <div className="h-[2.5px] w-full bg-current rounded-full" />
   </div>
 );
 
@@ -68,7 +67,7 @@ export function Header() {
         
         <button 
           onClick={() => setIsDesktopMenuOpen(!isDesktopMenuOpen)}
-          className="flex items-center gap-3 group text-neutral-400 hover:text-accent transition-colors"
+          className="flex items-center gap-3 group text-neutral-400 hover:text-accent transition-colors focus:outline-none"
         >
           <span className="text-xs uppercase tracking-[0.2em] font-code font-bold">
             {isDesktopMenuOpen ? 'Close' : 'Menu'}
@@ -81,14 +80,14 @@ export function Header() {
       <div className="flex md:hidden items-center">
         <Sheet open={isOpen} onOpenChange={setIsOpen}>
           <SheetTrigger asChild>
-            <button className="flex items-center gap-3 text-neutral-400 hover:text-accent transition-colors">
+            <button className="flex items-center gap-3 text-neutral-400 hover:text-accent transition-colors focus:outline-none">
               <span className="text-xs uppercase tracking-[0.2em] font-code font-bold">Menu</span>
               <MenuIcon />
             </button>
           </SheetTrigger>
           <SheetContent 
             side="right" 
-            className="bg-white/95 backdrop-blur-xl text-foreground p-0 w-full border-l border-white/10 flex flex-col [&>button]:hidden"
+            className="bg-background/80 backdrop-blur-2xl text-foreground p-0 w-full border-l border-white/5 flex flex-col [&>button]:hidden animate-in slide-in-from-right duration-500"
           >
              <ScrollArea className="flex-1 w-full">
                 <div className="flex flex-col justify-between min-h-[100dvh] py-24 px-8 relative">
@@ -105,8 +104,8 @@ export function Header() {
                     </SheetClose>
                   </div>
                   
-                  <nav className="flex flex-col gap-4 text-lg font-medium tracking-tight mt-12">
-                    {navLinks.map((link, index) => (
+                  <nav className="flex flex-col gap-6 text-sm font-code uppercase tracking-[0.2em] mt-12">
+                    {navLinks.map((link) => (
                       <SheetClose asChild key={link.href}>
                         <Link
                           href={link.href}

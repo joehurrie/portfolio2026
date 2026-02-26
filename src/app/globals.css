@@ -16,15 +16,15 @@
     --secondary-foreground: 0 0% 2%;
     --muted: 0 0% 15%;
     --muted-foreground: 0 0% 63.9%;
-    --accent: 345 100% 60%; /* #FF3366 */
+    --accent: 24 100% 50%; /* Pure Orange #FF6600 */
     --accent-foreground: 0 0% 100%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
     --border: 0 0% 20%;
     --input: 0 0% 20%;
-    --ring: 345 100% 60%;
+    --ring: 24 100% 50%;
     --radius: 0rem;
-    --orange: 24 100% 50%; /* Pure Orange */
+    --orange: 24 100% 50%;
   }
 
   .dark {
@@ -40,13 +40,13 @@
     --secondary-foreground: 0 0% 98%;
     --muted: 0 0% 15%;
     --muted-foreground: 0 0% 63.9%;
-    --accent: 345 100% 60%;
+    --accent: 24 100% 50%;
     --accent-foreground: 0 0% 100%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
     --border: 0 0% 20%;
     --input: 0 0% 20%;
-    --ring: 345 100% 60%;
+    --ring: 24 100% 50%;
     --orange: 24 100% 50%;
   }
 }
