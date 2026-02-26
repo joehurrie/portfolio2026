@@ -1,14 +1,14 @@
 "use client";
 
 import Link from 'next/link';
-import { Menu } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from '@/components/ui/sheet';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { useState } from 'react';
 
 const navLinks = [
-  { href: '/projects', label: 'Projects' },
+  { href: '/projects', label: 'Work Index' },
   { href: '/about', label: 'About' },
   { href: '/contact', label: 'Contact' },
 ];
@@ -25,44 +25,57 @@ export function Header() {
         Joharie Kisiangani
       </Link>
 
-      <nav className="hidden md:flex gap-10 text-base md:text-lg font-medium">
-        {navLinks.map((link) => (
-          <Link
-            key={link.href}
-            href={link.href}
-            className="hover:text-white transition-colors"
-          >
-            {link.label}
-          </Link>
-        ))}
-      </nav>
-
-      <div className="md:hidden">
+      <div className="flex items-center gap-4">
         <Sheet open={isOpen} onOpenChange={setIsOpen}>
           <SheetTrigger asChild>
-            <Button variant="ghost" size="icon" className="text-neutral-400 hover:bg-transparent hover:text-white">
-              <Menu size={32} />
+            <Button variant="ghost" size="sm" className="flex items-center gap-2 text-neutral-400 hover:bg-transparent hover:text-white group">
+              <span className="hidden md:inline text-sm uppercase tracking-widest font-code opacity-60 group-hover:opacity-100 transition-opacity">Menu</span>
+              <Menu size={24} className="md:size-32" />
             </Button>
           </SheetTrigger>
-          <SheetContent side="right" className="bg-card text-card-foreground p-0 w-full sm:max-w-sm">
+          <SheetContent side="right" className="bg-card text-card-foreground p-0 w-full md:max-w-2xl border-l border-white/5">
              <ScrollArea className="h-full w-full">
-                <nav className="flex flex-col items-center justify-center min-h-screen py-20 gap-10 text-3xl font-medium">
-                  {navLinks.map((link) => (
-                    <SheetClose asChild key={link.href}>
-                      <Link
-                        href={link.href}
-                        className="hover:text-accent transition-colors"
-                        onClick={() => setIsOpen(false)}
-                      >
-                        {link.label}
-                      </Link>
+                <div className="flex flex-col items-center justify-center min-h-screen py-20 px-6">
+                  <div className="absolute top-8 right-6 md:right-12">
+                    <SheetClose asChild>
+                      <Button variant="ghost" size="icon" className="text-muted-foreground hover:text-white">
+                        <X size={32} />
+                      </Button>
                     </SheetClose>
-                  ))}
-                  <div className="mt-20 flex flex-col items-center gap-4 text-sm font-code opacity-40">
-                    <p>Get in touch</p>
-                    <p>hello@joharie.com</p>
                   </div>
-                </nav>
+                  
+                  <nav className="flex flex-col items-center gap-6 md:gap-12 text-5xl md:text-8xl font-semibold tracking-tighter">
+                    {navLinks.map((link, index) => (
+                      <SheetClose asChild key={link.href}>
+                        <Link
+                          href={link.href}
+                          className="hover:text-accent transition-all duration-500 hover:translate-x-4"
+                          onClick={() => setIsOpen(false)}
+                          style={{ transitionDelay: `${index * 100}ms` }}
+                        >
+                          {link.label}
+                        </Link>
+                      </SheetClose>
+                    ))}
+                  </nav>
+
+                  <div className="mt-24 grid grid-cols-1 md:grid-cols-2 gap-12 w-full max-w-xl text-center md:text-left pt-12 border-t border-white/10">
+                    <div className="flex flex-col gap-2">
+                      <p className="text-xs uppercase tracking-[0.3em] font-code text-accent font-bold">Inquiries</p>
+                      <p className="text-lg md:text-xl font-light">hello@joharie.com</p>
+                    </div>
+                    <div className="flex flex-col gap-2">
+                      <p className="text-xs uppercase tracking-[0.3em] font-code text-accent font-bold">Location</p>
+                      <p className="text-lg md:text-xl font-light">Berlin, Germany</p>
+                    </div>
+                  </div>
+                  
+                  <div className="mt-12 flex gap-8 opacity-40 hover:opacity-100 transition-opacity">
+                    <Link href="#" className="font-code text-sm">LI</Link>
+                    <Link href="#" className="font-code text-sm">TW</Link>
+                    <Link href="#" className="font-code text-sm">IG</Link>
+                  </div>
+                </div>
              </ScrollArea>
           </SheetContent>
         </Sheet>
