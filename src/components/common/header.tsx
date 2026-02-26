@@ -32,7 +32,7 @@ export function Header() {
         "absolute top-0 left-0 w-full z-50 flex justify-between items-center px-6 py-8 md:px-12 md:py-12 mix-blend-difference text-neutral-300"
       )}
     >
-      <Link href="/" className="text-sm md:text-base font-medium tracking-tight hover:text-white transition-colors">
+      <Link href="/" className="text-base font-medium tracking-tight hover:text-white transition-colors">
         Joharie Kisiangani
       </Link>
 
@@ -50,7 +50,7 @@ export function Header() {
             <Link
               key={link.href}
               href={link.href}
-              className="text-[10px] md:text-xs uppercase tracking-[0.2em] font-code opacity-50 hover:opacity-100 hover:text-white transition-all duration-500 whitespace-nowrap"
+              className="text-xs uppercase tracking-[0.2em] font-code opacity-50 hover:opacity-100 hover:text-white transition-all duration-500 whitespace-nowrap"
             >
               {link.label}
             </Link>
@@ -61,7 +61,7 @@ export function Header() {
           onClick={() => setIsDesktopMenuOpen(!isDesktopMenuOpen)}
           className="flex items-center gap-3 group"
         >
-          <span className="text-[10px] md:text-xs uppercase tracking-[0.2em] font-code font-bold text-neutral-400 group-hover:text-white transition-colors">
+          <span className="text-xs uppercase tracking-[0.2em] font-code font-bold text-neutral-400 group-hover:text-white transition-colors">
             {isDesktopMenuOpen ? 'Close' : 'Menu'}
           </span>
           {!isDesktopMenuOpen ? <MenuIcon /> : <X className="w-5 h-5 text-neutral-400 group-hover:text-white transition-colors" />}
@@ -73,27 +73,27 @@ export function Header() {
         <Sheet open={isOpen} onOpenChange={setIsOpen}>
           <SheetTrigger asChild>
             <button className="flex items-center gap-2">
-              <span className="text-[10px] uppercase tracking-[0.2em] font-code font-bold text-neutral-400">Menu</span>
+              <span className="text-xs uppercase tracking-[0.2em] font-code font-bold text-neutral-400">Menu</span>
               <MenuIcon />
             </button>
           </SheetTrigger>
-          <SheetContent side="right" className="bg-card text-card-foreground p-0 w-full border-l border-white/5 flex flex-col">
+          <SheetContent side="left" className="bg-background/80 backdrop-blur-xl text-foreground p-0 w-full border-r border-white/10 flex flex-col">
              <ScrollArea className="flex-1 w-full">
-                <div className="flex flex-col items-center justify-center min-h-[100dvh] py-24 px-6 relative">
+                <div className="flex flex-col justify-between min-h-[100dvh] py-24 px-8 relative">
                   <div className="absolute top-8 right-6">
                     <SheetClose asChild>
-                      <Button variant="ghost" size="icon" className="text-neutral-400 hover:text-white h-10 w-10">
+                      <Button variant="ghost" size="icon" className="text-neutral-400 hover:text-foreground h-10 w-10">
                         <X size={24} />
                       </Button>
                     </SheetClose>
                   </div>
                   
-                  <nav className="flex flex-col items-center gap-6 text-4xl md:text-6xl font-semibold tracking-tighter w-full">
+                  <nav className="flex flex-col gap-6 text-4xl font-semibold tracking-tighter mt-12">
                     {navLinks.map((link, index) => (
                       <SheetClose asChild key={link.href}>
                         <Link
                           href={link.href}
-                          className="hover:text-accent transition-all duration-500 hover:translate-x-4 block text-center"
+                          className="hover:text-accent transition-all duration-500 hover:translate-x-4 block"
                           onClick={() => setIsOpen(false)}
                           style={{ transitionDelay: `${index * 100}ms` }}
                         >
@@ -103,21 +103,23 @@ export function Header() {
                     ))}
                   </nav>
 
-                  <div className="mt-16 grid grid-cols-1 gap-8 w-full max-w-xs text-center pt-10 border-t border-white/10">
-                    <div className="flex flex-col gap-1">
-                      <p className="text-[10px] uppercase tracking-[0.2em] font-code text-neutral-500 font-bold">Inquiries</p>
-                      <p className="text-base font-light">hello@joharie.com</p>
+                  <div className="mt-auto pt-16 grid grid-cols-1 gap-10 border-t border-border/50">
+                    <div className="space-y-4">
+                      <div className="flex flex-col gap-1">
+                        <p className="text-xs uppercase tracking-[0.2em] font-code text-muted-foreground font-bold">Inquiries</p>
+                        <p className="text-xl font-light">hello@joharie.com</p>
+                      </div>
+                      <div className="flex flex-col gap-1">
+                        <p className="text-xs uppercase tracking-[0.2em] font-code text-muted-foreground font-bold">Location</p>
+                        <p className="text-xl font-light">Berlin, Germany</p>
+                      </div>
                     </div>
-                    <div className="flex flex-col gap-1">
-                      <p className="text-[10px] uppercase tracking-[0.2em] font-code text-neutral-500 font-bold">Location</p>
-                      <p className="text-base font-light">Berlin, Germany</p>
+                    
+                    <div className="flex gap-8 opacity-60 hover:opacity-100 transition-opacity">
+                      <Link href="#" className="font-code text-xs hover:text-accent transition-colors uppercase tracking-widest">LinkedIn</Link>
+                      <Link href="#" className="font-code text-xs hover:text-accent transition-colors uppercase tracking-widest">Twitter</Link>
+                      <Link href="#" className="font-code text-xs hover:text-accent transition-colors uppercase tracking-widest">Instagram</Link>
                     </div>
-                  </div>
-                  
-                  <div className="mt-10 flex gap-6 opacity-40 hover:opacity-100 transition-opacity pb-12">
-                    <Link href="#" className="font-code text-[10px] hover:text-accent transition-colors">LI</Link>
-                    <Link href="#" className="font-code text-[10px] hover:text-accent transition-colors">TW</Link>
-                    <Link href="#" className="font-code text-[10px] hover:text-accent transition-colors">IG</Link>
                   </div>
                 </div>
              </ScrollArea>
