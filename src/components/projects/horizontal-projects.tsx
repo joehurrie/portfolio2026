@@ -1,3 +1,4 @@
+
 "use client";
 
 import React, { useRef, useState, useEffect } from 'react';
@@ -66,12 +67,23 @@ export function HorizontalProjects({ showHeading = true }: HorizontalProjectsPro
       const scrollPos = window.scrollY;
 
       const totalHorizontalScroll = scrollContentRef.current.scrollWidth - window.innerWidth;
+      
+      // We add a "hold" phase at the beginning of the sticky container
+      // If showHeading is true, the heading is the hold phase.
+      // If showHeading is false, we want the first project to sit still for one 'windowHeight' before moving.
+      const startThreshold = showHeading ? windowHeight : windowHeight;
 
       if (scrollPos >= containerTop && scrollPos <= containerTop + containerHeight - windowHeight) {
         const relativeScroll = scrollPos - containerTop;
-        const denominator = containerHeight - windowHeight;
-        const progress = denominator > 0 ? relativeScroll / denominator : 0;
-        setTranslateX(progress * totalHorizontalScroll);
+        
+        // Horizontal movement starts after the threshold
+        if (relativeScroll < startThreshold) {
+          setTranslateX(0);
+        } else {
+          const actualScrollRange = containerHeight - windowHeight - startThreshold;
+          const progress = actualScrollRange > 0 ? (relativeScroll - startThreshold) / actualScrollRange : 0;
+          setTranslateX(progress * totalHorizontalScroll);
+        }
       } else if (scrollPos < containerTop) {
         setTranslateX(0);
       } else {
@@ -92,7 +104,8 @@ export function HorizontalProjects({ showHeading = true }: HorizontalProjectsPro
     <div 
       ref={containerRef} 
       className="relative z-20" 
-      style={{ height: `${(projects.length + (showHeading ? 1 : 0)) * 100}vh` }}
+      // Add +1 to height to account for the "hold/entry" phase
+      style={{ height: `${(projects.length + (showHeading ? 1 : 0) + 1) * 100}vh` }}
       onMouseMove={handleMouseMove}
     >
       <div 
