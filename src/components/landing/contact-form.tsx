@@ -109,8 +109,8 @@ export function ContactForm() {
               </FormItem>
             )}
           />
-          <div className="pt-4">
-            <Button type="submit" size="lg" className="bg-primary-foreground text-primary rounded-full px-10 py-6 hover:bg-primary-foreground/90">
+          <div className="pt-8 flex justify-center">
+            <Button type="submit" size="lg">
               Send Message
             </Button>
           </div>

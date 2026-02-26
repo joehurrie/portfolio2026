@@ -27,11 +27,11 @@ export function Intro() {
                         </div>
 
                         <div className="reveal-on-scroll" style={{ transitionDelay: '200ms' }}>
-                            <div className="flex justify-start md:justify-center mt-8">
-                                <Button asChild size="lg" variant="outline" className="rounded-full group text-base md:text-lg py-6 px-10 border-foreground text-foreground hover:bg-foreground hover:text-background">
+                            <div className="flex justify-center mt-12">
+                                <Button asChild size="lg" variant="outline" className="group">
                                     <Link href="#projects" className="flex items-center gap-3">
                                         See my Work
-                                        <ArrowRight className="h-5 w-5 text-neutral-400 group-hover:text-background transition-colors group-hover:translate-x-1 group-hover:-translate-y-1" />
+                                        <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
                                     </Link>
                                 </Button>
                             </div>

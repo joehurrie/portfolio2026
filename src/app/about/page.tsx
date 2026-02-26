@@ -59,8 +59,8 @@ export default function AboutPage() {
               </div>
             </div>
 
-            <div className="mt-10 md:mt-16 flex justify-end reveal-on-scroll" style={{ transitionDelay: '400ms' }}>
-              <Button asChild variant="outline" className="rounded-full px-10 py-6 text-base md:text-lg font-normal border-border/50 hover:bg-foreground hover:text-background transition-all">
+            <div className="mt-16 md:mt-24 flex justify-center reveal-on-scroll" style={{ transitionDelay: '400ms' }}>
+              <Button asChild variant="outline" size="lg">
                 <Link href="/contact">
                   Let&apos;s Talk
                 </Link>
