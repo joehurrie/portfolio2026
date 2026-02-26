@@ -27,8 +27,12 @@ export function Header() {
 
   return (
     <header className="absolute top-0 left-0 w-full z-50 flex justify-between items-center px-6 py-8 md:px-12 md:py-10">
-      <Link href="/" className="text-sm font-medium tracking-tight text-foreground hover:text-primary transition-colors">
-        Joharie Kisiangani
+      <Link 
+        href="/" 
+        className="group relative text-sm font-medium tracking-tight text-foreground transition-colors"
+      >
+         Joharie Kisiangani
+        <span className="absolute -bottom-1 left-0 w-0 h-px bg-foreground transition-all duration-300 ease-out group-hover:w-full" />
       </Link>
 
       {/* Desktop Toggleable Navigation */}
@@ -58,9 +62,9 @@ export function Header() {
             {isDesktopMenuOpen ? 'Close' : 'Menu'}
           </span>
           {isDesktopMenuOpen ? (
-            <X className="w-5 h-5" strokeWidth={1.5} />
+            <X className="w-5 h-5 stroke-[1.5px]" />
           ) : (
-            <Menu className="w-5 h-5" strokeWidth={1.5} />
+            <Menu className="w-5 h-5 stroke-[1.5px]" />
           )}
         </button>
       </nav>
@@ -70,12 +74,12 @@ export function Header() {
         <Sheet open={isOpen} onOpenChange={setIsOpen}>
           <SheetTrigger asChild>
             <button className="flex items-center justify-center text-foreground/80 hover:text-primary transition-colors focus:outline-none">
-              <Menu className="w-6 h-6" strokeWidth={1.5} />
+              <Menu className="w-6 h-6 stroke-[1.5px]" />
             </button>
           </SheetTrigger>
           <SheetContent 
             side="right" 
-            className="bg-background/80 backdrop-blur-3xl text-foreground p-0 w-full border-l-0 flex flex-col [&>button]:hidden animate-in slide-in-from-right duration-500"
+            className="bg-background/90 backdrop-blur-3xl text-foreground p-0 w-full border-l-0 flex flex-col [&>button]:hidden animate-in slide-in-from-right duration-500"
           >
             <ScrollArea className="flex-1 w-full">
               <div className="flex flex-col justify-between min-h-screen py-24 px-8 relative">
@@ -87,12 +91,12 @@ export function Header() {
                 <div className="absolute top-10 right-8">
                   <SheetClose asChild>
                     <button className="text-foreground/40 hover:text-primary p-2">
-                      <X className="w-6 h-6" strokeWidth={1.5} />
+                      <X className="w-6 h-6 stroke-[1.5px]" />
                     </button>
                   </SheetClose>
                 </div>
                 
-                <nav className="flex flex-col gap-8 text-4xl font-medium tracking-tighter mt-12">
+                <nav className="flex flex-col gap-6 text-3xl font-medium tracking-tight mt-12">
                   {navLinks.map((link) => (
                     <Link
                       key={link.href}
@@ -105,13 +109,13 @@ export function Header() {
                   ))}
                 </nav>
 
-                <div className="mt-auto pt-16 flex flex-col gap-12 border-t border-border/10">
-                  <div className="grid grid-cols-1 gap-8">
-                    <div className="space-y-2">
+                <div className="mt-auto pt-16 flex flex-col gap-10 border-t border-border/10">
+                  <div className="grid grid-cols-1 gap-6">
+                    <div className="space-y-1">
                       <p className="text-[10px] uppercase tracking-[0.2em] font-code text-foreground/30">Location</p>
                       <p className="text-sm font-medium tracking-tight">Nairobi, Kenya</p>
                     </div>
-                    <div className="space-y-2">
+                    <div className="space-y-1">
                       <p className="text-[10px] uppercase tracking-[0.2em] font-code text-foreground/30">Availability</p>
                       <div className="flex items-center gap-3">
                         <BeepingDot />
