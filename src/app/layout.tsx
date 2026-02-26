@@ -2,7 +2,6 @@ import type { Metadata } from 'next';
 import './globals.css';
 import { Toaster } from "@/components/ui/toaster";
 import { ScrollHandler } from '@/components/common/scroll-handler';
-import { Footer } from '@/components/common/footer';
 
 export const metadata: Metadata = {
   title: 'Joharie Kisiangani — Design & Strategy',
@@ -24,7 +23,6 @@ export default function RootLayout({
       <body className="bg-background text-foreground antialiased selection:bg-accent selection:text-accent-foreground overflow-x-hidden">
         <div className="relative">
           {children}
-          <Footer />
         </div>
         <Toaster />
         <ScrollHandler />

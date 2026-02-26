@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowUpRight } from 'lucide-react';
 import { AnimatedAboutCtaText } from "@/components/about/animated-about-cta";
 import { AboutExperience } from "@/components/about/experience";
+import { Footer } from "@/components/common/footer";
 
 const archiveItems = [
   { id: '01', name: 'Vibrent', context: 'SOTD', source: 'Awwwards' },
@@ -168,6 +169,7 @@ export default function AboutPage() {
         {/* Stats section at the bottom */}
         <AboutExperience />
       </main>
+      <Footer />
     </div>
   );
 }

@@ -5,6 +5,7 @@ import { Projects } from "@/components/landing/projects";
 import { Testimonials } from "@/components/landing/testimonials";
 import { Intro } from "@/components/landing/intro";
 import { ClientTicker } from "@/components/landing/client-ticker";
+import { Footer } from "@/components/common/footer";
 
 export default function Home() {
   return (
@@ -22,6 +23,7 @@ export default function Home() {
           <ClientTicker />
         </div>
       </main>
+      <Footer />
     </div>
   );
 }
