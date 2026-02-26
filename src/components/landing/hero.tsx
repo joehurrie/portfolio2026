@@ -27,7 +27,7 @@ export function Hero() {
           className="w-full h-full object-cover object-[center_25%] hidden md:block"
           priority
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/0 via-transparent to-transparent"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"></div>
       </div>
 
       <div className="absolute inset-0 z-10 flex items-center justify-center overflow-hidden pointer-events-none mix-blend-difference text-white">
@@ -41,9 +41,9 @@ export function Hero() {
         </div>
       </div>
 
-      <div className="relative z-20 w-full h-full flex flex-col justify-end flex-grow px-6 pb-12 md:px-16">
+      <div className="relative z-20 w-full h-full flex flex-col justify-end px-6 pb-8 md:px-12 md:pb-12">
         <div 
-          className="flex flex-col md:flex-row justify-between items-start md:items-end w-full pb-8 md:pb-16 animate-slide-up-fade"
+          className="flex flex-col md:flex-row justify-between items-start md:items-end w-full animate-slide-up-fade"
           style={{ animationDelay: '0.8s' }}
         >
           <div className="flex flex-row md:flex-col gap-6 md:gap-4 mb-8 md:mb-0">
@@ -62,7 +62,7 @@ export function Hero() {
           </div>
 
           <div className="text-left md:text-right">
-            <h2 className="text-4xl md:text-6xl lg:text-7xl font-medium tracking-tighter leading-[0.9] mb-2">
+            <h2 className="text-4xl md:text-6xl lg:text-8xl font-medium tracking-tighter leading-[0.85]">
               <span className="block text-accent text-2xl md:text-4xl lg:text-5xl mb-2 tracking-tight font-normal">//Product Designer</span>
               <span className="text-accent">UX Engineer</span>
             </h2>
