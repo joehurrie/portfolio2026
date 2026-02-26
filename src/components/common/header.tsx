@@ -1,3 +1,4 @@
+
 "use client";
 
 import Link from 'next/link';
@@ -85,7 +86,10 @@ export function Header() {
               <MenuIcon />
             </button>
           </SheetTrigger>
-          <SheetContent side="right" className="bg-background/40 backdrop-blur-2xl text-foreground p-0 w-full border-l border-white/10 flex flex-col">
+          <SheetContent 
+            side="right" 
+            className="bg-white/95 backdrop-blur-2xl text-foreground p-0 w-full border-l border-border/10 flex flex-col [&>button]:hidden"
+          >
              <ScrollArea className="flex-1 w-full">
                 <div className="flex flex-col justify-between min-h-[100dvh] py-24 px-8 relative">
                   <div className="absolute top-8 left-6">
@@ -95,13 +99,13 @@ export function Header() {
                   </div>
                   <div className="absolute top-8 right-6">
                     <SheetClose asChild>
-                      <Button variant="ghost" size="icon" className="text-neutral-500 hover:text-foreground h-10 w-10">
+                      <Button variant="ghost" size="icon" className="text-muted-foreground hover:text-foreground h-10 w-10">
                         <X size={24} />
                       </Button>
                     </SheetClose>
                   </div>
                   
-                  <nav className="flex flex-col gap-6 text-4xl font-semibold tracking-tighter mt-12">
+                  <nav className="flex flex-col gap-6 text-2xl font-semibold tracking-tighter mt-12">
                     {navLinks.map((link, index) => (
                       <SheetClose asChild key={link.href}>
                         <Link
@@ -120,13 +124,13 @@ export function Header() {
                     <div className="grid grid-cols-2 gap-8">
                       <div className="flex flex-col gap-1">
                         <p className="text-[10px] uppercase tracking-[0.2em] font-code text-muted-foreground font-bold">Location</p>
-                        <p className="text-base font-light">Nairobi, Kenya</p>
+                        <p className="text-sm font-light">Nairobi, Kenya</p>
                       </div>
                       <div className="flex flex-col gap-1">
                         <p className="text-[10px] uppercase tracking-[0.2em] font-code text-muted-foreground font-bold">Availability</p>
                         <div className="flex items-center gap-2">
                           <BeepingDot />
-                          <p className="text-base font-light">Worldwide</p>
+                          <p className="text-sm font-light">Remote, Worldwide</p>
                         </div>
                       </div>
                     </div>
