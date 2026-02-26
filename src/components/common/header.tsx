@@ -5,7 +5,7 @@ import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from '@/components/ui/sheet';
 import { ScrollArea } from '@/components/ui/scroll-area';
-import { useState, useEffect, useRef } from 'react';
+import { useState } from 'react';
 import { cn } from '@/lib/utils';
 
 const navLinks = [
@@ -16,43 +16,11 @@ const navLinks = [
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
-  const [isVisible, setIsVisible] = useState(true);
-  const [lastScrollY, setLastScrollY] = useState(0);
-  const [hasScrolled, setHasScrolled] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      
-      // Mark if we've scrolled at all to handle initial state
-      if (currentScrollY > 20) {
-        setHasScrolled(true);
-      } else {
-        setHasScrolled(false);
-      }
-
-      // Determine visibility
-      if (currentScrollY > lastScrollY && currentScrollY > 100) {
-        // Scrolling Down - Hide
-        setIsVisible(false);
-      } else {
-        // Scrolling Up - Show
-        setIsVisible(true);
-      }
-      
-      setLastScrollY(currentScrollY);
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [lastScrollY]);
 
   return (
     <header 
       className={cn(
-        "fixed top-0 left-0 w-full z-50 flex justify-between items-center px-6 py-8 md:px-12 mix-blend-difference text-neutral-300 transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)]",
-        isVisible ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0",
-        hasScrolled ? "py-6" : "py-8 md:py-12"
+        "absolute top-0 left-0 w-full z-50 flex justify-between items-center px-6 py-8 md:px-12 md:py-12 mix-blend-difference text-neutral-300 transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)]"
       )}
     >
       <Link href="/" className="text-base md:text-lg font-medium tracking-tight hover:text-white transition-colors">
