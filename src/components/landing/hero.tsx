@@ -30,7 +30,7 @@ export function Hero() {
         />
       </div>
 
-      <div className="absolute inset-0 z-10 flex items-center justify-center pt-64 md:pt-80 overflow-hidden pointer-events-none mix-blend-difference text-white">
+      <div className="absolute inset-0 z-10 flex items-center justify-center pt-34 md:pt-40 overflow-hidden pointer-events-none mix-blend-difference text-white">
         <div className="flex animate-hero-marquee">
           <h1 className="shrink-0 text-huge font-semibold tracking-tighter leading-none px-8 whitespace-nowrap">
             Joharie Kisiangani
@@ -43,7 +43,7 @@ export function Hero() {
 
       <div className="relative z-20 w-full h-full flex flex-col justify-end px-6 pb-8 md:px-12 md:pb-12">
         <div 
-          className="flex flex-col md:flex-row justify-between items-start md:items-end w-full animate-slide-up-fade"
+          className="flex flex-row md:flex-row justify-between items-start md:items-end w-full animate-slide-up-fade"
           style={{ animationDelay: '0.8s' }}
         >
           <div className="flex flex-row md:flex-col gap-6 md:gap-4 mb-8 md:mb-0 mix-blend-difference">
@@ -55,7 +55,7 @@ export function Hero() {
                   rel="noopener noreferrer"
                   className="flex items-center gap-3 text-base md:text-lg font-medium text-white hover:text-accent transition-colors group"
                 >
-                  <social.icon className="h-6 w-6 text-white group-hover:text-accent" />
+                  <social.icon className="h-6 w-6 text-neutral-400 group-hover:text-accent transition-colors" />
                   <span className="hidden md:inline">{social.name}</span>
                 </Link>
             ))}

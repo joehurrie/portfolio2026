@@ -1,3 +1,4 @@
+
 "use client";
 
 import Link from 'next/link';
@@ -39,7 +40,7 @@ export function Header() {
       <div className="md:hidden">
         <Sheet open={isOpen} onOpenChange={setIsOpen}>
           <SheetTrigger asChild>
-            <Button variant="ghost" size="icon" className="text-white hover:bg-transparent hover:text-white">
+            <Button variant="ghost" size="icon" className="text-neutral-400 hover:bg-transparent hover:text-white">
               <Menu size={32} />
             </Button>
           </SheetTrigger>

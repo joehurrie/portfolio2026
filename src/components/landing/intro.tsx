@@ -32,7 +32,7 @@ export function Intro() {
                                 <Button asChild size="lg" variant="outline" className="rounded-full group text-lg md:text-xl py-7 px-10 border-foreground text-foreground hover:bg-foreground hover:text-background">
                                     <Link href="#projects" className="flex items-center gap-3">
                                         See my Work
-                                        <ArrowRight className="h-6 w-6 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                                        <ArrowRight className="h-6 w-6 text-neutral-400 group-hover:text-background transition-colors group-hover:translate-x-1 group-hover:-translate-y-1" />
                                     </Link>
                                 </Button>
                             </div>

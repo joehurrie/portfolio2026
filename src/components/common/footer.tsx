@@ -74,7 +74,7 @@ export function Footer() {
                     rel="noopener noreferrer"
                     className="flex items-center gap-2 text-sm font-medium text-white hover:text-accent transition-colors group"
                     >
-                    <social.icon className="h-5 w-5 text-neutral-300 group-hover:text-accent" />
+                    <social.icon className="h-5 w-5 text-neutral-400 group-hover:text-accent transition-colors" />
                     <span>{social.name}</span>
                     </Link>
                 ))}
