@@ -69,9 +69,7 @@ export function HorizontalProjects({ showHeading = true }: HorizontalProjectsPro
       const totalHorizontalScroll = scrollContentRef.current.scrollWidth - window.innerWidth;
       
       // We add a "hold" phase at the beginning of the sticky container
-      // If showHeading is true, the heading is the hold phase.
-      // If showHeading is false, we want the first project to sit still for one 'windowHeight' before moving.
-      const startThreshold = showHeading ? windowHeight : windowHeight;
+      const startThreshold = windowHeight;
 
       if (scrollPos >= containerTop && scrollPos <= containerTop + containerHeight - windowHeight) {
         const relativeScroll = scrollPos - containerTop;
@@ -104,7 +102,6 @@ export function HorizontalProjects({ showHeading = true }: HorizontalProjectsPro
     <div 
       ref={containerRef} 
       className="relative z-20" 
-      // Add +1 to height to account for the "hold/entry" phase
       style={{ height: `${(projects.length + (showHeading ? 1 : 0) + 1) * 100}vh` }}
       onMouseMove={handleMouseMove}
     >
@@ -150,7 +147,7 @@ export function HorizontalProjects({ showHeading = true }: HorizontalProjectsPro
                 className="flex-shrink-0 w-[85vw] md:w-[75vw] h-[75vh] md:h-[80vh] flex items-center justify-center px-4 md:px-8"
               >
                 <div 
-                  className="flex flex-col md:flex-row w-full h-full bg-card rounded-md md:rounded-lg overflow-hidden shadow-large group cursor-none border border-border/50"
+                  className="flex flex-col md:flex-row w-full h-full bg-card rounded-2xl md:rounded-[2rem] overflow-hidden shadow-large group cursor-none border border-border/50"
                   onMouseEnter={() => setIsOverCard(true)}
                   onMouseLeave={() => setIsOverCard(false)}
                 >
