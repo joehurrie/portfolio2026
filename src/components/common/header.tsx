@@ -17,17 +17,17 @@ const navLinks = [
 ];
 
 const MenuIcon = () => (
-  <div className="flex flex-col gap-1.5 w-6 py-1">
-    <div className="h-[1px] w-full bg-neutral-500 animate-pulse" style={{ animationDuration: '2s', animationDelay: '0s' }} />
-    <div className="h-[1px] w-full bg-neutral-500 animate-pulse" style={{ animationDuration: '2s', animationDelay: '0.4s' }} />
-    <div className="h-[1px] w-full bg-neutral-500 animate-pulse" style={{ animationDuration: '2s', animationDelay: '0.8s' }} />
+  <div className="flex flex-col gap-1 w-6 py-1">
+    <div className="h-[2px] w-full bg-current" />
+    <div className="h-[2px] w-full bg-current" />
+    <div className="h-[2px] w-full bg-current" />
   </div>
 );
 
 const BeepingDot = () => (
   <span className="relative flex h-2 w-2">
-    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-500 opacity-75"></span>
-    <span className="relative inline-flex rounded-full h-2 w-2 bg-orange-600"></span>
+    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
+    <span className="relative inline-flex rounded-full h-2 w-2 bg-accent"></span>
   </span>
 );
 
@@ -41,7 +41,7 @@ export function Header() {
         "absolute top-0 left-0 w-full z-50 flex justify-between items-center px-6 py-8 md:px-12 md:py-12 mix-blend-difference text-neutral-400"
       )}
     >
-      <Link href="/" className="text-base font-medium tracking-tight hover:text-white transition-colors">
+      <Link href="/" className="text-base font-medium tracking-tight hover:text-accent transition-colors">
         Joharie Kisiangani
       </Link>
 
@@ -59,7 +59,7 @@ export function Header() {
             <Link
               key={link.href}
               href={link.href}
-              className="text-xs uppercase tracking-[0.2em] font-code opacity-50 hover:opacity-100 hover:text-white transition-all duration-500 whitespace-nowrap"
+              className="text-xs uppercase tracking-[0.2em] font-code opacity-50 hover:opacity-100 hover:text-accent transition-all duration-500 whitespace-nowrap"
             >
               {link.label}
             </Link>
@@ -68,12 +68,12 @@ export function Header() {
         
         <button 
           onClick={() => setIsDesktopMenuOpen(!isDesktopMenuOpen)}
-          className="flex items-center gap-3 group"
+          className="flex items-center gap-3 group text-neutral-400 hover:text-accent transition-colors"
         >
-          <span className="text-xs uppercase tracking-[0.2em] font-code font-bold text-neutral-500 group-hover:text-white transition-colors">
+          <span className="text-xs uppercase tracking-[0.2em] font-code font-bold">
             {isDesktopMenuOpen ? 'Close' : 'Menu'}
           </span>
-          {!isDesktopMenuOpen ? <MenuIcon /> : <X className="w-5 h-5 text-neutral-500 group-hover:text-white transition-colors" />}
+          {!isDesktopMenuOpen ? <MenuIcon /> : <X className="w-5 h-5" />}
         </button>
       </nav>
 
@@ -81,38 +81,37 @@ export function Header() {
       <div className="flex md:hidden items-center">
         <Sheet open={isOpen} onOpenChange={setIsOpen}>
           <SheetTrigger asChild>
-            <button className="flex items-center gap-2 group">
-              <span className="text-xs uppercase tracking-[0.2em] font-code font-bold text-neutral-500 group-hover:text-white transition-colors">Menu</span>
+            <button className="flex items-center gap-3 text-neutral-400 hover:text-accent transition-colors">
+              <span className="text-xs uppercase tracking-[0.2em] font-code font-bold">Menu</span>
               <MenuIcon />
             </button>
           </SheetTrigger>
           <SheetContent 
             side="right" 
-            className="bg-white/90 backdrop-blur-2xl text-foreground p-0 w-full border-l border-white/10 flex flex-col [&>button]:hidden"
+            className="bg-white/95 backdrop-blur-xl text-foreground p-0 w-full border-l border-white/10 flex flex-col [&>button]:hidden"
           >
              <ScrollArea className="flex-1 w-full">
                 <div className="flex flex-col justify-between min-h-[100dvh] py-24 px-8 relative">
                   <div className="absolute top-8 left-6">
-                     <Link href="/" className="text-base font-medium tracking-tight" onClick={() => setIsOpen(false)}>
+                     <Link href="/" className="text-base font-medium tracking-tight hover:text-accent transition-colors" onClick={() => setIsOpen(false)}>
                         Joharie Kisiangani
                     </Link>
                   </div>
                   <div className="absolute top-8 right-6">
                     <SheetClose asChild>
-                      <Button variant="ghost" size="icon" className="text-muted-foreground hover:text-foreground h-10 w-10">
+                      <Button variant="ghost" size="icon" className="text-muted-foreground hover:text-accent h-10 w-10">
                         <X size={24} />
                       </Button>
                     </SheetClose>
                   </div>
                   
-                  <nav className="flex flex-col gap-6 text-xl font-medium tracking-tight mt-12">
+                  <nav className="flex flex-col gap-4 text-lg font-medium tracking-tight mt-12">
                     {navLinks.map((link, index) => (
                       <SheetClose asChild key={link.href}>
                         <Link
                           href={link.href}
-                          className="hover:text-accent transition-all duration-500 hover:translate-x-2 block"
+                          className="hover:text-accent transition-all duration-300 hover:translate-x-2 block"
                           onClick={() => setIsOpen(false)}
-                          style={{ transitionDelay: `${index * 100}ms` }}
                         >
                           {link.label}
                         </Link>
@@ -135,10 +134,10 @@ export function Header() {
                       </div>
                     </div>
                     
-                    <div className="flex gap-8 opacity-40">
-                      <Link href="#" className="font-code text-[10px] hover:text-accent transition-colors uppercase tracking-widest">LinkedIn</Link>
-                      <Link href="#" className="font-code text-[10px] hover:text-accent transition-colors uppercase tracking-widest">Twitter</Link>
-                      <Link href="#" className="font-code text-[10px] hover:text-accent transition-colors uppercase tracking-widest">Instagram</Link>
+                    <div className="flex gap-8">
+                      <Link href="#" className="font-code text-[10px] text-muted-foreground hover:text-accent transition-colors uppercase tracking-widest">LinkedIn</Link>
+                      <Link href="#" className="font-code text-[10px] text-muted-foreground hover:text-accent transition-colors uppercase tracking-widest">Twitter</Link>
+                      <Link href="#" className="font-code text-[10px] text-muted-foreground hover:text-accent transition-colors uppercase tracking-widest">Instagram</Link>
                     </div>
                   </div>
                 </div>
