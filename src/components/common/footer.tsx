@@ -32,27 +32,27 @@ export function Footer() {
               src={portrait.imageUrl}
               alt={portrait.description}
               fill
-              className="object-cover md:object-contain grayscale contrast-125"
+              className="object-cover md:object-contain grayscale contrast-125 opacity-80"
               data-ai-hint={portrait.imageHint}
             />
           </div>
         )}
       </div>
 
-      {/* Marquee Text Layer - Large Overlapping Text */}
-      <div className="absolute inset-0 z-10 flex items-center justify-center overflow-hidden pointer-events-none">
-        <div className="flex animate-hero-marquee mix-blend-difference">
-          <h1 className="shrink-0 text-[20vw] font-semibold tracking-tighter leading-none px-8 whitespace-nowrap text-white">
-            Reach Out - Reach Out -
+      {/* Top Marquee Text Layer - Large Blend Effect Text */}
+      <div className="absolute top-0 left-0 right-0 z-10 flex items-start justify-center pt-24 md:pt-32 overflow-hidden pointer-events-none mix-blend-difference text-white">
+        <div className="flex animate-hero-marquee">
+          <h1 className="shrink-0 text-huge font-semibold tracking-tighter leading-none px-8 whitespace-nowrap">
+            Reach Out — Reach Out —
           </h1>
-          <h1 className="shrink-0 text-[20vw] font-semibold tracking-tighter leading-none px-8 whitespace-nowrap text-white" aria-hidden="true">
-            Reach Out - Reach Out -
+          <h1 className="shrink-0 text-huge font-semibold tracking-tighter leading-none px-8 whitespace-nowrap" aria-hidden="true">
+            Reach Out — Reach Out —
           </h1>
         </div>
       </div>
 
-      {/* CTA Button Layer - Centered over the portrait and marquee */}
-      <div className="absolute inset-0 z-20 flex items-center justify-center">
+      {/* CTA Button Layer - Centered over the portrait */}
+      <div className="absolute inset-0 z-20 flex items-center justify-center pt-32">
         <Button asChild size="lg" className="rounded-full group text-base md:text-xl py-6 md:py-8 px-8 md:px-12 bg-transparent border-2 border-accent text-accent animate-red-glow hover:bg-accent hover:text-accent-foreground transition-all">
           <Link href="/contact">
             Let's collaborate
@@ -61,12 +61,12 @@ export function Footer() {
       </div>
 
       {/* Bottom Info Layer - Office Details & Socials */}
-      <div className="relative z-30 w-full mt-auto flex flex-col justify-end px-6 pb-8 md:px-12 md:pb-12 text-muted-foreground">
+      <div className="relative z-30 w-full mt-auto flex flex-col justify-end px-6 pb-8 md:px-12 md:pb-12 text-neutral-600">
         <div className="flex flex-col md:flex-row justify-between items-center md:items-end w-full gap-10">
-          <div className="font-code text-xs md:text-sm space-y-1 text-center md:text-left text-neutral-600">
+          <div className="font-code text-xs md:text-sm space-y-1 text-center md:text-left">
             {contactDetails.map((detail) => (
               <p key={detail.label}>
-                <span className="font-bold uppercase text-foreground">{detail.label}:</span> {detail.value}
+                <span className="font-bold uppercase text-neutral-800">{detail.label}:</span> {detail.value}
               </p>
             ))}
           </div>
@@ -86,7 +86,7 @@ export function Footer() {
                 </Link>
               ))}
             </div>
-            <p className="text-[10px] uppercase tracking-[0.3em] opacity-40 font-code mt-2">
+            <p className="text-[10px] uppercase tracking-[0.3em] opacity-60 font-code mt-2">
               &copy; {new Date().getFullYear()} Joharie Kisiangani. All Rights Reserved.
             </p>
           </div>
