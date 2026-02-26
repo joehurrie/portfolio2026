@@ -69,23 +69,14 @@ export function HorizontalProjects({ showHeading = true }: HorizontalProjectsPro
       // Calculate total width to scroll
       const totalHorizontalScroll = scrollContentRef.current.scrollWidth - window.innerWidth;
       
-      // Phase 1: Entry "Hold" (Vertical scroll before horizontal movement starts)
-      const startThreshold = windowHeight;
-
+      // Calculate progress relative to the entire section height without artificial holds
       if (scrollPos >= containerTop && scrollPos <= containerTop + containerHeight - windowHeight) {
         const relativeScroll = scrollPos - containerTop;
+        const totalScrollableHeight = containerHeight - windowHeight;
         
-        if (relativeScroll < startThreshold) {
-          // Still in "hold" phase, show first content
-          setTranslateX(0);
-        } else {
-          // Horizontal movement phase
-          const actualScrollRange = containerHeight - windowHeight - startThreshold;
-          const progress = actualScrollRange > 0 ? (relativeScroll - startThreshold) / actualScrollRange : 0;
-          // Apply a slight easing to the progress mapping if desired, 
-          // but usually linear mapping with CSS easing feels best
-          setTranslateX(progress * totalHorizontalScroll);
-        }
+        // Linear progress mapping for a "direct" feel
+        const progress = relativeScroll / totalScrollableHeight;
+        setTranslateX(progress * totalHorizontalScroll);
       } else if (scrollPos < containerTop) {
         setTranslateX(0);
       } else {
@@ -106,8 +97,8 @@ export function HorizontalProjects({ showHeading = true }: HorizontalProjectsPro
     <div 
       ref={containerRef} 
       className="relative z-20" 
-      // Height determines scroll duration. 100vh per project + 100vh heading + 100vh hold
-      style={{ height: `${(projects.length + (showHeading ? 1 : 0) + 1.5) * 100}vh` }}
+      // Section height determines scroll speed
+      style={{ height: `${(projects.length + (showHeading ? 1.5 : 0.5)) * 100}vh` }}
       onMouseMove={handleMouseMove}
     >
       <div 
@@ -117,7 +108,7 @@ export function HorizontalProjects({ showHeading = true }: HorizontalProjectsPro
         {/* Custom Cursor */}
         <div 
           className={cn(
-            "fixed pointer-events-none z-[100] w-28 h-28 rounded-full bg-accent text-accent-foreground hidden md:flex items-center justify-center font-semibold transition-transform duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] text-lg scale-0",
+            "fixed pointer-events-none z-[100] w-28 h-28 rounded-full bg-accent text-accent-foreground hidden md:flex items-center justify-center font-semibold transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] text-lg scale-0",
             isOverCard && "scale-100"
           )}
           style={{ 
@@ -131,8 +122,11 @@ export function HorizontalProjects({ showHeading = true }: HorizontalProjectsPro
         {/* Horizontal Scrolling Content */}
         <div 
           ref={scrollContentRef}
-          className="flex h-full items-center transition-transform duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] will-change-transform"
-          style={{ transform: `translate3d(-${translateX}px, 0, 0)` }}
+          className="flex h-full items-center will-change-transform"
+          style={{ 
+            transform: `translate3d(-${translateX}px, 0, 0)`,
+            // No transition here ensures it follows the scroll event exactly
+          }}
         >
           {showHeading && (
             <section className="flex-shrink-0 w-screen h-full flex flex-col justify-center px-6 md:px-24">
@@ -154,7 +148,7 @@ export function HorizontalProjects({ showHeading = true }: HorizontalProjectsPro
                 className="flex-shrink-0 w-[85vw] md:w-[75vw] h-[75vh] md:h-[80vh] flex items-center justify-center px-4 md:px-8"
               >
                 <div 
-                  className="flex flex-col md:flex-row w-full h-full bg-card rounded-2xl md:rounded-[2rem] overflow-hidden shadow-large group cursor-none border border-border/50"
+                  className="flex flex-col md:flex-row w-full h-full bg-card rounded-md md:rounded-lg overflow-hidden shadow-large group cursor-none border border-border/50"
                   onMouseEnter={() => setIsOverCard(true)}
                   onMouseLeave={() => setIsOverCard(false)}
                 >
@@ -203,7 +197,7 @@ export function HorizontalProjects({ showHeading = true }: HorizontalProjectsPro
             );
           })}
           
-          {/* Spacer at the end to allow the last card to be viewed fully */}
+          {/* Final Spacer */}
           <div className="flex-shrink-0 w-[10vw] md:w-[20vw]" />
         </div>
       </div>
