@@ -8,8 +8,8 @@ export default function ProjectsPage() {
     <div className="flex flex-col bg-background">
       <Header />
       <main className="flex-grow">
-        {/* Horizontal Projects Section (Sticky) */}
-        <HorizontalProjects />
+        {/* Horizontal Projects Section (Sticky) with heading */}
+        <HorizontalProjects showHeading={true} />
         
         {/* Awards/Experience Section (Normal Vertical Scroll) */}
         <div className="relative z-10 bg-background">

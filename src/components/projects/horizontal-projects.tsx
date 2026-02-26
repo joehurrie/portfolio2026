@@ -43,7 +43,11 @@ const projects = [
   }
 ];
 
-export function HorizontalProjects() {
+interface HorizontalProjectsProps {
+  showHeading?: boolean;
+}
+
+export function HorizontalProjects({ showHeading = true }: HorizontalProjectsProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const stickyRef = useRef<HTMLDivElement>(null);
   const scrollContentRef = useRef<HTMLDivElement>(null);
@@ -65,7 +69,8 @@ export function HorizontalProjects() {
 
       if (scrollPos >= containerTop && scrollPos <= containerTop + containerHeight - windowHeight) {
         const relativeScroll = scrollPos - containerTop;
-        const progress = relativeScroll / (containerHeight - windowHeight);
+        const denominator = containerHeight - windowHeight;
+        const progress = denominator > 0 ? relativeScroll / denominator : 0;
         setTranslateX(progress * totalHorizontalScroll);
       } else if (scrollPos < containerTop) {
         setTranslateX(0);
@@ -77,7 +82,7 @@ export function HorizontalProjects() {
     window.addEventListener('scroll', handleScroll, { passive: true });
     handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [showHeading]);
 
   const handleMouseMove = (e: React.MouseEvent) => {
     setCursorPos({ x: e.clientX, y: e.clientY });
@@ -87,14 +92,13 @@ export function HorizontalProjects() {
     <div 
       ref={containerRef} 
       className="relative z-20" 
-      style={{ height: `${(projects.length + 1) * 100}vh` }}
+      style={{ height: `${(projects.length + (showHeading ? 1 : 0)) * 100}vh` }}
       onMouseMove={handleMouseMove}
     >
       <div 
         ref={stickyRef}
         className="sticky top-0 h-screen w-full overflow-hidden bg-background"
       >
-        {/* Custom Circular Cursor - Linked to Accent Color */}
         <div 
           className={cn(
             "fixed pointer-events-none z-[100] w-28 h-28 rounded-full bg-accent text-accent-foreground hidden md:flex items-center justify-center font-semibold transition-transform duration-300 ease-out text-lg scale-0",
@@ -113,18 +117,18 @@ export function HorizontalProjects() {
           className="flex h-full items-center transition-transform duration-100 ease-out will-change-transform"
           style={{ transform: `translateX(-${translateX}px)` }}
         >
-          {/* Work Index Title Reveal */}
-          <section className="flex-shrink-0 w-screen h-full flex flex-col justify-center px-6 md:px-24">
-            <h1 className="text-7xl md:text-[15vw] font-bold tracking-tighter leading-none">
-              Work Index
-            </h1>
-            <div className="mt-8 flex items-center gap-4 text-muted-foreground font-code">
-              <span className="w-12 h-px bg-border"></span>
-              <span>Scroll to explore</span>
-            </div>
-          </section>
+          {showHeading && (
+            <section className="flex-shrink-0 w-screen h-full flex flex-col justify-center px-6 md:px-24">
+              <h1 className="text-7xl md:text-[15vw] font-bold tracking-tighter leading-none">
+                Work Index
+              </h1>
+              <div className="mt-8 flex items-center gap-4 text-muted-foreground font-code">
+                <span className="w-12 h-px bg-border"></span>
+                <span>Scroll to explore</span>
+              </div>
+            </section>
+          )}
 
-          {/* Cinematic Project Lottery Cards */}
           {projects.map((project, index) => {
             const imageData = PlaceHolderImages.find(img => img.id === project.id);
             return (
@@ -137,8 +141,6 @@ export function HorizontalProjects() {
                   onMouseEnter={() => setIsOverCard(true)}
                   onMouseLeave={() => setIsOverCard(false)}
                 >
-                  
-                  {/* High-Fidelity Image Section (3/4 Width) */}
                   <div className="relative w-full h-1/2 md:h-full md:flex-[3] overflow-hidden">
                     {imageData && (
                       <Image
@@ -152,7 +154,6 @@ export function HorizontalProjects() {
                     <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
                   </div>
 
-                  {/* Typography-Focused Detail Section (1/4 Width) */}
                   <div className="p-8 md:p-12 md:flex-[1] flex flex-col justify-between bg-card text-card-foreground border-t md:border-t-0 md:border-l border-border/50">
                     <div>
                       <span className="font-code text-accent mb-4 block text-xs md:text-sm">
@@ -183,7 +184,6 @@ export function HorizontalProjects() {
             );
           })}
           
-          {/* Trailing Spacer to allow the final project to breathe */}
           <div className="flex-shrink-0 w-[10vw] md:w-[20vw]" />
         </div>
       </div>

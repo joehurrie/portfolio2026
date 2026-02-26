@@ -18,8 +18,8 @@ export default function Home() {
           <div className="relative z-30">
             <Services />
           </div>
-          {/* Horizontal projects section integrated into the home flow */}
-          <HorizontalProjects />
+          {/* Horizontal projects section integrated into the home flow without heading */}
+          <HorizontalProjects showHeading={false} />
           <Testimonials />
           <ClientTicker />
         </div>
