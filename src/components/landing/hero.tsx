@@ -12,7 +12,7 @@ export function Hero() {
   ];
 
   return (
-    <section className="relative h-screen w-full flex flex-col overflow-hidden bg-secondary">
+    <section className="relative h-screen w-full flex flex-col overflow-hidden bg-background">
       <div className="absolute inset-0 z-0 animate-clip-reveal origin-bottom">
         <Image
           src="/hero11.png"
@@ -28,10 +28,9 @@ export function Hero() {
           className="w-full h-full object-cover object-[center_25%] hidden md:block"
           priority
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"></div>
       </div>
 
-      <div className="absolute inset-0 z-10 flex items-center justify-center pt-48 md:pt-64 overflow-hidden pointer-events-none mix-blend-difference text-white">
+      <div className="absolute inset-0 z-10 flex items-center justify-center pt-64 md:pt-80 overflow-hidden pointer-events-none mix-blend-difference text-white">
         <div className="flex animate-hero-marquee">
           <h1 className="shrink-0 text-huge font-semibold tracking-tighter leading-none px-8 whitespace-nowrap">
             Joharie Kisiangani
@@ -47,7 +46,7 @@ export function Hero() {
           className="flex flex-col md:flex-row justify-between items-start md:items-end w-full animate-slide-up-fade"
           style={{ animationDelay: '0.8s' }}
         >
-          <div className="flex flex-row md:flex-col gap-6 md:gap-4 mb-8 md:mb-0">
+          <div className="flex flex-row md:flex-col gap-6 md:gap-4 mb-8 md:mb-0 mix-blend-difference">
             {socialLinks.map((social) => (
                 <Link
                   key={social.name}

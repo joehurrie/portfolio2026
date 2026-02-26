@@ -18,7 +18,7 @@ export function Footer() {
   ]
 
   return (
-    <footer className="sticky bottom-0 z-0 min-h-screen w-full flex flex-col overflow-hidden bg-secondary">
+    <footer className="sticky bottom-0 z-0 min-h-screen w-full flex flex-col overflow-hidden bg-background">
       <div className="absolute inset-0 z-0">
         <Image
           src="/hero1.jpg"
@@ -32,7 +32,6 @@ export function Footer() {
           fill
           className="w-full h-full object-cover object-[center_25%] hidden md:block"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"></div>
       </div>
 
       {/* Marquee Text Layer - Positioned purely at the top */}
@@ -57,7 +56,7 @@ export function Footer() {
       </div>
 
       {/* Bottom Info Layer */}
-      <div className="relative z-30 w-full h-full flex flex-col justify-end flex-grow px-6 pb-12 md:px-12">
+      <div className="relative z-30 w-full h-full flex flex-col justify-end flex-grow px-6 pb-12 md:px-12 mix-blend-difference">
         <div className="flex flex-col md:flex-row justify-between items-end w-full pb-8 md:pb-16 gap-8">
             <div className="text-white font-code text-xs md:text-sm space-y-1">
                 {contactDetails.map((detail) => (
