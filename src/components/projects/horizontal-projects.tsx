@@ -66,20 +66,24 @@ export function HorizontalProjects({ showHeading = true }: HorizontalProjectsPro
       const windowHeight = window.innerHeight;
       const scrollPos = window.scrollY;
 
+      // Calculate total width to scroll
       const totalHorizontalScroll = scrollContentRef.current.scrollWidth - window.innerWidth;
       
-      // We add a "hold" phase at the beginning of the sticky container
+      // Phase 1: Entry "Hold" (Vertical scroll before horizontal movement starts)
       const startThreshold = windowHeight;
 
       if (scrollPos >= containerTop && scrollPos <= containerTop + containerHeight - windowHeight) {
         const relativeScroll = scrollPos - containerTop;
         
-        // Horizontal movement starts after the threshold
         if (relativeScroll < startThreshold) {
+          // Still in "hold" phase, show first content
           setTranslateX(0);
         } else {
+          // Horizontal movement phase
           const actualScrollRange = containerHeight - windowHeight - startThreshold;
           const progress = actualScrollRange > 0 ? (relativeScroll - startThreshold) / actualScrollRange : 0;
+          // Apply a slight easing to the progress mapping if desired, 
+          // but usually linear mapping with CSS easing feels best
           setTranslateX(progress * totalHorizontalScroll);
         }
       } else if (scrollPos < containerTop) {
@@ -90,7 +94,7 @@ export function HorizontalProjects({ showHeading = true }: HorizontalProjectsPro
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll();
+    handleScroll(); // Initial check
     return () => window.removeEventListener('scroll', handleScroll);
   }, [showHeading]);
 
@@ -102,16 +106,18 @@ export function HorizontalProjects({ showHeading = true }: HorizontalProjectsPro
     <div 
       ref={containerRef} 
       className="relative z-20" 
-      style={{ height: `${(projects.length + (showHeading ? 1 : 0) + 1) * 100}vh` }}
+      // Height determines scroll duration. 100vh per project + 100vh heading + 100vh hold
+      style={{ height: `${(projects.length + (showHeading ? 1 : 0) + 1.5) * 100}vh` }}
       onMouseMove={handleMouseMove}
     >
       <div 
         ref={stickyRef}
         className="sticky top-0 h-screen w-full overflow-hidden bg-background"
       >
+        {/* Custom Cursor */}
         <div 
           className={cn(
-            "fixed pointer-events-none z-[100] w-28 h-28 rounded-full bg-accent text-accent-foreground hidden md:flex items-center justify-center font-semibold transition-transform duration-300 ease-out text-lg scale-0",
+            "fixed pointer-events-none z-[100] w-28 h-28 rounded-full bg-accent text-accent-foreground hidden md:flex items-center justify-center font-semibold transition-transform duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] text-lg scale-0",
             isOverCard && "scale-100"
           )}
           style={{ 
@@ -122,10 +128,11 @@ export function HorizontalProjects({ showHeading = true }: HorizontalProjectsPro
           View
         </div>
 
+        {/* Horizontal Scrolling Content */}
         <div 
           ref={scrollContentRef}
-          className="flex h-full items-center transition-transform duration-100 ease-out will-change-transform"
-          style={{ transform: `translateX(-${translateX}px)` }}
+          className="flex h-full items-center transition-transform duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] will-change-transform"
+          style={{ transform: `translate3d(-${translateX}px, 0, 0)` }}
         >
           {showHeading && (
             <section className="flex-shrink-0 w-screen h-full flex flex-col justify-center px-6 md:px-24">
@@ -151,6 +158,7 @@ export function HorizontalProjects({ showHeading = true }: HorizontalProjectsPro
                   onMouseEnter={() => setIsOverCard(true)}
                   onMouseLeave={() => setIsOverCard(false)}
                 >
+                  {/* Image Side - 3/4 Width on Desktop */}
                   <div className="relative w-full h-1/2 md:h-full md:flex-[3] overflow-hidden">
                     {imageData && (
                       <Image
@@ -164,6 +172,7 @@ export function HorizontalProjects({ showHeading = true }: HorizontalProjectsPro
                     <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
                   </div>
 
+                  {/* Info Side - 1/4 Width on Desktop */}
                   <div className="p-8 md:p-12 md:flex-[1] flex flex-col justify-between bg-card text-card-foreground border-t md:border-t-0 md:border-l border-border/50">
                     <div>
                       <span className="font-code text-accent mb-4 block text-xs md:text-sm">
@@ -194,6 +203,7 @@ export function HorizontalProjects({ showHeading = true }: HorizontalProjectsPro
             );
           })}
           
+          {/* Spacer at the end to allow the last card to be viewed fully */}
           <div className="flex-shrink-0 w-[10vw] md:w-[20vw]" />
         </div>
       </div>
