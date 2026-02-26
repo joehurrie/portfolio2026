@@ -18,9 +18,9 @@ const navLinks = [
 
 const MenuIcon = () => (
   <div className="flex flex-col gap-1.5 w-6 py-1">
-    <div className="h-[1px] w-full bg-neutral-500 animate-pulse" style={{ animationDuration: '2s', animationDelay: '0s' }} />
-    <div className="h-[1px] w-full bg-neutral-500 animate-pulse" style={{ animationDuration: '2s', animationDelay: '0.4s' }} />
-    <div className="h-[1px] w-full bg-neutral-500 animate-pulse" style={{ animationDuration: '2s', animationDelay: '0.8s' }} />
+    <div className="h-[1px] w-full bg-neutral-400 animate-pulse" style={{ animationDuration: '2s', animationDelay: '0s' }} />
+    <div className="h-[1px] w-full bg-neutral-400 animate-pulse" style={{ animationDuration: '2s', animationDelay: '0.4s' }} />
+    <div className="h-[1px] w-full bg-neutral-400 animate-pulse" style={{ animationDuration: '2s', animationDelay: '0.8s' }} />
   </div>
 );
 
@@ -88,7 +88,7 @@ export function Header() {
           </SheetTrigger>
           <SheetContent 
             side="right" 
-            className="bg-white/95 backdrop-blur-2xl text-foreground p-0 w-full border-l border-border/10 flex flex-col [&>button]:hidden"
+            className="bg-white/80 backdrop-blur-2xl text-foreground p-0 w-full border-l border-white/10 flex flex-col [&>button]:hidden"
           >
              <ScrollArea className="flex-1 w-full">
                 <div className="flex flex-col justify-between min-h-[100dvh] py-24 px-8 relative">
@@ -105,12 +105,12 @@ export function Header() {
                     </SheetClose>
                   </div>
                   
-                  <nav className="flex flex-col gap-6 text-2xl font-semibold tracking-tighter mt-12">
+                  <nav className="flex flex-col gap-6 text-xl font-medium tracking-tight mt-12">
                     {navLinks.map((link, index) => (
                       <SheetClose asChild key={link.href}>
                         <Link
                           href={link.href}
-                          className="hover:text-accent transition-all duration-500 hover:translate-x-4 block"
+                          className="hover:text-accent transition-all duration-500 hover:translate-x-2 block"
                           onClick={() => setIsOpen(false)}
                           style={{ transitionDelay: `${index * 100}ms` }}
                         >
@@ -124,13 +124,13 @@ export function Header() {
                     <div className="grid grid-cols-2 gap-8">
                       <div className="flex flex-col gap-1">
                         <p className="text-[10px] uppercase tracking-[0.2em] font-code text-muted-foreground font-bold">Location</p>
-                        <p className="text-sm font-light">Nairobi, Kenya</p>
+                        <p className="text-xs font-light">Nairobi, Kenya</p>
                       </div>
                       <div className="flex flex-col gap-1">
                         <p className="text-[10px] uppercase tracking-[0.2em] font-code text-muted-foreground font-bold">Availability</p>
                         <div className="flex items-center gap-2">
                           <BeepingDot />
-                          <p className="text-sm font-light">Remote, Worldwide</p>
+                          <p className="text-xs font-light">Remote, Worldwide</p>
                         </div>
                       </div>
                     </div>
