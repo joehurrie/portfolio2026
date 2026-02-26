@@ -10,7 +10,8 @@ import { useState, useEffect, useRef } from 'react';
 export function Footer() {
   const footerRef = useRef<HTMLElement>(null);
   const [offset, setOffset] = useState(0);
-  const [marqueeX, setMarqueeX] = useState(0);
+  const [scrollX, setScrollX] = useState(0);
+  const [autoX, setAutoX] = useState(0);
 
   const socialLinks = [
     { name: 'LinkedIn', icon: Linkedin, url: '#' },
@@ -24,6 +25,18 @@ export function Footer() {
     { label: "Phone", value: "+49 30 12345678" },
   ];
 
+  // Auto-scroll effect
+  useEffect(() => {
+    let animationFrameId: number;
+    const animate = () => {
+      setAutoX((prev) => (prev + 0.5) % 2000); // Constant slow drift
+      animationFrameId = requestAnimationFrame(animate);
+    };
+    animationFrameId = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(animationFrameId);
+  }, []);
+
+  // Scroll reactive effect
   useEffect(() => {
     const handleScroll = () => {
       if (!footerRef.current) return;
@@ -37,11 +50,9 @@ export function Footer() {
         setOffset(scrolledIntoView * 0.15);
       }
 
-      // Marquee Scroll Effect
-      // We map the absolute scroll position to a translation.
-      // Scroll down (increase scrollY) -> Move Right (positive X)
-      // Scroll up (decrease scrollY) -> Move Left (towards negative X relative to previous)
-      setMarqueeX(scrollY * 0.4); 
+      // Reactive Scroll Offset
+      // We map the scroll position to an additional translation
+      setScrollX(scrollY * 0.5); 
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
@@ -73,13 +84,16 @@ export function Footer() {
         </div>
       </div>
 
-      {/* Top Marquee Text Layer - Scroll Reactive */}
+      {/* Top Marquee Text Layer - Constant Auto + Scroll Reactive */}
       <div className="absolute top-0 left-0 right-0 z-10 flex items-start justify-center pt-24 md:pt-32 overflow-hidden pointer-events-none mix-blend-difference text-white">
         <div 
           className="flex whitespace-nowrap will-change-transform"
-          style={{ transform: `translateX(calc(-25% + ${marqueeX % 1000}px))` }}
+          style={{ transform: `translateX(calc(-50% + ${(autoX + scrollX) % 1000}px))` }}
         >
           <h1 className="shrink-0 text-7xl md:text-8xl lg:text-[10vw] font-semibold tracking-tighter leading-none px-8">
+            Reach Out — Reach Out — Reach Out —
+          </h1>
+          <h1 className="shrink-0 text-7xl md:text-8xl lg:text-[10vw] font-semibold tracking-tighter leading-none px-8" aria-hidden="true">
             Reach Out — Reach Out — Reach Out —
           </h1>
           <h1 className="shrink-0 text-7xl md:text-8xl lg:text-[10vw] font-semibold tracking-tighter leading-none px-8" aria-hidden="true">
