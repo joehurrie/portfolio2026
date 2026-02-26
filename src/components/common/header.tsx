@@ -31,15 +31,15 @@ export function Header() {
         href="/" 
         className="group relative text-sm font-medium tracking-tight text-foreground transition-colors"
       >
-         Joharie Kisiangani
-        <span className="absolute -bottom-1 left-0 w-0 h-px bg-foreground transition-all duration-300 ease-out group-hover:w-full" />
+        Joharie Kisiangani
+        <span className="absolute -bottom-1 left-0 h-[1.5px] w-0 bg-primary transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:w-full" />
       </Link>
 
       {/* Desktop Toggleable Navigation */}
       <nav className="hidden md:flex items-center">
         <div 
           className={cn(
-            "flex items-center gap-8 transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] overflow-hidden",
+            "flex items-center gap-8 transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] overflow-hidden",
             isDesktopMenuOpen ? "max-w-[500px] opacity-100 pr-10" : "max-w-0 opacity-0 pr-0"
           )}
         >
@@ -47,7 +47,7 @@ export function Header() {
             <Link
               key={link.href}
               href={link.href}
-              className="text-sm font-medium tracking-tight text-foreground/60 hover:text-primary transition-all whitespace-nowrap"
+              className="text-sm font-medium tracking-tight text-foreground/80 hover:text-primary transition-colors whitespace-nowrap"
             >
               {link.label}
             </Link>
@@ -56,15 +56,15 @@ export function Header() {
         
         <button 
           onClick={() => setIsDesktopMenuOpen(!isDesktopMenuOpen)}
-          className="flex items-center gap-3 text-foreground/80 hover:text-primary transition-colors focus:outline-none"
+          className="flex items-center gap-3 text-foreground transition-all duration-300 hover:scale-110 focus:outline-none"
         >
           <span className="hidden md:block text-sm font-medium tracking-tight">
             {isDesktopMenuOpen ? 'Close' : 'Menu'}
           </span>
           {isDesktopMenuOpen ? (
-            <X className="w-5 h-5 stroke-[1.5px]" />
+            <X className="w-5 h-5 stroke-[2px]" />
           ) : (
-            <Menu className="w-5 h-5 stroke-[1.5px]" />
+            <Menu className="w-5 h-5 stroke-[2px]" />
           )}
         </button>
       </nav>
@@ -73,30 +73,30 @@ export function Header() {
       <div className="flex md:hidden items-center">
         <Sheet open={isOpen} onOpenChange={setIsOpen}>
           <SheetTrigger asChild>
-            <button className="flex items-center justify-center text-foreground/80 hover:text-primary transition-colors focus:outline-none">
-              <Menu className="w-6 h-6 stroke-[1.5px]" />
+            <button className="flex items-center justify-center text-foreground transition-all duration-300 hover:scale-110 focus:outline-none">
+              <Menu className="w-6 h-6 stroke-[2px]" />
             </button>
           </SheetTrigger>
           <SheetContent 
             side="right" 
-            className="bg-background/90 backdrop-blur-3xl text-foreground p-0 w-full border-l-0 flex flex-col [&>button]:hidden animate-in slide-in-from-right duration-500"
+            className="bg-background/90 backdrop-blur-3xl text-foreground p-0 w-full border-l-0 flex flex-col [&>button]:hidden animate-in slide-in-from-right duration-700"
           >
             <ScrollArea className="flex-1 w-full">
               <div className="flex flex-col justify-between min-h-screen py-24 px-8 relative">
                 <div className="absolute top-10 left-8">
-                  <Link href="/" className="text-sm font-medium text-foreground/40 hover:text-primary" onClick={() => setIsOpen(false)}>
+                  <Link href="/" className="text-sm font-medium text-foreground/40 hover:text-primary transition-colors" onClick={() => setIsOpen(false)}>
                     Joharie Kisiangani
                   </Link>
                 </div>
                 <div className="absolute top-10 right-8">
                   <SheetClose asChild>
-                    <button className="text-foreground/40 hover:text-primary p-2">
-                      <X className="w-6 h-6 stroke-[1.5px]" />
+                    <button className="text-foreground/40 hover:text-primary transition-all duration-300 hover:scale-110 p-2">
+                      <X className="w-6 h-6 stroke-[2px]" />
                     </button>
                   </SheetClose>
                 </div>
                 
-                <nav className="flex flex-col gap-6 text-3xl font-medium tracking-tight mt-12">
+                <nav className="flex flex-col gap-6 text-3xl font-medium tracking-tighter mt-12">
                   {navLinks.map((link) => (
                     <Link
                       key={link.href}
@@ -125,9 +125,9 @@ export function Header() {
                   </div>
                   
                   <div className="flex gap-8">
-                    <Link href="#" className="font-code text-[10px] text-foreground/30 hover:text-primary uppercase tracking-widest">LinkedIn</Link>
-                    <Link href="#" className="font-code text-[10px] text-foreground/30 hover:text-primary uppercase tracking-widest">Twitter</Link>
-                    <Link href="#" className="font-code text-[10px] text-foreground/30 hover:text-primary uppercase tracking-widest">Instagram</Link>
+                    <Link href="#" className="font-code text-[10px] text-foreground/30 hover:text-primary uppercase tracking-widest transition-colors">LinkedIn</Link>
+                    <Link href="#" className="font-code text-[10px] text-foreground/30 hover:text-primary uppercase tracking-widest transition-colors">Twitter</Link>
+                    <Link href="#" className="font-code text-[10px] text-foreground/30 hover:text-primary uppercase tracking-widest transition-colors">Instagram</Link>
                   </div>
                 </div>
               </div>
