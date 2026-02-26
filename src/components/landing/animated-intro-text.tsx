@@ -65,9 +65,6 @@ export function AnimatedIntroText() {
     return balanced;
   };
 
-  // The secret to stable wrapping: 
-  // Render the FULL text in the foreground, but make the "untyped" part invisible.
-  // This ensures the layout engine sees the exact same words for wrapping in both layers.
   const getVisibleHtml = () => {
     const visiblePart = textToProcess.substring(0, currentIndex);
     return balanceTags(visiblePart);
@@ -75,9 +72,6 @@ export function AnimatedIntroText() {
 
   const getInvisibleHtml = () => {
     const invisiblePart = textToProcess.substring(currentIndex);
-    // If we are in the middle of a tag, this is complex, 
-    // but standard typewriter usually handles character offsets.
-    // For simplicity, we balance the "invisible" part as its own fragment.
     return balanceTags(invisiblePart);
   };
 
@@ -85,13 +79,14 @@ export function AnimatedIntroText() {
     <div ref={containerRef} className="relative w-full">
       <div className="relative text-4xl md:text-5xl lg:text-7xl font-medium leading-[1.15] tracking-tight max-w-[1400px]">
         {/* Background Layer: Constant Grey Ghost Text */}
+        {/* We force all children (like spans) to inherit the ghost color */}
         <div 
-          className="text-foreground/5 select-none"
+          className="text-foreground/10 select-none [&_*]:text-foreground/10"
           dangerouslySetInnerHTML={{ __html: textToProcess }}
         />
         
         {/* Foreground Layer: Typing Animation */}
-        {/* We use visibility: hidden on the remainder to maintain perfect wrapping */}
+        {/* The 'invisible' part ensures the foreground layer has the exact same dimensions as the background layer for perfect wrapping */}
         <div className="absolute top-0 left-0 text-foreground w-full pointer-events-none">
           <span dangerouslySetInnerHTML={{ __html: getVisibleHtml() }} />
           <span 
