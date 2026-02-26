@@ -33,19 +33,19 @@ export function Footer() {
         />
       </div>
 
-      {/* Marquee Text Layer - Top positioning with theme grey */}
-      <div className="absolute inset-x-0 top-0 z-10 flex items-start justify-center pt-24 md:pt-32 overflow-hidden pointer-events-none text-muted-foreground">
+      {/* Marquee Text Layer - Subtle "Black Transparent" Ghost Effect */}
+      <div className="absolute inset-x-0 top-1/4 z-10 flex items-center justify-center overflow-hidden pointer-events-none">
         <div className="flex animate-hero-marquee opacity-10">
-          <h1 className="shrink-0 text-huge font-semibold tracking-tighter leading-none px-8 whitespace-nowrap">
+          <h1 className="shrink-0 text-huge font-semibold tracking-tighter leading-none px-8 whitespace-nowrap text-foreground">
             - Reach out -
           </h1>
-          <h1 className="shrink-0 text-huge font-semibold tracking-tighter leading-none px-8 whitespace-nowrap" aria-hidden="true">
+          <h1 className="shrink-0 text-huge font-semibold tracking-tighter leading-none px-8 whitespace-nowrap text-foreground" aria-hidden="true">
             - Reach out -
           </h1>
         </div>
       </div>
 
-      {/* CTA Button Layer - Centered for vertical balance */}
+      {/* CTA Button Layer - Perfectly Centered */}
       <div className="absolute inset-0 z-20 flex items-center justify-center">
         <Button asChild size="lg" className="rounded-full group text-base md:text-xl py-6 md:py-8 px-8 md:px-12 bg-transparent border-2 border-accent text-accent animate-red-glow hover:bg-accent hover:text-accent-foreground transition-all">
             <Link href="/contact">
@@ -54,13 +54,13 @@ export function Footer() {
         </Button>
       </div>
 
-      {/* Bottom Info Layer - Clean theme-grey text and even spacing */}
+      {/* Bottom Info Layer - Office Details & Socials at the very bottom */}
       <div className="relative z-30 w-full h-full flex flex-col justify-end px-6 pb-8 md:px-12 md:pb-12 text-muted-foreground">
         <div className="flex flex-col md:flex-row justify-between items-center md:items-end w-full gap-10 border-t border-muted-foreground/20 pt-10">
-            <div className="font-code text-xs md:text-sm space-y-3 text-center md:text-left">
+            <div className="font-code text-xs md:text-sm space-y-2 text-center md:text-left">
                 {contactDetails.map((detail) => (
                     <p key={detail.label}>
-                        <span className="font-semibold opacity-70">{detail.label}:</span> {detail.value}
+                        <span className="font-semibold opacity-60 uppercase">{detail.label}:</span> {detail.value}
                     </p>
                 ))}
             </div>
@@ -79,7 +79,7 @@ export function Footer() {
                         </Link>
                     ))}
                 </div>
-                <p className="text-[10px] uppercase tracking-[0.3em] opacity-40 font-code mt-4">
+                <p className="text-[10px] uppercase tracking-[0.3em] opacity-40 font-code mt-2">
                     &copy; {new Date().getFullYear()} Joharie Kisiangani. All Rights Reserved.
                 </p>
             </div>
