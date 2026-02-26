@@ -1,7 +1,7 @@
 import { Header } from "@/components/common/header";
 import { Hero } from "@/components/landing/hero";
 import { Services } from "@/components/landing/services";
-import { Projects } from "@/components/landing/projects";
+import { HorizontalProjects } from "@/components/projects/horizontal-projects";
 import { Testimonials } from "@/components/landing/testimonials";
 import { Intro } from "@/components/landing/intro";
 import { ClientTicker } from "@/components/landing/client-ticker";
@@ -18,7 +18,8 @@ export default function Home() {
           <div className="relative z-30">
             <Services />
           </div>
-          <Projects />
+          {/* Horizontal projects section integrated into the home flow */}
+          <HorizontalProjects />
           <Testimonials />
           <ClientTicker />
         </div>
