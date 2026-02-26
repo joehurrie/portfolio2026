@@ -2,7 +2,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from 'react';
-import { FlipNumber } from '@/components/common/flip-number';
+import { AnimatedCounter } from '@/components/common/animated-counter';
 
 const statsData = [
   {
@@ -60,12 +60,12 @@ export function AboutExperience() {
       <div className="container mx-auto max-w-7xl px-6 md:px-12">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-16 md:gap-8">
           
-          {/* Left Column: Sticky Lottery Counter */}
+          {/* Left Column: Sticky Counter */}
           <div className="hidden md:block md:col-span-5 relative">
             <div className="sticky top-1/4 self-start flex justify-center lg:justify-start">
               <div className="relative">
                 <div className="text-accent text-[12rem] lg:text-[16rem] xl:text-[20rem] font-bold leading-none tracking-tighter">
-                    <FlipNumber value={statsData[activeIndex].number} />
+                    <AnimatedCounter end={statsData[activeIndex].number} />
                 </div>
                 <span className="absolute -top-4 -right-8 text-accent text-6xl font-bold font-code">+</span>
               </div>
@@ -84,7 +84,7 @@ export function AboutExperience() {
                 <div className="md:hidden mb-8">
                    <div className="inline-block relative">
                         <div className="text-accent text-8xl font-bold leading-none tracking-tighter">
-                            <FlipNumber value={stat.number} />
+                            <AnimatedCounter end={stat.number} />
                         </div>
                         <span className="absolute -top-2 -right-6 text-accent text-3xl font-bold font-code">+</span>
                    </div>
