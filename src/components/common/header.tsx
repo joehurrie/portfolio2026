@@ -85,9 +85,14 @@ export function Header() {
               <MenuIcon />
             </button>
           </SheetTrigger>
-          <SheetContent side="left" className="bg-background/80 backdrop-blur-xl text-foreground p-0 w-full border-r border-white/10 flex flex-col">
+          <SheetContent side="right" className="bg-background/40 backdrop-blur-2xl text-foreground p-0 w-full border-l border-white/10 flex flex-col">
              <ScrollArea className="flex-1 w-full">
                 <div className="flex flex-col justify-between min-h-[100dvh] py-24 px-8 relative">
+                  <div className="absolute top-8 left-6">
+                     <Link href="/" className="text-base font-medium tracking-tight" onClick={() => setIsOpen(false)}>
+                        Joharie Kisiangani
+                    </Link>
+                  </div>
                   <div className="absolute top-8 right-6">
                     <SheetClose asChild>
                       <Button variant="ghost" size="icon" className="text-neutral-500 hover:text-foreground h-10 w-10">
@@ -112,16 +117,16 @@ export function Header() {
                   </nav>
 
                   <div className="mt-auto pt-16 flex flex-col gap-8 border-t border-border/50">
-                    <div className="space-y-4">
+                    <div className="grid grid-cols-2 gap-8">
                       <div className="flex flex-col gap-1">
                         <p className="text-[10px] uppercase tracking-[0.2em] font-code text-muted-foreground font-bold">Location</p>
-                        <p className="text-lg font-light">Berlin, Germany</p>
+                        <p className="text-base font-light">Nairobi, Kenya</p>
                       </div>
                       <div className="flex flex-col gap-1">
                         <p className="text-[10px] uppercase tracking-[0.2em] font-code text-muted-foreground font-bold">Availability</p>
-                        <div className="flex items-center gap-3">
+                        <div className="flex items-center gap-2">
                           <BeepingDot />
-                          <p className="text-lg font-light">Remote / Worldwide</p>
+                          <p className="text-base font-light">Worldwide</p>
                         </div>
                       </div>
                     </div>
