@@ -43,7 +43,7 @@ export function Hero() {
 
       <div className="relative z-20 w-full h-full flex flex-col justify-end px-6 pb-8 md:px-12 md:pb-12">
         <div 
-          className="flex flex-row md:flex-row justify-between items-start md:items-end w-full animate-slide-up-fade"
+          className="flex flex-col md:flex-row justify-between items-start md:items-end w-full animate-slide-up-fade"
           style={{ animationDelay: '0.8s' }}
         >
           <div className="flex flex-row md:flex-col gap-6 md:gap-4 mb-8 md:mb-0 mix-blend-difference">

@@ -79,7 +79,7 @@ export function AnimatedTestimonialText({ text }: AnimatedTestimonialTextProps) 
     return balanceTags(invisiblePart);
   };
 
-  // On mobile or before hydration, render the full text simply
+  // On mobile or before hydration, render the full text simply without animation or background layer
   if (!mounted || isMobile) {
     return (
       <blockquote className="relative text-3xl md:text-5xl font-medium leading-tight tracking-tight text-foreground">
