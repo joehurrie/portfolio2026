@@ -14,7 +14,7 @@ export function Hero() {
     <section className="relative h-screen w-full flex flex-col overflow-hidden bg-secondary">
       <div className="absolute inset-0 z-0 animate-clip-reveal origin-bottom">
         <Image
-          src="/hero.jpg"
+          src="/hero11.png"
           alt="Hero background"
           fill
           className="w-full h-full object-cover object-[center_25%] md:hidden"
@@ -30,7 +30,7 @@ export function Hero() {
         <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"></div>
       </div>
 
-      <div className="absolute inset-0 z-10 flex items-center justify-center overflow-hidden pointer-events-none mix-blend-difference text-white">
+      <div className="absolute inset-0 z-10 flex items-center justify-center pt-24 md:pt-32 overflow-hidden pointer-events-none mix-blend-difference text-white">
         <div className="flex animate-hero-marquee">
           <h1 className="shrink-0 text-huge font-semibold tracking-tighter leading-none px-8 whitespace-nowrap">
             Joharie Kisiangani
