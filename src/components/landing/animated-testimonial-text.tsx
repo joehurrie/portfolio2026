@@ -1,6 +1,8 @@
+
 "use client";
 
 import { useState, useEffect, useRef } from 'react';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 type AnimatedTestimonialTextProps = {
   text: string;
@@ -9,11 +11,14 @@ type AnimatedTestimonialTextProps = {
 export function AnimatedTestimonialText({ text }: AnimatedTestimonialTextProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
+  const isMobile = useIsMobile();
+  const [mounted, setMounted] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
   const textToProcess = text.replace(/&apos;/g, "'");
 
   useEffect(() => {
+    setMounted(true);
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -37,11 +42,10 @@ export function AnimatedTestimonialText({ text }: AnimatedTestimonialTextProps) 
   }, []);
 
   useEffect(() => {
-    if (isVisible && currentIndex < textToProcess.length) {
+    if (!isMobile && isVisible && currentIndex < textToProcess.length) {
       const timeout = setTimeout(() => {
         let nextIndex = currentIndex + 1;
         
-        // If we hit an opening tag, skip to the end of it to keep HTML valid
         if (textToProcess[currentIndex] === '<') {
           const closingIndex = textToProcess.indexOf('>', currentIndex);
           if (closingIndex !== -1) {
@@ -53,9 +57,8 @@ export function AnimatedTestimonialText({ text }: AnimatedTestimonialTextProps) 
       }, 25);
       return () => clearTimeout(timeout);
     }
-  }, [isVisible, currentIndex, textToProcess]);
+  }, [isVisible, currentIndex, textToProcess, isMobile]);
 
-  // Helper to ensure tags are balanced in a partial string
   const balanceTags = (html: string) => {
     const openSpans = (html.match(/<span/g) || []).length;
     const closedSpans = (html.match(/<\/span>/g) || []).length;
@@ -75,6 +78,15 @@ export function AnimatedTestimonialText({ text }: AnimatedTestimonialTextProps) 
     const invisiblePart = textToProcess.substring(currentIndex);
     return balanceTags(invisiblePart);
   };
+
+  // On mobile or before hydration, render the full text simply
+  if (!mounted || isMobile) {
+    return (
+      <blockquote className="relative text-3xl md:text-5xl font-medium leading-tight tracking-tight text-foreground">
+        <span dangerouslySetInnerHTML={{ __html: textToProcess }} />
+      </blockquote>
+    );
+  }
 
   return (
     <div ref={containerRef} className="relative w-full">

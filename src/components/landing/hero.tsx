@@ -1,3 +1,4 @@
+
 import Image from 'next/image';
 import Link from 'next/link';
 import { Linkedin, Twitter, Instagram } from 'lucide-react';
@@ -14,7 +15,7 @@ export function Hero() {
     <section className="relative h-screen w-full flex flex-col overflow-hidden bg-secondary">
       <div className="absolute inset-0 z-0 animate-clip-reveal origin-bottom">
         <Image
-          src="/hero1.jpg"
+          src="/hero11.png"
           alt="Hero background"
           fill
           className="w-full h-full object-cover object-[center_25%] md:hidden"
@@ -30,7 +31,7 @@ export function Hero() {
         <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"></div>
       </div>
 
-      <div className="absolute inset-0 z-10 flex items-center justify-center pt-32 md:pt-48 overflow-hidden pointer-events-none mix-blend-difference text-white">
+      <div className="absolute inset-0 z-10 flex items-center justify-center pt-48 md:pt-64 overflow-hidden pointer-events-none mix-blend-difference text-white">
         <div className="flex animate-hero-marquee">
           <h1 className="shrink-0 text-huge font-semibold tracking-tighter leading-none px-8 whitespace-nowrap">
             Joharie Kisiangani
@@ -53,9 +54,9 @@ export function Hero() {
                   href={social.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-3 text-base md:text-lg font-medium text-white/80 hover:text-accent transition-colors group"
+                  className="flex items-center gap-3 text-base md:text-lg font-medium text-white hover:text-accent transition-colors group"
                 >
-                  <social.icon className="h-6 w-6 text-white/80 group-hover:text-accent" />
+                  <social.icon className="h-6 w-6 text-white group-hover:text-accent" />
                   <span className="hidden md:inline">{social.name}</span>
                 </Link>
             ))}

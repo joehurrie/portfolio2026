@@ -1,3 +1,4 @@
+
 import Image from 'next/image';
 import Link from 'next/link';
 import { Linkedin, Twitter, Instagram } from 'lucide-react';
@@ -34,8 +35,8 @@ export function Footer() {
         <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"></div>
       </div>
 
-      {/* Marquee Text Layer - Positioned at the top */}
-      <div className="absolute inset-0 z-10 flex items-start justify-center pt-24 md:pt-32 overflow-hidden pointer-events-none mix-blend-difference text-white">
+      {/* Marquee Text Layer - Positioned purely at the top */}
+      <div className="absolute inset-x-0 top-0 z-10 flex items-start justify-center pt-24 md:pt-32 overflow-hidden pointer-events-none mix-blend-difference text-white">
         <div className="flex animate-hero-marquee">
           <h1 className="shrink-0 text-huge font-semibold tracking-tighter leading-none px-8 whitespace-nowrap">
             - Reach out -
@@ -46,8 +47,8 @@ export function Footer() {
         </div>
       </div>
 
-      {/* CTA Button Layer - Adjusted to sit below the marquee text with a healthy gap */}
-      <div className="absolute inset-0 z-20 flex flex-col items-center justify-center pt-64 md:pt-80">
+      {/* CTA Button Layer - Centered with significant gap from marquee */}
+      <div className="absolute inset-0 z-20 flex flex-col items-center justify-center pt-80 md:pt-[30rem]">
         <Button asChild size="lg" className="rounded-full group text-base md:text-xl py-6 md:py-8 px-8 md:px-12 bg-transparent border-2 border-accent text-accent animate-red-glow hover:bg-accent hover:text-accent-foreground transition-all">
             <Link href="/contact">
                 Let's collaborate
