@@ -21,7 +21,7 @@ export function Header() {
       style={{ animationDelay: '0.2s' }}
     >
       <Link href="/" className="text-base md:text-lg font-medium tracking-tight">
-        Joharie Design & Strategy
+        Joharie Kisiangani
       </Link>
 
       <nav className="hidden md:flex gap-10 text-base md:text-lg font-medium">
