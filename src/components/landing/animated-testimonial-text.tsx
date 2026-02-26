@@ -15,23 +15,19 @@ export function AnimatedTestimonialText({ text }: AnimatedTestimonialTextProps) 
   const [mounted, setMounted] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
-  const textToProcess = text.replace(/&apos;/g, "'");
-
-  // Reset animation when text changes (for desktop cycling)
-  useEffect(() => {
-    setCurrentIndex(0);
-  }, [text]);
+  // Clean the text and handle common entities
+  const textToProcess = text.replace(/&apos;/g, "'").replace(/&quot;/g, '"');
 
   useEffect(() => {
     setMounted(true);
+    
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
           setIsVisible(true);
-          observer.disconnect();
         }
       },
-      { threshold: 0.1 }
+      { threshold: 0.05 } // Lower threshold for better trigger reliability
     );
 
     const currentRef = containerRef.current;
@@ -46,11 +42,17 @@ export function AnimatedTestimonialText({ text }: AnimatedTestimonialTextProps) 
     };
   }, []);
 
+  // Reset animation when text changes (e.g., when cycling testimonials)
   useEffect(() => {
-    if (!isMobile && isVisible && currentIndex < textToProcess.length) {
+    setCurrentIndex(0);
+  }, [text]);
+
+  useEffect(() => {
+    if (mounted && !isMobile && isVisible && currentIndex < textToProcess.length) {
       const timeout = setTimeout(() => {
         let nextIndex = currentIndex + 1;
         
+        // Skip over HTML tags to keep the render valid
         if (textToProcess[currentIndex] === '<') {
           const closingIndex = textToProcess.indexOf('>', currentIndex);
           if (closingIndex !== -1) {
@@ -59,11 +61,12 @@ export function AnimatedTestimonialText({ text }: AnimatedTestimonialTextProps) 
         }
         
         setCurrentIndex(nextIndex);
-      }, 20);
+      }, 15); // Slightly faster typing for better feel
       return () => clearTimeout(timeout);
     }
-  }, [isVisible, currentIndex, textToProcess, isMobile]);
+  }, [mounted, isVisible, currentIndex, textToProcess, isMobile]);
 
+  // Ensure HTML tags are balanced during partial render
   const balanceTags = (html: string) => {
     const openSpans = (html.match(/<span/g) || []).length;
     const closedSpans = (html.match(/<\/span>/g) || []).length;
@@ -84,6 +87,7 @@ export function AnimatedTestimonialText({ text }: AnimatedTestimonialTextProps) 
     return balanceTags(invisiblePart);
   };
 
+  // Fallback for SSR or Mobile
   if (!mounted || isMobile) {
     return (
       <blockquote className="relative text-3xl md:text-5xl font-medium leading-tight tracking-tight text-foreground">
@@ -94,7 +98,7 @@ export function AnimatedTestimonialText({ text }: AnimatedTestimonialTextProps) 
 
   return (
     <div ref={containerRef} className="relative w-full">
-      <blockquote className="relative text-3xl md:text-5xl font-medium leading-tight tracking-tight min-h-[6em] md:min-h-[5em]">
+      <blockquote className="relative text-3xl md:text-5xl font-medium leading-tight tracking-tight min-h-[5em]">
         {/* Background Layer: Ghost Text */}
         <div 
           className="text-foreground/10 select-none [&_*]:text-foreground/10"
