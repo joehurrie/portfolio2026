@@ -1,8 +1,7 @@
-
 "use client";
 
 import { useState, useEffect, useRef } from 'react';
-import { AnimatedCounter } from '@/components/common/animated-counter';
+import { FlipNumber } from '@/components/common/flip-number';
 
 const statsData = [
   {
@@ -65,7 +64,7 @@ export function AboutExperience() {
             <div className="sticky top-1/4 self-start flex justify-center lg:justify-start">
               <div className="relative">
                 <span className="text-outline text-[12rem] lg:text-[16rem] xl:text-[20rem] font-bold leading-none tracking-tighter transition-all duration-700 opacity-20">
-                    <AnimatedCounter end={statsData[activeIndex].number} duration={600} />
+                    <FlipNumber value={statsData[activeIndex].number} />
                 </span>
                 <span className="absolute -top-4 -right-8 text-accent text-6xl font-bold font-code">+</span>
               </div>
@@ -84,7 +83,7 @@ export function AboutExperience() {
                 <div className="md:hidden mb-8">
                    <div className="inline-block relative">
                         <span className="text-outline text-8xl font-bold leading-none tracking-tighter">
-                            {stat.number}
+                            <FlipNumber value={stat.number} />
                         </span>
                         <span className="absolute -top-2 -right-6 text-accent text-3xl font-bold font-code">+</span>
                    </div>

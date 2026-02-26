@@ -1,4 +1,3 @@
-
 import { Header } from "@/components/common/header";
 import Image from 'next/image';
 import Link from 'next/link';
@@ -26,10 +25,9 @@ export default function AboutPage() {
     <div className="flex flex-col min-h-screen bg-background">
       <Header />
       <main className="relative z-10 bg-background">
-        {/* Hero Section - Editorial Layout */}
+        {/* Hero Section */}
         <section id="about-hero" className="h-screen flex flex-col pt-32 pb-12 md:pt-40 md:pb-20 bg-background text-foreground">
           <div className="container mx-auto max-w-7xl px-6 md:px-12 flex flex-col h-full">
-            
             <div className="reveal-on-scroll">
               <div className="flex flex-wrap items-start">
                 {avatarImage && (
@@ -72,11 +70,10 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* Showcase Section - Cinematic Perspective Mockup */}
+        {/* Showcase Section */}
         <section className="h-screen flex items-center justify-center bg-[#050505] overflow-hidden border-t border-white/5">
           <div className="container mx-auto px-6 md:px-12 flex flex-col items-center justify-center h-full">
             <div className="reveal-on-scroll w-full max-w-5xl flex flex-col items-center">
-              
               <div className="relative w-full aspect-video flex items-center justify-center">
                 <div 
                   className="relative w-[300px] md:w-[450px] aspect-[9/19] rounded-[3rem] border-[12px] border-[#1a1a1a] bg-black overflow-hidden shadow-[0_50px_100px_-20px_rgba(0,0,0,0.5)] transition-all duration-1000 ease-out"
@@ -96,13 +93,11 @@ export default function AboutPage() {
                   )}
                   <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-transparent pointer-events-none" />
                 </div>
-                
                 <div 
                   className="absolute -bottom-10 left-1/2 -translate-x-1/2 w-[80%] h-20 bg-black/40 blur-3xl rounded-full"
                   style={{ transform: 'perspective(1200px) rotateX(80deg)' }}
                 />
               </div>
-
               <div className="mt-16 text-center space-y-3 opacity-40">
                 <p className="text-xs uppercase tracking-[0.5em] text-white font-code">System Architecture</p>
                 <p className="text-sm font-light text-white/60">High-fidelity engineering meets minimal design.</p>
@@ -111,16 +106,12 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* New dynamic Stats section based on Services scrolling logic */}
-        <AboutExperience />
-
-        {/* Archive / Awards Section */}
+        {/* Archive Section */}
         <section className="py-24 md:py-32 bg-background border-t border-border/50">
           <div className="container mx-auto max-w-7xl px-6 md:px-12">
             <div className="mb-16 reveal-on-scroll">
               <span className="text-accent font-code text-sm md:text-base tracking-widest uppercase">// Recognition and Archive</span>
             </div>
-
             <div className="flex flex-col w-full">
               {archiveItems.map((item, index) => (
                 <div 
@@ -133,15 +124,12 @@ export default function AboutPage() {
                       <span className="text-xl md:text-2xl font-medium tracking-tight group-hover:text-white transition-colors duration-300">
                         {item.name}
                       </span>
-                      
                       <span className="hidden md:block text-muted-foreground group-hover:text-white/80 transition-colors duration-300 font-light">
                         {item.context}
                       </span>
-                      
                       <span className="hidden md:block text-muted-foreground group-hover:text-white/80 transition-colors duration-300 font-light">
                         {item.source}
                       </span>
-
                       <div className="flex items-center justify-end gap-6">
                         <span className="font-code text-sm md:text-base text-muted-foreground group-hover:hidden transition-all duration-300">
                           {item.id}
@@ -170,13 +158,15 @@ export default function AboutPage() {
               <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black" />
             </div>
           )}
-          
           <div className="container mx-auto max-w-7xl px-6 md:px-12 relative z-10">
             <div className="reveal-on-scroll">
               <AnimatedAboutCtaText />
             </div>
           </div>
         </section>
+
+        {/* Stats section at the bottom */}
+        <AboutExperience />
       </main>
     </div>
   );
