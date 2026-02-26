@@ -34,6 +34,7 @@ export function Footer() {
         <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"></div>
       </div>
 
+      {/* Marquee Text Layer */}
       <div className="absolute inset-0 z-10 flex items-center justify-center overflow-hidden pointer-events-none mix-blend-difference text-white">
         <div className="flex animate-hero-marquee">
           <h1 className="shrink-0 text-huge font-semibold tracking-tighter leading-none px-8 whitespace-nowrap">
@@ -45,7 +46,8 @@ export function Footer() {
         </div>
       </div>
 
-      <div className="absolute inset-0 z-20 flex flex-col items-center justify-center pt-24 md:pt-32">
+      {/* CTA Button Layer - Increased pt for better vertical gap */}
+      <div className="absolute inset-0 z-20 flex flex-col items-center justify-center pt-48 md:pt-64">
         <Button asChild size="lg" className="rounded-full group text-base md:text-xl py-6 md:py-8 px-8 md:px-12 bg-transparent border-2 border-accent text-accent animate-red-glow hover:bg-accent hover:text-accent-foreground transition-all">
             <Link href="/contact">
                 Let's collaborate
@@ -53,6 +55,7 @@ export function Footer() {
         </Button>
       </div>
 
+      {/* Bottom Info Layer */}
       <div className="relative z-30 w-full h-full flex flex-col justify-end flex-grow px-6 pb-12 md:px-12">
         <div className="flex flex-col md:flex-row justify-between items-end w-full pb-8 md:pb-16 gap-8">
             <div className="text-white font-code text-xs md:text-sm space-y-1">
