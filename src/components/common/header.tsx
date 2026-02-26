@@ -18,9 +18,9 @@ const navLinks = [
 
 const MenuIcon = () => (
   <div className="flex flex-col gap-1.5 w-6 py-1">
-    <div className="h-[1px] w-full bg-neutral-400 animate-pulse" style={{ animationDuration: '2s', animationDelay: '0s' }} />
-    <div className="h-[1px] w-full bg-neutral-400 animate-pulse" style={{ animationDuration: '2s', animationDelay: '0.4s' }} />
-    <div className="h-[1px] w-full bg-neutral-400 animate-pulse" style={{ animationDuration: '2s', animationDelay: '0.8s' }} />
+    <div className="h-[1px] w-full bg-neutral-500 animate-pulse" style={{ animationDuration: '2s', animationDelay: '0s' }} />
+    <div className="h-[1px] w-full bg-neutral-500 animate-pulse" style={{ animationDuration: '2s', animationDelay: '0.4s' }} />
+    <div className="h-[1px] w-full bg-neutral-500 animate-pulse" style={{ animationDuration: '2s', animationDelay: '0.8s' }} />
   </div>
 );
 
@@ -81,14 +81,14 @@ export function Header() {
       <div className="flex md:hidden items-center">
         <Sheet open={isOpen} onOpenChange={setIsOpen}>
           <SheetTrigger asChild>
-            <button className="flex items-center gap-2">
-              <span className="text-xs uppercase tracking-[0.2em] font-code font-bold text-neutral-500">Menu</span>
+            <button className="flex items-center gap-2 group">
+              <span className="text-xs uppercase tracking-[0.2em] font-code font-bold text-neutral-500 group-hover:text-white transition-colors">Menu</span>
               <MenuIcon />
             </button>
           </SheetTrigger>
           <SheetContent 
             side="right" 
-            className="bg-white/80 backdrop-blur-2xl text-foreground p-0 w-full border-l border-white/10 flex flex-col [&>button]:hidden"
+            className="bg-white/90 backdrop-blur-2xl text-foreground p-0 w-full border-l border-white/10 flex flex-col [&>button]:hidden"
           >
              <ScrollArea className="flex-1 w-full">
                 <div className="flex flex-col justify-between min-h-[100dvh] py-24 px-8 relative">
@@ -120,8 +120,8 @@ export function Header() {
                     ))}
                   </nav>
 
-                  <div className="mt-auto pt-16 flex flex-col gap-8 border-t border-border/50">
-                    <div className="grid grid-cols-2 gap-8">
+                  <div className="mt-auto pt-16 flex flex-col gap-8 border-t border-border/10">
+                    <div className="grid grid-cols-1 gap-6">
                       <div className="flex flex-col gap-1">
                         <p className="text-[10px] uppercase tracking-[0.2em] font-code text-muted-foreground font-bold">Location</p>
                         <p className="text-xs font-light">Nairobi, Kenya</p>
@@ -135,7 +135,7 @@ export function Header() {
                       </div>
                     </div>
                     
-                    <div className="flex gap-8 opacity-60">
+                    <div className="flex gap-8 opacity-40">
                       <Link href="#" className="font-code text-[10px] hover:text-accent transition-colors uppercase tracking-widest">LinkedIn</Link>
                       <Link href="#" className="font-code text-[10px] hover:text-accent transition-colors uppercase tracking-widest">Twitter</Link>
                       <Link href="#" className="font-code text-[10px] hover:text-accent transition-colors uppercase tracking-widest">Instagram</Link>
