@@ -3,6 +3,16 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { Button } from "@/components/ui/button";
+import { ArrowUpRight } from 'lucide-react';
+
+const archiveItems = [
+  { id: '01', name: 'Vibrent', context: 'SOTD', source: 'Awwwards' },
+  { id: '02', name: 'CoSpace', context: 'HM', source: 'Awwwards' },
+  { id: '03', name: 'Formula Vintage', context: 'Dribbble Weekly Picks', source: 'Dribbble' },
+  { id: '04', name: 'Bio Sun', context: 'Dribbble Weekly Picks', source: 'Dribbble' },
+  { id: '05', name: 'Info Gear', context: 'SOTD', source: 'Awwwards' },
+  { id: '06', name: 'No Code Mate', context: 'Innovation Award', source: 'CSSDA' },
+];
 
 export default function AboutPage() {
   const avatarImage = PlaceHolderImages.find((img) => img.id === 'testimonial-1');
@@ -103,6 +113,52 @@ export default function AboutPage() {
                 <p className="text-xs uppercase tracking-[0.5em] text-white font-code">System Architecture</p>
                 <p className="text-sm font-light text-white/60">High-fidelity engineering meets minimal design.</p>
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Archive / Awards Section */}
+        <section className="py-24 md:py-32 bg-background border-t border-border/50">
+          <div className="container mx-auto max-w-7xl px-6 md:px-12">
+            <div className="mb-16 reveal-on-scroll">
+              <span className="text-accent font-code text-sm md:text-base tracking-widest uppercase">// Recognition and Archive</span>
+            </div>
+
+            <div className="flex flex-col w-full">
+              {archiveItems.map((item, index) => (
+                <div 
+                  key={item.id} 
+                  className="reveal-on-scroll group relative border-b border-border/50 first:border-t"
+                  style={{ transitionDelay: `${index * 50}ms` }}
+                >
+                  <Link href="#" className="flex items-center w-full px-2 py-8 md:py-10 transition-all duration-300 ease-out group-hover:bg-accent group-hover:px-8">
+                    <div className="grid grid-cols-[1fr_auto] md:grid-cols-[1.5fr_1fr_1fr_auto] items-center w-full gap-8">
+                      {/* Name */}
+                      <span className="text-xl md:text-2xl font-medium tracking-tight group-hover:text-white transition-colors duration-300">
+                        {item.name}
+                      </span>
+                      
+                      {/* Context - Hidden on small mobile */}
+                      <span className="hidden md:block text-muted-foreground group-hover:text-white/80 transition-colors duration-300 font-light">
+                        {item.context}
+                      </span>
+                      
+                      {/* Source - Hidden on small mobile */}
+                      <span className="hidden md:block text-muted-foreground group-hover:text-white/80 transition-colors duration-300 font-light">
+                        {item.source}
+                      </span>
+
+                      {/* ID / Arrow */}
+                      <div className="flex items-center justify-end gap-6">
+                        <span className="font-code text-sm md:text-base text-muted-foreground group-hover:hidden transition-all duration-300">
+                          {item.id}
+                        </span>
+                        <ArrowUpRight className="hidden group-hover:block text-white h-6 w-6 animate-in fade-in slide-in-from-left-2 duration-300" />
+                      </div>
+                    </div>
+                  </Link>
+                </div>
+              ))}
             </div>
           </div>
         </section>
