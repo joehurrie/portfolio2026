@@ -73,14 +73,18 @@ export function HorizontalProjects({ showHeading = true }: HorizontalProjectsPro
         const relativeScroll = scrollPos - containerTop;
         const progress = relativeScroll / totalScrollableHeight;
         
-        // Threshold: First 15% of the scroll height is for "settling" into full view
-        const threshold = 0.15;
+        // Entry Threshold: First 12% is for "settling" into view
+        // Exit Threshold: Last 8% is for "holding" before release
+        const entryThreshold = 0.12;
+        const exitThreshold = 0.92;
         
-        if (progress < threshold) {
+        if (progress < entryThreshold) {
           setTranslateX(0);
+        } else if (progress > exitThreshold) {
+          setTranslateX(totalHorizontalScroll);
         } else {
-          // Map the remaining 85% of scroll to the 100% of horizontal movement
-          const horizontalProgress = (progress - threshold) / (1 - threshold);
+          // Map the middle 80% to the horizontal movement
+          const horizontalProgress = (progress - entryThreshold) / (exitThreshold - entryThreshold);
           setTranslateX(horizontalProgress * totalHorizontalScroll);
         }
       } else if (scrollPos < containerTop) {
@@ -103,8 +107,7 @@ export function HorizontalProjects({ showHeading = true }: HorizontalProjectsPro
     <div 
       ref={containerRef} 
       className="relative z-20" 
-      // Increased height multiplier to accommodate the "settle" phase without feeling too rushed
-      style={{ height: `${(projects.length + (showHeading ? 2.5 : 1.5)) * 100}vh` }}
+      style={{ height: `${(projects.length + (showHeading ? 3 : 2)) * 100}vh` }}
       onMouseMove={handleMouseMove}
     >
       <div 
@@ -153,7 +156,7 @@ export function HorizontalProjects({ showHeading = true }: HorizontalProjectsPro
                 className="flex-shrink-0 w-[85vw] md:w-[75vw] h-[75vh] md:h-[80vh] flex items-center justify-center px-4 md:px-8"
               >
                 <div 
-                  className="flex flex-col md:flex-row w-full h-full bg-card rounded-lg overflow-hidden shadow-large group cursor-none border border-border/50"
+                  className="flex flex-col md:flex-row w-full h-full bg-card rounded-[2.5rem] overflow-hidden shadow-large group cursor-none border border-border/50"
                   onMouseEnter={() => setIsOverCard(true)}
                   onMouseLeave={() => setIsOverCard(false)}
                 >
