@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import './globals.css';
 import { Toaster } from "@/components/ui/toaster";
 import { ScrollHandler } from '@/components/common/scroll-handler';
+import { BackToTop } from '@/components/common/back-to-top';
 
 export const metadata: Metadata = {
   title: 'Joharie Kisiangani — Design & Strategy',
@@ -26,6 +27,7 @@ export default function RootLayout({
         </div>
         <Toaster />
         <ScrollHandler />
+        <BackToTop />
       </body>
     </html>
   );
