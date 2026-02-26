@@ -6,19 +6,19 @@ import { FlipNumber } from '@/components/common/flip-number';
 
 const statsData = [
   {
-    number: 90,
+    number: 20,
     title: 'Completed Projects',
-    description: 'Across industries and sectors. A portfolio of diverse and impactful completed projects. A proven history of delivering impactful design solutions across a wide spectrum of industries and sectors. From startups to established brands, each project has added depth and adaptability to my skillset.',
+    description: 'A proven history of delivering impactful design solutions across a wide spectrum of industries and sectors. From startups to established brands, each project has added depth and adaptability to my skillset, ensuring technical feasibility meets design intent.',
   },
   {
-    number: 8,
+    number: 5,
     title: 'Years of Experience',
-    description: 'Years of proven success and dedication in delivering exceptional results. Years of demonstrated success and commitment to creating impactful solutions that drive measurable results in the field of UX Engineering and design systems.',
+    description: 'Years of demonstrated success and commitment to creating impactful solutions that drive measurable results in the field of UX Engineering and design systems. My focus remains on bridging the gap between aesthetics and scale.',
   },
   {
-    number: 15,
-    title: 'Awards & Honor\'s',
-    description: 'Recognition for excellence with awards and honors celebrating outstanding achievements, including work with brands like Nike, Spotify, Airbnb, Adobe, and Samsung, among others. Featured in leading publications such as Wired, Fast Company, Design Milk, Creative Boom, and It\'s Nice That.',
+    number: 7,
+    title: 'Awards & Honors',
+    description: 'Recognition for excellence with awards and honors celebrating outstanding achievements in technical design. My work has been featured in leading industry publications, highlighting the intersection of clean code and minimalist interfaces.',
   },
 ];
 
@@ -64,9 +64,9 @@ export function AboutExperience() {
           <div className="hidden md:block md:col-span-5 relative">
             <div className="sticky top-1/4 self-start flex justify-center lg:justify-start">
               <div className="relative">
-                <span className="text-foreground text-[12rem] lg:text-[16rem] xl:text-[20rem] font-bold leading-none tracking-tighter transition-all duration-700">
+                <div className="text-accent text-[12rem] lg:text-[16rem] xl:text-[20rem] font-bold leading-none tracking-tighter">
                     <FlipNumber value={statsData[activeIndex].number} />
-                </span>
+                </div>
                 <span className="absolute -top-4 -right-8 text-accent text-6xl font-bold font-code">+</span>
               </div>
             </div>
@@ -83,9 +83,9 @@ export function AboutExperience() {
               >
                 <div className="md:hidden mb-8">
                    <div className="inline-block relative">
-                        <span className="text-foreground text-8xl font-bold leading-none tracking-tighter">
+                        <div className="text-accent text-8xl font-bold leading-none tracking-tighter">
                             <FlipNumber value={stat.number} />
-                        </span>
+                        </div>
                         <span className="absolute -top-2 -right-6 text-accent text-3xl font-bold font-code">+</span>
                    </div>
                 </div>

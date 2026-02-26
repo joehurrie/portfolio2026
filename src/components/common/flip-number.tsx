@@ -13,10 +13,14 @@ export function FlipNumber({ value, className }: FlipNumberProps) {
   const [displayValue, setDisplayValue] = useState(value);
   const [prevValue, setPrevValue] = useState(value);
   const [isAnimating, setIsAnimating] = useState(false);
+  const [direction, setDirection] = useState<'left' | 'right'>('left');
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     if (value !== displayValue) {
+      // Determine scroll direction for the animation
+      // value > displayValue means scrolling forward (new number enters from right)
+      setDirection(value > displayValue ? 'left' : 'right');
       setPrevValue(displayValue);
       setIsAnimating(true);
       
@@ -32,26 +36,36 @@ export function FlipNumber({ value, className }: FlipNumberProps) {
     };
   }, [value, displayValue]);
 
-  // Layout: [ NEW VALUE ] [ OLD VALUE ]
-  // We animate from right to left (New sliding in from left)
-  // Initial state: translate-x-[-50%] (Showing the OLD value on the right)
-  // Animating state: translate-x-[0] (Showing the NEW value on the left)
-
+  // We use a strip [PrevValue][Value] or [Value][PrevValue] depending on direction
   return (
-    <div className={cn("relative overflow-hidden inline-flex h-[1.1em] w-[2ch] items-center justify-center", className)}>
+    <div className={cn("relative overflow-hidden inline-flex h-[1.1em] w-[2.2ch] items-center justify-center", className)}>
       <div 
         className={cn(
-          "flex flex-row transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]",
-          isAnimating ? "translate-x-0" : "translate-x-[-50%]"
+          "flex flex-row transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] w-[200%]",
+          direction === 'left' 
+            ? (isAnimating ? "translate-x-[-50%]" : "translate-x-0")
+            : (isAnimating ? "translate-x-0" : "translate-x-[-50%]")
         )}
-        style={{ width: '200%' }}
       >
-        <div className="w-1/2 flex items-center justify-center shrink-0">
-          {String(value).padStart(2, '0')}
-        </div>
-        <div className="w-1/2 flex items-center justify-center shrink-0">
-          {String(isAnimating ? prevValue : displayValue).padStart(2, '0')}
-        </div>
+        {direction === 'left' ? (
+          <>
+            <div className="w-1/2 flex items-center justify-center shrink-0">
+              {String(isAnimating ? prevValue : displayValue).padStart(2, '0')}
+            </div>
+            <div className="w-1/2 flex items-center justify-center shrink-0">
+              {String(value).padStart(2, '0')}
+            </div>
+          </>
+        ) : (
+          <>
+            <div className="w-1/2 flex items-center justify-center shrink-0">
+              {String(value).padStart(2, '0')}
+            </div>
+            <div className="w-1/2 flex items-center justify-center shrink-0">
+              {String(isAnimating ? prevValue : displayValue).padStart(2, '0')}
+            </div>
+          </>
+        )}
       </div>
     </div>
   );
