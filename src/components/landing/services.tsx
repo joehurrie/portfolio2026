@@ -1,4 +1,3 @@
-
 "use client";
 
 import { AnimatedCounter } from '@/components/common/animated-counter';
@@ -63,49 +62,51 @@ export function Services() {
   return (
     <section id="services" className="bg-background text-foreground relative py-24 md:py-32">
       <div className="sticky top-0 z-40 h-0">
-        <div className="absolute top-8 left-6 md:left-12 text-accent text-xs md:text-sm font-code tracking-wide">
+        <div className="absolute top-8 left-6 md:left-12 text-primary text-[10px] md:text-xs font-code tracking-widest uppercase">
           // Services
         </div>
       </div>
       <div className="w-full px-6 md:px-12">
         <div className="w-full max-w-7xl mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-16 pt-16">
-                <div className="hidden lg:block lg:col-span-5 relative select-none lg:sticky lg:top-32 self-start">
-                    <div className="flex items-center justify-center lg:justify-start">
-                        <AnimatedCounter
-                            end={activeIndex + 1}
-                            className="text-accent text-8xl md:text-[10rem] xl:text-[12rem] font-sans font-bold leading-none tracking-tighter"
-                        />
-                    </div>
-                </div>
-
-                <div className="md:col-span-12 lg:col-span-7 flex flex-col">
-                    {servicesData.map((service, index) => (
-                    <div
-                        key={service.title}
-                        ref={(el) => (serviceRefs.current[index] = el)}
-                        data-index={index}
-                        className="mb-24 md:mb-32 last:mb-0 reveal-on-scroll"
-                    >
-                            <h3 className="text-3xl md:text-5xl font-medium tracking-tight mb-4 hover:text-accent transition-colors cursor-default">
-                                {service.title}
-                            </h3>
-                            <p className="text-foreground text-base md:text-lg mb-8 max-w-2xl leading-relaxed font-light">
-                                {service.description}
-                            </p>
-                            
-                            <div className="w-full flex flex-col border-t border-border/50">
-                            {service.items.map((item, itemIndex) => (
-                                <div key={item} className="group flex justify-between items-baseline py-4 md:py-5 border-b border-border/50 cursor-default">
-                                    <span className="text-base md:text-lg font-normal text-foreground group-hover:text-accent transition-colors">{item}</span>
-                                    <span className="text-xs md:text-sm font-code text-foreground/40 group-hover:text-accent transition-colors font-bold">{String(itemIndex + 1).padStart(2, '0')}</span>
-                                </div>
-                            ))}
-                            </div>
-                    </div>
-                    ))}
-                </div>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 pt-16">
+            <div className="hidden lg:block lg:col-span-5 relative select-none lg:sticky lg:top-32 self-start">
+              <div className="flex items-center justify-start">
+                <AnimatedCounter
+                  end={activeIndex + 1}
+                  className="text-primary text-8xl md:text-[10rem] xl:text-[12rem] font-sans font-bold leading-none tracking-tighter"
+                />
+              </div>
             </div>
+
+            <div className="lg:col-span-7 flex flex-col">
+              {servicesData.map((service, index) => (
+                <div
+                  key={service.title}
+                  ref={(el) => (serviceRefs.current[index] = el)}
+                  data-index={index}
+                  className="mb-24 md:mb-32 last:mb-0 reveal-on-scroll"
+                >
+                  <h3 className="text-3xl md:text-5xl font-medium tracking-tight mb-4 hover:text-primary transition-colors cursor-default">
+                    {service.title}
+                  </h3>
+                  <p className="text-foreground/70 text-base md:text-lg mb-8 max-w-2xl leading-relaxed font-light">
+                    {service.description}
+                  </p>
+                  
+                  <div className="w-full flex flex-col border-t border-border">
+                    {service.items.map((item, itemIndex) => (
+                      <div key={item} className="group flex justify-between items-baseline py-4 md:py-5 border-b border-border cursor-default">
+                        <span className="text-base md:text-lg font-normal text-foreground group-hover:text-primary transition-colors">{item}</span>
+                        <span className="text-[10px] md:text-xs font-code text-foreground/30 group-hover:text-primary transition-colors font-medium">
+                          {String(itemIndex + 1).padStart(2, '0')}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </section>
