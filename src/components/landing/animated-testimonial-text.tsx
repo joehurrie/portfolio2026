@@ -46,6 +46,7 @@ export function AnimatedTestimonialText({ text }: AnimatedTestimonialTextProps) 
       const timeout = setTimeout(() => {
         let nextIndex = currentIndex + 1;
         
+        // Handle HTML tags properly if they exist in the quote (like <span class="text-accent">)
         if (textToProcess[currentIndex] === '<') {
           const closingIndex = textToProcess.indexOf('>', currentIndex);
           if (closingIndex !== -1) {
@@ -54,7 +55,7 @@ export function AnimatedTestimonialText({ text }: AnimatedTestimonialTextProps) 
         }
         
         setCurrentIndex(nextIndex);
-      }, 25);
+      }, 20); // Slightly faster for longer quotes
       return () => clearTimeout(timeout);
     }
   }, [isVisible, currentIndex, textToProcess, isMobile]);
@@ -89,12 +90,14 @@ export function AnimatedTestimonialText({ text }: AnimatedTestimonialTextProps) 
 
   return (
     <div ref={containerRef} className="relative w-full">
-      <blockquote className="relative text-3xl md:text-5xl font-medium leading-tight tracking-tight min-h-[8em] md:min-h-[6em]">
+      <blockquote className="relative text-3xl md:text-5xl font-medium leading-tight tracking-tight min-h-[6em] md:min-h-[5em]">
+        {/* Background Layer: Ghost Text */}
         <div 
           className="text-foreground/10 select-none [&_*]:text-foreground/10"
           dangerouslySetInnerHTML={{ __html: textToProcess }}
         />
         
+        {/* Foreground Layer: Animated Text */}
         <div className="absolute top-0 left-0 text-foreground w-full pointer-events-none">
           <span dangerouslySetInnerHTML={{ __html: getVisibleHtml() }} />
           <span 
