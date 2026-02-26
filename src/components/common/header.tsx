@@ -8,7 +8,7 @@ import { Sheet, SheetContent, SheetTrigger, SheetClose } from '@/components/ui/s
 import { useState } from 'react';
 
 const navLinks = [
-  { href: '#projects', label: 'Projects' },
+  { href: '/projects', label: 'Projects' },
   { href: '/about', label: 'About' },
   { href: '/contact', label: 'Contact' },
 ];
@@ -18,7 +18,7 @@ export function Header() {
 
   return (
     <header 
-      className="absolute top-0 left-0 w-full z-50 flex justify-between items-center px-6 py-8 md:px-12 mix-blend-difference text-neutral-300 animate-slide-up-fade"
+      className="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-6 py-8 md:px-12 mix-blend-difference text-neutral-300 animate-slide-up-fade"
       style={{ animationDelay: '0.2s' }}
     >
       <Link href="/" className="text-base md:text-lg font-medium tracking-tight">
