@@ -29,7 +29,7 @@ export function Header() {
     <header className="absolute top-0 left-0 w-full z-50 flex justify-between items-center px-6 py-8 md:px-12 md:py-10">
       <Link 
         href="/" 
-        className="group relative text-sm font-medium tracking-tight text-foreground transition-colors"
+        className="group relative text-sm font-medium tracking-tight text-primary transition-colors"
       >
         Joharie Kisiangani
         <span className="absolute -bottom-1 left-0 h-[1.5px] w-0 bg-primary transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:w-full" />
@@ -84,7 +84,7 @@ export function Header() {
             <ScrollArea className="flex-1 w-full">
               <div className="flex flex-col justify-between min-h-screen py-24 px-8 relative">
                 <div className="absolute top-10 left-8">
-                  <Link href="/" className="text-sm font-medium text-foreground/40 hover:text-primary transition-colors" onClick={() => setIsOpen(false)}>
+                  <Link href="/" className="text-sm font-medium text-primary hover:text-primary transition-colors" onClick={() => setIsOpen(false)}>
                     Joharie Kisiangani
                   </Link>
                 </div>

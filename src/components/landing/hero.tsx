@@ -28,7 +28,7 @@ export function Hero() {
         />
       </div>
 
-      <div className="absolute inset-0 z-10 flex items-center justify-center pt-24 overflow-hidden pointer-events-none mix-blend-difference text-white">
+      <div className="absolute inset-0 z-10 flex items-center justify-center pt-24 overflow-hidden pointer-events-none mix-blend-difference text-primary">
         <div className="flex animate-hero-marquee">
           <h1 className="shrink-0 text-7xl md:text-9xl lg:text-[12vw] font-semibold tracking-tighter leading-none px-8 whitespace-nowrap">
             Joharie Kisiangani
