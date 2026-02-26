@@ -1,10 +1,8 @@
-
 import Image from 'next/image';
 import Link from 'next/link';
 import { Linkedin, Twitter, Instagram } from 'lucide-react';
 
 export function Hero() {
-
   const socialLinks = [
     { name: 'LinkedIn', icon: Linkedin, url: '#' },
     { name: 'Twitter', icon: Twitter, url: '#' },
@@ -12,7 +10,7 @@ export function Hero() {
   ];
 
   return (
-    <section className="relative h-screen min-h-screen w-full flex flex-col overflow-hidden bg-background">
+    <section className="relative h-screen w-full flex flex-col overflow-hidden bg-background">
       <div className="absolute inset-0 z-0 animate-clip-reveal origin-bottom">
         <Image
           src="/hero111.png"
@@ -30,12 +28,12 @@ export function Hero() {
         />
       </div>
 
-      <div className="absolute inset-0 z-10 flex items-center justify-center pt-34 md:pt-40 overflow-hidden pointer-events-none mix-blend-difference text-white">
+      <div className="absolute inset-0 z-10 flex items-center justify-center pt-24 overflow-hidden pointer-events-none mix-blend-difference text-white">
         <div className="flex animate-hero-marquee">
-          <h1 className="shrink-0 text-huge font-semibold tracking-tighter leading-none px-8 whitespace-nowrap">
+          <h1 className="shrink-0 text-7xl md:text-9xl lg:text-[12vw] font-semibold tracking-tighter leading-none px-8 whitespace-nowrap">
             Joharie Kisiangani
           </h1>
-          <h1 className="shrink-0 text-huge font-semibold tracking-tighter leading-none px-8 whitespace-nowrap" aria-hidden="true">
+          <h1 className="shrink-0 text-7xl md:text-9xl lg:text-[12vw] font-semibold tracking-tighter leading-none px-8 whitespace-nowrap" aria-hidden="true">
             Joharie Kisiangani
           </h1>
         </div>
@@ -53,17 +51,17 @@ export function Hero() {
                   href={social.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-3 text-base md:text-lg font-medium text-white hover:text-accent transition-colors group"
+                  className="flex items-center gap-2 text-sm font-medium text-white hover:text-accent transition-colors group"
                 >
-                  <social.icon className="h-6 w-6 text-neutral-400 group-hover:text-accent transition-colors" />
+                  <social.icon className="h-5 w-5 text-neutral-400 group-hover:text-accent transition-colors" />
                   <span className="hidden md:inline">{social.name}</span>
                 </Link>
             ))}
           </div>
 
           <div className="text-right">
-            <h2 className="text-2xl md:text-6xl lg:text-8xl font-medium tracking-tighter leading-[0.85]">
-              <span className="block text-accent text-sm md:text-4xl lg:text-5xl mb-1 md:mb-2 tracking-tight font-normal whitespace-nowrap">//Product Designer</span>
+            <h2 className="text-xl md:text-4xl lg:text-5xl font-medium tracking-tighter leading-tight">
+              <span className="block text-accent text-xs md:text-base mb-1 tracking-tight font-normal whitespace-nowrap uppercase font-code">// Product Designer</span>
               <span className="text-accent whitespace-nowrap">UX Engineer</span>
             </h2>
           </div>

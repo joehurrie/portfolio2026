@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, useEffect, useRef } from 'react';
@@ -39,22 +38,18 @@ export function AnimatedIntroText() {
     if (isVisible && currentIndex < textToProcess.length) {
       const timeout = setTimeout(() => {
         let nextIndex = currentIndex + 1;
-        
-        // If we hit an opening tag, skip to the end of it to keep HTML valid
         if (textToProcess[currentIndex] === '<') {
           const closingIndex = textToProcess.indexOf('>', currentIndex);
           if (closingIndex !== -1) {
             nextIndex = closingIndex + 1;
           }
         }
-        
         setCurrentIndex(nextIndex);
-      }, 30); // Steady typing speed
+      }, 30);
       return () => clearTimeout(timeout);
     }
   }, [isVisible, currentIndex, textToProcess]);
 
-  // Helper to ensure tags are balanced in a partial string
   const balanceTags = (html: string) => {
     const openSpans = (html.match(/<span/g) || []).length;
     const closedSpans = (html.match(/<\/span>/g) || []).length;
@@ -77,22 +72,14 @@ export function AnimatedIntroText() {
 
   return (
     <div ref={containerRef} className="relative w-full">
-      <div className="relative text-4xl md:text-5xl lg:text-7xl font-medium leading-[1.15] tracking-tight max-w-[1400px]">
-        {/* Background Layer: Constant Grey Ghost Text */}
-        {/* We force all children (like spans) to inherit the ghost color */}
+      <div className="relative text-3xl md:text-5xl lg:text-7xl font-medium leading-[1.1] tracking-tighter max-w-[1200px]">
         <div 
           className="text-foreground/10 select-none [&_*]:text-foreground/10"
           dangerouslySetInnerHTML={{ __html: textToProcess }}
         />
-        
-        {/* Foreground Layer: Typing Animation */}
-        {/* The 'invisible' part ensures the foreground layer has the exact same dimensions as the background layer for perfect wrapping */}
         <div className="absolute top-0 left-0 text-foreground w-full pointer-events-none">
           <span dangerouslySetInnerHTML={{ __html: getVisibleHtml() }} />
-          <span 
-            className="invisible"
-            dangerouslySetInnerHTML={{ __html: getInvisibleHtml() }} 
-          />
+          <span className="invisible" dangerouslySetInnerHTML={{ __html: getInvisibleHtml() }} />
         </div>
       </div>
     </div>

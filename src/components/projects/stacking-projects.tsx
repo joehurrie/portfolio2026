@@ -1,4 +1,3 @@
-
 "use client";
 
 import React from 'react';
@@ -27,29 +26,14 @@ const projects = [
     title: 'Posnen Gallery',
     description: 'Future-forward collaborative workspace architecture focused on high-fidelity visual presentation and minimal interfaces.',
     tags: ['Desktop App', 'Branding'],
-  },
-  {
-    id: 'project-2', 
-    year: '(2022)',
-    title: 'Fringe System',
-    description: 'Minimalist interface for sustainable energy data visualization and monitoring. Built to bridge the gap between complex data and elegant design.',
-    tags: ['Desktop App', 'Entertainment', 'Branding'],
-  },
-  {
-    id: 'project-1',
-    year: '(2022)',
-    title: 'Nocode Mate',
-    description: 'Empowering creators with a scalable, accessible design system for modern web builds. High-fidelity engineering meets minimal design.',
-    tags: ['Design System', 'Development'],
   }
 ];
 
 export function StackingProjects() {
   return (
     <section id="projects" className="relative bg-background">
-      {/* Section Label */}
       <div className="sticky top-0 z-40 h-0">
-        <div className="absolute top-8 left-6 md:left-12 text-accent text-base md:text-lg font-code tracking-wide">
+        <div className="absolute top-8 left-6 md:left-12 text-accent text-xs md:text-sm font-code tracking-wide">
           // Projects
         </div>
       </div>
@@ -60,10 +44,10 @@ export function StackingProjects() {
         return (
           <div 
             key={`${project.id}-${index}`}
-            className="sticky top-0 h-screen w-full flex items-center justify-center p-4 md:p-12 overflow-hidden"
+            className="sticky top-0 h-screen w-full flex items-center justify-center p-4 md:p-8 lg:p-12 overflow-hidden"
             style={{ zIndex: index + 1 }}
           >
-            <div className="w-full max-w-7xl h-[85vh] md:h-[80vh] bg-card rounded-[2.5rem] overflow-hidden border border-border/50 shadow-large flex flex-col md:flex-row animate-in fade-in zoom-in-95 duration-700">
+            <div className="w-full max-w-7xl h-[80vh] bg-card rounded-[2rem] overflow-hidden border border-border/50 shadow-large flex flex-col md:flex-row animate-in fade-in zoom-in-95 duration-700">
               {/* Image Side */}
               <div className="relative w-full h-1/2 md:h-full md:flex-[2.5] overflow-hidden">
                 {imageData && (
@@ -79,24 +63,24 @@ export function StackingProjects() {
               </div>
 
               {/* Content Side */}
-              <div className="flex-1 p-8 md:p-12 flex flex-col justify-between bg-card text-card-foreground border-t md:border-t-0 md:border-l border-border/50">
-                <div className="space-y-6">
+              <div className="flex-1 p-8 md:p-10 lg:p-12 flex flex-col justify-between bg-card text-card-foreground border-t md:border-t-0 md:border-l border-border/50">
+                <div className="space-y-4 md:space-y-6">
                   <span className="font-code text-accent block text-xs md:text-sm">
                     {project.year}
                   </span>
-                  <h2 className="text-4xl md:text-5xl lg:text-7xl font-semibold tracking-tighter leading-[0.9] text-card-foreground">
+                  <h2 className="text-3xl md:text-5xl lg:text-6xl font-semibold tracking-tighter leading-none text-card-foreground">
                     {project.title}
                   </h2>
-                  <p className="text-muted-foreground text-sm md:text-lg leading-relaxed max-w-md font-light">
+                  <p className="text-muted-foreground text-sm md:text-base leading-relaxed max-w-md font-light">
                     {project.description}
                   </p>
                 </div>
 
-                <div className="mt-12 space-y-0">
+                <div className="mt-8 space-y-0">
                   <div className="border-t border-border/30">
                     {project.tags.map((tag) => (
-                      <div key={tag} className="py-3 md:py-4 border-b border-border/30 flex justify-between items-center group cursor-default">
-                        <span className="text-xs md:text-sm font-code text-muted-foreground group-hover:text-accent transition-colors uppercase tracking-widest">
+                      <div key={tag} className="py-2 md:py-3 border-b border-border/30 flex justify-between items-center group cursor-default">
+                        <span className="text-[10px] md:text-xs font-code text-muted-foreground group-hover:text-accent transition-colors uppercase tracking-[0.2em]">
                           {tag}
                         </span>
                       </div>

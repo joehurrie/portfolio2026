@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, useEffect, useRef } from 'react';
@@ -58,16 +57,16 @@ export function AboutExperience() {
   return (
     <section className="bg-background text-foreground py-24 md:py-32 border-t border-border/50">
       <div className="container mx-auto max-w-7xl px-6 md:px-12">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-16 md:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-16">
           
           {/* Left Column: Sticky Counter */}
           <div className="hidden md:block md:col-span-5 relative">
-            <div className="sticky top-1/4 self-start flex justify-center lg:justify-start">
+            <div className="sticky top-1/3 self-start flex justify-center lg:justify-start">
               <div className="relative">
-                <div className="text-accent text-[12rem] lg:text-[16rem] xl:text-[20rem] font-bold leading-none tracking-tighter">
+                <div className="text-accent text-9xl lg:text-[12rem] xl:text-[15rem] font-bold leading-none tracking-tighter">
                     <AnimatedCounter end={statsData[activeIndex].number} />
                 </div>
-                <span className="absolute -top-4 -right-8 text-accent text-6xl font-bold font-code">+</span>
+                <span className="absolute -top-4 -right-6 text-accent text-4xl lg:text-5xl font-bold font-code">+</span>
               </div>
             </div>
           </div>
@@ -79,24 +78,24 @@ export function AboutExperience() {
                 key={stat.title}
                 ref={(el) => (sectionRefs.current[index] = el)}
                 data-index={index}
-                className="mb-32 md:mb-64 last:mb-0 reveal-on-scroll"
+                className="mb-32 md:mb-56 last:mb-0 reveal-on-scroll"
               >
-                <div className="md:hidden mb-8">
+                <div className="md:hidden mb-6">
                    <div className="inline-block relative">
-                        <div className="text-accent text-8xl font-bold leading-none tracking-tighter">
+                        <div className="text-accent text-7xl font-bold leading-none tracking-tighter">
                             <AnimatedCounter end={stat.number} />
                         </div>
-                        <span className="absolute -top-2 -right-6 text-accent text-3xl font-bold font-code">+</span>
+                        <span className="absolute -top-2 -right-5 text-accent text-2xl font-bold font-code">+</span>
                    </div>
                 </div>
 
-                <h3 className="text-4xl md:text-6xl font-semibold tracking-tighter mb-8 text-foreground">
+                <h3 className="text-3xl md:text-5xl lg:text-6xl font-semibold tracking-tighter mb-6 text-foreground">
                   {stat.title}
                 </h3>
                 
-                <div className="w-full h-px bg-border/50 mb-12" />
+                <div className="w-full h-px bg-border/50 mb-10" />
                 
-                <p className="text-muted-foreground text-lg md:text-xl leading-relaxed max-w-xl font-light">
+                <p className="text-muted-foreground text-base md:text-lg lg:text-xl leading-relaxed max-w-xl font-light">
                   {stat.description}
                 </p>
               </div>

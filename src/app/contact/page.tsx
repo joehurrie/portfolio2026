@@ -6,18 +6,18 @@ export default function ContactPage() {
   return (
     <div className="flex flex-col min-h-screen bg-card text-card-foreground">
       <Header />
-      <main className="flex-grow flex items-center relative z-10 bg-card pb-[15vh]">
-        <section className="w-full py-20 md:py-32 px-6 md:px-12">
+      <main className="flex-grow flex items-center relative z-10 bg-card pb-[10vh]">
+        <section className="w-full py-24 md:py-32 px-6 md:px-12">
           <div className="container mx-auto max-w-7xl">
-            <div className="grid md:grid-cols-2 gap-16 items-center">
+            <div className="grid md:grid-cols-2 gap-12 md:gap-24 items-start">
                 <div>
-                     <h2 className="text-6xl md:text-7xl lg:text-8xl font-semibold tracking-tighter text-card-foreground">
+                     <h2 className="text-5xl md:text-7xl lg:text-8xl font-semibold tracking-tighter text-card-foreground leading-none">
                         Reach Out
                     </h2>
                 </div>
-                <div>
+                <div className="pt-4">
                     <div className="max-w-md">
-                        <h3 className="text-2xl md:text-3xl leading-snug mb-12">
+                        <h3 className="text-xl md:text-2xl lg:text-3xl leading-snug mb-12 font-light">
                             Tell me about your idea.
                             <br />
                             I&apos;ll take it from there.
@@ -26,7 +26,7 @@ export default function ContactPage() {
                     </div>
                 </div>
             </div>
-             <div className="mt-32 text-center text-muted-foreground/50 text-sm md:text-base font-code">
+             <div className="mt-32 text-center text-muted-foreground/40 text-[10px] md:text-xs uppercase tracking-[0.2em] font-code">
                 &copy; {new Date().getFullYear()} Joharie Kisiangani. All Rights Reserved.
             </div>
           </div>

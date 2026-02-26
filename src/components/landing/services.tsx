@@ -62,18 +62,18 @@ export function Services() {
   return (
     <section id="services" className="bg-background text-foreground relative py-24 md:py-32">
       <div className="sticky top-0 z-40 h-0">
-        <div className="absolute top-8 left-6 md:left-12 text-accent text-base md:text-lg font-code tracking-wide">
+        <div className="absolute top-8 left-6 md:left-12 text-accent text-xs md:text-sm font-code tracking-wide">
           // Services
         </div>
       </div>
       <div className="w-full px-6 md:px-12">
-        <div className="w-full">
-            <div className="grid grid-cols-1 md:grid-cols-12 gap-16 lg:gap-8 pt-24">
+        <div className="w-full max-w-7xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-16 pt-16">
                 <div className="hidden lg:block lg:col-span-5 relative select-none lg:sticky lg:top-32 self-start">
                     <div className="flex items-center justify-center lg:justify-start">
                         <AnimatedCounter
                             end={activeIndex + 1}
-                            className="text-accent text-[12rem] xl:text-[16rem] font-sans font-bold leading-none tracking-tighter"
+                            className="text-accent text-8xl md:text-[10rem] xl:text-[12rem] font-sans font-bold leading-none tracking-tighter"
                         />
                     </div>
                 </div>
@@ -84,20 +84,20 @@ export function Services() {
                         key={service.title}
                         ref={(el) => (serviceRefs.current[index] = el)}
                         data-index={index}
-                        className="service-section mb-32 md:mb-48 last:mb-0 reveal-on-scroll"
+                        className="mb-24 md:mb-32 last:mb-0 reveal-on-scroll"
                     >
-                            <h3 className="text-3xl md:text-5xl font-medium tracking-tight mb-6">
+                            <h3 className="text-3xl md:text-5xl font-medium tracking-tight mb-4">
                                 {service.title}
                             </h3>
-                            <p className="text-muted-foreground text-lg md:text-xl mb-12 max-w-2xl leading-relaxed font-light">
+                            <p className="text-muted-foreground text-base md:text-lg mb-8 max-w-2xl leading-relaxed font-light">
                                 {service.description}
                             </p>
                             
                             <div className="w-full flex flex-col border-t border-border/50">
                             {service.items.map((item, itemIndex) => (
-                                <div key={item} className="flex justify-between items-baseline py-4 md:py-6 border-b border-border/50">
-                                    <span className="text-lg md:text-xl font-normal text-foreground">{item}</span>
-                                    <span className="text-sm md:text-base font-code text-accent font-bold">{String(itemIndex + 1).padStart(2, '0')}</span>
+                                <div key={item} className="flex justify-between items-baseline py-4 md:py-5 border-b border-border/50">
+                                    <span className="text-base md:text-lg font-normal text-foreground">{item}</span>
+                                    <span className="text-xs md:text-sm font-code text-accent font-bold">{String(itemIndex + 1).padStart(2, '0')}</span>
                                 </div>
                             ))}
                             </div>

@@ -1,4 +1,3 @@
-
 "use client";
 
 import Image from 'next/image';
@@ -20,23 +19,21 @@ export function Footer() {
   ];
 
   const contactDetails = [
-    { label: "Office", value: "Ozeanblickstraße, Berlin 10115, Germany" },
-    { label: "Mail", value: "hello@alexgraham.com" },
+    { label: "Office", value: "Berlin 10115, Germany" },
+    { label: "Mail", value: "hello@joharie.com" },
     { label: "Phone", value: "+49 30 12345678" },
   ];
 
-  // Auto-scroll effect: Drifting LEFT (Right-to-Left flow)
   useEffect(() => {
     let animationFrameId: number;
     const animate = () => {
-      setAutoX((prev) => (prev - 0.8) % 2000); // Constant slow drift LEFT
+      setAutoX((prev) => (prev - 0.6) % 2000);
       animationFrameId = requestAnimationFrame(animate);
     };
     animationFrameId = requestAnimationFrame(animate);
     return () => cancelAnimationFrame(animationFrameId);
   }, []);
 
-  // Scroll reactive effect
   useEffect(() => {
     const handleScroll = () => {
       if (!footerRef.current) return;
@@ -44,14 +41,11 @@ export function Footer() {
       const windowHeight = window.innerHeight;
       const scrollY = window.scrollY;
       
-      // Background Parallax
       if (rect.top < windowHeight) {
         const scrolledIntoView = windowHeight - rect.top;
-        setOffset(scrolledIntoView * 0.15);
+        setOffset(scrolledIntoView * 0.1);
       }
-
-      // Reactive Scroll Offset: Pulling LEFT on scroll down
-      setScrollX(-scrollY * 0.6); 
+      setScrollX(-scrollY * 0.4); 
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
@@ -60,10 +54,9 @@ export function Footer() {
 
   return (
     <footer ref={footerRef} className="relative z-0 min-h-screen w-full flex flex-col overflow-hidden bg-background">
-      {/* Background Portrait Layer with Parallax */}
       <div className="absolute inset-0 z-0 flex items-center justify-center overflow-hidden">
         <div 
-          className="relative w-full h-[120%] md:w-[60vw] md:h-[110vh] transition-transform duration-100 ease-out"
+          className="relative w-full h-[110%] md:w-[60vw] md:h-[105vh] transition-transform duration-100 ease-out"
           style={{ transform: `translateY(${-offset}px)` }}
         >
           <Image
@@ -83,60 +76,54 @@ export function Footer() {
         </div>
       </div>
 
-      {/* Top Marquee Text Layer - Constant Auto + Scroll Reactive */}
       <div className="absolute top-0 left-0 right-0 z-10 flex items-start justify-center pt-24 md:pt-32 overflow-hidden pointer-events-none mix-blend-difference text-white">
         <div 
           className="flex whitespace-nowrap will-change-transform"
           style={{ transform: `translateX(calc(-33.33% + ${(autoX + scrollX) % 1000}px))` }}
         >
-          <h1 className="shrink-0 text-7xl md:text-8xl lg:text-[10vw] font-semibold tracking-tighter leading-none px-8">
+          <h1 className="shrink-0 text-6xl md:text-8xl lg:text-[10vw] font-semibold tracking-tighter leading-none px-6">
             Reach Out — Reach Out — Reach Out —
           </h1>
-          <h1 className="shrink-0 text-7xl md:text-8xl lg:text-[10vw] font-semibold tracking-tighter leading-none px-8" aria-hidden="true">
-            Reach Out — Reach Out — Reach Out —
-          </h1>
-          <h1 className="shrink-0 text-7xl md:text-8xl lg:text-[10vw] font-semibold tracking-tighter leading-none px-8" aria-hidden="true">
+          <h1 className="shrink-0 text-6xl md:text-8xl lg:text-[10vw] font-semibold tracking-tighter leading-none px-6" aria-hidden="true">
             Reach Out — Reach Out — Reach Out —
           </h1>
         </div>
       </div>
 
-      {/* CTA Button Layer - Centered over the portrait */}
-      <div className="absolute inset-0 z-20 flex items-center justify-center pt-32">
-        <Button asChild size="lg" className="rounded-full group text-base md:text-xl py-6 md:py-8 px-8 md:px-12 bg-transparent border-2 border-accent text-accent animate-red-glow hover:bg-accent hover:text-accent-foreground transition-all">
+      <div className="absolute inset-0 z-20 flex items-center justify-center pt-20">
+        <Button asChild size="lg" className="rounded-full group text-base md:text-lg py-6 px-10 bg-transparent border-2 border-accent text-accent animate-red-glow hover:bg-accent hover:text-accent-foreground transition-all">
           <Link href="/contact">
             Let's collaborate
           </Link>
         </Button>
       </div>
 
-      {/* Bottom Info Layer - Office Details & Socials */}
-      <div className="relative z-30 w-full mt-auto flex flex-col justify-end px-6 pb-8 md:px-12 md:pb-12 text-muted-foreground">
-        <div className="flex flex-col md:flex-row justify-between items-center md:items-end w-full gap-10">
-          <div className="font-code text-xs md:text-sm space-y-1 text-center md:text-left">
+      <div className="relative z-30 w-full mt-auto flex flex-col justify-end px-6 pb-10 md:px-12 md:pb-12 text-muted-foreground/80">
+        <div className="flex flex-col md:flex-row justify-between items-center md:items-end w-full gap-8">
+          <div className="font-code text-[10px] md:text-xs space-y-1 text-center md:text-left tracking-wide">
             {contactDetails.map((detail) => (
               <p key={detail.label}>
-                <span className="font-bold uppercase opacity-80">{detail.label}:</span> {detail.value}
+                <span className="font-bold uppercase opacity-60">{detail.label}:</span> {detail.value}
               </p>
             ))}
           </div>
           
-          <div className="flex flex-col items-center md:items-end gap-4">
-            <div className="flex items-center gap-8 md:gap-10">
+          <div className="flex flex-col items-center md:items-end gap-3">
+            <div className="flex items-center gap-6 md:gap-8">
               {socialLinks.map((social) => (
                 <Link
                   key={social.name}
                   href={social.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 text-sm font-medium hover:text-accent transition-colors group"
+                  className="flex items-center gap-2 text-xs font-medium hover:text-accent transition-colors group"
                 >
-                  <social.icon className="h-5 w-5 text-neutral-400 group-hover:text-accent transition-colors" />
-                  <span className="hidden sm:inline">{social.name}</span>
+                  <social.icon className="h-4 w-4 text-neutral-500 group-hover:text-accent transition-colors" />
+                  <span className="hidden sm:inline uppercase tracking-widest">{social.name}</span>
                 </Link>
               ))}
             </div>
-            <p className="text-[10px] uppercase tracking-[0.3em] opacity-60 font-code mt-2">
+            <p className="text-[9px] uppercase tracking-[0.3em] opacity-40 font-code mt-1">
               &copy; {new Date().getFullYear()} Joharie Kisiangani. All Rights Reserved.
             </p>
           </div>
