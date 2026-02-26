@@ -1,7 +1,8 @@
+
 import { Header } from "@/components/common/header";
 import { Hero } from "@/components/landing/hero";
 import { Services } from "@/components/landing/services";
-import { HorizontalProjects } from "@/components/projects/horizontal-projects";
+import { StackingProjects } from "@/components/projects/stacking-projects";
 import { Testimonials } from "@/components/landing/testimonials";
 import { Intro } from "@/components/landing/intro";
 import { ClientTicker } from "@/components/landing/client-ticker";
@@ -18,8 +19,8 @@ export default function Home() {
           <div className="relative z-30">
             <Services />
           </div>
-          {/* Horizontal projects section integrated into the home flow without heading */}
-          <HorizontalProjects showHeading={false} />
+          {/* Stacking projects section for the homepage */}
+          <StackingProjects />
           <Testimonials />
           <ClientTicker />
         </div>
