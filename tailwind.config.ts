@@ -85,15 +85,9 @@ export default {
           '0%': { transform: 'translateX(0%)' },
           '100%': { transform: 'translateX(-50%)' }
         },
-        'red-glow': {
-          '0%, 100%': {
-            boxShadow: '0 0 5px hsl(var(--accent)), 0 0 10px hsl(var(--accent))',
-            borderColor: 'hsl(var(--accent))'
-          },
-          '50%': {
-            boxShadow: '0 0 20px hsl(var(--accent)), 0 0 30px hsl(var(--accent))',
-            borderColor: 'hsl(var(--accent))'
-          }
+        'spin-reverse': {
+          from: { transform: 'rotate(0deg)' },
+          to: { transform: 'rotate(-360deg)' }
         }
       },
       animation: {
@@ -103,7 +97,7 @@ export default {
         'slide-up-fade': 'slide-up-fade 0.8s cubic-bezier(0.16, 1, 0.3, 1) both',
         'marquee': 'marquee 25s linear infinite',
         'hero-marquee': 'hero-marquee 60s linear infinite',
-        'red-glow': 'red-glow 4s ease-in-out infinite'
+        'spin-slow-reverse': 'spin-reverse 8s linear infinite'
       },
     },
   },

@@ -3,7 +3,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { Linkedin, Twitter, Instagram } from 'lucide-react';
-import { Button } from '@/components/ui/button';
 import { useState, useEffect, useRef } from 'react';
 
 export function Footer() {
@@ -91,11 +90,15 @@ export function Footer() {
       </div>
 
       <div className="absolute inset-0 z-20 flex items-center justify-center pt-20">
-        <Button asChild size="lg" className="rounded-full group text-base md:text-lg py-6 px-10 bg-transparent border-2 border-accent text-accent animate-red-glow hover:bg-accent hover:text-accent-foreground transition-all">
-          <Link href="/contact">
+        <div className="beam-button-container group">
+          <div className="beam-border" />
+          <Link 
+            href="/contact"
+            className="beam-content py-4 px-10 text-base md:text-lg font-medium tracking-tight text-accent transition-all duration-300"
+          >
             Let's collaborate
           </Link>
-        </Button>
+        </div>
       </div>
 
       <div className="relative z-30 w-full mt-auto flex flex-col justify-end px-6 pb-10 md:px-12 md:pb-12 text-muted-foreground/80">

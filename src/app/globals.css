@@ -74,4 +74,16 @@
   .glass-card {
     @apply bg-background/60 backdrop-blur-xl border border-white/10;
   }
+  
+  .beam-button-container {
+    @apply relative overflow-hidden p-[1px] rounded-full inline-flex items-center justify-center;
+  }
+
+  .beam-border {
+    @apply absolute inset-[-200%] bg-[conic-gradient(from_0deg,transparent_0_340deg,hsl(var(--accent))_360deg)] animate-spin-slow-reverse;
+  }
+
+  .beam-content {
+    @apply relative z-10 bg-background rounded-full w-full h-full flex items-center justify-center transition-colors hover:bg-transparent hover:text-white;
+  }
 }
