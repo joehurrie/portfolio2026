@@ -10,12 +10,12 @@ export default function AboutPage() {
   return (
     <div className="flex flex-col min-h-screen bg-background">
       <Header />
-      <main className="pt-24 relative z-10 bg-background pb-[15vh]">
-        <section id="about" className="py-20 md:py-32 bg-background text-foreground">
-          <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <main className="relative z-10 bg-background">
+        <section id="about" className="min-h-screen flex flex-col justify-between py-24 md:py-32 bg-background text-foreground">
+          <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex flex-col h-full flex-grow">
+            {/* Top Content: Avatar and Headline */}
             <div className="reveal-on-scroll">
               <div className="flex flex-col md:flex-row items-start gap-8 md:gap-12">
-                {/* Avatar and Headline container */}
                 <div className="relative">
                   <div className="flex flex-wrap items-start">
                     {avatarImage && (
@@ -37,8 +37,8 @@ export default function AboutPage() {
               </div>
             </div>
 
-            {/* Body columns */}
-            <div className="mt-24 md:mt-32 grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-12">
+            {/* Middle Content: Body columns */}
+            <div className="mt-auto pt-24 md:pt-32 grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-12">
               <div className="reveal-on-scroll" style={{ transitionDelay: '200ms' }}>
                 <p className="text-muted-foreground text-sm md:text-base leading-relaxed max-w-lg">
                   I got my start in 2018, freelancing for early-stage startups while finishing design school. My first big break came working with Dapper Labs during the early Web3 wave — helping shape the look and feel of their product launches. Since then, I&apos;ve collaborated with teams at Polygon, Showtime, and smaller venture-backed startups across LA, London, and Tel Aviv.
@@ -51,8 +51,8 @@ export default function AboutPage() {
               </div>
             </div>
 
-            {/* Bottom CTA */}
-            <div className="mt-20 md:mt-32 flex justify-end reveal-on-scroll" style={{ transitionDelay: '400ms' }}>
+            {/* Bottom Content: CTA */}
+            <div className="mt-16 md:mt-auto flex justify-end reveal-on-scroll" style={{ transitionDelay: '400ms' }}>
               <Button asChild variant="outline" className="rounded-full px-8 py-6 text-sm font-normal border-border/50 hover:bg-foreground hover:text-background transition-colors">
                 <Link href="/contact">
                   Let&apos;s Talk
