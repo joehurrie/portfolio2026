@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useEffect, useState, useRef } from 'react';
@@ -24,26 +25,32 @@ export function FlipNumber({ value, className }: FlipNumberProps) {
       timeoutRef.current = setTimeout(() => {
         setDisplayValue(value);
         setIsAnimating(false);
-      }, 600);
+      }, 700);
     }
     return () => {
       if (timeoutRef.current) clearTimeout(timeoutRef.current);
     };
   }, [value, displayValue]);
 
+  // Layout: [ NEW VALUE ] [ OLD VALUE ]
+  // We animate from right to left (New sliding in from left)
+  // Initial state: translate-x-[-50%] (Showing the OLD value on the right)
+  // Animating state: translate-x-[0] (Showing the NEW value on the left)
+
   return (
-    <div className={cn("relative overflow-hidden inline-flex h-[1.1em] items-center", className)}>
+    <div className={cn("relative overflow-hidden inline-flex h-[1.1em] w-[2ch] items-center justify-center", className)}>
       <div 
         className={cn(
-          "flex flex-col transition-transform duration-700 ease-[cubic-bezier(0.65,0,0.35,1)]",
-          isAnimating ? "-translate-y-full" : "translate-y-0"
+          "flex flex-row transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]",
+          isAnimating ? "translate-x-0" : "translate-x-[-50%]"
         )}
+        style={{ width: '200%' }}
       >
-        <div className="h-[1.1em] flex items-center justify-center">
-          {String(isAnimating ? prevValue : displayValue).padStart(2, '0')}
-        </div>
-        <div className="h-[1.1em] flex items-center justify-center">
+        <div className="w-1/2 flex items-center justify-center shrink-0">
           {String(value).padStart(2, '0')}
+        </div>
+        <div className="w-1/2 flex items-center justify-center shrink-0">
+          {String(isAnimating ? prevValue : displayValue).padStart(2, '0')}
         </div>
       </div>
     </div>

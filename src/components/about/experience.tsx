@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, useEffect, useRef } from 'react';
@@ -59,11 +60,11 @@ export function AboutExperience() {
       <div className="container mx-auto max-w-7xl px-6 md:px-12">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-16 md:gap-8">
           
-          {/* Left Column: Sticky Outline Number */}
+          {/* Left Column: Sticky Number */}
           <div className="hidden md:block md:col-span-5 relative">
             <div className="sticky top-1/4 self-start flex justify-center lg:justify-start">
               <div className="relative">
-                <span className="text-outline text-[12rem] lg:text-[16rem] xl:text-[20rem] font-bold leading-none tracking-tighter transition-all duration-700 opacity-20">
+                <span className="text-foreground text-[12rem] lg:text-[16rem] xl:text-[20rem] font-bold leading-none tracking-tighter transition-all duration-700">
                     <FlipNumber value={statsData[activeIndex].number} />
                 </span>
                 <span className="absolute -top-4 -right-8 text-accent text-6xl font-bold font-code">+</span>
@@ -82,7 +83,7 @@ export function AboutExperience() {
               >
                 <div className="md:hidden mb-8">
                    <div className="inline-block relative">
-                        <span className="text-outline text-8xl font-bold leading-none tracking-tighter">
+                        <span className="text-foreground text-8xl font-bold leading-none tracking-tighter">
                             <FlipNumber value={stat.number} />
                         </span>
                         <span className="absolute -top-2 -right-6 text-accent text-3xl font-bold font-code">+</span>
