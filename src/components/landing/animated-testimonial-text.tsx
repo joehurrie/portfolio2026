@@ -10,15 +10,13 @@ export function AnimatedTestimonialText({ text }: AnimatedTestimonialTextProps) 
   const [displayedHtml, setDisplayedHtml] = useState('');
 
   const textToProcess = text.replace(/&apos;/g, "'");
-  const greyText = textToProcess.replace(/ class="text-accent"/g, '');
 
   useEffect(() => {
     let timeout: NodeJS.Timeout;
 
-    // Delay before starting animation
     timeout = setTimeout(() => {
       let currentIndex = 0;
-      setDisplayedHtml(''); // Ensure it's cleared before typing
+      setDisplayedHtml('');
       
       const type = () => {
         if (currentIndex < textToProcess.length) {
@@ -42,7 +40,7 @@ export function AnimatedTestimonialText({ text }: AnimatedTestimonialTextProps) 
       
       type();
 
-    }, 100); // Initial delay
+    }, 100);
 
     return () => clearTimeout(timeout);
   }, [textToProcess]);
@@ -50,14 +48,7 @@ export function AnimatedTestimonialText({ text }: AnimatedTestimonialTextProps) 
   return (
     <div className="relative">
       <blockquote className="text-3xl md:text-5xl font-medium leading-tight tracking-tight min-h-[8em] md:min-h-[6em]">
-        <span
-          className="text-muted-foreground/20"
-          dangerouslySetInnerHTML={{ __html: greyText }}
-        />
-        
-        <span className="absolute top-0 left-0 w-full h-full">
-          <span dangerouslySetInnerHTML={{ __html: displayedHtml }} />
-        </span>
+        <span dangerouslySetInnerHTML={{ __html: displayedHtml }} />
       </blockquote>
     </div>
   );

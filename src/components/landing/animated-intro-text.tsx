@@ -11,10 +11,6 @@ export function AnimatedIntroText() {
   
   const textToProcess = originalText.replace(/&apos;/g, "'");
 
-  // This will be the background grey text. Spans remain for structure, but color class is removed.
-  const greyText = textToProcess.replace(/ class="text-accent"/g, '');
-
-
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -42,7 +38,6 @@ export function AnimatedIntroText() {
     if (isVisible) {
       let timeout: NodeJS.Timeout;
 
-      // Delay before starting animation
       timeout = setTimeout(() => {
         let currentIndex = 0;
         
@@ -68,7 +63,7 @@ export function AnimatedIntroText() {
         
         type();
 
-      }, 200); // Initial delay
+      }, 200);
 
       return () => clearTimeout(timeout);
     }
@@ -77,14 +72,7 @@ export function AnimatedIntroText() {
   return (
     <div ref={containerRef} className="relative w-full flex justify-end">
       <h2 className="text-4xl md:text-5xl lg:text-6xl font-medium leading-[1.05] tracking-tight max-w-7xl min-h-[4.5em]">
-        <span
-          className="text-muted-foreground/20"
-          dangerouslySetInnerHTML={{ __html: greyText }}
-        />
-        
-        <span className="absolute top-0 left-0 w-full h-full">
-          <span dangerouslySetInnerHTML={{ __html: displayedHtml }} />
-        </span>
+        <span dangerouslySetInnerHTML={{ __html: displayedHtml }} />
       </h2>
     </div>
   );
