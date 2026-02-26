@@ -79,7 +79,6 @@ export function AnimatedTestimonialText({ text }: AnimatedTestimonialTextProps) 
     return balanceTags(invisiblePart);
   };
 
-  // On mobile or before hydration, render the full text simply without animation or background layer
   if (!mounted || isMobile) {
     return (
       <blockquote className="relative text-3xl md:text-5xl font-medium leading-tight tracking-tight text-foreground">
@@ -91,13 +90,11 @@ export function AnimatedTestimonialText({ text }: AnimatedTestimonialTextProps) 
   return (
     <div ref={containerRef} className="relative w-full">
       <blockquote className="relative text-3xl md:text-5xl font-medium leading-tight tracking-tight min-h-[8em] md:min-h-[6em]">
-        {/* Background Layer: Constant Grey Ghost Text */}
         <div 
           className="text-foreground/10 select-none [&_*]:text-foreground/10"
           dangerouslySetInnerHTML={{ __html: textToProcess }}
         />
         
-        {/* Foreground Layer: Typing Animation */}
         <div className="absolute top-0 left-0 text-foreground w-full pointer-events-none">
           <span dangerouslySetInnerHTML={{ __html: getVisibleHtml() }} />
           <span 

@@ -15,7 +15,7 @@ export function Hero() {
     <section className="relative h-screen w-full flex flex-col overflow-hidden bg-background">
       <div className="absolute inset-0 z-0 animate-clip-reveal origin-bottom">
         <Image
-          src="/hero11.png"
+          src="/hero111.png"
           alt="Hero background"
           fill
           className="w-full h-full object-cover object-[center_25%] md:hidden"
