@@ -14,7 +14,7 @@ export function Hero() {
     <section className="relative h-screen w-full flex flex-col overflow-hidden bg-secondary">
       <div className="absolute inset-0 z-0 animate-clip-reveal origin-bottom">
         <Image
-          src="/hero11.png"
+          src="/hero1.jpg"
           alt="Hero background"
           fill
           className="w-full h-full object-cover object-[center_25%] md:hidden"
@@ -32,10 +32,10 @@ export function Hero() {
 
       <div className="absolute inset-0 z-10 flex items-center justify-center pt-32 md:pt-48 overflow-hidden pointer-events-none mix-blend-difference text-white">
         <div className="flex animate-hero-marquee">
-          <h1 className="shrink-0 text-[22vw] md:text-huge font-semibold tracking-tighter leading-none px-8 whitespace-nowrap">
+          <h1 className="shrink-0 text-[25vw] md:text-huge font-semibold tracking-tighter leading-none px-8 whitespace-nowrap">
             Joharie Kisiangani
           </h1>
-          <h1 className="shrink-0 text-[22vw] md:text-huge font-semibold tracking-tighter leading-none px-8 whitespace-nowrap" aria-hidden="true">
+          <h1 className="shrink-0 text-[25vw] md:text-huge font-semibold tracking-tighter leading-none px-8 whitespace-nowrap" aria-hidden="true">
             Joharie Kisiangani
           </h1>
         </div>
@@ -55,7 +55,7 @@ export function Hero() {
                   rel="noopener noreferrer"
                   className="flex items-center gap-3 text-base md:text-lg font-medium text-white hover:text-accent transition-colors group"
                 >
-                  <social.icon className="h-6 w-6 text-neutral-300 group-hover:text-accent" />
+                  <social.icon className="h-6 w-6 text-white group-hover:text-accent" />
                   <span className="hidden md:inline">{social.name}</span>
                 </Link>
             ))}
@@ -63,7 +63,7 @@ export function Hero() {
 
           <div className="text-left md:text-right">
             <h2 className="text-4xl md:text-6xl lg:text-8xl font-medium tracking-tighter leading-[0.85]">
-              <span className="block text-accent text-2xl md:text-4xl lg:text-5xl mb-2 tracking-tight font-normal">//Product Designer</span>
+              <span className="block text-accent text-3xl md:text-4xl lg:text-5xl mb-2 tracking-tight font-normal">//Product Designer</span>
               <span className="text-accent">UX Engineer</span>
             </h2>
           </div>

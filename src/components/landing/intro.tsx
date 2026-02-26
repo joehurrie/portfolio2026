@@ -20,7 +20,7 @@ export function Intro() {
 
                         <div className="reveal-on-scroll" style={{ transitionDelay: '100ms' }}>
                             <div className="w-full flex justify-end">
-                                <p className="text-muted-foreground text-lg md:text-xl max-w-2xl leading-relaxed text-right font-light">
+                                <p className="text-foreground text-xl md:text-2xl max-w-2xl leading-relaxed text-right font-light">
                                     Bringing your vision to life quickly and efficiently—whether it's branding, apps, or websites—I've got it covered, delivering smooth and effective solutions from start to finish.
                                 </p>
                             </div>
@@ -28,7 +28,7 @@ export function Intro() {
 
                         <div className="reveal-on-scroll" style={{ transitionDelay: '200ms' }}>
                             <div className="flex justify-center mt-12">
-                                <Button asChild size="lg" variant="outline" className="rounded-full group text-lg md:text-xl py-7 px-10">
+                                <Button asChild size="lg" variant="outline" className="rounded-full group text-lg md:text-xl py-7 px-10 border-foreground text-foreground hover:bg-foreground hover:text-background">
                                     <Link href="#projects" className="flex items-center gap-3">
                                         See my Work
                                         <ArrowRight className="h-6 w-6 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
