@@ -9,6 +9,7 @@ import { useState } from 'react';
 import { cn } from '@/lib/utils';
 
 const navLinks = [
+  { href: '/', label: 'Home' },
   { href: '/projects', label: 'Work Index' },
   { href: '/about', label: 'About' },
   { href: '/contact', label: 'Contact' },
@@ -16,10 +17,17 @@ const navLinks = [
 
 const MenuIcon = () => (
   <div className="flex flex-col gap-1.5 w-6 py-1">
-    <div className="h-[1px] w-full bg-neutral-400 animate-pulse" style={{ animationDuration: '2s', animationDelay: '0s' }} />
-    <div className="h-[1px] w-full bg-neutral-400 animate-pulse" style={{ animationDuration: '2s', animationDelay: '0.4s' }} />
-    <div className="h-[1px] w-full bg-neutral-400 animate-pulse" style={{ animationDuration: '2s', animationDelay: '0.8s' }} />
+    <div className="h-[1px] w-full bg-neutral-500 animate-pulse" style={{ animationDuration: '2s', animationDelay: '0s' }} />
+    <div className="h-[1px] w-full bg-neutral-500 animate-pulse" style={{ animationDuration: '2s', animationDelay: '0.4s' }} />
+    <div className="h-[1px] w-full bg-neutral-500 animate-pulse" style={{ animationDuration: '2s', animationDelay: '0.8s' }} />
   </div>
+);
+
+const BeepingDot = () => (
+  <span className="relative flex h-2 w-2">
+    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-500 opacity-75"></span>
+    <span className="relative inline-flex rounded-full h-2 w-2 bg-orange-600"></span>
+  </span>
 );
 
 export function Header() {
@@ -29,7 +37,7 @@ export function Header() {
   return (
     <header 
       className={cn(
-        "absolute top-0 left-0 w-full z-50 flex justify-between items-center px-6 py-8 md:px-12 md:py-12 mix-blend-difference text-neutral-300"
+        "absolute top-0 left-0 w-full z-50 flex justify-between items-center px-6 py-8 md:px-12 md:py-12 mix-blend-difference text-neutral-400"
       )}
     >
       <Link href="/" className="text-base font-medium tracking-tight hover:text-white transition-colors">
@@ -46,7 +54,7 @@ export function Header() {
               : "max-w-0 opacity-0 pr-0"
           )}
         >
-          {navLinks.map((link) => (
+          {navLinks.slice(1).map((link) => (
             <Link
               key={link.href}
               href={link.href}
@@ -61,10 +69,10 @@ export function Header() {
           onClick={() => setIsDesktopMenuOpen(!isDesktopMenuOpen)}
           className="flex items-center gap-3 group"
         >
-          <span className="text-xs uppercase tracking-[0.2em] font-code font-bold text-neutral-400 group-hover:text-white transition-colors">
+          <span className="text-xs uppercase tracking-[0.2em] font-code font-bold text-neutral-500 group-hover:text-white transition-colors">
             {isDesktopMenuOpen ? 'Close' : 'Menu'}
           </span>
-          {!isDesktopMenuOpen ? <MenuIcon /> : <X className="w-5 h-5 text-neutral-400 group-hover:text-white transition-colors" />}
+          {!isDesktopMenuOpen ? <MenuIcon /> : <X className="w-5 h-5 text-neutral-500 group-hover:text-white transition-colors" />}
         </button>
       </nav>
 
@@ -73,7 +81,7 @@ export function Header() {
         <Sheet open={isOpen} onOpenChange={setIsOpen}>
           <SheetTrigger asChild>
             <button className="flex items-center gap-2">
-              <span className="text-xs uppercase tracking-[0.2em] font-code font-bold text-neutral-400">Menu</span>
+              <span className="text-xs uppercase tracking-[0.2em] font-code font-bold text-neutral-500">Menu</span>
               <MenuIcon />
             </button>
           </SheetTrigger>
@@ -82,7 +90,7 @@ export function Header() {
                 <div className="flex flex-col justify-between min-h-[100dvh] py-24 px-8 relative">
                   <div className="absolute top-8 right-6">
                     <SheetClose asChild>
-                      <Button variant="ghost" size="icon" className="text-neutral-400 hover:text-foreground h-10 w-10">
+                      <Button variant="ghost" size="icon" className="text-neutral-500 hover:text-foreground h-10 w-10">
                         <X size={24} />
                       </Button>
                     </SheetClose>
@@ -103,22 +111,25 @@ export function Header() {
                     ))}
                   </nav>
 
-                  <div className="mt-auto pt-16 grid grid-cols-1 gap-10 border-t border-border/50">
+                  <div className="mt-auto pt-16 flex flex-col gap-8 border-t border-border/50">
                     <div className="space-y-4">
                       <div className="flex flex-col gap-1">
-                        <p className="text-xs uppercase tracking-[0.2em] font-code text-muted-foreground font-bold">Inquiries</p>
-                        <p className="text-xl font-light">hello@joharie.com</p>
+                        <p className="text-[10px] uppercase tracking-[0.2em] font-code text-muted-foreground font-bold">Location</p>
+                        <p className="text-lg font-light">Berlin, Germany</p>
                       </div>
                       <div className="flex flex-col gap-1">
-                        <p className="text-xs uppercase tracking-[0.2em] font-code text-muted-foreground font-bold">Location</p>
-                        <p className="text-xl font-light">Berlin, Germany</p>
+                        <p className="text-[10px] uppercase tracking-[0.2em] font-code text-muted-foreground font-bold">Availability</p>
+                        <div className="flex items-center gap-3">
+                          <BeepingDot />
+                          <p className="text-lg font-light">Remote / Worldwide</p>
+                        </div>
                       </div>
                     </div>
                     
-                    <div className="flex gap-8 opacity-60 hover:opacity-100 transition-opacity">
-                      <Link href="#" className="font-code text-xs hover:text-accent transition-colors uppercase tracking-widest">LinkedIn</Link>
-                      <Link href="#" className="font-code text-xs hover:text-accent transition-colors uppercase tracking-widest">Twitter</Link>
-                      <Link href="#" className="font-code text-xs hover:text-accent transition-colors uppercase tracking-widest">Instagram</Link>
+                    <div className="flex gap-8 opacity-60">
+                      <Link href="#" className="font-code text-[10px] hover:text-accent transition-colors uppercase tracking-widest">LinkedIn</Link>
+                      <Link href="#" className="font-code text-[10px] hover:text-accent transition-colors uppercase tracking-widest">Twitter</Link>
+                      <Link href="#" className="font-code text-[10px] hover:text-accent transition-colors uppercase tracking-widest">Instagram</Link>
                     </div>
                   </div>
                 </div>
