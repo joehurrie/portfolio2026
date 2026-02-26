@@ -57,7 +57,7 @@ export function AnimatedIntroText() {
             
             setDisplayedHtml(prev => prev + partToAdd);
             currentIndex = nextIndex;
-            timeout = setTimeout(type, 50);
+            timeout = setTimeout(type, 40);
           }
         };
         
@@ -71,9 +71,19 @@ export function AnimatedIntroText() {
 
   return (
     <div ref={containerRef} className="relative w-full flex justify-end">
-      <h2 className="text-5xl md:text-6xl lg:text-7xl font-medium leading-[1.05] tracking-tight max-w-7xl min-h-[4.5em] text-foreground">
-        <span dangerouslySetInnerHTML={{ __html: displayedHtml }} />
-      </h2>
+      <div className="relative text-5xl md:text-6xl lg:text-7xl font-medium leading-[1.05] tracking-tight max-w-7xl min-h-[4.5em]">
+        {/* Background Layer: Muted Grey Text */}
+        <div 
+          className="text-muted/10 select-none"
+          dangerouslySetInnerHTML={{ __html: textToProcess }}
+        />
+        
+        {/* Foreground Layer: Typing Animation */}
+        <div 
+          className="absolute top-0 left-0 text-foreground"
+          dangerouslySetInnerHTML={{ __html: displayedHtml }}
+        />
+      </div>
     </div>
   );
 }
