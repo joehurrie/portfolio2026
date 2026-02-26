@@ -6,6 +6,7 @@ import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { Button } from "@/components/ui/button";
 import { ArrowUpRight } from 'lucide-react';
 import { AnimatedAboutCtaText } from "@/components/about/animated-about-cta";
+import { AboutExperience } from "@/components/about/experience";
 
 const archiveItems = [
   { id: '01', name: 'Vibrent', context: 'SOTD', source: 'Awwwards' },
@@ -109,6 +110,9 @@ export default function AboutPage() {
             </div>
           </div>
         </section>
+
+        {/* New dynamic Stats section based on Services scrolling logic */}
+        <AboutExperience />
 
         {/* Archive / Awards Section */}
         <section className="py-24 md:py-32 bg-background border-t border-border/50">
