@@ -68,10 +68,10 @@ export function Footer() {
       {/* Top Marquee Text Layer - Large Blend Effect Text */}
       <div className="absolute top-0 left-0 right-0 z-10 flex items-start justify-center pt-24 md:pt-32 overflow-hidden pointer-events-none mix-blend-difference text-white">
         <div className="flex animate-hero-marquee">
-          <h1 className="shrink-0 text-huge font-semibold tracking-tighter leading-none px-8 whitespace-nowrap">
+          <h1 className="shrink-0 text-7xl md:text-8xl lg:text-[10vw] font-semibold tracking-tighter leading-none px-8 whitespace-nowrap">
             Reach Out — Reach Out —
           </h1>
-          <h1 className="shrink-0 text-huge font-semibold tracking-tighter leading-none px-8 whitespace-nowrap" aria-hidden="true">
+          <h1 className="shrink-0 text-7xl md:text-8xl lg:text-[10vw] font-semibold tracking-tighter leading-none px-8 whitespace-nowrap" aria-hidden="true">
             Reach Out — Reach Out —
           </h1>
         </div>
