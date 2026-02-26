@@ -12,7 +12,7 @@ export function Hero() {
   ];
 
   return (
-    <section className="relative h-screen w-full flex flex-col overflow-hidden bg-background">
+    <section className="relative h-screen min-h-screen w-full flex flex-col overflow-hidden bg-background">
       <div className="absolute inset-0 z-0 animate-clip-reveal origin-bottom">
         <Image
           src="/hero111.png"
@@ -46,7 +46,7 @@ export function Hero() {
           className="flex flex-row justify-between items-end w-full animate-slide-up-fade"
           style={{ animationDelay: '0.8s' }}
         >
-          <div className="flex flex-row md:flex-col gap-6 md:gap-4 mb-2 md:mb-0 mix-blend-difference">
+          <div className="flex flex-row gap-6 md:gap-4 mb-2 md:mb-0 mix-blend-difference">
             {socialLinks.map((social) => (
                 <Link
                   key={social.name}
