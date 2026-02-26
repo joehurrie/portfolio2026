@@ -25,11 +25,11 @@ export function Footer() {
     { label: "Phone", value: "+49 30 12345678" },
   ];
 
-  // Auto-scroll effect
+  // Auto-scroll effect: Drifting LEFT (Right-to-Left flow)
   useEffect(() => {
     let animationFrameId: number;
     const animate = () => {
-      setAutoX((prev) => (prev + 0.5) % 2000); // Constant slow drift
+      setAutoX((prev) => (prev - 0.8) % 2000); // Constant slow drift LEFT
       animationFrameId = requestAnimationFrame(animate);
     };
     animationFrameId = requestAnimationFrame(animate);
@@ -50,9 +50,8 @@ export function Footer() {
         setOffset(scrolledIntoView * 0.15);
       }
 
-      // Reactive Scroll Offset
-      // We map the scroll position to an additional translation
-      setScrollX(scrollY * 0.5); 
+      // Reactive Scroll Offset: Pulling LEFT on scroll down
+      setScrollX(-scrollY * 0.6); 
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
@@ -88,7 +87,7 @@ export function Footer() {
       <div className="absolute top-0 left-0 right-0 z-10 flex items-start justify-center pt-24 md:pt-32 overflow-hidden pointer-events-none mix-blend-difference text-white">
         <div 
           className="flex whitespace-nowrap will-change-transform"
-          style={{ transform: `translateX(calc(-50% + ${(autoX + scrollX) % 1000}px))` }}
+          style={{ transform: `translateX(calc(-33.33% + ${(autoX + scrollX) % 1000}px))` }}
         >
           <h1 className="shrink-0 text-7xl md:text-8xl lg:text-[10vw] font-semibold tracking-tighter leading-none px-8">
             Reach Out — Reach Out — Reach Out —
