@@ -1,3 +1,4 @@
+
 "use client";
 
 import Link from 'next/link';
@@ -16,10 +17,10 @@ const navLinks = [
 ];
 
 const MenuIcon = () => (
-  <div className="flex flex-col gap-1 w-6 py-1">
-    <div className="h-[2.5px] w-full bg-current rounded-full" />
-    <div className="h-[2.5px] w-full bg-current rounded-full" />
-    <div className="h-[2.5px] w-full bg-current rounded-full" />
+  <div className="flex flex-col gap-1.5 w-6 py-1">
+    <div className="h-[3px] w-full bg-current rounded-full" />
+    <div className="h-[3px] w-full bg-current rounded-full" />
+    <div className="h-[3px] w-full bg-current rounded-full" />
   </div>
 );
 
@@ -37,10 +38,10 @@ export function Header() {
   return (
     <header 
       className={cn(
-        "absolute top-0 left-0 w-full z-50 flex justify-between items-center px-6 py-8 md:px-12 md:py-12 mix-blend-difference text-neutral-400"
+        "absolute top-0 left-0 w-full z-50 flex justify-between items-center px-6 py-8 md:px-12 md:py-12 mix-blend-difference"
       )}
     >
-      <Link href="/" className="text-base font-medium tracking-tight hover:text-accent transition-colors">
+      <Link href="/" className="text-base font-medium tracking-tight text-neutral-400 hover:text-accent transition-colors">
         Joharie Kisiangani
       </Link>
 
@@ -58,7 +59,7 @@ export function Header() {
             <Link
               key={link.href}
               href={link.href}
-              className="text-xs uppercase tracking-[0.2em] font-code opacity-50 hover:opacity-100 hover:text-accent transition-all duration-500 whitespace-nowrap"
+              className="text-xs uppercase tracking-[0.2em] font-code text-neutral-500 hover:text-accent transition-all duration-500 whitespace-nowrap"
             >
               {link.label}
             </Link>
@@ -72,7 +73,7 @@ export function Header() {
           <span className="text-xs uppercase tracking-[0.2em] font-code font-bold">
             {isDesktopMenuOpen ? 'Close' : 'Menu'}
           </span>
-          {!isDesktopMenuOpen ? <MenuIcon /> : <X className="w-5 h-5" />}
+          {!isDesktopMenuOpen ? <MenuIcon /> : <X className="w-5 h-5 stroke-[2.5px]" />}
         </button>
       </nav>
 
@@ -92,14 +93,14 @@ export function Header() {
              <ScrollArea className="flex-1 w-full">
                 <div className="flex flex-col justify-between min-h-[100dvh] py-24 px-8 relative">
                   <div className="absolute top-8 left-6">
-                     <Link href="/" className="text-base font-medium tracking-tight hover:text-accent transition-colors" onClick={() => setIsOpen(false)}>
+                     <Link href="/" className="text-base font-medium tracking-tight text-neutral-500 hover:text-accent transition-colors" onClick={() => setIsOpen(false)}>
                         Joharie Kisiangani
                     </Link>
                   </div>
                   <div className="absolute top-8 right-6">
                     <SheetClose asChild>
-                      <Button variant="ghost" size="icon" className="text-muted-foreground hover:text-accent h-10 w-10">
-                        <X size={24} />
+                      <Button variant="ghost" size="icon" className="text-neutral-500 hover:text-accent h-10 w-10">
+                        <X size={24} strokeWidth={2.5} />
                       </Button>
                     </SheetClose>
                   </div>
@@ -109,7 +110,7 @@ export function Header() {
                       <SheetClose asChild key={link.href}>
                         <Link
                           href={link.href}
-                          className="hover:text-accent transition-all duration-300 hover:translate-x-2 block"
+                          className="text-neutral-500 hover:text-accent transition-all duration-300 hover:translate-x-2 block"
                           onClick={() => setIsOpen(false)}
                         >
                           {link.label}
@@ -121,11 +122,11 @@ export function Header() {
                   <div className="mt-auto pt-16 flex flex-col gap-8 border-t border-border/10">
                     <div className="grid grid-cols-1 gap-6">
                       <div className="flex flex-col gap-1">
-                        <p className="text-[10px] uppercase tracking-[0.2em] font-code text-muted-foreground font-bold">Location</p>
+                        <p className="text-[10px] uppercase tracking-[0.2em] font-code text-neutral-500 font-bold">Location</p>
                         <p className="text-xs font-light">Nairobi, Kenya</p>
                       </div>
                       <div className="flex flex-col gap-1">
-                        <p className="text-[10px] uppercase tracking-[0.2em] font-code text-muted-foreground font-bold">Availability</p>
+                        <p className="text-[10px] uppercase tracking-[0.2em] font-code text-neutral-500 font-bold">Availability</p>
                         <div className="flex items-center gap-2">
                           <BeepingDot />
                           <p className="text-xs font-light">Remote, Worldwide</p>
@@ -134,9 +135,9 @@ export function Header() {
                     </div>
                     
                     <div className="flex gap-8">
-                      <Link href="#" className="font-code text-[10px] text-muted-foreground hover:text-accent transition-colors uppercase tracking-widest">LinkedIn</Link>
-                      <Link href="#" className="font-code text-[10px] text-muted-foreground hover:text-accent transition-colors uppercase tracking-widest">Twitter</Link>
-                      <Link href="#" className="font-code text-[10px] text-muted-foreground hover:text-accent transition-colors uppercase tracking-widest">Instagram</Link>
+                      <Link href="#" className="font-code text-[10px] text-neutral-500 hover:text-accent transition-colors uppercase tracking-widest">LinkedIn</Link>
+                      <Link href="#" className="font-code text-[10px] text-neutral-500 hover:text-accent transition-colors uppercase tracking-widest">Twitter</Link>
+                      <Link href="#" className="font-code text-[10px] text-neutral-500 hover:text-accent transition-colors uppercase tracking-widest">Instagram</Link>
                     </div>
                   </div>
                 </div>
