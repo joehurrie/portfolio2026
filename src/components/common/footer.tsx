@@ -94,7 +94,7 @@ export function Footer() {
           <div className="beam-border" />
           <Link 
             href="/contact"
-            className="beam-content py-4 px-10 text-base md:text-lg font-medium tracking-tight text-accent transition-all duration-300"
+            className="beam-content py-4 px-10 text-base md:text-lg font-medium tracking-tight text-white transition-all duration-300"
           >
             Let's collaborate
           </Link>
@@ -119,9 +119,9 @@ export function Footer() {
                   href={social.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 text-xs font-medium hover:text-accent transition-colors group"
+                  className="flex items-center gap-2 text-xs font-medium hover:text-primary transition-colors group"
                 >
-                  <social.icon className="h-4 w-4 text-neutral-500 group-hover:text-accent transition-colors" />
+                  <social.icon className="h-4 w-4 text-neutral-500 group-hover:text-primary transition-colors" />
                   <span className="hidden sm:inline uppercase tracking-widest">{social.name}</span>
                 </Link>
               ))}

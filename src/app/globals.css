@@ -84,6 +84,6 @@
   }
 
   .beam-content {
-    @apply relative z-10 bg-background rounded-full w-full h-full flex items-center justify-center transition-colors hover:bg-transparent hover:text-white;
+    @apply relative z-10 bg-white/5 backdrop-blur-lg rounded-full w-full h-full flex items-center justify-center transition-all duration-300 hover:bg-white/10 border border-white/5;
   }
 }
