@@ -17,6 +17,11 @@ export function AnimatedTestimonialText({ text }: AnimatedTestimonialTextProps) 
 
   const textToProcess = text.replace(/&apos;/g, "'");
 
+  // Reset animation when text changes (for desktop cycling)
+  useEffect(() => {
+    setCurrentIndex(0);
+  }, [text]);
+
   useEffect(() => {
     setMounted(true);
     const observer = new IntersectionObserver(
@@ -46,7 +51,6 @@ export function AnimatedTestimonialText({ text }: AnimatedTestimonialTextProps) 
       const timeout = setTimeout(() => {
         let nextIndex = currentIndex + 1;
         
-        // Handle HTML tags properly if they exist in the quote (like <span class="text-accent">)
         if (textToProcess[currentIndex] === '<') {
           const closingIndex = textToProcess.indexOf('>', currentIndex);
           if (closingIndex !== -1) {
@@ -55,7 +59,7 @@ export function AnimatedTestimonialText({ text }: AnimatedTestimonialTextProps) 
         }
         
         setCurrentIndex(nextIndex);
-      }, 20); // Slightly faster for longer quotes
+      }, 20);
       return () => clearTimeout(timeout);
     }
   }, [isVisible, currentIndex, textToProcess, isMobile]);
