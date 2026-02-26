@@ -43,10 +43,10 @@ export function Hero() {
 
       <div className="relative z-20 w-full h-full flex flex-col justify-end px-6 pb-8 md:px-12 md:pb-12">
         <div 
-          className="flex flex-col md:flex-row justify-between items-start md:items-end w-full animate-slide-up-fade"
+          className="flex flex-row justify-between items-end w-full animate-slide-up-fade"
           style={{ animationDelay: '0.8s' }}
         >
-          <div className="flex flex-row md:flex-col gap-6 md:gap-4 mb-8 md:mb-0 mix-blend-difference">
+          <div className="flex flex-row md:flex-col gap-6 md:gap-4 mb-2 md:mb-0 mix-blend-difference">
             {socialLinks.map((social) => (
                 <Link
                   key={social.name}
@@ -61,10 +61,10 @@ export function Hero() {
             ))}
           </div>
 
-          <div className="text-left md:text-right">
-            <h2 className="text-4xl md:text-6xl lg:text-8xl font-medium tracking-tighter leading-[0.85]">
-              <span className="block text-accent text-3xl md:text-4xl lg:text-5xl mb-2 tracking-tight font-normal">//Product Designer</span>
-              <span className="text-accent">UX Engineer</span>
+          <div className="text-right">
+            <h2 className="text-2xl md:text-6xl lg:text-8xl font-medium tracking-tighter leading-[0.85]">
+              <span className="block text-accent text-sm md:text-4xl lg:text-5xl mb-1 md:mb-2 tracking-tight font-normal whitespace-nowrap">//Product Designer</span>
+              <span className="text-accent whitespace-nowrap">UX Engineer</span>
             </h2>
           </div>
         </div>

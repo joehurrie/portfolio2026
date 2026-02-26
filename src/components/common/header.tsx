@@ -2,7 +2,7 @@
 "use client";
 
 import Link from 'next/link';
-import { Menu, X } from 'lucide-react';
+import { X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from '@/components/ui/sheet';
 import { ScrollArea } from '@/components/ui/scroll-area';
@@ -14,6 +14,14 @@ const navLinks = [
   { href: '/about', label: 'About' },
   { href: '/contact', label: 'Contact' },
 ];
+
+const MenuIcon = () => (
+  <div className="flex flex-col gap-1 w-6 py-1">
+    <div className="h-[1.5px] w-full bg-accent animate-pulse" style={{ animationDuration: '2s', animationDelay: '0s' }} />
+    <div className="h-[1.5px] w-full bg-accent animate-pulse" style={{ animationDuration: '2s', animationDelay: '0.4s' }} />
+    <div className="h-[1.5px] w-full bg-accent animate-pulse" style={{ animationDuration: '2s', animationDelay: '0.8s' }} />
+  </div>
+);
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -52,14 +60,12 @@ export function Header() {
         
         <button 
           onClick={() => setIsDesktopMenuOpen(!isDesktopMenuOpen)}
-          className={cn(
-            "text-[10px] md:text-xs uppercase tracking-[0.3em] font-code py-2.5 px-6 rounded-full transition-all duration-500 border border-white/10",
-            isDesktopMenuOpen 
-              ? "bg-white text-black border-white" 
-              : "bg-neutral-800 text-neutral-300 hover:bg-neutral-700"
-          )}
+          className="flex items-center gap-4 group"
         >
-          {isDesktopMenuOpen ? 'Close' : 'Menu'}
+          <span className="text-[10px] md:text-xs uppercase tracking-[0.3em] font-code font-bold text-accent">
+            {isDesktopMenuOpen ? 'Close' : 'Menu'}
+          </span>
+          {!isDesktopMenuOpen ? <MenuIcon /> : <X className="w-5 h-5 text-accent" />}
         </button>
       </nav>
 
@@ -67,16 +73,17 @@ export function Header() {
       <div className="flex md:hidden items-center">
         <Sheet open={isOpen} onOpenChange={setIsOpen}>
           <SheetTrigger asChild>
-            <Button variant="ghost" size="sm" className="flex items-center gap-2 text-neutral-400 hover:bg-transparent hover:text-white p-0 h-auto">
-              <Menu size={24} />
-            </Button>
+            <button className="flex items-center gap-3">
+              <span className="text-[10px] uppercase tracking-[0.3em] font-code font-bold text-accent">Menu</span>
+              <MenuIcon />
+            </button>
           </SheetTrigger>
           <SheetContent side="right" className="bg-card text-card-foreground p-0 w-full border-l border-white/5 flex flex-col">
              <ScrollArea className="flex-1 w-full">
                 <div className="flex flex-col items-center justify-center min-h-[100dvh] py-24 px-6 relative">
                   <div className="absolute top-8 right-6">
                     <SheetClose asChild>
-                      <Button variant="ghost" size="icon" className="text-muted-foreground hover:text-white h-12 w-12">
+                      <Button variant="ghost" size="icon" className="text-accent hover:text-white h-12 w-12">
                         <X size={32} />
                       </Button>
                     </SheetClose>
