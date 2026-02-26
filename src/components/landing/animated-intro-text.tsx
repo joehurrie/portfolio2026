@@ -40,7 +40,7 @@ export function AnimatedIntroText() {
       const timeout = setTimeout(() => {
         let nextIndex = currentIndex + 1;
         
-        // Skip HTML tags so they appear instantly
+        // If we hit an opening tag, skip to the end of it to keep HTML valid
         if (textToProcess[currentIndex] === '<') {
           const closingIndex = textToProcess.indexOf('>', currentIndex);
           if (closingIndex !== -1) {
@@ -49,41 +49,56 @@ export function AnimatedIntroText() {
         }
         
         setCurrentIndex(nextIndex);
-      }, 35);
+      }, 30); // Steady typing speed
       return () => clearTimeout(timeout);
     }
   }, [isVisible, currentIndex, textToProcess]);
 
-  // Construct partial HTML while ensuring tags like <span> are properly closed
-  const getPartialHtml = (index: number) => {
-    let html = textToProcess.substring(0, index);
-    
+  // Helper to ensure tags are balanced in a partial string
+  const balanceTags = (html: string) => {
     const openSpans = (html.match(/<span/g) || []).length;
     const closedSpans = (html.match(/<\/span>/g) || []).length;
-    
+    let balanced = html;
     for (let i = 0; i < openSpans - closedSpans; i++) {
-      html += '</span>';
+      balanced += '</span>';
     }
-    
-    return html;
+    return balanced;
   };
 
-  const displayedHtml = getPartialHtml(currentIndex);
+  // The secret to stable wrapping: 
+  // Render the FULL text in the foreground, but make the "untyped" part invisible.
+  // This ensures the layout engine sees the exact same words for wrapping in both layers.
+  const getVisibleHtml = () => {
+    const visiblePart = textToProcess.substring(0, currentIndex);
+    return balanceTags(visiblePart);
+  };
+
+  const getInvisibleHtml = () => {
+    const invisiblePart = textToProcess.substring(currentIndex);
+    // If we are in the middle of a tag, this is complex, 
+    // but standard typewriter usually handles character offsets.
+    // For simplicity, we balance the "invisible" part as its own fragment.
+    return balanceTags(invisiblePart);
+  };
 
   return (
     <div ref={containerRef} className="relative w-full">
       <div className="relative text-4xl md:text-5xl lg:text-7xl font-medium leading-[1.15] tracking-tight max-w-[1400px]">
-        {/* Background Layer: Muted Ghost Text */}
+        {/* Background Layer: Constant Grey Ghost Text */}
         <div 
           className="text-foreground/5 select-none"
           dangerouslySetInnerHTML={{ __html: textToProcess }}
         />
         
         {/* Foreground Layer: Typing Animation */}
-        <div 
-          className="absolute top-0 left-0 text-foreground w-full"
-          dangerouslySetInnerHTML={{ __html: displayedHtml }}
-        />
+        {/* We use visibility: hidden on the remainder to maintain perfect wrapping */}
+        <div className="absolute top-0 left-0 text-foreground w-full pointer-events-none">
+          <span dangerouslySetInnerHTML={{ __html: getVisibleHtml() }} />
+          <span 
+            className="invisible"
+            dangerouslySetInnerHTML={{ __html: getInvisibleHtml() }} 
+          />
+        </div>
       </div>
     </div>
   );
