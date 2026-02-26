@@ -45,7 +45,7 @@ export function BackToTop() {
     >
       <ArrowUp 
         className="h-6 w-6 transition-transform duration-700 ease-in-out group-hover:rotate-[360deg]" 
-        style={{ color: 'hsl(var(--orange))' }}
+        style={{ color: 'hsl(var(--accent))' }}
       />
       
       {/* Subtle outer glow on hover */}
