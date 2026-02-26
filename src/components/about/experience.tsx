@@ -60,7 +60,7 @@ export function AboutExperience() {
       <div className="container mx-auto max-w-7xl px-6 md:px-12">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-16 md:gap-8">
           
-          {/* Left Column: Sticky Number */}
+          {/* Left Column: Sticky Lottery Counter */}
           <div className="hidden md:block md:col-span-5 relative">
             <div className="sticky top-1/4 self-start flex justify-center lg:justify-start">
               <div className="relative">
