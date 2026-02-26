@@ -16,10 +16,10 @@ const navLinks = [
 ];
 
 const MenuIcon = () => (
-  <div className="flex flex-col gap-1 w-6 py-1">
-    <div className="h-[1.5px] w-full bg-[hsl(var(--orange))] animate-pulse" style={{ animationDuration: '2s', animationDelay: '0s' }} />
-    <div className="h-[1.5px] w-full bg-[hsl(var(--orange))] animate-pulse" style={{ animationDuration: '2s', animationDelay: '0.4s' }} />
-    <div className="h-[1.5px] w-full bg-[hsl(var(--orange))] animate-pulse" style={{ animationDuration: '2s', animationDelay: '0.8s' }} />
+  <div className="flex flex-col gap-1.5 w-6 py-1">
+    <div className="h-[1px] w-full bg-neutral-400 animate-pulse" style={{ animationDuration: '2s', animationDelay: '0s' }} />
+    <div className="h-[1px] w-full bg-neutral-400 animate-pulse" style={{ animationDuration: '2s', animationDelay: '0.4s' }} />
+    <div className="h-[1px] w-full bg-neutral-400 animate-pulse" style={{ animationDuration: '2s', animationDelay: '0.8s' }} />
   </div>
 );
 
@@ -62,10 +62,10 @@ export function Header() {
           onClick={() => setIsDesktopMenuOpen(!isDesktopMenuOpen)}
           className="flex items-center gap-4 group"
         >
-          <span className="text-[10px] md:text-xs uppercase tracking-[0.3em] font-code font-bold text-[hsl(var(--orange))]">
+          <span className="text-[10px] md:text-xs uppercase tracking-[0.3em] font-code font-bold text-neutral-400 group-hover:text-white transition-colors">
             {isDesktopMenuOpen ? 'Close' : 'Menu'}
           </span>
-          {!isDesktopMenuOpen ? <MenuIcon /> : <X className="w-5 h-5 text-[hsl(var(--orange))]" />}
+          {!isDesktopMenuOpen ? <MenuIcon /> : <X className="w-5 h-5 text-neutral-400 group-hover:text-white transition-colors" />}
         </button>
       </nav>
 
@@ -74,7 +74,7 @@ export function Header() {
         <Sheet open={isOpen} onOpenChange={setIsOpen}>
           <SheetTrigger asChild>
             <button className="flex items-center gap-3">
-              <span className="text-[10px] uppercase tracking-[0.3em] font-code font-bold text-[hsl(var(--orange))]">Menu</span>
+              <span className="text-[10px] uppercase tracking-[0.3em] font-code font-bold text-neutral-400">Menu</span>
               <MenuIcon />
             </button>
           </SheetTrigger>
@@ -83,7 +83,7 @@ export function Header() {
                 <div className="flex flex-col items-center justify-center min-h-[100dvh] py-24 px-6 relative">
                   <div className="absolute top-8 right-6">
                     <SheetClose asChild>
-                      <Button variant="ghost" size="icon" className="text-[hsl(var(--orange))] hover:text-white h-12 w-12">
+                      <Button variant="ghost" size="icon" className="text-neutral-400 hover:text-white h-12 w-12">
                         <X size={32} />
                       </Button>
                     </SheetClose>
@@ -94,7 +94,7 @@ export function Header() {
                       <SheetClose asChild key={link.href}>
                         <Link
                           href={link.href}
-                          className="hover:text-[hsl(var(--orange))] transition-all duration-500 hover:translate-x-4 block text-center"
+                          className="hover:text-accent transition-all duration-500 hover:translate-x-4 block text-center"
                           onClick={() => setIsOpen(false)}
                           style={{ transitionDelay: `${index * 100}ms` }}
                         >
@@ -106,19 +106,19 @@ export function Header() {
 
                   <div className="mt-20 grid grid-cols-1 gap-10 w-full max-w-xs text-center pt-12 border-t border-white/10">
                     <div className="flex flex-col gap-1">
-                      <p className="text-[10px] uppercase tracking-[0.3em] font-code text-[hsl(var(--orange))] font-bold">Inquiries</p>
+                      <p className="text-[10px] uppercase tracking-[0.3em] font-code text-neutral-500 font-bold">Inquiries</p>
                       <p className="text-lg font-light">hello@joharie.com</p>
                     </div>
                     <div className="flex flex-col gap-1">
-                      <p className="text-[10px] uppercase tracking-[0.3em] font-code text-[hsl(var(--orange))] font-bold">Location</p>
+                      <p className="text-[10px] uppercase tracking-[0.3em] font-code text-neutral-500 font-bold">Location</p>
                       <p className="text-lg font-light">Berlin, Germany</p>
                     </div>
                   </div>
                   
                   <div className="mt-12 flex gap-8 opacity-40 hover:opacity-100 transition-opacity pb-12">
-                    <Link href="#" className="font-code text-xs hover:text-[hsl(var(--orange))] transition-colors">LI</Link>
-                    <Link href="#" className="font-code text-xs hover:text-[hsl(var(--orange))] transition-colors">TW</Link>
-                    <Link href="#" className="font-code text-xs hover:text-[hsl(var(--orange))] transition-colors">IG</Link>
+                    <Link href="#" className="font-code text-xs hover:text-accent transition-colors">LI</Link>
+                    <Link href="#" className="font-code text-xs hover:text-accent transition-colors">TW</Link>
+                    <Link href="#" className="font-code text-xs hover:text-accent transition-colors">IG</Link>
                   </div>
                 </div>
              </ScrollArea>
