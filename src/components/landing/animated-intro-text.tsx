@@ -1,10 +1,11 @@
+
 "use client";
 
 import { useState, useEffect, useRef } from 'react';
 
 export function AnimatedIntroText() {
   const [isVisible, setIsVisible] = useState(false);
-  const [displayedHtml, setDisplayedHtml] = useState('');
+  const [currentIndex, setCurrentIndex] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
 
   const originalText = "I'm a versatile <span class=\"text-accent\">designer who partners with founders</span> to turn ideas into real <span class=\"text-accent\">products.</span> I focus on clear interfaces, sharp decisions, and fast execution.";
@@ -19,7 +20,7 @@ export function AnimatedIntroText() {
           observer.disconnect();
         }
       },
-      { threshold: 0.4 }
+      { threshold: 0.1 }
     );
 
     const currentRef = containerRef.current;
@@ -35,52 +36,52 @@ export function AnimatedIntroText() {
   }, []);
 
   useEffect(() => {
-    if (isVisible) {
-      let timeout: NodeJS.Timeout;
-
-      timeout = setTimeout(() => {
-        let currentIndex = 0;
+    if (isVisible && currentIndex < textToProcess.length) {
+      const timeout = setTimeout(() => {
+        let nextIndex = currentIndex + 1;
         
-        const type = () => {
-          if (currentIndex < textToProcess.length) {
-            let char = textToProcess[currentIndex];
-            let partToAdd = char;
-            let nextIndex = currentIndex + 1;
-
-            if (char === '<') {
-              const closingIndex = textToProcess.indexOf('>', currentIndex);
-              if (closingIndex !== -1) {
-                partToAdd = textToProcess.substring(currentIndex, closingIndex + 1);
-                nextIndex = closingIndex + 1;
-              }
-            }
-            
-            setDisplayedHtml(prev => prev + partToAdd);
-            currentIndex = nextIndex;
-            timeout = setTimeout(type, 40);
+        // Skip HTML tags so they appear instantly
+        if (textToProcess[currentIndex] === '<') {
+          const closingIndex = textToProcess.indexOf('>', currentIndex);
+          if (closingIndex !== -1) {
+            nextIndex = closingIndex + 1;
           }
-        };
+        }
         
-        type();
-
-      }, 200);
-
+        setCurrentIndex(nextIndex);
+      }, 35);
       return () => clearTimeout(timeout);
     }
-  }, [isVisible, textToProcess]);
+  }, [isVisible, currentIndex, textToProcess]);
+
+  // Construct partial HTML while ensuring tags like <span> are properly closed
+  const getPartialHtml = (index: number) => {
+    let html = textToProcess.substring(0, index);
+    
+    const openSpans = (html.match(/<span/g) || []).length;
+    const closedSpans = (html.match(/<\/span>/g) || []).length;
+    
+    for (let i = 0; i < openSpans - closedSpans; i++) {
+      html += '</span>';
+    }
+    
+    return html;
+  };
+
+  const displayedHtml = getPartialHtml(currentIndex);
 
   return (
-    <div ref={containerRef} className="relative w-full flex justify-end">
-      <div className="relative text-5xl md:text-6xl lg:text-7xl font-medium leading-[1.05] tracking-tight max-w-7xl min-h-[4.5em]">
-        {/* Background Layer: Muted Grey Text */}
+    <div ref={containerRef} className="relative w-full">
+      <div className="relative text-4xl md:text-5xl lg:text-7xl font-medium leading-[1.15] tracking-tight max-w-[1400px]">
+        {/* Background Layer: Muted Ghost Text */}
         <div 
-          className="text-muted/10 select-none"
+          className="text-foreground/5 select-none"
           dangerouslySetInnerHTML={{ __html: textToProcess }}
         />
         
         {/* Foreground Layer: Typing Animation */}
         <div 
-          className="absolute top-0 left-0 text-foreground"
+          className="absolute top-0 left-0 text-foreground w-full"
           dangerouslySetInnerHTML={{ __html: displayedHtml }}
         />
       </div>
