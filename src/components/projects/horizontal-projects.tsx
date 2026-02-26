@@ -69,12 +69,12 @@ export function HorizontalProjects({ showHeading = true }: HorizontalProjectsPro
       // Calculate total width to scroll
       const totalHorizontalScroll = scrollContentRef.current.scrollWidth - window.innerWidth;
       
-      // Calculate progress relative to the entire section height without artificial holds
+      // Calculate progress relative to the section
       if (scrollPos >= containerTop && scrollPos <= containerTop + containerHeight - windowHeight) {
         const relativeScroll = scrollPos - containerTop;
         const totalScrollableHeight = containerHeight - windowHeight;
         
-        // Linear progress mapping for a "direct" feel
+        // Progress mapping
         const progress = relativeScroll / totalScrollableHeight;
         setTranslateX(progress * totalHorizontalScroll);
       } else if (scrollPos < containerTop) {
@@ -97,8 +97,8 @@ export function HorizontalProjects({ showHeading = true }: HorizontalProjectsPro
     <div 
       ref={containerRef} 
       className="relative z-20" 
-      // Section height determines scroll speed
-      style={{ height: `${(projects.length + (showHeading ? 1.5 : 0.5)) * 100}vh` }}
+      // Reduced height multiplier from 1.5/0.5 to 1.1/0.2 to make it faster
+      style={{ height: `${(projects.length + (showHeading ? 1.1 : 0.2)) * 100}vh` }}
       onMouseMove={handleMouseMove}
     >
       <div 
@@ -125,7 +125,6 @@ export function HorizontalProjects({ showHeading = true }: HorizontalProjectsPro
           className="flex h-full items-center will-change-transform"
           style={{ 
             transform: `translate3d(-${translateX}px, 0, 0)`,
-            // No transition here ensures it follows the scroll event exactly
           }}
         >
           {showHeading && (
@@ -148,7 +147,7 @@ export function HorizontalProjects({ showHeading = true }: HorizontalProjectsPro
                 className="flex-shrink-0 w-[85vw] md:w-[75vw] h-[75vh] md:h-[80vh] flex items-center justify-center px-4 md:px-8"
               >
                 <div 
-                  className="flex flex-col md:flex-row w-full h-full bg-card rounded-md md:rounded-lg overflow-hidden shadow-large group cursor-none border border-border/50"
+                  className="flex flex-col md:flex-row w-full h-full bg-card rounded-lg overflow-hidden shadow-large group cursor-none border border-border/50"
                   onMouseEnter={() => setIsOverCard(true)}
                   onMouseLeave={() => setIsOverCard(false)}
                 >
@@ -204,3 +203,4 @@ export function HorizontalProjects({ showHeading = true }: HorizontalProjectsPro
     </div>
   );
 }
+
