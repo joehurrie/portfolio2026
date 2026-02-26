@@ -24,6 +24,7 @@
     --input: 0 0% 20%;
     --ring: 345 100% 60%;
     --radius: 0rem;
+    --orange: 24 100% 50%; /* Pure Orange */
   }
 
   .dark {
@@ -46,6 +47,7 @@
     --border: 0 0% 20%;
     --input: 0 0% 20%;
     --ring: 345 100% 60%;
+    --orange: 24 100% 50%;
   }
 }
 
