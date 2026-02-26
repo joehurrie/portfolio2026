@@ -20,7 +20,7 @@ export function Intro() {
 
                         <div className="reveal-on-scroll" style={{ transitionDelay: '100ms' }}>
                             <div className="w-full flex justify-end">
-                                <p className="text-foreground text-xl md:text-2xl max-w-2xl leading-relaxed text-right font-light">
+                                <p className="text-muted-foreground text-xl md:text-2xl max-w-2xl leading-relaxed text-right font-light">
                                     Bringing your vision to life quickly and efficiently—whether it's branding, apps, or websites—I've got it covered, delivering smooth and effective solutions from start to finish.
                                 </p>
                             </div>

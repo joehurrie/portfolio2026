@@ -32,10 +32,10 @@ export function Hero() {
 
       <div className="absolute inset-0 z-10 flex items-center justify-center pt-32 md:pt-48 overflow-hidden pointer-events-none mix-blend-difference text-white">
         <div className="flex animate-hero-marquee">
-          <h1 className="shrink-0 text-[25vw] md:text-huge font-semibold tracking-tighter leading-none px-8 whitespace-nowrap">
+          <h1 className="shrink-0 text-huge font-semibold tracking-tighter leading-none px-8 whitespace-nowrap">
             Joharie Kisiangani
           </h1>
-          <h1 className="shrink-0 text-[25vw] md:text-huge font-semibold tracking-tighter leading-none px-8 whitespace-nowrap" aria-hidden="true">
+          <h1 className="shrink-0 text-huge font-semibold tracking-tighter leading-none px-8 whitespace-nowrap" aria-hidden="true">
             Joharie Kisiangani
           </h1>
         </div>
@@ -53,9 +53,9 @@ export function Hero() {
                   href={social.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-3 text-base md:text-lg font-medium text-white hover:text-accent transition-colors group"
+                  className="flex items-center gap-3 text-base md:text-lg font-medium text-white/80 hover:text-accent transition-colors group"
                 >
-                  <social.icon className="h-6 w-6 text-white group-hover:text-accent" />
+                  <social.icon className="h-6 w-6 text-white/80 group-hover:text-accent" />
                   <span className="hidden md:inline">{social.name}</span>
                 </Link>
             ))}
