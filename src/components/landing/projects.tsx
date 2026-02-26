@@ -2,16 +2,15 @@
 
 import Image from 'next/image';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
-import { useState, useEffect, useRef } from 'react';
+import { useState } from 'react';
 import Link from 'next/link';
-import { useIsMobile } from '@/hooks/use-mobile';
 
 const projects = [
   {
     id: 'project-1',
     year: '(2024)',
     title: 'Formula Vintage',
-    description: 'For Formula Vintage, we crafted a design that honors the rich heritage of classic cars while adding a modern twist. Combining timeless elegance with sleek, contemporary elements, we created an experience that appeals to both enthusiasts and newcomers, celebrating the past with a fresh perspective.',
+    description: 'For Formula Vintage, we crafted a design that honors the rich heritage of classic cars while adding a modern twist. Combining timeless elegance with sleek, contemporary elements, we created an experience that appeals to both enthusiasts and newcomers.',
     tags: ['Landing Page', 'Mobile App', 'Redesign'],
   },
   {
@@ -50,22 +49,20 @@ export function Projects() {
         </div>
       </div>
       
-      {/* Desktop scroll view */}
-      <div
-        className="hidden md:flex flex-col items-center"
-      >
+      {/* Desktop scroll view - Now starts at 'md' for better tablet layout */}
+      <div className="hidden md:flex flex-col items-center">
         {projects.map((project, index) => {
           const imageData = PlaceHolderImages.find((img) => img.id === project.id);
           return (
             <div 
               key={project.id}
-              className="h-[90vh] w-full max-w-7xl flex items-center justify-center p-6 md:p-12 reveal-on-scroll"
+              className="min-h-[90vh] w-full max-w-7xl flex items-center justify-center p-6 md:p-12 reveal-on-scroll"
               style={{ transitionDelay: `${index * 150}ms` }}
             >
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 w-full mx-auto bg-background text-foreground p-6 md:p-8 rounded-2xl shadow-large h-[85vh] max-h-[800px]">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full mx-auto bg-background text-foreground p-6 md:p-8 rounded-2xl shadow-large min-h-[70vh] max-h-[800px]">
                 {/* Left Column - Image */}
                 <div
-                  className="relative w-full h-full overflow-hidden rounded-lg cursor-none"
+                  className="relative w-full h-64 md:h-full overflow-hidden rounded-lg cursor-none"
                   onMouseEnter={() => setHoveredProjectId(project.id)}
                   onMouseLeave={() => setHoveredProjectId(null)}
                   onMouseMove={handleMouseMove}
@@ -97,14 +94,14 @@ export function Projects() {
                 {/* Right Column - Details */}
                 <div className="flex flex-col py-4 overflow-y-auto">
                    <span className="font-code text-muted-foreground">{project.year}</span>
-                   <h3 className="text-4xl md:text-5xl font-semibold tracking-tight mt-2">{project.title}</h3>
-                   <p className="mt-4 text-muted-foreground text-base md:text-lg leading-relaxed">
+                   <h3 className="text-3xl lg:text-5xl font-semibold tracking-tight mt-2">{project.title}</h3>
+                   <p className="mt-4 text-muted-foreground text-sm lg:text-lg leading-relaxed">
                      {project.description}
                    </p>
                    <div className="mt-auto pt-8 border-t border-border/50 w-full">
                      <ul className="flex flex-col">
                        {project.tags.map(tag => (
-                         <li key={tag} className="py-3 border-b border-border/50 text-lg text-foreground/80 font-medium">
+                         <li key={tag} className="py-2 lg:py-3 border-b border-border/50 text-base lg:text-lg text-foreground/80 font-medium">
                           {tag}
                          </li>
                        ))}

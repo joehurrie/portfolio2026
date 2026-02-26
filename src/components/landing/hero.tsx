@@ -14,7 +14,7 @@ export function Hero() {
     <section className="relative h-screen w-full flex flex-col overflow-hidden bg-secondary">
       <div className="absolute inset-0 z-0 animate-clip-reveal origin-bottom">
         <Image
-          src="/hero111.png"
+          src="/hero.jpg"
           alt="Hero background"
           fill
           className="w-full h-full object-cover object-[center_25%] md:hidden"
@@ -46,7 +46,7 @@ export function Hero() {
           className="flex flex-col md:flex-row justify-between items-start md:items-end w-full pb-8 md:pb-16 animate-slide-up-fade"
           style={{ animationDelay: '0.8s' }}
         >
-          <div className="flex flex-row md:flex-col gap-6 md:gap-4 mb-12 md:mb-0">
+          <div className="flex flex-row md:flex-col gap-6 md:gap-4 mb-8 md:mb-0">
             {socialLinks.map((social) => (
                 <Link
                   key={social.name}
@@ -62,8 +62,8 @@ export function Hero() {
           </div>
 
           <div className="text-left md:text-right">
-            <h2 className="text-5xl md:text-6xl lg:text-7xl font-medium tracking-tighter leading-[0.9] mb-2">
-              <span className="block text-accent text-3xl md:text-4xl lg:text-5xl mb-2 tracking-tight font-normal">//Product Designer</span>
+            <h2 className="text-4xl md:text-6xl lg:text-7xl font-medium tracking-tighter leading-[0.9] mb-2">
+              <span className="block text-accent text-2xl md:text-4xl lg:text-5xl mb-2 tracking-tight font-normal">//Product Designer</span>
               <span className="text-accent">UX Engineer</span>
             </h2>
           </div>

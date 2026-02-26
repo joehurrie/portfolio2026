@@ -20,7 +20,7 @@ export function Footer() {
     <footer className="sticky bottom-0 z-0 min-h-screen w-full flex flex-col overflow-hidden bg-secondary">
       <div className="absolute inset-0 z-0">
         <Image
-          src="/hero11.png"
+          src="/hero1.jpg"
           alt="Contact background"
           fill
           className="w-full h-full object-cover object-[center_25%] md:hidden"
@@ -31,7 +31,7 @@ export function Footer() {
           fill
           className="w-full h-full object-cover object-[center_25%] hidden md:block"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/0 via-transparent to-transparent"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"></div>
       </div>
 
       <div className="absolute inset-0 z-10 flex items-center justify-center overflow-hidden pointer-events-none mix-blend-difference text-white">
@@ -45,17 +45,17 @@ export function Footer() {
         </div>
       </div>
 
-      <div className="absolute inset-0 z-20 flex flex-col items-center justify-center pt-32 sm:pt-48">
-        <Button asChild size="lg" className="rounded-full group text-lg md:text-xl py-8 px-12 bg-transparent border-2 border-accent text-accent animate-red-glow hover:bg-accent hover:text-accent-foreground transition-all">
+      <div className="absolute inset-0 z-20 flex flex-col items-center justify-center pt-24 md:pt-32">
+        <Button asChild size="lg" className="rounded-full group text-base md:text-xl py-6 md:py-8 px-8 md:px-12 bg-transparent border-2 border-accent text-accent animate-red-glow hover:bg-accent hover:text-accent-foreground transition-all">
             <Link href="/contact">
                 Let's collaborate
             </Link>
         </Button>
       </div>
 
-      <div className="relative z-20 w-full h-full flex flex-col justify-end flex-grow px-6 pb-12 md:px-12">
-        <div className="flex flex-col md:flex-row justify-between items-end w-full pb-8 md:pb-16">
-            <div className="text-white font-code text-sm space-y-1 mb-8 md:mb-0">
+      <div className="relative z-30 w-full h-full flex flex-col justify-end flex-grow px-6 pb-12 md:px-12">
+        <div className="flex flex-col md:flex-row justify-between items-end w-full pb-8 md:pb-16 gap-8">
+            <div className="text-white font-code text-xs md:text-sm space-y-1">
                 {contactDetails.map((detail) => (
                     <p key={detail.label}>
                         <span className="font-semibold">{detail.label}:</span> {detail.value}

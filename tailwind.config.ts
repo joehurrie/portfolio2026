@@ -78,7 +78,7 @@ export default {
         large: '0 8px 24px rgba(0,0,0,0.12)',
       },
       fontSize: {
-        'huge': '18vw',
+        'huge': '15vw',
       },
       keyframes: {
         'accordion-down': {

@@ -68,41 +68,39 @@ export function Services() {
       </div>
       <div className="w-full px-6 md:px-12">
         <div className="w-full">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-8 pt-24">
+            <div className="grid grid-cols-1 md:grid-cols-12 gap-16 lg:gap-8 pt-24">
                 <div className="hidden lg:block lg:col-span-5 relative select-none lg:sticky lg:top-32 self-start">
                     <div className="flex items-center justify-center lg:justify-start">
                         <AnimatedCounter
                             end={activeIndex + 1}
-                            className="text-accent text-[16rem] font-sans font-bold leading-none tracking-tighter"
+                            className="text-accent text-[12rem] xl:text-[16rem] font-sans font-bold leading-none tracking-tighter"
                         />
                     </div>
                 </div>
 
-                <div className="lg:col-span-7 flex flex-col">
+                <div className="md:col-span-12 lg:col-span-7 flex flex-col">
                     {servicesData.map((service, index) => (
                     <div
                         key={service.title}
                         ref={(el) => (serviceRefs.current[index] = el)}
                         data-index={index}
-                        className="service-section mb-48 last:mb-0 reveal-on-scroll"
+                        className="service-section mb-32 md:mb-48 last:mb-0 reveal-on-scroll"
                     >
-                        
-                            <h3 className="text-4xl md:text-5xl font-medium tracking-tight mb-6">
+                            <h3 className="text-3xl md:text-5xl font-medium tracking-tight mb-6">
                                 {service.title}
                             </h3>
-                            <p className="text-muted-foreground text-xl mb-12 max-w-2xl leading-relaxed font-light">
+                            <p className="text-muted-foreground text-lg md:text-xl mb-12 max-w-2xl leading-relaxed font-light">
                                 {service.description}
                             </p>
                             
                             <div className="w-full flex flex-col border-t border-border/50">
                             {service.items.map((item, itemIndex) => (
-                                <div key={item} className="flex justify-between items-baseline py-6 border-b border-border/50">
-                                    <span className="text-xl font-normal text-foreground">{item}</span>
-                                    <span className="text-base font-code text-muted-foreground/60">{String(itemIndex + 1).padStart(2, '0')}</span>
+                                <div key={item} className="flex justify-between items-baseline py-4 md:py-6 border-b border-border/50">
+                                    <span className="text-lg md:text-xl font-normal text-foreground">{item}</span>
+                                    <span className="text-sm md:text-base font-code text-accent font-bold">{String(itemIndex + 1).padStart(2, '0')}</span>
                                 </div>
                             ))}
                             </div>
-                        
                     </div>
                     ))}
                 </div>
