@@ -66,17 +66,23 @@ export function HorizontalProjects({ showHeading = true }: HorizontalProjectsPro
       const windowHeight = window.innerHeight;
       const scrollPos = window.scrollY;
 
-      // Calculate total width to scroll
       const totalHorizontalScroll = scrollContentRef.current.scrollWidth - window.innerWidth;
+      const totalScrollableHeight = containerHeight - windowHeight;
       
-      // Calculate progress relative to the section
-      if (scrollPos >= containerTop && scrollPos <= containerTop + containerHeight - windowHeight) {
+      if (scrollPos >= containerTop && scrollPos <= containerTop + totalScrollableHeight) {
         const relativeScroll = scrollPos - containerTop;
-        const totalScrollableHeight = containerHeight - windowHeight;
-        
-        // Progress mapping
         const progress = relativeScroll / totalScrollableHeight;
-        setTranslateX(progress * totalHorizontalScroll);
+        
+        // Threshold: First 15% of the scroll height is for "settling" into full view
+        const threshold = 0.15;
+        
+        if (progress < threshold) {
+          setTranslateX(0);
+        } else {
+          // Map the remaining 85% of scroll to the 100% of horizontal movement
+          const horizontalProgress = (progress - threshold) / (1 - threshold);
+          setTranslateX(horizontalProgress * totalHorizontalScroll);
+        }
       } else if (scrollPos < containerTop) {
         setTranslateX(0);
       } else {
@@ -85,9 +91,9 @@ export function HorizontalProjects({ showHeading = true }: HorizontalProjectsPro
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll(); // Initial check
+    handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [showHeading]);
+  }, []);
 
   const handleMouseMove = (e: React.MouseEvent) => {
     setCursorPos({ x: e.clientX, y: e.clientY });
@@ -97,8 +103,8 @@ export function HorizontalProjects({ showHeading = true }: HorizontalProjectsPro
     <div 
       ref={containerRef} 
       className="relative z-20" 
-      // Reduced height multiplier from 1.5/0.5 to 1.1/0.2 to make it faster
-      style={{ height: `${(projects.length + (showHeading ? 1.1 : 0.2)) * 100}vh` }}
+      // Increased height multiplier to accommodate the "settle" phase without feeling too rushed
+      style={{ height: `${(projects.length + (showHeading ? 2.5 : 1.5)) * 100}vh` }}
       onMouseMove={handleMouseMove}
     >
       <div 
@@ -203,4 +209,3 @@ export function HorizontalProjects({ showHeading = true }: HorizontalProjectsPro
     </div>
   );
 }
-
