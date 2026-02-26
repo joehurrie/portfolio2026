@@ -75,16 +75,16 @@ export function Footer() {
         </div>
       </div>
 
-      <div className="absolute top-0 left-0 right-0 z-10 flex items-start justify-center pt-24 md:pt-32 overflow-hidden pointer-events-none mix-blend-difference text-white">
+      <div className="absolute top-0 left-0 right-0 z-10 flex items-start justify-center pt-24 md:pt-32 overflow-hidden pointer-events-none mix-blend-difference text-primary">
         <div 
           className="flex whitespace-nowrap will-change-transform"
           style={{ transform: `translateX(calc(-33.33% + ${(autoX + scrollX) % 1000}px))` }}
         >
           <h1 className="shrink-0 text-6xl md:text-8xl lg:text-[10vw] font-semibold tracking-tighter leading-none px-6">
-            Reach Out — Reach Out — Reach Out —
+            Start a Project — Start a Project — Start a Project —
           </h1>
           <h1 className="shrink-0 text-6xl md:text-8xl lg:text-[10vw] font-semibold tracking-tighter leading-none px-6" aria-hidden="true">
-            Reach Out — Reach Out — Reach Out —
+            Start a Project — Start a Project — Start a Project —
           </h1>
         </div>
       </div>

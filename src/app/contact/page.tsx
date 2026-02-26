@@ -11,8 +11,8 @@ export default function ContactPage() {
           <div className="container mx-auto max-w-7xl">
             <div className="grid md:grid-cols-2 gap-12 md:gap-24 items-start">
                 <div>
-                     <h2 className="text-5xl md:text-7xl lg:text-8xl font-semibold tracking-tighter text-card-foreground leading-none">
-                        Reach Out
+                     <h2 className="text-5xl md:text-7xl lg:text-8xl font-semibold tracking-tighter text-primary leading-none">
+                        Start a Project
                     </h2>
                 </div>
                 <div className="pt-4">
