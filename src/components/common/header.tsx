@@ -2,7 +2,7 @@
 "use client";
 
 import Link from 'next/link';
-import { X } from 'lucide-react';
+import { X, Menu } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from '@/components/ui/sheet';
 import { ScrollArea } from '@/components/ui/scroll-area';
@@ -15,14 +15,6 @@ const navLinks = [
   { href: '/about', label: 'About' },
   { href: '/contact', label: 'Contact' },
 ];
-
-const MenuIcon = () => (
-  <div className="flex flex-col gap-1.5 w-6 py-1">
-    <div className="h-[3px] w-full bg-current rounded-full" />
-    <div className="h-[3px] w-full bg-current rounded-full" />
-    <div className="h-[3px] w-full bg-current rounded-full" />
-  </div>
-);
 
 const BeepingDot = () => (
   <span className="relative flex h-2 w-2">
@@ -38,10 +30,10 @@ export function Header() {
   return (
     <header 
       className={cn(
-        "absolute top-0 left-0 w-full z-50 flex justify-between items-center px-6 py-8 md:px-12 md:py-12 mix-blend-difference"
+        "absolute top-0 left-0 w-full z-50 flex justify-between items-center px-6 py-8 md:px-12 md:py-12"
       )}
     >
-      <Link href="/" className="text-base font-medium tracking-tight text-neutral-400 hover:text-accent transition-colors">
+      <Link href="/" className="text-base font-medium tracking-tight text-foreground hover:text-accent transition-colors">
         Joharie Kisiangani
       </Link>
 
@@ -59,7 +51,7 @@ export function Header() {
             <Link
               key={link.href}
               href={link.href}
-              className="text-xs uppercase tracking-[0.2em] font-code text-neutral-500 hover:text-accent transition-all duration-500 whitespace-nowrap"
+              className="text-xs uppercase tracking-[0.2em] font-code text-foreground hover:text-accent transition-all duration-300 whitespace-nowrap"
             >
               {link.label}
             </Link>
@@ -68,12 +60,16 @@ export function Header() {
         
         <button 
           onClick={() => setIsDesktopMenuOpen(!isDesktopMenuOpen)}
-          className="flex items-center gap-3 group text-neutral-400 hover:text-accent transition-colors focus:outline-none"
+          className="flex items-center gap-3 group text-foreground hover:text-accent transition-colors focus:outline-none"
         >
           <span className="text-xs uppercase tracking-[0.2em] font-code font-bold">
             {isDesktopMenuOpen ? 'Close' : 'Menu'}
           </span>
-          {!isDesktopMenuOpen ? <MenuIcon /> : <X className="w-5 h-5 stroke-[2.5px]" />}
+          {!isDesktopMenuOpen ? (
+            <Menu className="w-6 h-6 stroke-[3px]" />
+          ) : (
+            <X className="w-6 h-6 stroke-[3px]" />
+          )}
         </button>
       </nav>
 
@@ -81,36 +77,36 @@ export function Header() {
       <div className="flex md:hidden items-center">
         <Sheet open={isOpen} onOpenChange={setIsOpen}>
           <SheetTrigger asChild>
-            <button className="flex items-center gap-3 text-neutral-400 hover:text-accent transition-colors focus:outline-none">
+            <button className="flex items-center gap-3 text-foreground hover:text-accent transition-colors focus:outline-none">
               <span className="text-xs uppercase tracking-[0.2em] font-code font-bold">Menu</span>
-              <MenuIcon />
+              <Menu className="w-6 h-6 stroke-[3px]" />
             </button>
           </SheetTrigger>
           <SheetContent 
             side="right" 
-            className="bg-background/80 backdrop-blur-2xl text-foreground p-0 w-full border-l border-white/5 flex flex-col [&>button]:hidden animate-in slide-in-from-right duration-500"
+            className="bg-background/95 backdrop-blur-2xl text-foreground p-0 w-full border-l border-border/10 flex flex-col [&>button]:hidden animate-in slide-in-from-right duration-500"
           >
              <ScrollArea className="flex-1 w-full">
                 <div className="flex flex-col justify-between min-h-[100dvh] py-24 px-8 relative">
                   <div className="absolute top-8 left-6">
-                     <Link href="/" className="text-base font-medium tracking-tight text-neutral-500 hover:text-accent transition-colors" onClick={() => setIsOpen(false)}>
+                     <Link href="/" className="text-base font-medium tracking-tight text-foreground/60 hover:text-accent transition-colors" onClick={() => setIsOpen(false)}>
                         Joharie Kisiangani
                     </Link>
                   </div>
                   <div className="absolute top-8 right-6">
                     <SheetClose asChild>
-                      <Button variant="ghost" size="icon" className="text-neutral-500 hover:text-accent h-10 w-10">
-                        <X size={24} strokeWidth={2.5} />
+                      <Button variant="ghost" size="icon" className="text-foreground/60 hover:text-accent h-10 w-10">
+                        <X size={24} strokeWidth={3} />
                       </Button>
                     </SheetClose>
                   </div>
                   
-                  <nav className="flex flex-col gap-6 text-sm font-code uppercase tracking-[0.2em] mt-12">
+                  <nav className="flex flex-col gap-8 text-3xl font-medium tracking-tighter mt-12">
                     {navLinks.map((link) => (
                       <SheetClose asChild key={link.href}>
                         <Link
                           href={link.href}
-                          className="text-neutral-500 hover:text-accent transition-all duration-300 hover:translate-x-2 block"
+                          className="text-foreground hover:text-accent transition-all duration-300 hover:translate-x-2 block"
                           onClick={() => setIsOpen(false)}
                         >
                           {link.label}
@@ -122,22 +118,22 @@ export function Header() {
                   <div className="mt-auto pt-16 flex flex-col gap-8 border-t border-border/10">
                     <div className="grid grid-cols-1 gap-6">
                       <div className="flex flex-col gap-1">
-                        <p className="text-[10px] uppercase tracking-[0.2em] font-code text-neutral-500 font-bold">Location</p>
-                        <p className="text-xs font-light">Nairobi, Kenya</p>
+                        <p className="text-[10px] uppercase tracking-[0.2em] font-code text-foreground/40 font-bold">Location</p>
+                        <p className="text-base font-medium">Nairobi, Kenya</p>
                       </div>
                       <div className="flex flex-col gap-1">
-                        <p className="text-[10px] uppercase tracking-[0.2em] font-code text-neutral-500 font-bold">Availability</p>
+                        <p className="text-[10px] uppercase tracking-[0.2em] font-code text-foreground/40 font-bold">Availability</p>
                         <div className="flex items-center gap-2">
                           <BeepingDot />
-                          <p className="text-xs font-light">Remote, Worldwide</p>
+                          <p className="text-base font-medium">Remote, Worldwide</p>
                         </div>
                       </div>
                     </div>
                     
                     <div className="flex gap-8">
-                      <Link href="#" className="font-code text-[10px] text-neutral-500 hover:text-accent transition-colors uppercase tracking-widest">LinkedIn</Link>
-                      <Link href="#" className="font-code text-[10px] text-neutral-500 hover:text-accent transition-colors uppercase tracking-widest">Twitter</Link>
-                      <Link href="#" className="font-code text-[10px] text-neutral-500 hover:text-accent transition-colors uppercase tracking-widest">Instagram</Link>
+                      <Link href="#" className="font-code text-[10px] text-foreground/40 hover:text-accent transition-colors uppercase tracking-widest">LinkedIn</Link>
+                      <Link href="#" className="font-code text-[10px] text-foreground/40 hover:text-accent transition-colors uppercase tracking-widest">Twitter</Link>
+                      <Link href="#" className="font-code text-[10px] text-foreground/40 hover:text-accent transition-colors uppercase tracking-widest">Instagram</Link>
                     </div>
                   </div>
                 </div>
