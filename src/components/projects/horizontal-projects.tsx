@@ -51,7 +51,7 @@ export function HorizontalProjects() {
   
   const [translateX, setTranslateX] = useState(0);
   const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 });
-  const [isOverImage, setIsOverImage] = useState(false);
+  const [isOverCard, setIsOverCard] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -62,7 +62,6 @@ export function HorizontalProjects() {
       const windowHeight = window.innerHeight;
       const scrollPos = window.scrollY;
 
-      // Total width of all project sections plus initial heading and spacer
       const totalHorizontalScroll = scrollContentRef.current.scrollWidth - window.innerWidth;
 
       if (scrollPos >= containerTop && scrollPos <= containerTop + containerHeight - windowHeight) {
@@ -100,7 +99,7 @@ export function HorizontalProjects() {
         <div 
           className={cn(
             "fixed pointer-events-none z-[100] w-24 h-24 rounded-full bg-accent text-accent-foreground hidden md:flex items-center justify-center font-medium transition-transform duration-300 ease-out text-sm scale-0",
-            isOverImage && "scale-100"
+            isOverCard && "scale-100"
           )}
           style={{ 
             left: cursorPos.x - 48, 
@@ -134,14 +133,14 @@ export function HorizontalProjects() {
                 key={`${project.id}-${index}`} 
                 className="flex-shrink-0 w-[85vw] md:w-[75vw] h-[75vh] md:h-[80vh] flex items-center justify-center px-4 md:px-8"
               >
-                <div className="flex flex-col md:flex-row w-full h-full bg-white rounded-3xl md:rounded-[2.5rem] overflow-hidden shadow-large group">
+                <div 
+                  className="flex flex-col md:flex-row w-full h-full bg-white rounded-xl md:rounded-2xl overflow-hidden shadow-large group cursor-none"
+                  onMouseEnter={() => setIsOverCard(true)}
+                  onMouseLeave={() => setIsOverCard(false)}
+                >
                   
-                  {/* Image Part - Active Cursor Region */}
-                  <div 
-                    className="relative w-full h-1/2 md:h-full md:flex-[1.2] overflow-hidden cursor-none"
-                    onMouseEnter={() => setIsOverImage(true)}
-                    onMouseLeave={() => setIsOverImage(false)}
-                  >
+                  {/* Image Part - 3/4 width on desktop */}
+                  <div className="relative w-full h-1/2 md:h-full md:flex-[3] overflow-hidden">
                     {imageData && (
                       <Image
                         src={imageData.imageUrl}
@@ -151,20 +150,19 @@ export function HorizontalProjects() {
                         data-ai-hint={imageData.imageHint}
                       />
                     )}
-                    {/* Dark gradient overlay for image depth */}
                     <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none" />
                   </div>
 
-                  {/* Info Part - Detailed Content */}
-                  <div className="p-8 md:p-12 md:flex-1 flex flex-col justify-between bg-white text-black border-t md:border-t-0 md:border-l border-black/5">
+                  {/* Info Part - Typography-focused content */}
+                  <div className="p-8 md:p-12 md:flex-[1] flex flex-col justify-between bg-white text-black border-t md:border-t-0 md:border-l border-black/5">
                     <div>
-                      <span className="font-code text-muted-foreground mb-4 block text-sm md:text-base">
+                      <span className="font-code text-muted-foreground mb-4 block text-xs md:text-sm">
                         {project.year}
                       </span>
-                      <h2 className="text-4xl md:text-6xl lg:text-7xl font-semibold tracking-tighter mb-6 leading-[0.9]">
+                      <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tighter mb-6 leading-[0.95]">
                         {project.title}
                       </h2>
-                      <p className="text-muted-foreground text-sm md:text-lg leading-relaxed max-w-md font-light">
+                      <p className="text-muted-foreground text-xs md:text-base leading-relaxed max-w-md font-light">
                         {project.description}
                       </p>
                     </div>
@@ -172,8 +170,8 @@ export function HorizontalProjects() {
                     <div className="mt-8 md:mt-0">
                       <div className="flex flex-col gap-0">
                         {project.tags.map((tag) => (
-                          <div key={tag} className="py-3 md:py-4 border-t border-black/10 last:border-b last:border-black/10">
-                            <span className="text-sm md:text-lg font-light text-black/60 block w-full">
+                          <div key={tag} className="py-2 md:py-3 border-t border-black/10 last:border-b last:border-black/10">
+                            <span className="text-[10px] md:text-sm font-light text-black/60 block w-full uppercase tracking-wider">
                               {tag}
                             </span>
                           </div>
@@ -186,7 +184,6 @@ export function HorizontalProjects() {
             );
           })}
           
-          {/* Spacer at the end to allow the last card to be fully visible */}
           <div className="flex-shrink-0 w-[15vw] md:w-[25vw]" />
         </div>
       </div>
