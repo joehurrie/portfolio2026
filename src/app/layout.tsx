@@ -1,8 +1,10 @@
+
 import type { Metadata } from 'next';
 import './globals.css';
 import { Toaster } from "@/components/ui/toaster";
 import { ScrollHandler } from '@/components/common/scroll-handler';
 import { BackToTop } from '@/components/common/back-to-top';
+import { ThemeProvider } from '@/components/theme-provider';
 
 export const metadata: Metadata = {
   title: 'Joharie Kisiangani — Design & Strategy',
@@ -15,19 +17,26 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang="en" suppressHydrationWarning className="scroll-smooth">
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;1,400&display=swap" rel="stylesheet" />
       </head>
       <body className="bg-background text-foreground antialiased selection:bg-accent selection:text-accent-foreground overflow-x-hidden">
-        <div className="relative">
-          {children}
-        </div>
-        <Toaster />
-        <ScrollHandler />
-        <BackToTop />
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <div className="relative">
+            {children}
+          </div>
+          <Toaster />
+          <ScrollHandler />
+          <BackToTop />
+        </ThemeProvider>
       </body>
     </html>
   );
