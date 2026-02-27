@@ -75,26 +75,34 @@
 
 @layer utilities {
   @keyframes border-shift {
+    from {
+      transform: translateX(0%);
+    }
     to {
-      transform: translateX(-25%);
+      transform: translateX(-50%);
     }
   }
 
   .cta-gradient-btn {
-    @apply relative inline-block cursor-pointer text-white no-underline font-semibold rounded-full overflow-hidden p-[2px] isolate transition-transform duration-300 active:scale-95;
+    @apply relative inline-block cursor-pointer no-underline font-medium rounded-full overflow-hidden p-[1px] isolate transition-all duration-300 active:scale-95 shadow-sm;
   }
 
   .cta-gradient-btn::before {
     content: "";
-    @apply absolute inset-0 w-[400%] h-full;
-    background: linear-gradient(115deg, #d1d1d1, hsl(var(--primary)), #a7bfde, hsl(var(--primary)));
-    background-size: 25% 100%;
-    animation: border-shift 0.75s linear infinite;
+    @apply absolute inset-0 w-[200%] h-full;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent, rgba(255, 255, 255, 0.4), transparent);
+    background-size: 50% 100%;
+    animation: border-shift 4s linear infinite;
     z-index: -1;
   }
 
   .cta-gradient-btn span {
-    @apply relative flex items-center justify-center px-8 py-4 h-full w-full bg-black/40 backdrop-blur-xl rounded-full transition-all hover:bg-black/60 text-white;
+    @apply relative flex items-center justify-center px-8 py-4 h-full w-full bg-foreground/10 backdrop-blur-xl rounded-full transition-all hover:bg-foreground/20 text-foreground border border-white/10;
+  }
+
+  /* Specific color handling for dark sections */
+  section.bg-foreground .cta-gradient-btn span {
+    @apply bg-white/5 hover:bg-white/10 text-background border-white/20;
   }
 
   .reveal-on-scroll {
