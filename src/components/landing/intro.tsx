@@ -1,8 +1,14 @@
+
 import { ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 import { Button } from '../ui/button';
 import { AnimatedIntroText } from './animated-intro-text';
 
+/**
+ * Intro section with high-fidelity theme inversion logic.
+ * Dark Mode: White block with Charcoal text.
+ * Light Mode: Charcoal block with White text.
+ */
 export function Intro() {
     return (
         <section className="bg-foreground text-background min-h-screen relative flex flex-col justify-center py-24 md:py-32 transition-colors duration-700">

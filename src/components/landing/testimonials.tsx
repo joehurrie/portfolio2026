@@ -1,3 +1,4 @@
+
 "use client";
 
 import Image from 'next/image';
@@ -27,6 +28,10 @@ const testimonials = [
   },
 ];
 
+/**
+ * Testimonials section.
+ * Features a static, high-legibility layout for mobile.
+ */
 export function Testimonials() {
   const [activeIndex, setActiveIndex] = useState(0);
 
@@ -43,10 +48,11 @@ export function Testimonials() {
       
       <div className="w-full px-6 md:px-12">
         <div className="max-w-7xl mx-auto w-full">
-          {/* Mobile Layout: Stacked List with individual animations */}
+          {/* Mobile Layout: Static full-color list for better legibility */}
           <div className="mt-16 flex flex-col gap-24 md:hidden">
               {reversedTestimonials.map((testimonial, index) => (
                   <div key={testimonial.id} className="reveal-on-scroll">
+                      {/* Character reveal logic inside AnimatedTestimonialText handles the isMobile check */}
                       <AnimatedTestimonialText text={testimonial.quote} />
                       <div className="mt-8 flex items-end justify-between border-t border-border/50 pt-6">
                         <div className="flex items-center gap-4">
@@ -76,15 +82,13 @@ export function Testimonials() {
               ))}
           </div>
 
-          {/* Desktop Layout: Interactive Single View with Avatar Navigation */}
-          {/* Added reveal-on-scroll here for the main desktop reveal effect */}
+          {/* Desktop Layout: Interactive Single View with Reveal Animation */}
           <div className="hidden md:grid grid-cols-[1fr_auto] gap-24 items-center reveal-on-scroll">
             <div className="flex flex-col gap-12">
               <div className="font-code text-accent text-sm tracking-widest">
                   {String(activeIndex + 1).padStart(2, '0')} / {String(testimonials.length).padStart(2, '0')}
               </div>
 
-              {/* Character-reveal animation triggers on index change */}
               <AnimatedTestimonialText
                 key={`testimonial-${activeIndex}`} 
                 text={activeTestimonial.quote}
@@ -96,7 +100,6 @@ export function Testimonials() {
               </div>
             </div>
 
-            {/* Navigation vertical list of avatars */}
             <div className="flex flex-col items-center gap-6">
               {testimonials.map((testimonial, index) => {
                 const imageData = PlaceHolderImages.find((img) => img.id === testimonial.id);
@@ -123,7 +126,6 @@ export function Testimonials() {
                         )}
                       />
                     )}
-                    {/* Subtle pulse for active item */}
                     {isActive && (
                       <div className="absolute inset-0 ring-2 ring-accent rounded-full animate-ping opacity-20 pointer-events-none" />
                     )}

@@ -1,7 +1,12 @@
+
 "use client";
 
 import { useState, useEffect, useRef } from 'react';
 
+/**
+ * High-fidelity intro text reveal component.
+ * Maintains character-reveal animation on both desktop and mobile.
+ */
 export function AnimatedIntroText() {
   const [isVisible, setIsVisible] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);

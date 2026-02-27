@@ -3,6 +3,10 @@
 
 import { useState, useEffect, useRef } from 'react';
 
+/**
+ * High-fidelity About CTA text reveal component.
+ * Maintains reveal effect on both desktop and mobile.
+ */
 export function AnimatedAboutCtaText() {
   const [isVisible, setIsVisible] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
