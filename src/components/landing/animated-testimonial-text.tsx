@@ -24,11 +24,10 @@ export function AnimatedTestimonialText({ text }: AnimatedTestimonialTextProps) 
       ([entry]) => {
         if (entry.isIntersecting) {
           setIsVisible(true);
-          // Once visible, we keep it visible for the reveal duration
           observer.disconnect();
         }
       },
-      { threshold: 0.1 }
+      { threshold: 0.05 } // Lower threshold for better visibility trigger
     );
 
     const currentRef = containerRef.current;
@@ -42,11 +41,6 @@ export function AnimatedTestimonialText({ text }: AnimatedTestimonialTextProps) 
       }
     };
   }, []);
-
-  // Reset character index when text prop changes to restart animation
-  useEffect(() => {
-    setCurrentIndex(0);
-  }, [text]);
 
   useEffect(() => {
     if (mounted && !isMobile && isVisible && currentIndex < textToProcess.length) {
@@ -88,7 +82,7 @@ export function AnimatedTestimonialText({ text }: AnimatedTestimonialTextProps) 
     return balanceTags(invisiblePart);
   };
 
-  // Fallback for SSR or Mobile to avoid hydration mismatches or complex animations on small screens
+  // Fallback for SSR or Mobile
   if (!mounted || isMobile) {
     return (
       <blockquote className="relative text-3xl md:text-5xl font-medium leading-tight tracking-tight text-foreground">
@@ -99,7 +93,7 @@ export function AnimatedTestimonialText({ text }: AnimatedTestimonialTextProps) 
 
   return (
     <div ref={containerRef} className="relative w-full">
-      <blockquote className="relative text-3xl md:text-5xl lg:text-6xl font-medium leading-[1.1] tracking-tighter min-h-[5em]">
+      <blockquote className="relative text-3xl md:text-5xl lg:text-7xl font-medium leading-[1.1] tracking-tighter min-h-[4em]">
         {/* Background Layer: Ghost/Muted Text */}
         <div 
           className="text-foreground/10 select-none [&_*]:text-foreground/10"

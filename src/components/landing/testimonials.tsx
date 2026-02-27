@@ -77,7 +77,8 @@ export function Testimonials() {
           </div>
 
           {/* Desktop Layout: Interactive Single View with Avatar Navigation */}
-          <div className="hidden md:grid grid-cols-[1fr_auto] gap-24 items-center">
+          {/* Added reveal-on-scroll here for the main desktop reveal effect */}
+          <div className="hidden md:grid grid-cols-[1fr_auto] gap-24 items-center reveal-on-scroll">
             <div className="flex flex-col gap-12">
               <div className="font-code text-accent text-sm tracking-widest">
                   {String(activeIndex + 1).padStart(2, '0')} / {String(testimonials.length).padStart(2, '0')}
