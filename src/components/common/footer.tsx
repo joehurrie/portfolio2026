@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { Linkedin, Twitter, Instagram } from 'lucide-react';
+import { Linkedin, Twitter, Instagram, ArrowRight } from 'lucide-react';
 import { useState, useEffect, useRef } from 'react';
 
 export function Footer() {
@@ -92,10 +92,11 @@ export function Footer() {
       <div className="absolute inset-0 z-20 flex items-center justify-center pt-20">
         <Link 
           href="/contact"
-          className="cta-gradient-btn"
+          className="cta-gradient-btn group"
         >
           <span className="text-base md:text-lg tracking-tight">
             Let&apos;s collaborate
+            <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
           </span>
         </Link>
       </div>

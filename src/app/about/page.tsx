@@ -2,7 +2,7 @@ import { Header } from "@/components/common/header";
 import Image from 'next/image';
 import Link from 'next/link';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
-import { ArrowUpRight } from 'lucide-react';
+import { ArrowUpRight, ArrowRight } from 'lucide-react';
 import { AnimatedAboutCtaText } from "@/components/about/animated-about-cta";
 import { AboutExperience } from "@/components/about/experience";
 import { Footer } from "@/components/common/footer";
@@ -59,8 +59,11 @@ export default function AboutPage() {
             </div>
 
             <div className="mt-16 md:mt-24 flex justify-center reveal-on-scroll" style={{ transitionDelay: '400ms' }}>
-              <Link href="/contact" className="cta-gradient-btn">
-                <span>Let&apos;s Talk</span>
+              <Link href="/contact" className="cta-gradient-btn group">
+                <span>
+                  Let&apos;s Talk
+                  <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
+                </span>
               </Link>
             </div>
           </div>
