@@ -12,8 +12,8 @@ import { AnimatedIntroText } from './animated-intro-text';
 export function Intro() {
     return (
         <section className="bg-foreground text-background min-h-screen relative flex flex-col justify-center py-24 md:py-32 transition-colors duration-700">
-            <div className="sticky top-0 z-40 h-0">
-                <div className="absolute top-8 left-6 md:left-12 text-accent text-xs md:text-sm font-code tracking-wide">
+            <div className="sticky top-0 z-40 h-0 w-full pointer-events-none">
+                <div className="absolute top-8 left-6 md:left-12 text-accent text-[10px] md:text-xs font-code tracking-widest uppercase">
                     // Intro
                 </div>
             </div>

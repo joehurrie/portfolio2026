@@ -33,8 +33,8 @@ const projects = [
 export function StackingProjects() {
   return (
     <section id="projects" className="relative bg-foreground transition-colors duration-700">
-      <div className="sticky top-0 z-40 h-0">
-        <div className="absolute top-8 left-6 md:left-12 text-accent text-xs md:text-sm font-code tracking-wide">
+      <div className="sticky top-0 z-40 h-0 w-full pointer-events-none">
+        <div className="absolute top-8 left-6 md:left-12 text-accent text-[10px] md:text-xs font-code tracking-widest uppercase">
           // Projects
         </div>
       </div>

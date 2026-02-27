@@ -1,3 +1,4 @@
+
 "use client";
 
 import { AnimatedCounter } from '@/components/common/animated-counter';
@@ -61,8 +62,8 @@ export function Services() {
 
   return (
     <section id="services" className="bg-background text-foreground relative py-24 md:py-32">
-      <div className="sticky top-0 z-40 h-0">
-        <div className="absolute top-8 left-6 md:left-12 text-primary text-[10px] md:text-xs font-code tracking-widest uppercase">
+      <div className="sticky top-0 z-40 h-0 w-full pointer-events-none">
+        <div className="absolute top-8 left-6 md:left-12 text-accent text-[10px] md:text-xs font-code tracking-widest uppercase">
           // Services
         </div>
       </div>
