@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, useEffect, useRef } from 'react';
@@ -74,13 +73,13 @@ export function AnimatedIntroText() {
   return (
     <div ref={containerRef} className="relative w-full">
       <div className="relative text-3xl md:text-5xl lg:text-7xl font-medium leading-[1.1] tracking-tighter max-w-[1200px]">
-        {/* Ghost Layer */}
+        {/* Ghost Layer - Using background color logic */}
         <div 
-          className="text-foreground/10 select-none [&_*]:text-foreground/10"
+          className="text-background/10 select-none [&_*]:text-background/10 transition-colors duration-700"
           dangerouslySetInnerHTML={{ __html: textToProcess }}
         />
         {/* Reveal Layer */}
-        <div className="absolute top-0 left-0 text-foreground w-full pointer-events-none">
+        <div className="absolute top-0 left-0 text-background w-full pointer-events-none transition-colors duration-700">
           <span dangerouslySetInnerHTML={{ __html: getVisibleHtml() }} />
           <span className="invisible" dangerouslySetInnerHTML={{ __html: getInvisibleHtml() }} />
         </div>

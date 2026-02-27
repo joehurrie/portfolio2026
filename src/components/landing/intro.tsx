@@ -5,7 +5,7 @@ import { AnimatedIntroText } from './animated-intro-text';
 
 export function Intro() {
     return (
-        <section className="bg-background text-foreground min-h-screen relative flex flex-col justify-center py-24 md:py-32">
+        <section className="bg-foreground text-background min-h-screen relative flex flex-col justify-center py-24 md:py-32 transition-colors duration-700">
             <div className="sticky top-0 z-40 h-0">
                 <div className="absolute top-8 left-6 md:left-12 text-accent text-xs md:text-sm font-code tracking-wide">
                     // Intro
@@ -20,7 +20,7 @@ export function Intro() {
 
                         <div className="reveal-on-scroll" style={{ transitionDelay: '100ms' }}>
                             <div className="w-full flex justify-start md:justify-end">
-                                <p className="text-foreground text-lg md:text-2xl max-w-2xl leading-relaxed text-left md:text-right font-light">
+                                <p className="text-background/80 text-lg md:text-2xl max-w-2xl leading-relaxed text-left md:text-right font-light transition-colors duration-700">
                                     Bringing your vision to life quickly and efficiently—whether it's branding, apps, or websites—I've got it covered, delivering smooth and effective solutions from start to finish.
                                 </p>
                             </div>
@@ -28,7 +28,7 @@ export function Intro() {
 
                         <div className="reveal-on-scroll" style={{ transitionDelay: '200ms' }}>
                             <div className="flex justify-center mt-12">
-                                <Button asChild size="lg" variant="outline" className="group">
+                                <Button asChild size="lg" variant="outline" className="group border-accent text-accent hover:bg-accent hover:text-accent-foreground">
                                     <Link href="#projects" className="flex items-center gap-3">
                                         See my Work
                                         <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
