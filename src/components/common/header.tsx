@@ -23,7 +23,7 @@ const BeepingDot = () => (
   </span>
 );
 
-const ThemeToggle = () => {
+const ThemeToggle = ({ currentTheme }: { currentTheme?: string }) => {
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
@@ -36,7 +36,10 @@ const ThemeToggle = () => {
   return (
     <button
       onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-      className="flex items-center justify-center text-foreground/60 hover:text-primary transition-all duration-300 hover:scale-110 focus:outline-none"
+      className={cn(
+        "flex items-center justify-center transition-all duration-300 hover:scale-110 focus:outline-none",
+        currentTheme === 'light' ? "text-primary" : "text-foreground/60 hover:text-primary"
+      )}
       aria-label="Toggle theme"
     >
       {theme === 'dark' ? (
@@ -52,8 +55,11 @@ export function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [isDesktopMenuOpen, setIsDesktopMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const { theme, resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
     };
@@ -61,12 +67,14 @@ export function Header() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const activeTheme = mounted ? resolvedTheme : 'light';
+
   return (
     <header 
       className={cn(
         "fixed top-0 left-0 w-full z-50 transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)]",
         isScrolled 
-          ? "py-4 md:py-5 bg-background/60 backdrop-blur-xl border-b border-border/40" 
+          ? "py-4 md:py-5 bg-background/60 backdrop-blur-xl border-b border-border/40 shadow-sm" 
           : "py-8 md:py-10 bg-transparent border-b border-transparent"
       )}
     >
@@ -100,10 +108,13 @@ export function Header() {
             </div>
             
             <div className="flex items-center gap-4">
-              <ThemeToggle />
+              <ThemeToggle currentTheme={activeTheme} />
               <button 
                 onClick={() => setIsDesktopMenuOpen(!isDesktopMenuOpen)}
-                className="flex items-center gap-3 text-foreground transition-all duration-300 hover:scale-110 focus:outline-none"
+                className={cn(
+                  "flex items-center gap-3 transition-all duration-300 hover:scale-110 focus:outline-none",
+                  activeTheme === 'light' ? "text-primary" : "text-foreground"
+                )}
               >
                 <span className="hidden md:block text-sm font-medium tracking-tight">
                   {isDesktopMenuOpen ? 'Close' : 'Menu'}
@@ -119,10 +130,15 @@ export function Header() {
 
           {/* Mobile Menu */}
           <div className="flex md:hidden items-center gap-4">
-            <ThemeToggle />
+            <ThemeToggle currentTheme={activeTheme} />
             <Sheet open={isOpen} onOpenChange={setIsOpen}>
               <SheetTrigger asChild>
-                <button className="flex items-center justify-center text-foreground transition-all duration-300 hover:scale-110 focus:outline-none">
+                <button 
+                  className={cn(
+                    "flex items-center justify-center transition-all duration-300 hover:scale-110 focus:outline-none",
+                    activeTheme === 'light' ? "text-primary" : "text-foreground"
+                  )}
+                >
                   <Menu className="w-6 h-6 stroke-[2px]" />
                 </button>
               </SheetTrigger>
