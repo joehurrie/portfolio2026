@@ -1,3 +1,4 @@
+
 "use client";
 
 import Image from 'next/image';
@@ -8,8 +9,6 @@ import { useState, useEffect, useRef } from 'react';
 export function Footer() {
   const footerRef = useRef<HTMLElement>(null);
   const [offset, setOffset] = useState(0);
-  const [scrollX, setScrollX] = useState(0);
-  const [autoX, setAutoX] = useState(0);
 
   const socialLinks = [
     { name: 'LinkedIn', icon: Linkedin, url: '#' },
@@ -24,27 +23,15 @@ export function Footer() {
   ];
 
   useEffect(() => {
-    let animationFrameId: number;
-    const animate = () => {
-      setAutoX((prev) => (prev - 0.6) % 2000);
-      animationFrameId = requestAnimationFrame(animate);
-    };
-    animationFrameId = requestAnimationFrame(animate);
-    return () => cancelAnimationFrame(animationFrameId);
-  }, []);
-
-  useEffect(() => {
     const handleScroll = () => {
       if (!footerRef.current) return;
       const rect = footerRef.current.getBoundingClientRect();
       const windowHeight = window.innerHeight;
-      const scrollY = window.scrollY;
       
       if (rect.top < windowHeight) {
         const scrolledIntoView = windowHeight - rect.top;
         setOffset(scrolledIntoView * 0.1);
       }
-      setScrollX(-scrollY * 0.4); 
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
@@ -76,15 +63,12 @@ export function Footer() {
       </div>
 
       <div className="absolute top-0 left-0 right-0 z-10 flex items-start justify-center pt-24 md:pt-32 overflow-hidden pointer-events-none mix-blend-difference text-primary">
-        <div 
-          className="flex whitespace-nowrap will-change-transform"
-          style={{ transform: `translateX(calc(-33.33% + ${(autoX + scrollX) % 1000}px))` }}
-        >
-          <h1 className="shrink-0 text-6xl md:text-8xl lg:text-[10vw] font-semibold tracking-tighter leading-none px-6">
-            Start a Project — Start a Project — Start a Project —
+        <div className="flex animate-hero-marquee whitespace-nowrap">
+          <h1 className="shrink-0 text-6xl md:text-8xl lg:text-[10vw] font-semibold tracking-tighter leading-none px-12">
+            Start a Project Start a Project Start a Project Start a Project
           </h1>
-          <h1 className="shrink-0 text-6xl md:text-8xl lg:text-[10vw] font-semibold tracking-tighter leading-none px-6" aria-hidden="true">
-            Start a Project — Start a Project — Start a Project —
+          <h1 className="shrink-0 text-6xl md:text-8xl lg:text-[10vw] font-semibold tracking-tighter leading-none px-12" aria-hidden="true">
+            Start a Project Start a Project Start a Project Start a Project
           </h1>
         </div>
       </div>
