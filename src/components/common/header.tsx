@@ -3,7 +3,7 @@
 
 import Link from 'next/link';
 import { X, Menu, Sun, Moon } from 'lucide-react';
-import { Sheet, SheetContent, SheetTrigger, SheetClose } from '@/components/ui/sheet';
+import { Sheet, SheetContent, SheetTrigger, SheetClose, SheetHeader, SheetTitle } from '@/components/ui/sheet';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
@@ -148,6 +148,9 @@ export function Header() {
                 side="right" 
                 className="bg-background/90 backdrop-blur-3xl text-foreground p-0 w-full border-l-0 flex flex-col [&>button]:hidden animate-in slide-in-from-right duration-700"
               >
+                <SheetHeader className="sr-only">
+                  <SheetTitle>Navigation Menu</SheetTitle>
+                </SheetHeader>
                 <ScrollArea className="flex-1 w-full">
                   <div className="flex flex-col justify-between min-h-screen py-24 px-8 relative">
                     <div className="absolute top-10 left-8">
