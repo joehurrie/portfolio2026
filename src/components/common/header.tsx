@@ -23,26 +23,19 @@ const BeepingDot = () => (
   </span>
 );
 
-const ThemeToggle = ({ currentTheme }: { currentTheme?: string }) => {
+const ThemeToggle = ({ activeTheme }: { activeTheme: string }) => {
   const { theme, setTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  if (!mounted) return <div className="w-5 h-5" />;
-
+  
   return (
     <button
       onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
       className={cn(
         "flex items-center justify-center transition-all duration-300 hover:scale-110 focus:outline-none",
-        currentTheme === 'light' ? "text-primary" : "text-foreground/60 hover:text-primary"
+        activeTheme === 'light' ? "text-primary" : "text-foreground"
       )}
       aria-label="Toggle theme"
     >
-      {theme === 'dark' ? (
+      {activeTheme === 'dark' ? (
         <Sun className="w-5 h-5 stroke-[2px]" />
       ) : (
         <Moon className="w-5 h-5 stroke-[2px]" />
@@ -55,7 +48,7 @@ export function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [isDesktopMenuOpen, setIsDesktopMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const { theme, resolvedTheme } = useTheme();
+  const { resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -67,7 +60,7 @@ export function Header() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const activeTheme = mounted ? resolvedTheme : 'light';
+  const activeTheme = mounted ? (resolvedTheme || 'light') : 'light';
 
   return (
     <header 
@@ -81,10 +74,16 @@ export function Header() {
       <div className="container mx-auto max-w-7xl flex justify-between items-center px-6 md:px-12">
         <Link 
           href="/" 
-          className="group relative text-sm font-medium tracking-tight text-primary transition-colors"
+          className={cn(
+            "group relative text-sm font-medium tracking-tight transition-colors",
+            activeTheme === 'light' ? "text-primary" : "text-foreground"
+          )}
         >
           Joharie Kisiangani
-          <span className="absolute -bottom-1 left-0 h-[1.5px] w-0 bg-primary transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:w-full" />
+          <span className={cn(
+            "absolute -bottom-1 left-0 h-[1.5px] w-0 transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:w-full",
+            activeTheme === 'light' ? "bg-primary" : "bg-foreground"
+          )} />
         </Link>
 
         <div className="flex items-center gap-6">
@@ -100,7 +99,10 @@ export function Header() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="text-sm font-medium tracking-tight text-foreground/80 hover:text-primary transition-colors whitespace-nowrap"
+                  className={cn(
+                    "text-sm font-medium tracking-tight transition-colors whitespace-nowrap",
+                    activeTheme === 'light' ? "text-foreground/80 hover:text-primary" : "text-foreground/80 hover:text-foreground"
+                  )}
                 >
                   {link.label}
                 </Link>
@@ -108,7 +110,7 @@ export function Header() {
             </div>
             
             <div className="flex items-center gap-4">
-              <ThemeToggle currentTheme={activeTheme} />
+              {mounted && <ThemeToggle activeTheme={activeTheme} />}
               <button 
                 onClick={() => setIsDesktopMenuOpen(!isDesktopMenuOpen)}
                 className={cn(
@@ -130,7 +132,7 @@ export function Header() {
 
           {/* Mobile Menu */}
           <div className="flex md:hidden items-center gap-4">
-            <ThemeToggle currentTheme={activeTheme} />
+            {mounted && <ThemeToggle activeTheme={activeTheme} />}
             <Sheet open={isOpen} onOpenChange={setIsOpen}>
               <SheetTrigger asChild>
                 <button 
@@ -149,13 +151,23 @@ export function Header() {
                 <ScrollArea className="flex-1 w-full">
                   <div className="flex flex-col justify-between min-h-screen py-24 px-8 relative">
                     <div className="absolute top-10 left-8">
-                      <Link href="/" className="text-sm font-medium text-primary hover:text-primary transition-colors" onClick={() => setIsOpen(false)}>
+                      <Link 
+                        href="/" 
+                        className={cn(
+                          "text-sm font-medium transition-colors",
+                          activeTheme === 'light' ? "text-primary" : "text-foreground"
+                        )} 
+                        onClick={() => setIsOpen(false)}
+                      >
                         Joharie Kisiangani
                       </Link>
                     </div>
                     <div className="absolute top-10 right-8">
                       <SheetClose asChild>
-                        <button className="text-foreground/40 hover:text-primary transition-all duration-300 hover:scale-110 p-2">
+                        <button className={cn(
+                          "transition-all duration-300 hover:scale-110 p-2",
+                          activeTheme === 'light' ? "text-primary/60 hover:text-primary" : "text-foreground/40 hover:text-foreground"
+                        )}>
                           <X className="w-6 h-6 stroke-[2px]" />
                         </button>
                       </SheetClose>
@@ -166,7 +178,10 @@ export function Header() {
                         <Link
                           key={link.href}
                           href={link.href}
-                          className="text-foreground hover:text-primary transition-all duration-300"
+                          className={cn(
+                            "transition-all duration-300",
+                            activeTheme === 'light' ? "text-foreground hover:text-primary" : "text-foreground hover:text-foreground"
+                          )}
                           onClick={() => setIsOpen(false)}
                         >
                           {link.label}
