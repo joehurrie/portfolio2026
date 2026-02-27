@@ -48,7 +48,7 @@ export function StackingProjects() {
             className="sticky top-0 h-screen w-full flex items-center justify-center p-4 md:p-8 lg:p-12 overflow-hidden"
             style={{ zIndex: index + 1 }}
           >
-            <div className="w-full max-w-7xl h-[80vh] bg-background rounded-[2rem] overflow-hidden border border-foreground/10 shadow-large flex flex-col md:flex-row animate-in fade-in zoom-in-95 duration-700">
+            <div className="w-full max-w-7xl h-[80vh] bg-foreground rounded-[2rem] overflow-hidden border border-background/20 shadow-large flex flex-col md:flex-row animate-in fade-in zoom-in-95 duration-700">
               {/* Image Side */}
               <div className="relative w-full h-1/2 md:h-full md:flex-[2.5] overflow-hidden">
                 {imageData && (
@@ -60,28 +60,28 @@ export function StackingProjects() {
                     data-ai-hint={imageData.imageHint}
                   />
                 )}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none" />
               </div>
 
               {/* Content Side */}
-              <div className="flex-1 p-8 md:p-10 lg:p-12 flex flex-col justify-between bg-background text-foreground border-t md:border-t-0 md:border-l border-foreground/10">
+              <div className="flex-1 p-8 md:p-10 lg:p-12 flex flex-col justify-between bg-foreground text-background border-t md:border-t-0 md:border-l border-background/10">
                 <div className="space-y-4 md:space-y-6">
                   <span className="font-code text-accent block text-xs md:text-sm">
                     {project.year}
                   </span>
-                  <h2 className="text-3xl md:text-5xl lg:text-6xl font-semibold tracking-tighter leading-none text-foreground">
+                  <h2 className="text-3xl md:text-5xl lg:text-6xl font-semibold tracking-tighter leading-none text-background">
                     {project.title}
                   </h2>
-                  <p className="text-muted-foreground text-sm md:text-base leading-relaxed max-w-md font-light">
+                  <p className="text-background/70 text-sm md:text-base leading-relaxed max-w-md font-light">
                     {project.description}
                   </p>
                 </div>
 
                 <div className="mt-8 space-y-0">
-                  <div className="border-t border-foreground/5">
+                  <div className="border-t border-background/10">
                     {project.tags.map((tag) => (
-                      <div key={tag} className="py-2 md:py-3 border-b border-foreground/5 flex justify-between items-center group cursor-default">
-                        <span className="text-[10px] md:text-xs font-code text-muted-foreground group-hover:text-accent transition-colors uppercase tracking-[0.2em]">
+                      <div key={tag} className="py-2 md:py-3 border-b border-background/10 flex justify-between items-center group cursor-default">
+                        <span className="text-[10px] md:text-xs font-code text-background/60 group-hover:text-accent transition-colors uppercase tracking-[0.2em]">
                           {tag}
                         </span>
                       </div>
