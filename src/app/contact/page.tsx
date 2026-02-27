@@ -1,6 +1,5 @@
 import { Header } from "@/components/common/header";
 import { ContactForm } from '@/components/landing/contact-form';
-import { Footer } from "@/components/common/footer";
 
 export default function ContactPage() {
   return (
@@ -32,7 +31,6 @@ export default function ContactPage() {
           </div>
         </section>
       </main>
-      <Footer />
     </div>
   );
 }
