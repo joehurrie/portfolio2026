@@ -5,6 +5,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { ScrollHandler } from '@/components/common/scroll-handler';
 import { BackToTop } from '@/components/common/back-to-top';
 import { ThemeProvider } from '@/components/theme-provider';
+import { SmoothScroll } from '@/components/common/smooth-scroll';
 
 export const metadata: Metadata = {
   title: 'Joharie Kisiangani — Design & Strategy',
@@ -17,7 +18,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning className="scroll-smooth">
+    <html lang="en" suppressHydrationWarning>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
@@ -30,6 +31,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          <SmoothScroll />
           <div className="relative">
             {children}
           </div>
