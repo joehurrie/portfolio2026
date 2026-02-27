@@ -18,9 +18,10 @@ export function AnimatedTestimonialText({ text }: AnimatedTestimonialTextProps) 
   const textToProcess = text.replace(/&apos;/g, "'").replace(/&quot;/g, '"');
 
   useEffect(() => {
-    // If mobile, we don't need the observer for typing logic
+    // If mobile, we want the static full-color look immediately
     if (isMobile) {
       setCurrentIndex(textToProcess.length);
+      setIsVisible(true);
       return;
     }
 

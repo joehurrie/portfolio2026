@@ -1,3 +1,4 @@
+
 "use client";
 
 import Image from 'next/image';
@@ -55,7 +56,7 @@ export function Footer() {
     <footer ref={footerRef} className="relative z-0 min-h-screen w-full flex flex-col overflow-hidden bg-background">
       <div className="absolute inset-0 z-0 flex items-center justify-center overflow-hidden">
         <div 
-          className="relative w-full h-[110%] md:w-[60vw] md:h-[105vh] transition-transform duration-100 ease-out"
+          className="relative w-full h-[110%] md:w-[100vw] md:h-[105vh] transition-transform duration-100 ease-out"
           style={{ transform: `translateY(${-offset}px)` }}
         >
           <Image
