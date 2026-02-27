@@ -1,4 +1,3 @@
-
 "use client";
 
 import { AnimatedCounter } from '@/components/common/animated-counter';
@@ -61,20 +60,20 @@ export function Services() {
   }, []);
 
   return (
-    <section id="services" className="bg-background text-foreground relative py-24 md:py-32">
+    <section id="services" className="bg-background text-foreground relative py-24 md:py-32 lg:py-48">
       <div className="sticky top-0 z-40 h-0 w-full pointer-events-none">
-        <div className="absolute top-8 left-6 md:left-12 text-accent text-[10px] md:text-xs font-code tracking-widest uppercase">
+        <div className="absolute top-8 left-6 md:left-12 text-accent text-[10px] md:text-xs font-code tracking-[0.3em] uppercase">
           // Services
         </div>
       </div>
       <div className="w-full px-6 md:px-12">
         <div className="w-full max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 pt-16">
-            <div className="hidden lg:block lg:col-span-5 relative select-none lg:sticky lg:top-32 self-start">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 pt-16">
+            <div className="hidden lg:block lg:col-span-5 relative select-none lg:sticky lg:top-48 self-start">
               <div className="flex items-center justify-start">
                 <AnimatedCounter
                   end={activeIndex + 1}
-                  className="text-primary text-8xl md:text-[10rem] xl:text-[12rem] font-sans font-bold leading-none tracking-tighter"
+                  className="text-primary text-8xl md:text-[12rem] xl:text-[15rem] font-sans font-bold leading-none tracking-tighter"
                 />
               </div>
             </div>
@@ -85,20 +84,20 @@ export function Services() {
                   key={service.title}
                   ref={(el) => (serviceRefs.current[index] = el)}
                   data-index={index}
-                  className="mb-24 md:mb-32 last:mb-0 reveal-on-scroll"
+                  className="mb-32 md:mb-48 last:mb-0 reveal-on-scroll"
                 >
-                  <h3 className="text-3xl md:text-5xl font-medium tracking-tight mb-4 text-accent transition-colors cursor-default">
+                  <h3 className="text-4xl md:text-6xl font-medium tracking-tighter mb-8 text-accent transition-colors cursor-default">
                     {service.title}
                   </h3>
-                  <p className="text-foreground/70 text-base md:text-lg mb-8 max-w-2xl leading-relaxed font-light">
+                  <p className="text-foreground/70 text-lg md:text-xl lg:text-2xl mb-12 max-w-2xl leading-relaxed font-light">
                     {service.description}
                   </p>
                   
                   <div className="w-full flex flex-col border-t border-border">
                     {service.items.map((item, itemIndex) => (
-                      <div key={item} className="group flex justify-between items-baseline py-4 md:py-5 border-b border-border cursor-default">
-                        <span className="text-base md:text-lg font-normal text-foreground group-hover:text-primary transition-colors">{item}</span>
-                        <span className="text-[10px] md:text-xs font-code text-foreground/30 group-hover:text-primary transition-colors font-medium">
+                      <div key={item} className="group flex justify-between items-baseline py-6 md:py-8 border-b border-border cursor-default transition-all hover:px-2">
+                        <span className="text-lg md:text-xl lg:text-2xl font-normal text-foreground group-hover:text-primary transition-colors">{item}</span>
+                        <span className="text-[10px] md:text-xs font-code text-foreground/30 group-hover:text-primary transition-colors font-medium tracking-widest">
                           {String(itemIndex + 1).padStart(2, '0')}
                         </span>
                       </div>

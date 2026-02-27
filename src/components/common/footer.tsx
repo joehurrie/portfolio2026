@@ -1,4 +1,3 @@
-
 "use client";
 
 import Image from 'next/image';
@@ -30,9 +29,6 @@ export function Footer() {
       const windowHeight = window.innerHeight;
       
       if (rect.top < windowHeight) {
-        // As the footer enters from bottom (rect.top decreases)
-        // We calculate a subtle positive offset to push the image down 
-        // relative to its bottom anchor, ensuring it never lifts off the floor.
         const scrolledIntoView = windowHeight - rect.top;
         setOffset(scrolledIntoView * 0.05);
       }
@@ -47,7 +43,7 @@ export function Footer() {
       {/* Background Container - Anchored to Bottom */}
       <div className="absolute inset-0 z-0 flex items-end justify-center overflow-hidden">
         <div 
-          className="relative w-full h-[115vh] transition-transform duration-100 ease-out"
+          className="relative w-full h-[120vh] transition-transform duration-100 ease-out"
           style={{ transform: `translateY(${offset}px)` }}
         >
           <Image
@@ -68,24 +64,24 @@ export function Footer() {
       </div>
 
       {/* Marquee Header */}
-      <div className="absolute top-0 left-0 right-0 z-10 flex items-start justify-center pt-24 md:pt-64 overflow-hidden pointer-events-none mix-blend-difference text-primary">
+      <div className="absolute top-0 left-0 right-0 z-10 flex items-start justify-center pt-32 md:pt-48 lg:pt-64 overflow-hidden pointer-events-none mix-blend-difference text-primary">
         <div className="flex animate-hero-marquee whitespace-nowrap">
-          <h1 className="shrink-0 text-6xl md:text-8xl lg:text-[10vw] font-semibold tracking-tighter leading-none px-12">
+          <h1 className="shrink-0 text-6xl md:text-8xl lg:text-[12vw] font-semibold tracking-tighter leading-none px-12">
             Start a Project Start a Project Start a Project Start a Project Start a Project 
           </h1>
-          <h1 className="shrink-0 text-6xl md:text-8xl lg:text-[10vw] font-semibold tracking-tighter leading-none px-12" aria-hidden="true">
+          <h1 className="shrink-0 text-6xl md:text-8xl lg:text-[12vw] font-semibold tracking-tighter leading-none px-12" aria-hidden="true">
             Start a Project Start a Project Start a Project Start a Project Start a Project 
           </h1>
         </div>
       </div>
 
       {/* CTA Button */}
-      <div className="absolute inset-0 z-20 flex items-center justify-center pt-24">
+      <div className="absolute inset-0 z-20 flex items-center justify-center pt-32">
         <Link 
           href="/contact"
           className="cta-gradient-btn group"
         >
-          <span className="text-base md:text-lg tracking-tight">
+          <span className="text-base md:text-xl tracking-tight font-medium px-10 py-5">
             Let&apos;s Build
             <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-2" />
           </span>
@@ -93,44 +89,46 @@ export function Footer() {
       </div>
 
       {/* Footer Meta Info */}
-      <div className="relative z-30 w-full mt-auto flex flex-col justify-end px-8 pb-10 md:px-12 md:pb-12 text-foreground">
-        <div className="flex flex-col md:flex-row justify-between items-center md:items-end w-full gap-8">
-          <div className="font-code text-[10px] md:text-xs space-y-2 text-center md:text-left tracking-wide">
-            <p>
-              <span className="font-bold uppercase opacity-100">Location:</span> Nairobi, Kenya
+      <div className="relative z-30 w-full mt-auto flex flex-col justify-end px-8 pb-12 md:px-16 md:pb-16 text-foreground">
+        <div className="flex flex-col md:flex-row justify-between items-center md:items-end w-full gap-16 md:gap-8">
+          <div className="font-code text-[11px] md:text-sm space-y-3 text-center md:text-left tracking-wide">
+            <p className="flex items-center justify-center md:justify-start gap-3">
+              <span className="font-bold uppercase opacity-40">Location:</span> 
+              <span className="font-medium">Nairobi, Kenya</span>
             </p>
-            <p>
-              <span className="font-bold uppercase opacity-100">Mail:</span> kisianganijoharie@gmail.com
+            <p className="flex items-center justify-center md:justify-start gap-3">
+              <span className="font-bold uppercase opacity-40">Mail:</span> 
+              <span className="font-medium underline underline-offset-4 hover:text-primary transition-colors">kisianganijoharie@gmail.com</span>
             </p>
-            <p>
-              <span className="font-bold uppercase opacity-100">Phone:</span> 0758224285
+            <p className="flex items-center justify-center md:justify-start gap-3">
+              <span className="font-bold uppercase opacity-40">Phone:</span> 
+              <span className="font-medium">0758224285</span>
             </p>
-            <div className="flex items-center justify-center md:justify-start gap-3">
-              <span className="font-bold uppercase opacity-100">Availability:</span>
-              <div className="flex items-center gap-2">
-                
-                <span>Remote, Worldwide</span>
+            <div className="flex items-center justify-center md:justify-start gap-4 pt-2">
+              <span className="font-bold uppercase opacity-40">Availability:</span>
+              <div className="flex items-center gap-3 bg-foreground/5 px-4 py-2 rounded-full">
+                <span className="font-medium">Remote, Worldwide</span>
                 <BeepingDot />
               </div>
             </div>
           </div>
           
-          <div className="flex flex-col items-center md:items-end gap-3">
-            <div className="flex items-center gap-6 md:gap-8">
+          <div className="flex flex-col items-center md:items-end gap-6">
+            <div className="flex items-center gap-8 md:gap-12">
               {socialLinks.map((social) => (
                 <Link
                   key={social.name}
                   href={social.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 text-xs font-medium hover:text-primary transition-colors group"
+                  className="flex items-center gap-2 text-xs font-semibold hover:text-primary transition-colors group"
                 >
-                  <social.icon className="h-4 w-4 text-neutral-500 group-hover:text-primary transition-colors" />
-                  <span className="hidden sm:inline uppercase tracking-widest">{social.name}</span>
+                  <social.icon className="h-5 w-5 text-neutral-500 group-hover:text-primary transition-colors" />
+                  <span className="hidden sm:inline uppercase tracking-[0.2em]">{social.name}</span>
                 </Link>
               ))}
             </div>
-            <p className="text-[9px] uppercase tracking-[0.3em] opacity-60 font-code mt-1">
+            <p className="text-[10px] uppercase tracking-[0.4em] opacity-30 font-code mt-4">
               &copy; {new Date().getFullYear()} Joharie Kisiangani. All Rights Reserved.
             </p>
           </div>
