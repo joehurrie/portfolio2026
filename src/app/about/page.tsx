@@ -68,30 +68,27 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* Showcase Section */}
-        <section className="min-h-[70vh] md:h-screen flex items-center justify-center bg-foreground overflow-hidden border-t border-white/5">
-          <div className="container mx-auto px-6 md:px-12 flex flex-col items-center justify-center h-full">
-            <div className="w-full max-w-5xl flex flex-col items-center">
-              {/* Main Image Reveal */}
-              <div className="relative w-full max-w-4xl aspect-[16/10] md:aspect-video rounded-2xl overflow-hidden reveal-on-scroll shadow-large bg-background/5 group">
-                <Image
-                  src='/img.png'
-                  alt="System Architecture"
-                  fill
-                  className="object-cover grayscale opacity-80 transition-all duration-1000 group-hover:scale-105"
-                  data-ai-hint="system architecture design"
-                  priority
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
-              </div>
+        {/* Showcase Section - Simplified Image Embed */}
+        <section className="py-24 md:py-32 bg-foreground overflow-hidden">
+          <div className="container mx-auto px-6 md:px-12 flex flex-col items-center">
+            {/* Simple Image Embed with Reveal */}
+            <div className="relative w-full max-w-6xl aspect-[16/9] md:aspect-video reveal-on-scroll overflow-hidden">
+              <Image
+                src='/img.png'
+                alt="System Architecture"
+                fill
+                className="object-cover grayscale opacity-90"
+                data-ai-hint="system architecture"
+                priority
+              />
+            </div>
 
-              {/* Caption */}
-              <div className="mt-16 text-center space-y-4 reveal-on-scroll" style={{ transitionDelay: '300ms' }}>
-                <p className="text-[10px] md:text-xs uppercase tracking-[0.4em] text-white/40 font-code font-medium">System Architecture</p>
-                <h3 className="text-xl md:text-3xl font-light text-white/80 tracking-tight leading-tight">
-                  High-fidelity engineering meets minimal design.
-                </h3>
-              </div>
+            {/* Caption */}
+            <div className="mt-12 text-center space-y-3 reveal-on-scroll" style={{ transitionDelay: '200ms' }}>
+              <p className="text-[10px] md:text-xs uppercase tracking-[0.4em] text-white/40 font-code font-medium">System Architecture</p>
+              <h3 className="text-xl md:text-2xl font-light text-white/70 tracking-tight leading-tight">
+                High-fidelity engineering meets minimal design.
+              </h3>
             </div>
           </div>
         </section>
