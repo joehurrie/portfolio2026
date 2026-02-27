@@ -28,13 +28,13 @@ export function Hero() {
         />
       </div>
 
-      <div className="absolute inset-0 z-10 flex items-center justify-center pt-24 overflow-hidden pointer-events-none mix-blend-difference text-primary">
+      <div className="absolute inset-0 z-10 flex items-center justify-center pt-32 overflow-hidden pointer-events-none mix-blend-difference text-primary">
         <div className="flex animate-hero-marquee">
           <h1 className="shrink-0 text-7xl md:text-9xl lg:text-[12vw] font-semibold tracking-tighter leading-none px-8 whitespace-nowrap">
-            Joharie Kisiangani
+            Joharie Kisiangani Joharie Kisiangani Joharie Kisiangani
           </h1>
           <h1 className="shrink-0 text-7xl md:text-9xl lg:text-[12vw] font-semibold tracking-tighter leading-none px-8 whitespace-nowrap" aria-hidden="true">
-            Joharie Kisiangani
+            Joharie Kisiangani Joharie Kisiangani Joharie Kisiangani
           </h1>
         </div>
       </div>
@@ -61,8 +61,8 @@ export function Hero() {
 
           <div className="text-right">
             <h2 className="text-xl md:text-4xl lg:text-5xl font-medium tracking-tighter leading-tight">
-              <span className="block text-accent text-xs md:text-base mb-1 tracking-tight font-normal whitespace-nowrap uppercase font-code">// Product Designer</span>
-              <span className="text-accent whitespace-nowrap">Web developer</span>
+              <span className="block text-foreground text-xs md:text-base mb-1 tracking-tight font-normal whitespace-nowrap uppercase font-code">// Product Designer</span>
+              <span className="text-accent whitespace-nowrap">Web eveloper</span>
             </h2>
           </div>
         </div>

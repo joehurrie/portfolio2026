@@ -51,36 +51,36 @@ export function Footer() {
           style={{ transform: `translateY(${offset}px)` }}
         >
           <Image
-            src="/footer.png"
+            src="/footer1.png"
             alt="Hero background"
             fill
             className="w-full h-full object-cover object-bottom md:hidden"
             priority
           />
           <Image
-            src="/footer.png"
+            src="/footer1.png"
             alt="Hero background"
             fill
-            className="w-full h-full object-cover object-bottom hidden md:block"
+            className="w-full h-full object-contain object-bottom hidden md:block"
             priority
           />
         </div>
       </div>
 
       {/* Marquee Header */}
-      <div className="absolute top-0 left-0 right-0 z-10 flex items-start justify-center pt-24 md:pt-32 overflow-hidden pointer-events-none mix-blend-difference text-primary">
+      <div className="absolute top-0 left-0 right-0 z-10 flex items-start justify-center pt-24 md:pt-64 overflow-hidden pointer-events-none mix-blend-difference text-primary">
         <div className="flex animate-hero-marquee whitespace-nowrap">
           <h1 className="shrink-0 text-6xl md:text-8xl lg:text-[10vw] font-semibold tracking-tighter leading-none px-12">
-            Start a Project Start a Project Start a Project Start a Project
+            Start a Project Start a Project Start a Project Start a Project Start a Project 
           </h1>
           <h1 className="shrink-0 text-6xl md:text-8xl lg:text-[10vw] font-semibold tracking-tighter leading-none px-12" aria-hidden="true">
-            Start a Project Start a Project Start a Project Start a Project
+            Start a Project Start a Project Start a Project Start a Project Start a Project 
           </h1>
         </div>
       </div>
 
       {/* CTA Button */}
-      <div className="absolute inset-0 z-20 flex items-center justify-center pt-20">
+      <div className="absolute inset-0 z-20 flex items-center justify-center pt-24">
         <Link 
           href="/contact"
           className="cta-gradient-btn group"
@@ -93,7 +93,7 @@ export function Footer() {
       </div>
 
       {/* Footer Meta Info */}
-      <div className="relative z-30 w-full mt-auto flex flex-col justify-end px-6 pb-10 md:px-12 md:pb-12 text-muted-foreground/80">
+      <div className="relative z-30 w-full mt-auto flex flex-col justify-end px-8 pb-10 md:px-12 md:pb-12 text-foreground">
         <div className="flex flex-col md:flex-row justify-between items-center md:items-end w-full gap-8">
           <div className="font-code text-[10px] md:text-xs space-y-2 text-center md:text-left tracking-wide">
             <p>
@@ -108,8 +108,9 @@ export function Footer() {
             <div className="flex items-center justify-center md:justify-start gap-3">
               <span className="font-bold uppercase opacity-100">Availability:</span>
               <div className="flex items-center gap-2">
-                <BeepingDot />
+                
                 <span>Remote, Worldwide</span>
+                <BeepingDot />
               </div>
             </div>
           </div>
@@ -129,7 +130,7 @@ export function Footer() {
                 </Link>
               ))}
             </div>
-            <p className="text-[9px] uppercase tracking-[0.3em] opacity-40 font-code mt-1">
+            <p className="text-[9px] uppercase tracking-[0.3em] opacity-60 font-code mt-1">
               &copy; {new Date().getFullYear()} Joharie Kisiangani. All Rights Reserved.
             </p>
           </div>

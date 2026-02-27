@@ -16,7 +16,6 @@ const archiveItems = [
 
 export default function AboutPage() {
   const avatarImage = PlaceHolderImages.find((img) => img.id === 'testimonial-1');
-  const mobileShowcase = PlaceHolderImages.find((img) => img.id === 'project-3');
   const ctaBgImage = PlaceHolderImages.find((img) => img.id === 'about-image');
 
   return (
@@ -29,10 +28,10 @@ export default function AboutPage() {
             <div className="reveal-on-scroll">
               <div className="flex flex-wrap items-start">
                 {avatarImage && (
-                  <div className="inline-block relative w-12 h-14 md:w-16 md:h-20 overflow-hidden rounded-md shrink-0 mr-6 md:mr-10 mb-4 mt-2">
+                  <div className="inline-block relative w-16 h-24 md:w-16 md:h-30 overflow-hidden rounded-full shrink-0 mr-6 md:mr-10 mb-4 mt-4">
                     <Image
-                      src={avatarImage.imageUrl}
-                      alt="Joharie Kisiangani"
+                      src="/about1.png"
+                      alt="Joharie"
                       fill
                       className="object-cover grayscale"
                       data-ai-hint={avatarImage.imageHint}
@@ -40,7 +39,7 @@ export default function AboutPage() {
                   </div>
                 )}
                 <h2 className="text-3xl md:text-5xl lg:text-7xl font-medium tracking-tighter leading-[0.95] flex-1 max-w-5xl">
-                  I&apos;m a UX engineer specializing in design systems that bridge the gap between aesthetics and scale.
+                  I&apos;m a Web developer and UX designer specializing in digital products that bridge the gap between design and technology.
                 </h2>
               </div>
             </div>
@@ -48,12 +47,12 @@ export default function AboutPage() {
             <div className="mt-auto grid grid-cols-1 md:grid-cols-2 gap-x-20 gap-y-12 pb-12 md:pb-0 pt-20">
               <div className="reveal-on-scroll" style={{ transitionDelay: '200ms' }}>
                 <p className="text-muted-foreground text-lg md:text-xl leading-relaxed max-w-lg font-light">
-                  I collaborate with engineering teams to architect resilient interfaces. My work focuses on technical feasibility without compromising design intent, ensuring every component is as performant as it is beautiful.
+                  I collaborate with entrepreneurs to build digital products that give unique appeal, solve business problems while maintaining user satisfaction. My work focuses on technical feasibility without compromising design intent, ensuring every design is as performant as it is beautiful.
                 </p>
               </div>
               <div className="reveal-on-scroll" style={{ transitionDelay: '300ms' }}>
                 <p className="text-muted-foreground text-lg md:text-xl leading-relaxed max-w-lg font-light">
-                  From optimizing React render cycles to building accessible foundations in Tailwind, I engineer the systems that power modern digital products. I transform high-fidelity visions into scalable production code.
+                  From creating brand assets to developing website and mobile apps I will help you launch your digital product for scaling in the market through modern technology and design.
                 </p>
               </div>
             </div>
@@ -70,32 +69,28 @@ export default function AboutPage() {
         </section>
 
         {/* Showcase Section */}
-        <section className="h-screen flex items-center justify-center bg-[#36454F] overflow-hidden border-t border-white/5">
+        <section className="min-h-[70vh] md:h-screen flex items-center justify-center bg-foreground overflow-hidden border-t border-white/5">
           <div className="container mx-auto px-6 md:px-12 flex flex-col items-center justify-center h-full">
-            <div className="reveal-on-scroll w-full max-w-5xl flex flex-col items-center">
-              <div className="relative w-full aspect-video flex items-center justify-center">
-                <div 
-                  className="relative w-[280px] md:w-[400px] aspect-[9/19] rounded-[2.5rem] border-[10px] border-background/20 bg-background overflow-hidden shadow-large transition-all duration-1000 ease-out"
-                  style={{ 
-                    transform: 'perspective(1200px) rotateX(20deg) rotateY(-15deg) rotateZ(5deg)',
-                    boxShadow: '-20px 40px 80px rgba(0,0,0,0.8)'
-                  }}
-                >
-                  {mobileShowcase && (
-                    <Image
-                      src={mobileShowcase.imageUrl}
-                      alt="UX Showcase"
-                      fill
-                      className="object-cover grayscale opacity-90"
-                      data-ai-hint="mobile app interface"
-                    />
-                  )}
-                  <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-transparent pointer-events-none" />
-                </div>
+            <div className="w-full max-w-5xl flex flex-col items-center">
+              {/* Main Image Reveal */}
+              <div className="relative w-full max-w-4xl aspect-[16/10] md:aspect-video rounded-2xl overflow-hidden reveal-on-scroll shadow-large bg-background/5 group">
+                <Image
+                  src='/img.png'
+                  alt="System Architecture"
+                  fill
+                  className="object-cover grayscale opacity-80 transition-all duration-1000 group-hover:scale-105"
+                  data-ai-hint="system architecture design"
+                  priority
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
               </div>
-              <div className="mt-12 text-center space-y-2 opacity-40">
-                <p className="text-[10px] uppercase tracking-[0.3em] text-white font-code">System Architecture</p>
-                <p className="text-xs md:text-sm font-light text-white/60">High-fidelity engineering meets minimal design.</p>
+
+              {/* Caption */}
+              <div className="mt-16 text-center space-y-4 reveal-on-scroll" style={{ transitionDelay: '300ms' }}>
+                <p className="text-[10px] md:text-xs uppercase tracking-[0.4em] text-white/40 font-code font-medium">System Architecture</p>
+                <h3 className="text-xl md:text-3xl font-light text-white/80 tracking-tight leading-tight">
+                  High-fidelity engineering meets minimal design.
+                </h3>
               </div>
             </div>
           </div>
@@ -140,11 +135,11 @@ export default function AboutPage() {
         </section>
 
         {/* CTA Section */}
-        <section className="relative h-[80vh] flex items-center bg-[#36454F] overflow-hidden">
+        <section className="relative h-[80vh] flex items-center bg-foreground overflow-hidden">
           {ctaBgImage && (
             <div className="absolute inset-0 z-0">
               <Image
-                src={ctaBgImage.imageUrl}
+                src="/extra.png"
                 alt="Atmospheric Background"
                 fill
                 className="object-cover opacity-20 grayscale"

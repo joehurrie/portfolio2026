@@ -25,7 +25,7 @@ export function Intro() {
                         <div className="reveal-on-scroll" style={{ transitionDelay: '100ms' }}>
                             <div className="w-full flex justify-start md:justify-end">
                                 <p className="text-background/80 text-lg md:text-2xl max-w-2xl leading-relaxed text-left md:text-right font-light transition-colors duration-700">
-                                    Bringing your vision to life quickly and efficiently—whether it's branding, apps, or websites—I've got it covered, delivering smooth and effective solutions from start to finish.
+                                    Bringing your vision to life quickly and efficiently, whether it's branding, apps, or websites—I've got it covered, delivering  effective solutions that scale your operations.
                                 </p>
                             </div>
                         </div>
@@ -34,8 +34,8 @@ export function Intro() {
                             <div className="flex justify-center mt-12">
                                 <Link href="#projects" className="cta-gradient-btn group">
                                     <span className="flex items-center gap-3">
-                                        See my Work
-                                        <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
+                                        My Work
+                                        <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-2" />
                                     </span>
                                 </Link>
                             </div>
