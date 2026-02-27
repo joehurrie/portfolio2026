@@ -152,7 +152,7 @@ export function HorizontalProjects({ showHeading = true }: HorizontalProjectsPro
             return (
               <section 
                 key={`${project.id}-${index}`} 
-                className="flex-shrink-0 w-[85vw] md:w-[75vw] h-[75vh] md:h-[80vh] flex items-center justify-center px-4 md:px-8"
+                className="flex-shrink-0 w-[94vw] md:w-[75vw] h-[75vh] md:h-[80vh] flex items-center justify-center px-3 md:px-8"
               >
                 <div 
                   className="flex flex-col md:flex-row w-full h-full bg-foreground rounded-[2.5rem] overflow-hidden shadow-large group cursor-none border border-background/20"
