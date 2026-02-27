@@ -87,7 +87,7 @@ export function Services() {
                   data-index={index}
                   className="mb-24 md:mb-32 last:mb-0 reveal-on-scroll"
                 >
-                  <h3 className="text-3xl md:text-5xl font-medium tracking-tight mb-4 hover:text-primary transition-colors cursor-default">
+                  <h3 className="text-3xl md:text-5xl font-medium tracking-tight mb-4 text-accent transition-colors cursor-default">
                     {service.title}
                   </h3>
                   <p className="text-foreground/70 text-base md:text-lg mb-8 max-w-2xl leading-relaxed font-light">
