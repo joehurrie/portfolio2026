@@ -153,7 +153,7 @@ export function HorizontalProjects({ showHeading = true }: HorizontalProjectsPro
                 className="flex-shrink-0 w-[85vw] md:w-[75vw] h-[75vh] md:h-[80vh] flex items-center justify-center px-4 md:px-8"
               >
                 <div 
-                  className="flex flex-col md:flex-row w-full h-full bg-card rounded-[2.5rem] overflow-hidden shadow-large group cursor-none border border-background/10"
+                  className="flex flex-col md:flex-row w-full h-full bg-background rounded-[2.5rem] overflow-hidden shadow-large group cursor-none border border-foreground/10"
                   onMouseEnter={() => setIsOverCard(true)}
                   onMouseLeave={() => setIsOverCard(false)}
                 >
@@ -172,12 +172,12 @@ export function HorizontalProjects({ showHeading = true }: HorizontalProjectsPro
                   </div>
 
                   {/* Info Side */}
-                  <div className="p-8 md:p-12 md:flex-[1] flex flex-col justify-between bg-card text-card-foreground border-t md:border-t-0 md:border-l border-background/10">
+                  <div className="p-8 md:p-12 md:flex-[1] flex flex-col justify-between bg-background text-foreground border-t md:border-t-0 md:border-l border-foreground/10">
                     <div>
                       <span className="font-code text-accent mb-4 block text-xs md:text-sm">
                         {project.year}
                       </span>
-                      <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tighter mb-6 leading-[0.95]">
+                      <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tighter mb-6 leading-[0.95] text-foreground">
                         {project.title}
                       </h2>
                       <p className="text-muted-foreground text-sm md:text-base leading-relaxed max-w-md font-light">
@@ -188,7 +188,7 @@ export function HorizontalProjects({ showHeading = true }: HorizontalProjectsPro
                     <div className="mt-8 md:mt-0">
                       <div className="flex flex-col gap-0">
                         {project.tags.map((tag) => (
-                          <div key={tag} className="py-2 md:py-3 border-t border-background/5 last:border-b last:border-background/5">
+                          <div key={tag} className="py-2 md:py-3 border-t border-foreground/5 last:border-b last:border-foreground/5">
                             <span className="text-[10px] md:text-xs font-code text-accent uppercase tracking-widest">
                               {tag}
                             </span>

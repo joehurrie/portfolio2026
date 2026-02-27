@@ -101,7 +101,7 @@ export function Header() {
                   href={link.href}
                   className={cn(
                     "text-sm font-medium tracking-tight transition-colors whitespace-nowrap",
-                    activeTheme === 'dark' ? "text-foreground/80 hover:text-neutral-400" : "text-foreground/80 hover:text-foreground"
+                    activeTheme === 'dark' ? "text-neutral-400 hover:text-foreground" : "text-foreground/80 hover:text-foreground"
                   )}
                 >
                   {link.label}
@@ -180,7 +180,7 @@ export function Header() {
                           href={link.href}
                           className={cn(
                             "transition-all duration-300",
-                            activeTheme === 'dark' ? "text-foreground hover:text-neutral-400" : "text-foreground hover:text-foreground"
+                            activeTheme === 'dark' ? "text-neutral-400 hover:text-foreground" : "text-foreground hover:text-foreground"
                           )}
                           onClick={() => setIsOpen(false)}
                         >
