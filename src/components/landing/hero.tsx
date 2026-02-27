@@ -62,7 +62,7 @@ export function Hero() {
           <div className="text-right">
             <h2 className="text-xl md:text-4xl lg:text-5xl font-medium tracking-tighter leading-tight">
               <span className="block text-accent text-xs md:text-base mb-1 tracking-tight font-normal whitespace-nowrap uppercase font-code">// Product Designer</span>
-              <span className="text-accent whitespace-nowrap">UX Engineer</span>
+              <span className="text-accent whitespace-nowrap">Web developer</span>
             </h2>
           </div>
         </div>
