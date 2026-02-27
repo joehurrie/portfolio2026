@@ -5,6 +5,7 @@ import React, { useRef, useState, useEffect } from 'react';
 import Image from 'next/image';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { cn } from '@/lib/utils';
+import { ArrowUpRight } from 'lucide-react';
 
 const projects = [
   {
@@ -114,7 +115,7 @@ export function HorizontalProjects({ showHeading = true }: HorizontalProjectsPro
         {/* Custom Cursor */}
         <div 
           className={cn(
-            "fixed pointer-events-none z-[100] w-28 h-28 rounded-full bg-accent text-accent-foreground hidden md:flex items-center justify-center font-semibold transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] text-lg scale-0",
+            "fixed pointer-events-none z-[100] w-28 h-28 rounded-full bg-accent text-accent-foreground hidden md:flex flex-col items-center justify-center font-semibold transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] text-lg scale-0 shadow-2xl",
             isOverCard && "scale-100"
           )}
           style={{ 
@@ -122,7 +123,8 @@ export function HorizontalProjects({ showHeading = true }: HorizontalProjectsPro
             top: cursorPos.y - 56,
           }}
         >
-          View
+          <span className="text-[10px] font-bold uppercase tracking-[0.2em] mb-1">View</span>
+          <ArrowUpRight className="h-6 w-6" />
         </div>
 
         {/* Horizontal Scrolling Content */}

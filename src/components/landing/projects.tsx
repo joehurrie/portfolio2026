@@ -1,9 +1,11 @@
+
 "use client";
 
 import Image from 'next/image';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { useState } from 'react';
 import Link from 'next/link';
+import { ArrowUpRight } from 'lucide-react';
 
 const projects = [
   {
@@ -49,7 +51,7 @@ export function Projects() {
         </div>
       </div>
       
-      {/* Desktop scroll view - Now starts at 'md' for better tablet layout */}
+      {/* Desktop scroll view */}
       <div className="hidden md:flex flex-col items-center">
         {projects.map((project, index) => {
           const imageData = PlaceHolderImages.find((img) => img.id === project.id);
@@ -62,7 +64,7 @@ export function Projects() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full mx-auto bg-background text-foreground p-6 md:p-8 rounded-2xl shadow-large min-h-[70vh] max-h-[800px]">
                 {/* Left Column - Image */}
                 <div
-                  className="relative w-full h-64 md:h-full overflow-hidden rounded-lg cursor-none"
+                  className="relative w-full h-64 md:h-full overflow-hidden rounded-lg cursor-none group"
                   onMouseEnter={() => setHoveredProjectId(project.id)}
                   onMouseLeave={() => setHoveredProjectId(null)}
                   onMouseMove={handleMouseMove}
@@ -73,20 +75,21 @@ export function Projects() {
                       alt={imageData.description}
                       fill
                       data-ai-hint={imageData.imageHint}
-                      className="object-cover"
+                      className="object-cover transition-transform duration-700 group-hover:scale-105"
                     />
                   )}
                   {hoveredProjectId === project.id && (
                     <Link href="#" className="absolute inset-0">
                       <div
-                        className="absolute flex items-center justify-center w-28 h-28 rounded-full bg-accent text-accent-foreground font-semibold text-lg pointer-events-none animate-cursor-scale-in"
+                        className="absolute flex flex-col items-center justify-center w-28 h-28 rounded-full bg-accent text-accent-foreground font-semibold shadow-2xl pointer-events-none animate-cursor-scale-in"
                         style={{
                           left: `${cursorPosition.x}px`,
                           top: `${cursorPosition.y}px`,
                           transform: 'translate(-50%, -50%)',
                         }}
                       >
-                        View
+                        <span className="text-[10px] font-bold uppercase tracking-[0.2em] mb-1">View</span>
+                        <ArrowUpRight className="h-6 w-6" />
                       </div>
                     </Link>
                   )}

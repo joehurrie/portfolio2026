@@ -5,6 +5,7 @@ import React from 'react';
 import Image from 'next/image';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { cn } from '@/lib/utils';
+import { ArrowUpRight } from 'lucide-react';
 
 const projects = [
   {
@@ -50,17 +51,25 @@ export function StackingProjects() {
           >
             <div className="w-full max-w-7xl h-[80vh] bg-foreground rounded-[2rem] overflow-hidden border border-background/20 shadow-large flex flex-col md:flex-row animate-in fade-in zoom-in-95 duration-700">
               {/* Image Side */}
-              <div className="relative w-full h-1/2 md:h-full md:flex-[2.5] overflow-hidden">
+              <div className="relative w-full h-1/2 md:h-full md:flex-[2.5] overflow-hidden group cursor-pointer">
                 {imageData && (
                   <Image
                     src={imageData.imageUrl}
                     alt={project.title}
                     fill
-                    className="object-cover grayscale transition-transform duration-1000 hover:scale-105"
+                    className="object-cover grayscale transition-transform duration-1000 group-hover:scale-105"
                     data-ai-hint={imageData.imageHint}
                   />
                 )}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none" />
+                
+                {/* Reveal View Button */}
+                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 bg-black/10 backdrop-blur-[2px]">
+                   <div className="flex flex-col items-center justify-center bg-accent text-accent-foreground w-24 h-24 md:w-32 md:h-32 rounded-full shadow-2xl scale-75 group-hover:scale-100 transition-transform duration-500 ease-[cubic-bezier(0.23,1,0.32,1)]">
+                      <span className="text-[10px] font-bold uppercase tracking-[0.2em] mb-1">View</span>
+                      <ArrowUpRight className="h-6 w-6 md:h-8 md:w-8" />
+                   </div>
+                </div>
               </div>
 
               {/* Content Side */}
