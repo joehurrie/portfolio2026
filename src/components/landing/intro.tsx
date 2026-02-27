@@ -1,7 +1,5 @@
-
 import { ArrowRight } from 'lucide-react';
 import Link from 'next/link';
-import { Button } from '../ui/button';
 import { AnimatedIntroText } from './animated-intro-text';
 
 /**
@@ -34,12 +32,12 @@ export function Intro() {
 
                         <div className="reveal-on-scroll" style={{ transitionDelay: '200ms' }}>
                             <div className="flex justify-center mt-12">
-                                <Button asChild size="lg" variant="outline" className="group border-accent text-accent hover:bg-accent hover:text-accent-foreground">
-                                    <Link href="#projects" className="flex items-center gap-3">
+                                <Link href="#projects" className="cta-gradient-btn group">
+                                    <span className="flex items-center gap-3">
                                         See my Work
                                         <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
-                                    </Link>
-                                </Button>
+                                    </span>
+                                </Link>
                             </div>
                         </div>
                     </div>

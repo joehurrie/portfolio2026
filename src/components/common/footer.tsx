@@ -1,4 +1,3 @@
-
 "use client";
 
 import Image from 'next/image';
@@ -91,15 +90,14 @@ export function Footer() {
       </div>
 
       <div className="absolute inset-0 z-20 flex items-center justify-center pt-20">
-        <div className="beam-button-container group">
-          <div className="beam-border" />
-          <Link 
-            href="/contact"
-            className="beam-content py-4 px-10 text-base md:text-lg font-medium tracking-tight text-white transition-all duration-300"
-          >
-            Let's collaborate
-          </Link>
-        </div>
+        <Link 
+          href="/contact"
+          className="cta-gradient-btn"
+        >
+          <span className="text-base md:text-lg tracking-tight">
+            Let&apos;s collaborate
+          </span>
+        </Link>
       </div>
 
       <div className="relative z-30 w-full mt-auto flex flex-col justify-end px-6 pb-10 md:px-12 md:pb-12 text-muted-foreground/80">
