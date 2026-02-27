@@ -73,8 +73,6 @@ export function HorizontalProjects({ showHeading = true }: HorizontalProjectsPro
         const relativeScroll = scrollPos - containerTop;
         const progress = relativeScroll / totalScrollableHeight;
         
-        // Entry Threshold: First 12% is for "settling" into view
-        // Exit Threshold: Last 8% is for "holding" before release
         const entryThreshold = 0.12;
         const exitThreshold = 0.92;
         
@@ -83,7 +81,6 @@ export function HorizontalProjects({ showHeading = true }: HorizontalProjectsPro
         } else if (progress > exitThreshold) {
           setTranslateX(totalHorizontalScroll);
         } else {
-          // Map the middle 80% to the horizontal movement
           const horizontalProgress = (progress - entryThreshold) / (exitThreshold - entryThreshold);
           setTranslateX(horizontalProgress * totalHorizontalScroll);
         }
@@ -112,7 +109,7 @@ export function HorizontalProjects({ showHeading = true }: HorizontalProjectsPro
     >
       <div 
         ref={stickyRef}
-        className="sticky top-0 h-screen w-full overflow-hidden bg-foreground transition-colors duration-500"
+        className="sticky top-0 h-screen w-full overflow-hidden bg-foreground transition-colors duration-700"
       >
         {/* Custom Cursor */}
         <div 
@@ -138,10 +135,10 @@ export function HorizontalProjects({ showHeading = true }: HorizontalProjectsPro
         >
           {showHeading && (
             <section className="flex-shrink-0 w-screen h-full flex flex-col justify-center px-6 md:px-24">
-              <h1 className="text-7xl md:text-[15vw] font-bold tracking-tighter leading-none text-background transition-colors duration-500">
+              <h1 className="text-7xl md:text-[15vw] font-bold tracking-tighter leading-none text-background transition-colors duration-700">
                 Work Index
               </h1>
-              <div className="mt-8 flex items-center gap-4 text-background/60 font-code transition-colors duration-500">
+              <div className="mt-8 flex items-center gap-4 text-background/40 font-code transition-colors duration-700">
                 <span className="w-12 h-px bg-background/20"></span>
                 <span>Scroll to explore</span>
               </div>
@@ -156,11 +153,11 @@ export function HorizontalProjects({ showHeading = true }: HorizontalProjectsPro
                 className="flex-shrink-0 w-[85vw] md:w-[75vw] h-[75vh] md:h-[80vh] flex items-center justify-center px-4 md:px-8"
               >
                 <div 
-                  className="flex flex-col md:flex-row w-full h-full bg-card rounded-[2.5rem] overflow-hidden shadow-large group cursor-none border border-border/50"
+                  className="flex flex-col md:flex-row w-full h-full bg-card rounded-[2.5rem] overflow-hidden shadow-large group cursor-none border border-background/10"
                   onMouseEnter={() => setIsOverCard(true)}
                   onMouseLeave={() => setIsOverCard(false)}
                 >
-                  {/* Image Side - 3/4 Width on Desktop */}
+                  {/* Image Side */}
                   <div className="relative w-full h-1/2 md:h-full md:flex-[3] overflow-hidden">
                     {imageData && (
                       <Image
@@ -174,8 +171,8 @@ export function HorizontalProjects({ showHeading = true }: HorizontalProjectsPro
                     <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
                   </div>
 
-                  {/* Info Side - 1/4 Width on Desktop */}
-                  <div className="p-8 md:p-12 md:flex-[1] flex flex-col justify-between bg-card text-card-foreground border-t md:border-t-0 md:border-l border-border/50">
+                  {/* Info Side */}
+                  <div className="p-8 md:p-12 md:flex-[1] flex flex-col justify-between bg-card text-card-foreground border-t md:border-t-0 md:border-l border-background/10">
                     <div>
                       <span className="font-code text-accent mb-4 block text-xs md:text-sm">
                         {project.year}
@@ -191,7 +188,7 @@ export function HorizontalProjects({ showHeading = true }: HorizontalProjectsPro
                     <div className="mt-8 md:mt-0">
                       <div className="flex flex-col gap-0">
                         {project.tags.map((tag) => (
-                          <div key={tag} className="py-2 md:py-3 border-t border-border/30 last:border-b last:border-border/30">
+                          <div key={tag} className="py-2 md:py-3 border-t border-background/5 last:border-b last:border-background/5">
                             <span className="text-[10px] md:text-xs font-code text-accent uppercase tracking-widest">
                               {tag}
                             </span>
@@ -205,7 +202,6 @@ export function HorizontalProjects({ showHeading = true }: HorizontalProjectsPro
             );
           })}
           
-          {/* Final Spacer */}
           <div className="flex-shrink-0 w-[10vw] md:w-[20vw]" />
         </div>
       </div>

@@ -32,7 +32,7 @@ const projects = [
 
 export function StackingProjects() {
   return (
-    <section id="projects" className="relative bg-foreground transition-colors duration-500">
+    <section id="projects" className="relative bg-foreground transition-colors duration-700">
       <div className="sticky top-0 z-40 h-0">
         <div className="absolute top-8 left-6 md:left-12 text-accent text-xs md:text-sm font-code tracking-wide">
           // Projects
@@ -48,7 +48,7 @@ export function StackingProjects() {
             className="sticky top-0 h-screen w-full flex items-center justify-center p-4 md:p-8 lg:p-12 overflow-hidden"
             style={{ zIndex: index + 1 }}
           >
-            <div className="w-full max-w-7xl h-[80vh] bg-card rounded-[2rem] overflow-hidden border border-border/50 shadow-large flex flex-col md:flex-row animate-in fade-in zoom-in-95 duration-700">
+            <div className="w-full max-w-7xl h-[80vh] bg-card rounded-[2rem] overflow-hidden border border-background/10 shadow-large flex flex-col md:flex-row animate-in fade-in zoom-in-95 duration-700">
               {/* Image Side */}
               <div className="relative w-full h-1/2 md:h-full md:flex-[2.5] overflow-hidden">
                 {imageData && (
@@ -64,7 +64,7 @@ export function StackingProjects() {
               </div>
 
               {/* Content Side */}
-              <div className="flex-1 p-8 md:p-10 lg:p-12 flex flex-col justify-between bg-card text-card-foreground border-t md:border-t-0 md:border-l border-border/50">
+              <div className="flex-1 p-8 md:p-10 lg:p-12 flex flex-col justify-between bg-card text-card-foreground border-t md:border-t-0 md:border-l border-background/10">
                 <div className="space-y-4 md:space-y-6">
                   <span className="font-code text-accent block text-xs md:text-sm">
                     {project.year}
@@ -78,9 +78,9 @@ export function StackingProjects() {
                 </div>
 
                 <div className="mt-8 space-y-0">
-                  <div className="border-t border-border/30">
+                  <div className="border-t border-background/5">
                     {project.tags.map((tag) => (
-                      <div key={tag} className="py-2 md:py-3 border-b border-border/30 flex justify-between items-center group cursor-default">
+                      <div key={tag} className="py-2 md:py-3 border-b border-background/5 flex justify-between items-center group cursor-default">
                         <span className="text-[10px] md:text-xs font-code text-muted-foreground group-hover:text-accent transition-colors uppercase tracking-[0.2em]">
                           {tag}
                         </span>
