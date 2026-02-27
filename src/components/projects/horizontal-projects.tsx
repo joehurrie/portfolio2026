@@ -112,7 +112,7 @@ export function HorizontalProjects({ showHeading = true }: HorizontalProjectsPro
     >
       <div 
         ref={stickyRef}
-        className="sticky top-0 h-screen w-full overflow-hidden bg-background"
+        className="sticky top-0 h-screen w-full overflow-hidden bg-foreground transition-colors duration-500"
       >
         {/* Custom Cursor */}
         <div 
@@ -138,11 +138,11 @@ export function HorizontalProjects({ showHeading = true }: HorizontalProjectsPro
         >
           {showHeading && (
             <section className="flex-shrink-0 w-screen h-full flex flex-col justify-center px-6 md:px-24">
-              <h1 className="text-7xl md:text-[15vw] font-bold tracking-tighter leading-none">
+              <h1 className="text-7xl md:text-[15vw] font-bold tracking-tighter leading-none text-background transition-colors duration-500">
                 Work Index
               </h1>
-              <div className="mt-8 flex items-center gap-4 text-muted-foreground font-code">
-                <span className="w-12 h-px bg-border"></span>
+              <div className="mt-8 flex items-center gap-4 text-background/60 font-code transition-colors duration-500">
+                <span className="w-12 h-px bg-background/20"></span>
                 <span>Scroll to explore</span>
               </div>
             </section>
