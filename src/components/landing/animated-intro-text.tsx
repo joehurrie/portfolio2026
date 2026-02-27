@@ -2,10 +2,8 @@
 "use client";
 
 import { useState, useEffect, useRef } from 'react';
-import { useIsMobile } from '@/hooks/use-mobile';
 
 export function AnimatedIntroText() {
-  const isMobile = useIsMobile();
   const [isVisible, setIsVisible] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -15,11 +13,6 @@ export function AnimatedIntroText() {
   const textToProcess = originalText.replace(/&apos;/g, "'");
 
   useEffect(() => {
-    if (isMobile) {
-      setCurrentIndex(textToProcess.length);
-      return;
-    }
-
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -40,10 +33,10 @@ export function AnimatedIntroText() {
         observer.unobserve(currentRef);
       }
     };
-  }, [isMobile, textToProcess.length]);
+  }, []);
 
   useEffect(() => {
-    if (!isMobile && isVisible && currentIndex < textToProcess.length) {
+    if (isVisible && currentIndex < textToProcess.length) {
       const timeout = setTimeout(() => {
         let nextIndex = currentIndex + 1;
         if (textToProcess[currentIndex] === '<') {
@@ -56,7 +49,7 @@ export function AnimatedIntroText() {
       }, 30);
       return () => clearTimeout(timeout);
     }
-  }, [isVisible, currentIndex, textToProcess, isMobile]);
+  }, [isVisible, currentIndex, textToProcess]);
 
   const balanceTags = (html: string) => {
     const openSpans = (html.match(/<span/g) || []).length;
@@ -78,21 +71,15 @@ export function AnimatedIntroText() {
     return balanceTags(invisiblePart);
   };
 
-  if (isMobile) {
-    return (
-      <div className="relative text-3xl md:text-5xl lg:text-7xl font-medium leading-[1.1] tracking-tighter max-w-[1200px]">
-        <div dangerouslySetInnerHTML={{ __html: textToProcess }} />
-      </div>
-    );
-  }
-
   return (
     <div ref={containerRef} className="relative w-full">
       <div className="relative text-3xl md:text-5xl lg:text-7xl font-medium leading-[1.1] tracking-tighter max-w-[1200px]">
+        {/* Ghost Layer */}
         <div 
           className="text-foreground/10 select-none [&_*]:text-foreground/10"
           dangerouslySetInnerHTML={{ __html: textToProcess }}
         />
+        {/* Reveal Layer */}
         <div className="absolute top-0 left-0 text-foreground w-full pointer-events-none">
           <span dangerouslySetInnerHTML={{ __html: getVisibleHtml() }} />
           <span className="invisible" dangerouslySetInnerHTML={{ __html: getInvisibleHtml() }} />
