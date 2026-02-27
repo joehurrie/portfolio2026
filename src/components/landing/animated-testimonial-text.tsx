@@ -25,9 +25,11 @@ export function AnimatedTestimonialText({ text }: AnimatedTestimonialTextProps) 
       ([entry]) => {
         if (entry.isIntersecting) {
           setIsVisible(true);
+          // Disconnect to match Intro text behavior once triggered
+          observer.disconnect();
         }
       },
-      { threshold: 0.05 } // Lower threshold for better trigger reliability
+      { threshold: 0.1 } // Match Intro threshold
     );
 
     const currentRef = containerRef.current;
@@ -42,7 +44,7 @@ export function AnimatedTestimonialText({ text }: AnimatedTestimonialTextProps) 
     };
   }, []);
 
-  // Reset animation when text changes (e.g., when cycling testimonials)
+  // Reset animation state when text changes (crucial for slider interactions)
   useEffect(() => {
     setCurrentIndex(0);
   }, [text]);
@@ -61,7 +63,7 @@ export function AnimatedTestimonialText({ text }: AnimatedTestimonialTextProps) 
         }
         
         setCurrentIndex(nextIndex);
-      }, 15); // Slightly faster typing for better feel
+      }, 30); // Synchronized with Intro text speed (30ms)
       return () => clearTimeout(timeout);
     }
   }, [mounted, isVisible, currentIndex, textToProcess, isMobile]);
