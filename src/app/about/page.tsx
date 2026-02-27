@@ -62,7 +62,7 @@ export default function AboutPage() {
               <Link href="/contact" className="cta-gradient-btn group">
                 <span>
                   Let&apos;s Talk
-                  <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
+                  <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
                 </span>
               </Link>
             </div>

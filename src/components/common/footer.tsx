@@ -96,7 +96,7 @@ export function Footer() {
         >
           <span className="text-base md:text-lg tracking-tight">
             Let&apos;s collaborate
-            <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
+            <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
           </span>
         </Link>
       </div>

@@ -35,7 +35,7 @@ export function Intro() {
                                 <Link href="#projects" className="cta-gradient-btn group">
                                     <span className="flex items-center gap-3">
                                         See my Work
-                                        <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
+                                        <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
                                     </span>
                                 </Link>
                             </div>
