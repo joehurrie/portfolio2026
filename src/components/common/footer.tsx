@@ -6,6 +6,13 @@ import Link from 'next/link';
 import { Linkedin, Twitter, Instagram, ArrowRight } from 'lucide-react';
 import { useState, useEffect, useRef } from 'react';
 
+const BeepingDot = () => (
+  <span className="relative flex h-2 w-2">
+    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+    <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+  </span>
+);
+
 export function Footer() {
   const footerRef = useRef<HTMLElement>(null);
   const [offset, setOffset] = useState(0);
@@ -14,12 +21,6 @@ export function Footer() {
     { name: 'LinkedIn', icon: Linkedin, url: '#' },
     { name: 'Twitter', icon: Twitter, url: '#' },
     { name: 'Instagram', icon: Instagram, url: '#' },
-  ];
-
-  const contactDetails = [
-    { label: "Office", value: "Berlin 10115, Germany" },
-    { label: "Mail", value: "hello@joharie.com" },
-    { label: "Phone", value: "+49 30 12345678" },
   ];
 
   useEffect(() => {
@@ -87,12 +88,23 @@ export function Footer() {
 
       <div className="relative z-30 w-full mt-auto flex flex-col justify-end px-6 pb-10 md:px-12 md:pb-12 text-muted-foreground/80">
         <div className="flex flex-col md:flex-row justify-between items-center md:items-end w-full gap-8">
-          <div className="font-code text-[10px] md:text-xs space-y-1 text-center md:text-left tracking-wide">
-            {contactDetails.map((detail) => (
-              <p key={detail.label}>
-                <span className="font-bold uppercase opacity-60">{detail.label}:</span> {detail.value}
-              </p>
-            ))}
+          <div className="font-code text-[10px] md:text-xs space-y-2 text-center md:text-left tracking-wide">
+            <p>
+              <span className="font-bold uppercase opacity-60">Location:</span> Nairobi, Kenya
+            </p>
+            <p>
+              <span className="font-bold uppercase opacity-60">Mail:</span> kisianganijoharie@gmail.com
+            </p>
+            <p>
+              <span className="font-bold uppercase opacity-60">Phone:</span> 0758224285
+            </p>
+            <div className="flex items-center justify-center md:justify-start gap-3">
+              <span className="font-bold uppercase opacity-60">Availability:</span>
+              <div className="flex items-center gap-2">
+                <BeepingDot />
+                <span>Remote, Worldwide</span>
+              </div>
+            </div>
           </div>
           
           <div className="flex flex-col items-center md:items-end gap-3">
