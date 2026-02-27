@@ -68,28 +68,17 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* Showcase Section - Simplified Image Embed */}
-        <section className="py-24 md:py-32 bg-foreground overflow-hidden">
-          <div className="container mx-auto px-6 md:px-12 flex flex-col items-center">
-            {/* Simple Image Embed with Reveal */}
-            <div className="relative w-full max-w-6xl aspect-[16/9] md:aspect-video reveal-on-scroll overflow-hidden">
-              <Image
-                src='/img.png'
-                alt="System Architecture"
-                fill
-                className="object-cover grayscale opacity-90"
-                data-ai-hint="system architecture"
-                priority
-              />
-            </div>
-
-            {/* Caption */}
-            <div className="mt-12 text-center space-y-3 reveal-on-scroll" style={{ transitionDelay: '200ms' }}>
-              <p className="text-[10px] md:text-xs uppercase tracking-[0.4em] text-white/40 font-code font-medium">System Architecture</p>
-              <h3 className="text-xl md:text-2xl font-light text-white/70 tracking-tight leading-tight">
-                High-fidelity engineering meets minimal design.
-              </h3>
-            </div>
+        {/* Showcase Section - Full Section Image Embed */}
+        <section className="relative w-full h-[60vh] md:h-[90vh] bg-foreground overflow-hidden">
+          <div className="w-full h-full reveal-on-scroll">
+            <Image
+              src="/img.png"
+              alt="System Architecture"
+              fill
+              className="object-cover grayscale"
+              data-ai-hint="system architecture"
+              priority
+            />
           </div>
         </section>
 
