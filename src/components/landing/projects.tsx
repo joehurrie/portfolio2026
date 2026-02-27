@@ -46,7 +46,7 @@ export function Projects() {
   return (
     <section id="projects" className="bg-card text-card-foreground relative py-24 md:py-32">
        <div className="sticky top-0 z-40 h-0">
-        <div className="absolute top-8 left-6 md:left-12 text-accent text-base md:text-lg font-code tracking-wide mt-16 md:mt-0">
+        <div className="absolute top-8 left-6 md:left-12 text-accent text-[10px] md:text-xs font-code tracking-widest uppercase mt-16 md:mt-0">
           // Projects
         </div>
       </div>
@@ -61,14 +61,14 @@ export function Projects() {
               className="min-h-[90vh] w-full max-w-7xl flex items-center justify-center p-6 md:p-12 reveal-on-scroll"
               style={{ transitionDelay: `${index * 150}ms` }}
             >
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full mx-auto bg-background text-foreground p-6 md:p-8 rounded-2xl shadow-large min-h-[70vh] max-h-[800px]">
+              <div 
+                className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full mx-auto bg-background text-foreground p-6 md:p-8 rounded-2xl shadow-large min-h-[70vh] max-h-[800px] cursor-none relative"
+                onMouseEnter={() => setHoveredProjectId(project.id)}
+                onMouseLeave={() => setHoveredProjectId(null)}
+                onMouseMove={handleMouseMove}
+              >
                 {/* Left Column - Image */}
-                <div
-                  className="relative w-full h-64 md:h-full overflow-hidden rounded-lg cursor-none group"
-                  onMouseEnter={() => setHoveredProjectId(project.id)}
-                  onMouseLeave={() => setHoveredProjectId(null)}
-                  onMouseMove={handleMouseMove}
-                >
+                <div className="relative w-full h-64 md:h-full overflow-hidden rounded-lg group">
                   {imageData && (
                     <Image
                       src={imageData.imageUrl}
@@ -77,21 +77,6 @@ export function Projects() {
                       data-ai-hint={imageData.imageHint}
                       className="object-cover transition-transform duration-700 group-hover:scale-105"
                     />
-                  )}
-                  {hoveredProjectId === project.id && (
-                    <Link href="#" className="absolute inset-0">
-                      <div
-                        className="absolute flex flex-col items-center justify-center w-28 h-28 rounded-full bg-accent text-accent-foreground font-semibold shadow-2xl pointer-events-none animate-cursor-scale-in"
-                        style={{
-                          left: `${cursorPosition.x}px`,
-                          top: `${cursorPosition.y}px`,
-                          transform: 'translate(-50%, -50%)',
-                        }}
-                      >
-                        <span className="text-[10px] font-bold uppercase tracking-[0.2em] mb-1">View</span>
-                        <ArrowUpRight className="h-6 w-6" />
-                      </div>
-                    </Link>
                   )}
                 </div>
                 {/* Right Column - Details */}
@@ -111,6 +96,23 @@ export function Projects() {
                      </ul>
                    </div>
                 </div>
+
+                {/* Tracking Cursor Button */}
+                {hoveredProjectId === project.id && (
+                  <Link href="#" className="absolute inset-0 z-50 pointer-events-none">
+                    <div
+                      className="absolute flex flex-col items-center justify-center w-28 h-28 rounded-full bg-accent text-accent-foreground font-semibold shadow-2xl animate-cursor-scale-in"
+                      style={{
+                        left: `${cursorPosition.x}px`,
+                        top: `${cursorPosition.y}px`,
+                        transform: 'translate(-50%, -50%)',
+                      }}
+                    >
+                      <span className="text-[10px] font-bold uppercase tracking-[0.2em] mb-1">View</span>
+                      <ArrowUpRight className="h-6 w-6" />
+                    </div>
+                  </Link>
+                )}
               </div>
             </div>
           );
@@ -131,7 +133,7 @@ export function Projects() {
                   {imageData && (
                       <Image
                         src={imageData.imageUrl}
-                        alt={imageData.description}
+                        alt={project.description}
                         fill
                         data-ai-hint={imageData.imageHint}
                         className="object-cover"
