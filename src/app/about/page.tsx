@@ -70,12 +70,12 @@ export default function AboutPage() {
         </section>
 
         {/* Showcase Section */}
-        <section className="h-screen flex items-center justify-center bg-[#050505] overflow-hidden border-t border-white/5">
+        <section className="h-screen flex items-center justify-center bg-[#36454F] overflow-hidden border-t border-white/5">
           <div className="container mx-auto px-6 md:px-12 flex flex-col items-center justify-center h-full">
             <div className="reveal-on-scroll w-full max-w-5xl flex flex-col items-center">
               <div className="relative w-full aspect-video flex items-center justify-center">
                 <div 
-                  className="relative w-[280px] md:w-[400px] aspect-[9/19] rounded-[2.5rem] border-[10px] border-[#1a1a1a] bg-black overflow-hidden shadow-large transition-all duration-1000 ease-out"
+                  className="relative w-[280px] md:w-[400px] aspect-[9/19] rounded-[2.5rem] border-[10px] border-background/20 bg-background overflow-hidden shadow-large transition-all duration-1000 ease-out"
                   style={{ 
                     transform: 'perspective(1200px) rotateX(20deg) rotateY(-15deg) rotateZ(5deg)',
                     boxShadow: '-20px 40px 80px rgba(0,0,0,0.8)'
@@ -140,7 +140,7 @@ export default function AboutPage() {
         </section>
 
         {/* CTA Section */}
-        <section className="relative h-[80vh] flex items-center bg-[#050505] overflow-hidden">
+        <section className="relative h-[80vh] flex items-center bg-[#36454F] overflow-hidden">
           {ctaBgImage && (
             <div className="absolute inset-0 z-0">
               <Image
