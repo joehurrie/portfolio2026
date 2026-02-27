@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, useEffect, useRef } from 'react';
@@ -25,11 +24,11 @@ export function AnimatedTestimonialText({ text }: AnimatedTestimonialTextProps) 
       ([entry]) => {
         if (entry.isIntersecting) {
           setIsVisible(true);
-          // Disconnect to match Intro text behavior once triggered
+          // Once visible, we keep it visible for the reveal duration
           observer.disconnect();
         }
       },
-      { threshold: 0.1 } // Match Intro threshold
+      { threshold: 0.1 }
     );
 
     const currentRef = containerRef.current;
@@ -44,7 +43,7 @@ export function AnimatedTestimonialText({ text }: AnimatedTestimonialTextProps) 
     };
   }, []);
 
-  // Reset animation state when text changes (crucial for slider interactions)
+  // Reset character index when text prop changes to restart animation
   useEffect(() => {
     setCurrentIndex(0);
   }, [text]);
@@ -54,7 +53,7 @@ export function AnimatedTestimonialText({ text }: AnimatedTestimonialTextProps) 
       const timeout = setTimeout(() => {
         let nextIndex = currentIndex + 1;
         
-        // Skip over HTML tags to keep the render valid
+        // Logic to skip over HTML tags so they render atomically
         if (textToProcess[currentIndex] === '<') {
           const closingIndex = textToProcess.indexOf('>', currentIndex);
           if (closingIndex !== -1) {
@@ -68,7 +67,7 @@ export function AnimatedTestimonialText({ text }: AnimatedTestimonialTextProps) 
     }
   }, [mounted, isVisible, currentIndex, textToProcess, isMobile]);
 
-  // Ensure HTML tags are balanced during partial render
+  // Ensure HTML tags are balanced during partial character-by-character rendering
   const balanceTags = (html: string) => {
     const openSpans = (html.match(/<span/g) || []).length;
     const closedSpans = (html.match(/<\/span>/g) || []).length;
@@ -89,7 +88,7 @@ export function AnimatedTestimonialText({ text }: AnimatedTestimonialTextProps) 
     return balanceTags(invisiblePart);
   };
 
-  // Fallback for SSR or Mobile
+  // Fallback for SSR or Mobile to avoid hydration mismatches or complex animations on small screens
   if (!mounted || isMobile) {
     return (
       <blockquote className="relative text-3xl md:text-5xl font-medium leading-tight tracking-tight text-foreground">
@@ -100,14 +99,14 @@ export function AnimatedTestimonialText({ text }: AnimatedTestimonialTextProps) 
 
   return (
     <div ref={containerRef} className="relative w-full">
-      <blockquote className="relative text-3xl md:text-5xl font-medium leading-tight tracking-tight min-h-[5em]">
-        {/* Background Layer: Ghost Text */}
+      <blockquote className="relative text-3xl md:text-5xl lg:text-6xl font-medium leading-[1.1] tracking-tighter min-h-[5em]">
+        {/* Background Layer: Ghost/Muted Text */}
         <div 
           className="text-foreground/10 select-none [&_*]:text-foreground/10"
           dangerouslySetInnerHTML={{ __html: textToProcess }}
         />
         
-        {/* Foreground Layer: Animated Text */}
+        {/* Foreground Layer: Animated Character Reveal */}
         <div className="absolute top-0 left-0 text-foreground w-full pointer-events-none">
           <span dangerouslySetInnerHTML={{ __html: getVisibleHtml() }} />
           <span 
