@@ -2,12 +2,14 @@
 "use client";
 
 import { useState, useEffect, useRef } from 'react';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 type AnimatedTestimonialTextProps = {
   text: string;
 };
 
 export function AnimatedTestimonialText({ text }: AnimatedTestimonialTextProps) {
+  const isMobile = useIsMobile();
   const [isVisible, setIsVisible] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -16,6 +18,12 @@ export function AnimatedTestimonialText({ text }: AnimatedTestimonialTextProps) 
   const textToProcess = text.replace(/&apos;/g, "'").replace(/&quot;/g, '"');
 
   useEffect(() => {
+    // If mobile, we don't need the observer for typing logic
+    if (isMobile) {
+      setCurrentIndex(textToProcess.length);
+      return;
+    }
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -36,10 +44,10 @@ export function AnimatedTestimonialText({ text }: AnimatedTestimonialTextProps) 
         observer.unobserve(currentRef);
       }
     };
-  }, []);
+  }, [isMobile, textToProcess.length]);
 
   useEffect(() => {
-    if (isVisible && currentIndex < textToProcess.length) {
+    if (!isMobile && isVisible && currentIndex < textToProcess.length) {
       const timeout = setTimeout(() => {
         let nextIndex = currentIndex + 1;
         
@@ -55,7 +63,7 @@ export function AnimatedTestimonialText({ text }: AnimatedTestimonialTextProps) 
       }, 30);
       return () => clearTimeout(timeout);
     }
-  }, [isVisible, currentIndex, textToProcess]);
+  }, [isVisible, currentIndex, textToProcess, isMobile]);
 
   const balanceTags = (html: string) => {
     const openSpans = (html.match(/<span/g) || []).length;
@@ -77,6 +85,15 @@ export function AnimatedTestimonialText({ text }: AnimatedTestimonialTextProps) 
     return balanceTags(invisiblePart);
   };
 
+  // On mobile, just render static full-color text
+  if (isMobile) {
+    return (
+      <div className="relative text-3xl md:text-5xl lg:text-7xl font-medium leading-[1.1] tracking-tighter">
+        <div dangerouslySetInnerHTML={{ __html: textToProcess }} />
+      </div>
+    );
+  }
+
   return (
     <div ref={containerRef} className="relative w-full">
       <div className="relative text-3xl md:text-5xl lg:text-7xl font-medium leading-[1.1] tracking-tighter min-h-[4em]">
@@ -86,7 +103,7 @@ export function AnimatedTestimonialText({ text }: AnimatedTestimonialTextProps) 
           dangerouslySetInnerHTML={{ __html: textToProcess }}
         />
         
-        {/* Foreground Layer: Animated Character Reveal (Black/White and Orange) */}
+        {/* Foreground Layer: Animated Character Reveal */}
         <div className="absolute top-0 left-0 text-foreground w-full pointer-events-none">
           <span dangerouslySetInnerHTML={{ __html: getVisibleHtml() }} />
           <span 

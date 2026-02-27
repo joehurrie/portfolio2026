@@ -2,8 +2,10 @@
 "use client";
 
 import { useState, useEffect, useRef } from 'react';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 export function AnimatedAboutCtaText() {
+  const isMobile = useIsMobile();
   const [isVisible, setIsVisible] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -13,6 +15,11 @@ export function AnimatedAboutCtaText() {
   const textToProcess = originalText.replace(/&apos;/g, "'");
 
   useEffect(() => {
+    if (isMobile) {
+      setCurrentIndex(textToProcess.length);
+      return;
+    }
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -33,10 +40,10 @@ export function AnimatedAboutCtaText() {
         observer.unobserve(currentRef);
       }
     };
-  }, []);
+  }, [isMobile, textToProcess.length]);
 
   useEffect(() => {
-    if (isVisible && currentIndex < textToProcess.length) {
+    if (!isMobile && isVisible && currentIndex < textToProcess.length) {
       const timeout = setTimeout(() => {
         let nextIndex = currentIndex + 1;
         
@@ -51,7 +58,7 @@ export function AnimatedAboutCtaText() {
       }, 30);
       return () => clearTimeout(timeout);
     }
-  }, [isVisible, currentIndex, textToProcess]);
+  }, [isVisible, currentIndex, textToProcess, isMobile]);
 
   const balanceTags = (html: string) => {
     const openSpans = (html.match(/<span/g) || []).length;
@@ -72,6 +79,16 @@ export function AnimatedAboutCtaText() {
     const invisiblePart = textToProcess.substring(currentIndex);
     return balanceTags(invisiblePart);
   };
+
+  if (isMobile) {
+    return (
+      <div className="relative w-full">
+        <div className="text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-medium leading-[1.05] tracking-tighter max-w-5xl text-white">
+          <div dangerouslySetInnerHTML={{ __html: textToProcess }} />
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div ref={containerRef} className="relative w-full">
