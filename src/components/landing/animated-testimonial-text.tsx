@@ -1,25 +1,21 @@
+
 "use client";
 
 import { useState, useEffect, useRef } from 'react';
-import { useIsMobile } from '@/hooks/use-mobile';
 
 type AnimatedTestimonialTextProps = {
   text: string;
 };
 
 export function AnimatedTestimonialText({ text }: AnimatedTestimonialTextProps) {
-  const [currentIndex, setCurrentIndex] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
-  const isMobile = useIsMobile();
-  const [mounted, setMounted] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
 
   // Clean the text and handle common entities
   const textToProcess = text.replace(/&apos;/g, "'").replace(/&quot;/g, '"');
 
   useEffect(() => {
-    setMounted(true);
-    
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -27,7 +23,7 @@ export function AnimatedTestimonialText({ text }: AnimatedTestimonialTextProps) 
           observer.disconnect();
         }
       },
-      { threshold: 0.05 } // Lower threshold for better visibility trigger
+      { threshold: 0.1 }
     );
 
     const currentRef = containerRef.current;
@@ -43,11 +39,11 @@ export function AnimatedTestimonialText({ text }: AnimatedTestimonialTextProps) 
   }, []);
 
   useEffect(() => {
-    if (mounted && !isMobile && isVisible && currentIndex < textToProcess.length) {
+    if (isVisible && currentIndex < textToProcess.length) {
       const timeout = setTimeout(() => {
         let nextIndex = currentIndex + 1;
         
-        // Logic to skip over HTML tags so they render atomically
+        // Skip over HTML tags so they render atomically
         if (textToProcess[currentIndex] === '<') {
           const closingIndex = textToProcess.indexOf('>', currentIndex);
           if (closingIndex !== -1) {
@@ -56,12 +52,11 @@ export function AnimatedTestimonialText({ text }: AnimatedTestimonialTextProps) 
         }
         
         setCurrentIndex(nextIndex);
-      }, 30); // Synchronized with Intro text speed (30ms)
+      }, 30);
       return () => clearTimeout(timeout);
     }
-  }, [mounted, isVisible, currentIndex, textToProcess, isMobile]);
+  }, [isVisible, currentIndex, textToProcess]);
 
-  // Ensure HTML tags are balanced during partial character-by-character rendering
   const balanceTags = (html: string) => {
     const openSpans = (html.match(/<span/g) || []).length;
     const closedSpans = (html.match(/<\/span>/g) || []).length;
@@ -82,25 +77,16 @@ export function AnimatedTestimonialText({ text }: AnimatedTestimonialTextProps) 
     return balanceTags(invisiblePart);
   };
 
-  // Fallback for SSR or Mobile
-  if (!mounted || isMobile) {
-    return (
-      <blockquote className="relative text-3xl md:text-5xl font-medium leading-tight tracking-tight text-foreground">
-        <span dangerouslySetInnerHTML={{ __html: textToProcess }} />
-      </blockquote>
-    );
-  }
-
   return (
     <div ref={containerRef} className="relative w-full">
-      <blockquote className="relative text-3xl md:text-5xl lg:text-7xl font-medium leading-[1.1] tracking-tighter min-h-[4em]">
+      <div className="relative text-3xl md:text-5xl lg:text-7xl font-medium leading-[1.1] tracking-tighter min-h-[4em]">
         {/* Background Layer: Ghost/Muted Text */}
         <div 
           className="text-foreground/10 select-none [&_*]:text-foreground/10"
           dangerouslySetInnerHTML={{ __html: textToProcess }}
         />
         
-        {/* Foreground Layer: Animated Character Reveal */}
+        {/* Foreground Layer: Animated Character Reveal (Black/White and Orange) */}
         <div className="absolute top-0 left-0 text-foreground w-full pointer-events-none">
           <span dangerouslySetInnerHTML={{ __html: getVisibleHtml() }} />
           <span 
@@ -108,7 +94,7 @@ export function AnimatedTestimonialText({ text }: AnimatedTestimonialTextProps) 
             dangerouslySetInnerHTML={{ __html: getInvisibleHtml() }} 
           />
         </div>
-      </blockquote>
+      </div>
     </div>
   );
 }
