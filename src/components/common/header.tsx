@@ -31,7 +31,7 @@ const ThemeToggle = ({ activeTheme }: { activeTheme: string }) => {
       onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
       className={cn(
         "flex items-center justify-center transition-all duration-300 hover:scale-110 focus:outline-none",
-        activeTheme === 'light' ? "text-primary" : "text-foreground"
+        activeTheme === 'dark' ? "text-primary" : "text-foreground"
       )}
       aria-label="Toggle theme"
     >
@@ -76,13 +76,13 @@ export function Header() {
           href="/" 
           className={cn(
             "group relative text-sm font-medium tracking-tight transition-colors",
-            activeTheme === 'light' ? "text-primary" : "text-foreground"
+            activeTheme === 'dark' ? "text-primary" : "text-foreground"
           )}
         >
           Joharie Kisiangani
           <span className={cn(
             "absolute -bottom-1 left-0 h-[1.5px] w-0 transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:w-full",
-            activeTheme === 'light' ? "bg-primary" : "bg-foreground"
+            activeTheme === 'dark' ? "bg-primary" : "bg-foreground"
           )} />
         </Link>
 
@@ -101,7 +101,7 @@ export function Header() {
                   href={link.href}
                   className={cn(
                     "text-sm font-medium tracking-tight transition-colors whitespace-nowrap",
-                    activeTheme === 'light' ? "text-foreground/80 hover:text-primary" : "text-foreground/80 hover:text-foreground"
+                    activeTheme === 'dark' ? "text-foreground/80 hover:text-primary" : "text-foreground/80 hover:text-foreground"
                   )}
                 >
                   {link.label}
@@ -115,7 +115,7 @@ export function Header() {
                 onClick={() => setIsDesktopMenuOpen(!isDesktopMenuOpen)}
                 className={cn(
                   "flex items-center gap-3 transition-all duration-300 hover:scale-110 focus:outline-none",
-                  activeTheme === 'light' ? "text-primary" : "text-foreground"
+                  activeTheme === 'dark' ? "text-primary" : "text-foreground"
                 )}
               >
                 <span className="hidden md:block text-sm font-medium tracking-tight">
@@ -138,7 +138,7 @@ export function Header() {
                 <button 
                   className={cn(
                     "flex items-center justify-center transition-all duration-300 hover:scale-110 focus:outline-none",
-                    activeTheme === 'light' ? "text-primary" : "text-foreground"
+                    activeTheme === 'dark' ? "text-primary" : "text-foreground"
                   )}
                 >
                   <Menu className="w-6 h-6 stroke-[2px]" />
@@ -155,7 +155,7 @@ export function Header() {
                         href="/" 
                         className={cn(
                           "text-sm font-medium transition-colors",
-                          activeTheme === 'light' ? "text-primary" : "text-foreground"
+                          activeTheme === 'dark' ? "text-primary" : "text-foreground"
                         )} 
                         onClick={() => setIsOpen(false)}
                       >
@@ -166,7 +166,7 @@ export function Header() {
                       <SheetClose asChild>
                         <button className={cn(
                           "transition-all duration-300 hover:scale-110 p-2",
-                          activeTheme === 'light' ? "text-primary/60 hover:text-primary" : "text-foreground/40 hover:text-foreground"
+                          activeTheme === 'dark' ? "text-primary/60 hover:text-primary" : "text-foreground/40 hover:text-foreground"
                         )}>
                           <X className="w-6 h-6 stroke-[2px]" />
                         </button>
@@ -180,7 +180,7 @@ export function Header() {
                           href={link.href}
                           className={cn(
                             "transition-all duration-300",
-                            activeTheme === 'light' ? "text-foreground hover:text-primary" : "text-foreground hover:text-foreground"
+                            activeTheme === 'dark' ? "text-foreground hover:text-primary" : "text-foreground hover:text-foreground"
                           )}
                           onClick={() => setIsOpen(false)}
                         >
