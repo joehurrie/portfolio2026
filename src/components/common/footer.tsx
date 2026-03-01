@@ -49,11 +49,11 @@ export function Footer() {
 
       {/* Top Tier: Marquee Header */}
       <div className="relative z-10 pt-32 md:pt-48 lg:pt-56 overflow-hidden pointer-events-none mix-blend-difference text-primary">
-        <div className="flex animate-hero-marquee whitespace-nowrap">
-          <h1 className="shrink-0 text-6xl md:text-8xl lg:text-[10vw] font-semibold tracking-tighter leading-none px-12">
+      <div className="flex animate-hero-marquee whitespace-nowrap">
+          <h1 className="shrink-0 text-6xl md:text-8xl lg:text-[12vw] font-semibold tracking-tighter leading-none px-12">
             Start a Project Start a Project Start a Project Start a Project Start a Project 
           </h1>
-          <h1 className="shrink-0 text-6xl md:text-8xl lg:text-[10vw] font-semibold tracking-tighter leading-none px-12" aria-hidden="true">
+          <h1 className="shrink-0 text-6xl md:text-8xl lg:text-[12vw] font-semibold tracking-tighter leading-none px-12" aria-hidden="true">
             Start a Project Start a Project Start a Project Start a Project Start a Project 
           </h1>
         </div>
