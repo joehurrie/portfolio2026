@@ -23,14 +23,24 @@ export function Footer() {
 
   return (
     <footer ref={footerRef} className="relative z-0 min-h-screen w-full flex flex-col overflow-hidden bg-background">
-      {/* Background Container - Set to cover the entire section without parallax gaps */}
+      {/* Background Container - Set to cover the entire section without gaps */}
       <div className="absolute inset-0 z-0 flex items-end justify-center overflow-hidden">
         <div className="relative w-full h-full">
+          {/* Mobile Image */}
           <Image
             src="/footer1.png"
-            alt="Footer background portrait"
+            alt="Footer background portrait mobile"
             fill
-            className="w-full h-full object-cover object-bottom"
+            className="w-full h-full object-cover object-bottom md:hidden"
+            priority
+            sizes="100vw"
+          />
+          {/* Desktop Image */}
+          <Image
+            src="/footer11.png"
+            alt="Footer background portrait desktop"
+            fill
+            className="w-full h-full object-cover object-bottom hidden md:block"
             priority
             sizes="100vw"
           />
