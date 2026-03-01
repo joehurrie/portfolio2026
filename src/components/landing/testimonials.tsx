@@ -1,3 +1,4 @@
+
 "use client";
 
 import Image from 'next/image';
@@ -9,9 +10,9 @@ import { cn } from '@/lib/utils';
 const testimonials = [
   {
     id: 'testimonial-1',
-    name: 'Aisha Omar',
-    company: 'CEO, Tech Innovators',
-    quote: 'Joharie has a unique talent for translating <span class="text-accent">complex ideas into elegant</span>, user-friendly designs. His work on our platform was <span class="text-accent">transformative</span>.',
+    name: 'Carole Karimi',
+    company: 'Apogee Realty Homes',
+    quote: 'It was a pleasure working with Joharie in <span class="text-accent">branding and building a website</span> for our real estate company. His ideas were awesome and gave us a <span class="text-accent">sleek digital presence</span>, <span class="text-accent">highly recommend</span>.',
   },
   {
     id: 'testimonial-2',
@@ -21,9 +22,9 @@ const testimonials = [
   },
   {
     id: 'testimonial-3',
-    name: 'Samantha Chen',
-    company: 'Founder, Digital Ventures',
-    quote: 'The design system Joharie built for us has <span class=\"text-accent\">streamlined our workflow</span> and brought a new level of consistency to our products. <span class=\"text-accent\">Highly recommended!</span>',
+    name: 'Brian Wafula',
+    company: 'Founder, Tawy',
+    quote: 'Collaborating with Joharie in building a mobile app for our startup was a <span class="text-accent">good decision</span>. He seamlessly turned our <span class="text-accent">vision to reality</span> with an appealing, user-friendly <span class="text-accent">mobile app design</span>.',
   },
 ];
 
