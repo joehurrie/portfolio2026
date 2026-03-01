@@ -27,8 +27,8 @@
     {
       "id": "testimonial-1",
       "description": "Avatar of Carole Karimi",
-      "imageUrl": "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxiYWNrJTIwd29tYW4lMjBwcm9mZXNzaW9uYWx8ZW58MHx8fHwxNzY4OTU3MzIwfDA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "black woman"
+      "imageUrl": "/carole.jpg",
+      "imageHint": "carole avatar"
     },
     {
       "id": "testimonial-2",
@@ -39,8 +39,8 @@
     {
       "id": "testimonial-3",
       "description": "Avatar of Brian Wafula",
-      "imageUrl": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxwcm9maWxlJTIwcG9ydHJhaXR8ZW58MHx8fHwxNzY4OTU3MzIwfDA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "black man"
+      "imageUrl": "/brian.jpg",
+      "imageHint": "brian avatar"
     },
     {
       "id": "about-image",
