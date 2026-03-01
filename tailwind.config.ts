@@ -96,7 +96,7 @@ export default {
         'clip-reveal': 'clip-reveal 1.2s cubic-bezier(0.77, 0, 0.175, 1) both',
         'slide-up-fade': 'slide-up-fade 0.8s cubic-bezier(0.16, 1, 0.3, 1) both',
         'marquee': 'marquee 25s linear infinite',
-        'hero-marquee': 'hero-marquee 60s linear infinite',
+        'hero-marquee': 'hero-marquee 30s linear infinite',
         'spin-slow-reverse': 'spin-reverse 8s linear infinite'
       },
     },
