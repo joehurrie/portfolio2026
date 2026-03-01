@@ -12,7 +12,7 @@ export function AnimatedIntroText() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
 
-  const originalText = "I'm a versatile <span class=\"text-accent\">designer who partners with founders</span> to turn ideas into real <span class=\"text-accent\">products.</span> I focus on clear interfaces, sharp decisions, and fast execution.";
+  const originalText = "I help <span class=\"text-accent\">startups and founders</span> to design and build <span class=\"text-accent\">digital products</span> that <span class=\"text-accent\">stand out</span>, align with their <span class=\"text-accent\">goals</span>, and connect with <span class=\"text-accent\">users</span>.";
   
   const textToProcess = originalText.replace(/&apos;/g, "'");
 
