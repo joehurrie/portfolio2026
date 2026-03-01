@@ -23,8 +23,8 @@ export function Footer() {
 
   return (
     <footer ref={footerRef} className="relative z-0 min-h-screen w-full flex flex-col overflow-hidden bg-background">
-      {/* Background Container - Set to cover the entire section without gaps */}
-      <div className="absolute inset-0 z-0 flex items-end justify-center overflow-hidden">
+      {/* Background Container - Plain Image */}
+      <div className="absolute inset-0 z-0 overflow-hidden">
         <div className="relative w-full h-full">
           {/* Mobile Image */}
           <Image
@@ -44,24 +44,23 @@ export function Footer() {
             priority
             sizes="100vw"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-background/20 via-transparent to-background/40 pointer-events-none" />
         </div>
       </div>
 
-      {/* Marquee Header */}
-      <div className="absolute top-0 left-0 right-0 z-10 flex items-start justify-center pt-32 md:pt-48 lg:pt-64 overflow-hidden pointer-events-none mix-blend-difference text-primary">
+      {/* Top Tier: Marquee Header */}
+      <div className="relative z-10 pt-32 md:pt-48 lg:pt-56 overflow-hidden pointer-events-none mix-blend-difference text-primary">
         <div className="flex animate-hero-marquee whitespace-nowrap">
-          <h1 className="shrink-0 text-6xl md:text-8xl lg:text-[12vw] font-semibold tracking-tighter leading-none px-12">
+          <h1 className="shrink-0 text-6xl md:text-8xl lg:text-[10vw] font-semibold tracking-tighter leading-none px-12">
             Start a Project Start a Project Start a Project Start a Project Start a Project 
           </h1>
-          <h1 className="shrink-0 text-6xl md:text-8xl lg:text-[12vw] font-semibold tracking-tighter leading-none px-12" aria-hidden="true">
+          <h1 className="shrink-0 text-6xl md:text-8xl lg:text-[10vw] font-semibold tracking-tighter leading-none px-12" aria-hidden="true">
             Start a Project Start a Project Start a Project Start a Project Start a Project 
           </h1>
         </div>
       </div>
 
-      {/* CTA Button */}
-      <div className="absolute inset-0 z-20 flex items-center justify-center pt-32">
+      {/* Middle Tier: CTA Button */}
+      <div className="relative z-20 flex-1 flex items-center justify-center py-20">
         <Link 
           href="/contact"
           className="cta-gradient-btn group"
@@ -73,9 +72,9 @@ export function Footer() {
         </Link>
       </div>
 
-      {/* Footer Meta Info */}
-      <div className="relative z-30 w-full mt-auto flex flex-col justify-end px-8 pb-12 md:px-16 md:pb-16 text-foreground">
-        <div className="flex flex-col md:flex-row justify-between items-center md:items-end w-full gap-16 md:gap-8">
+      {/* Bottom Tier: Footer Meta Info */}
+      <div className="relative z-30 w-full px-8 pb-12 md:px-16 md:pb-16 text-foreground bg-background/10 backdrop-blur-sm md:bg-transparent">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center md:items-end w-full gap-12 md:gap-8">
           <div className="font-code text-[11px] md:text-sm space-y-3 text-center md:text-left tracking-wide">
             <p className="flex items-center justify-center md:justify-start gap-3">
               <span className="font-bold uppercase opacity-40">Location:</span> 
@@ -91,7 +90,7 @@ export function Footer() {
             </p>
             <div className="flex items-center justify-center md:justify-start gap-4 pt-2">
               <span className="font-bold uppercase opacity-40">Availability:</span>
-              <div className="flex items-center gap-3 bg-foreground/5 px-4 py-2 rounded-full">
+              <div className="flex items-center gap-3 bg-foreground/5 px-4 py-2 rounded-full backdrop-blur-md">
                 <span className="font-medium">Remote, Worldwide</span>
                 <BeepingDot />
               </div>
