@@ -1,4 +1,3 @@
-
 import type { Metadata } from 'next';
 import './globals.css';
 import { Toaster } from "@/components/ui/toaster";
@@ -10,6 +9,9 @@ import { SmoothScroll } from '@/components/common/smooth-scroll';
 export const metadata: Metadata = {
   title: 'Joharie Kisiangani — Design & Strategy',
   description: 'A portfolio for Joharie Kisiangani, Web Designer & Art Director.',
+  icons: {
+    icon: '/favicon.ico',
+  },
 };
 
 export default function RootLayout({

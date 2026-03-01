@@ -78,12 +78,13 @@
     @apply relative inline-block cursor-pointer no-underline font-medium rounded-full overflow-hidden transition-all duration-300 active:scale-95 shadow-sm;
   }
 
+  /* CTA buttons remain dark with glass effect in all modes */
   .cta-gradient-btn span {
-    @apply relative flex items-center justify-center gap-3 px-8 py-4 h-full w-full bg-white/10 backdrop-blur-xl rounded-full transition-all hover:bg-white/20 text-accent border border-accent;
+    @apply relative flex items-center justify-center gap-3 px-8 py-4 h-full w-full bg-black/40 backdrop-blur-xl rounded-full transition-all hover:bg-black/60 text-accent border border-accent;
   }
 
   .dark .cta-gradient-btn span {
-    @apply bg-white/20 hover:bg-white/30;
+    @apply bg-black/50 hover:bg-black/70;
   }
 
   .reveal-on-scroll {

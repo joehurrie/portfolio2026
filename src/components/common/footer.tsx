@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { Linkedin, Twitter, Instagram, ArrowRight } from 'lucide-react';
-import { useState, useEffect, useRef } from 'react';
+import { useRef } from 'react';
 
 const BeepingDot = () => (
   <span className="relative flex h-2 w-2">
@@ -14,7 +14,6 @@ const BeepingDot = () => (
 
 export function Footer() {
   const footerRef = useRef<HTMLElement>(null);
-  const [offset, setOffset] = useState(0);
 
   const socialLinks = [
     { name: 'LinkedIn', icon: Linkedin, url: '#' },
@@ -22,44 +21,20 @@ export function Footer() {
     { name: 'Instagram', icon: Instagram, url: '#' },
   ];
 
-  useEffect(() => {
-    const handleScroll = () => {
-      if (!footerRef.current) return;
-      const rect = footerRef.current.getBoundingClientRect();
-      const windowHeight = window.innerHeight;
-      
-      if (rect.top < windowHeight) {
-        const scrolledIntoView = windowHeight - rect.top;
-        setOffset(scrolledIntoView * 0.05);
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
   return (
     <footer ref={footerRef} className="relative z-0 min-h-screen w-full flex flex-col overflow-hidden bg-background">
-      {/* Background Container - Anchored to Bottom */}
+      {/* Background Container - Set to cover the entire section without parallax gaps */}
       <div className="absolute inset-0 z-0 flex items-end justify-center overflow-hidden">
-        <div 
-          className="relative w-full h-[120vh] transition-transform duration-100 ease-out"
-          style={{ transform: `translateY(${offset}px)` }}
-        >
+        <div className="relative w-full h-full">
           <Image
             src="/footer1.png"
-            alt="Hero background"
+            alt="Footer background portrait"
             fill
-            className="w-full h-full object-cover object-bottom md:hidden"
+            className="w-full h-full object-cover object-bottom"
             priority
+            sizes="100vw"
           />
-          <Image
-            src="/footer1.png"
-            alt="Hero background"
-            fill
-            className="w-full h-full object-contain object-bottom hidden md:block"
-            priority
-          />
+          <div className="absolute inset-0 bg-gradient-to-t from-background/20 via-transparent to-background/40 pointer-events-none" />
         </div>
       </div>
 
