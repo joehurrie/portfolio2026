@@ -138,7 +138,7 @@ export function HorizontalProjects({ showHeading = true }: HorizontalProjectsPro
           {showHeading && (
             <section className="flex-shrink-0 w-screen h-full flex flex-col justify-center px-6 md:px-24">
               <h1 className="text-7xl md:text-[15vw] font-bold tracking-tighter leading-none text-background transition-colors duration-700">
-                Work Index
+                Projects
               </h1>
               <div className="mt-8 flex items-center gap-4 text-background/40 font-code transition-colors duration-700">
                 <span className="w-12 h-px bg-background/20"></span>
