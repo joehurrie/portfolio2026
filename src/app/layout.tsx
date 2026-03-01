@@ -27,8 +27,8 @@ export default function RootLayout({
       <body className="bg-background text-foreground antialiased selection:bg-accent selection:text-accent-foreground overflow-x-hidden">
         <ThemeProvider
           attribute="class"
-          defaultTheme="system"
-          enableSystem
+          defaultTheme="light"
+          enableSystem={false}
           disableTransitionOnChange
         >
           <SmoothScroll />
