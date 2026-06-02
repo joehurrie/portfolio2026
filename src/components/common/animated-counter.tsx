@@ -10,7 +10,7 @@ type AnimatedCounterProps = {
 
 export function AnimatedCounter({ end, duration = 400, className }: AnimatedCounterProps) {
   const [count, setCount] = useState(0);
-  const animationFrameId = useRef<number>();
+  const animationFrameId = useRef<number | undefined>(undefined);
 
   useEffect(() => {
     const startValue = count;

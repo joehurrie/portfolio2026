@@ -189,7 +189,7 @@ export function HorizontalProjects({ showHeading = true }: HorizontalProjectsPro
                 {/* Info Side */}
                 <div className="p-8 md:p-12 md:flex-[1] flex flex-col justify-between bg-foreground text-background border-t md:border-t-0 md:border-l border-background/10">
                   <div>
-                    <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tighter mb-6 leading-[0.95] text-background">
+                    <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tighter mb-6 leading-[0.95] text-accent">
                       {project.title}
                     </h2>
                     <p className="text-background/70 text-sm md:text-base leading-relaxed max-w-md font-light">

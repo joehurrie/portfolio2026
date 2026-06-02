@@ -63,9 +63,9 @@ export function Footer() {
       <div className="relative z-20 flex-1 flex items-center justify-center py-20">
         <Link 
           href="/contact"
-          className="cta-gradient-btn group"
+          className="cta-gradient-btn cta-lg group"
         >
-          <span className="text-base md:text-xl tracking-tight font-medium px-10 py-5">
+          <span>
             Let&apos;s Build
             <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-2" />
           </span>

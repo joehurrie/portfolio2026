@@ -82,7 +82,7 @@ export function Services() {
               {servicesData.map((service, index) => (
                 <div
                   key={service.title}
-                  ref={(el) => (serviceRefs.current[index] = el)}
+                  ref={(el) => { serviceRefs.current[index] = el; }}
                   data-index={index}
                   className="mb-32 md:mb-48 last:mb-0 reveal-on-scroll"
                 >

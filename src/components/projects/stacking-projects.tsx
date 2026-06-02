@@ -16,13 +16,6 @@ const projects = [
     link: 'https://mziqee.vercel.app/', // TODO: Replace with live project URL
   },
   {
-    title: 'Eco-Wise',
-    image: '/eco.PNG',
-    description: 'A sustainable e-commerce platform that puts eco-conscious products at your fingertips. Designed for the environmentally aware consumer seeking ethical purchasing without compromise.',
-    tags: ['E-commerce', 'Website', 'Services'],
-    link: 'https://eco-wise-navy.vercel.app/', // TODO: Replace with live project URL
-  },
-  {
     title: 'The Haven',
     image: '/Haven.PNG',
     description: 'A premium real estate landing page engineered to bridge the gap between realtors and prospective homebuyers. Clean, compelling, and built to convert interest into action.',
@@ -35,6 +28,13 @@ const projects = [
     description: 'An AI-powered document processing engine that transforms how businesses analyze, extract, and act on information. Intelligent automation for the modern workflow.',
     tags: ['Landing Page', 'SaaS', 'Website'],
     link: 'https://digi-ai-rho.vercel.app/', // TODO: Replace with live project URL
+  },
+  {
+    title: 'Eco-Wise',
+    image: '/eco.PNG',
+    description: 'A sustainable e-commerce platform that puts eco-conscious products at your fingertips. Designed for the environmentally aware consumer seeking ethical purchasing without compromise.',
+    tags: ['E-commerce', 'Website', 'Services'],
+    link: 'https://eco-wise-navy.vercel.app/', // TODO: Replace with live project URL
   },
 ];
 
@@ -99,7 +99,7 @@ export function StackingProjects() {
             {/* Content Side */}
             <div className="flex-1 p-8 md:p-10 lg:p-12 flex flex-col justify-between bg-foreground text-background border-t md:border-t-0 md:border-l border-background/10">
               <div className="space-y-4 md:space-y-6">
-                <h2 className="text-3xl md:text-5xl lg:text-6xl font-semibold tracking-tighter leading-none text-background">
+                <h2 className="text-3xl md:text-5xl lg:text-6xl font-semibold tracking-tighter leading-none text-accent">
                   {project.title}
                 </h2>
                 <p className="text-background/70 text-sm md:text-base leading-relaxed max-w-md font-light">
@@ -111,7 +111,7 @@ export function StackingProjects() {
                 <div className="border-t border-background/10">
                   {project.tags.map((tag) => (
                     <div key={tag} className="py-2 md:py-3 border-b border-background/10 flex justify-between items-center group cursor-default">
-                      <span className="text-[10px] md:text-xs font-code text-background/60 group-hover:text-accent transition-colors uppercase tracking-[0.2em]">
+                      <span className="text-[10px] md:text-xs font-code text-accent uppercase tracking-[0.2em]">
                         {tag}
                       </span>
                     </div>

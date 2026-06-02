@@ -16,13 +16,13 @@ const testimonials = [
   },
   {
     id: 'testimonial-2',
-    name: 'Ben Carter',
+    name: 'Brian Wafula',
     company: 'Product Manager, Mziqee',
     quote: "Working with Joharie was a pleasure. He's a <span class=\"text-accent\">true collaborator</span> who deeply understands the intersection of <span class=\"text-accent\">design and development</span>.",
   },
   {
     id: 'testimonial-3',
-    name: 'Brian Wafula',
+    name: 'Ben Carter',
     company: 'Founder, Eco-Wise',
     quote: 'Collaborating with Joharie in building a mobile app for our startup was a <span class="text-accent">good decision</span>. He seamlessly turned our <span class="text-accent">vision to reality</span> with an appealing, user-friendly <span class="text-accent">mobile app design</span>.',
   },

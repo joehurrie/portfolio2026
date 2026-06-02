@@ -32,7 +32,7 @@ export function Intro() {
                         <div className="reveal-on-scroll" style={{ transitionDelay: '200ms' }}>
                             <div className="flex justify-center mt-12 md:mt-24">
                                 <Link href="#projects" className="cta-gradient-btn group">
-                                    <span className="flex items-center gap-3">
+                                    <span>
                                         My Work
                                         <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-2" />
                                     </span>

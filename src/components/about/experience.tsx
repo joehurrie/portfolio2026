@@ -76,7 +76,7 @@ export function AboutExperience() {
             {statsData.map((stat, index) => (
               <div
                 key={stat.title}
-                ref={(el) => (sectionRefs.current[index] = el)}
+                ref={(el) => { sectionRefs.current[index] = el; }}
                 data-index={index}
                 className="mb-32 md:mb-56 last:mb-0 reveal-on-scroll"
               >

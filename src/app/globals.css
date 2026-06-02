@@ -75,16 +75,20 @@
 
 @layer utilities {
   .cta-gradient-btn {
-    @apply relative inline-block cursor-pointer no-underline font-medium rounded-full overflow-hidden transition-all duration-300 active:scale-95 shadow-sm;
+    @apply relative inline-flex items-center justify-center p-[1px] cursor-pointer no-underline font-medium rounded-full overflow-hidden transition-all duration-500 ease-out active:scale-95 shadow-sm hover:shadow-lg hover:shadow-primary/25 bg-gradient-to-r from-primary to-[#ff7a5f];
   }
 
-  /* CTA buttons remain dark with glass effect in all modes */
   .cta-gradient-btn span {
-    @apply relative flex items-center justify-center gap-3 px-8 py-4 h-full w-full bg-black/40 backdrop-blur-xl rounded-full transition-all hover:bg-black/60 text-accent border border-accent;
+    @apply relative flex items-center justify-center gap-3 px-8 py-4 h-full w-full bg-background rounded-full transition-all duration-500 ease-out text-foreground;
   }
 
-  .dark .cta-gradient-btn span {
-    @apply bg-black/50 hover:bg-black/70;
+  .cta-gradient-btn:hover span {
+    @apply bg-transparent text-white;
+  }
+
+  /* Large size variant for footer */
+  .cta-gradient-btn.cta-lg span {
+    @apply px-10 py-5 text-base md:text-xl;
   }
 
   .reveal-on-scroll {
