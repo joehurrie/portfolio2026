@@ -16,9 +16,8 @@ export function Footer() {
   const footerRef = useRef<HTMLElement>(null);
 
   const socialLinks = [
-    { name: 'LinkedIn', icon: Linkedin, url: '#' },
-    { name: 'Twitter', icon: Twitter, url: '#' },
-    { name: 'Instagram', icon: Instagram, url: '#' },
+    { name: 'LinkedIn', icon: Linkedin, url: 'https://www.linkedin.com/in/joharie-kisiangani-4a00531b5/' },
+    { name: 'Instagram', icon: Instagram, url: 'https://www.instagram.com/ngazidigitallab/' },
   ];
 
   return (
@@ -49,19 +48,19 @@ export function Footer() {
 
       {/* Top Tier: Marquee Header */}
       <div className="relative z-10 pt-32 md:pt-48 lg:pt-56 overflow-hidden pointer-events-none mix-blend-difference text-primary">
-      <div className="flex animate-hero-marquee whitespace-nowrap">
+        <div className="flex animate-hero-marquee whitespace-nowrap">
           <h1 className="shrink-0 text-6xl md:text-8xl lg:text-[12vw] font-semibold tracking-tighter leading-none px-12">
-            Start a Project Start a Project Start a Project Start a Project Start a Project 
+            Start a Project Start a Project Start a Project Start a Project Start a Project
           </h1>
           <h1 className="shrink-0 text-6xl md:text-8xl lg:text-[12vw] font-semibold tracking-tighter leading-none px-12" aria-hidden="true">
-            Start a Project Start a Project Start a Project Start a Project Start a Project 
+            Start a Project Start a Project Start a Project Start a Project Start a Project
           </h1>
         </div>
       </div>
 
       {/* Middle Tier: CTA Button */}
       <div className="relative z-20 flex-1 flex items-center justify-center py-20">
-        <Link 
+        <Link
           href="/contact"
           className="cta-gradient-btn cta-lg group"
         >
@@ -77,15 +76,15 @@ export function Footer() {
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center md:items-end w-full gap-12 md:gap-8">
           <div className="font-code text-[11px] md:text-sm space-y-3 text-center md:text-left tracking-wide">
             <p className="flex items-center justify-center md:justify-start gap-3">
-              <span className="font-bold uppercase opacity-40">Location:</span> 
+              <span className="font-bold uppercase opacity-40">Location:</span>
               <span className="font-medium">Nairobi, Kenya</span>
             </p>
             <p className="flex items-center justify-center md:justify-start gap-3">
-              <span className="font-bold uppercase opacity-40">Mail:</span> 
+              <span className="font-bold uppercase opacity-40">Mail:</span>
               <span className="font-medium underline underline-offset-4 hover:text-primary transition-colors">kisianganijoharie@gmail.com</span>
             </p>
             <p className="flex items-center justify-center md:justify-start gap-3">
-              <span className="font-bold uppercase opacity-40">Phone:</span> 
+              <span className="font-bold uppercase opacity-40">Phone:</span>
               <span className="font-medium">0758224285</span>
             </p>
             <div className="flex items-center justify-center md:justify-start gap-4 pt-2">
@@ -96,7 +95,7 @@ export function Footer() {
               </div>
             </div>
           </div>
-          
+
           <div className="flex flex-col items-center md:items-end gap-6">
             <div className="flex items-center gap-8 md:gap-12">
               {socialLinks.map((social) => (

@@ -4,9 +4,8 @@ import { Linkedin, Twitter, Instagram } from 'lucide-react';
 
 export function Hero() {
   const socialLinks = [
-    { name: 'LinkedIn', icon: Linkedin, url: '#' },
-    { name: 'Twitter', icon: Twitter, url: '#' },
-    { name: 'Instagram', icon: Instagram, url: '#' },
+    { name: 'LinkedIn', icon: Linkedin, url: 'https://www.linkedin.com/in/joharie-kisiangani-4a00531b5/' },
+    { name: 'Instagram', icon: Instagram, url: 'https://www.instagram.com/ngazidigitallab/' },
   ];
 
   return (
@@ -29,7 +28,7 @@ export function Hero() {
       </div>
 
       <div className="absolute inset-0 z-10 flex items-center justify-center pt-32 overflow-hidden pointer-events-none mix-blend-difference text-primary">
-      <div className="flex animate-hero-marquee">
+        <div className="flex animate-hero-marquee">
           <h1 className="shrink-0 text-7xl md:text-9xl lg:text-[12vw] font-semibold tracking-tighter leading-none px-8 whitespace-nowrap">
             Joharie Kisiangani Joharie Kisiangani Joharie Kisiangani
           </h1>
@@ -40,22 +39,22 @@ export function Hero() {
       </div>
 
       <div className="relative z-20 w-full h-full flex flex-col justify-end px-6 pb-8 md:px-12 md:pb-12">
-        <div 
+        <div
           className="flex flex-row justify-between items-end w-full animate-slide-up-fade"
           style={{ animationDelay: '0.8s' }}
         >
           <div className="flex flex-row gap-6 md:gap-4 mb-2 md:mb-0 mix-blend-difference">
             {socialLinks.map((social) => (
-                <Link
-                  key={social.name}
-                  href={social.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 text-sm font-medium text-white hover:text-accent transition-colors group"
-                >
-                  <social.icon className="h-5 w-5 text-neutral-400 group-hover:text-accent transition-colors" />
-                  <span className="hidden md:inline">{social.name}</span>
-                </Link>
+              <Link
+                key={social.name}
+                href={social.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 text-sm font-medium text-white hover:text-accent transition-colors group"
+              >
+                <social.icon className="h-5 w-5 text-neutral-400 group-hover:text-accent transition-colors" />
+                <span className="hidden md:inline">{social.name}</span>
+              </Link>
             ))}
           </div>
 
