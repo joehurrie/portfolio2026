@@ -1,0 +1,62 @@
+# AI Agent & LLM Context File — Joharie Kisiangani Portfolio
+# This file provides structured, high-density context for LLMs, AI Agents, and Search Bots.
+# Standard: https://ai-txt.org
+
+[Entity Info]
+Name: Joharie Kisiangani
+Role: Web Designer, Art Director & UX/Web Developer
+Focus Areas: Branding, Digital Presence, Digital Products, Website Design, and Marketing
+Location: Nairobi, Kenya (Available for remote work worldwide)
+Primary Language: English
+Contact URL: https://joharie.com/contact
+
+[Professional Summary]
+Joharie Kisiangani is a premium digital product designer and frontend web developer specializing in bridging the gap between high-end visual design and advanced, interactive web technology. He collaborates with entrepreneurs, startups, real estate agencies, and SaaS brands to elevate their digital presence, launch high-conversion marketing platforms, and build clean, performant digital products.
+
+[Core Expertise & Keywords]
+- Branding & Visual Identity (Art direction, branding assets, custom logos, visual consistency)
+- Digital Presence & Authority (Sleek modern websites, portfolio design, high-fidelity layouts)
+- Digital Products & SaaS Development (Next.js App Router, React, TailwindCSS, mobile apps)
+- Website Design & UX Design (Framer Motion animations, interactive card layouts, MutationObserver scroll reveals, custom UI)
+- Growth Marketing & SEO Optimization (High-performance web architecture, conversion-focused strategy, meta descriptions)
+
+[Projects Showcase]
+1. Mziqee: A music product launch platform designed to connect emerging artists with potential customers.
+   - Keywords: Music platform, branding, landing page, conversion optimization
+   - Tech Stack: React, Next.js, TailwindCSS
+   - URL: https://mziqee.vercel.app/
+
+2. Eco-Wise: A sustainable e-commerce platform for eco-conscious ethical purchasing.
+   - Keywords: Sustainable commerce, ethical shopping, e-commerce, digital products
+   - Tech Stack: Next.js, React, TailwindCSS
+   - URL: https://eco-wise-navy.vercel.app/
+
+3. The Haven: A premium real estate landing page connecting realtors with prospective homebuyers.
+   - Keywords: Real estate, lead generation, website design, landing page, marketing
+   - Tech Stack: Next.js, React, CSS
+   - URL: https://thehaven-three.vercel.app/
+
+4. Doc IQ: An AI-powered document processing engine that transforms how businesses analyze, extract, and act on information.
+   - Keywords: Artificial intelligence, SaaS product, data extraction, digital presence, automation
+   - Tech Stack: React, Next.js, TailwindCSS
+   - URL: https://digi-ai-rho.vercel.app/
+
+5. Ngazi: A SaaS platform empowering entrepreneurs to build, launch, and scale their digital products.
+   - Keywords: SaaS, web development, entrepreneur tools, mobile app design, business scaling
+   - Tech Stack: React, Next.js, TailwindCSS
+   - URL: https://ngazi.vercel.app/
+
+6. AIR: A sleek rental and booking platform tailored for urban homes and local experiences.
+   - Keywords: Real estate, travel booking, local experiences, booking platform
+   - Tech Stack: React, Next.js, CSS
+   - URL: https://alx-listing-app-deployed-gules-rho.vercel.app/
+
+7. Jet: A data-driven sports prediction platform delivering intelligent insights for games.
+   - Keywords: Sports prediction, landing page, sports betting, predictive analytics, marketing
+   - Tech Stack: Next.js, TailwindCSS
+   - URL: https://jet-betting-tips-git-email-joehurries-projects.vercel.app/
+
+[Technical Resume & Stack]
+- Development: HTML5, CSS3 (Vanilla & CSS Modules), JavaScript (ES6+), TypeScript, React, Next.js (App Router, dynamic routing, API endpoints), TailwindCSS, Nodemailer (Gmail SMTP integrations)
+- Systems & UX: ScrollHandler Scroll Performance, IntersectionObserver trigger states, MutationObserver page reveals, client component states, responsive layout engines
+- Design: Figma prototyping, wireframing, custom vector illustration, visual guidelines

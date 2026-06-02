@@ -17,13 +17,13 @@ const testimonials = [
   {
     id: 'testimonial-2',
     name: 'Ben Carter',
-    company: 'Product Manager, Creative Solutions',
+    company: 'Product Manager, Mziqee',
     quote: "Working with Joharie was a pleasure. He's a <span class=\"text-accent\">true collaborator</span> who deeply understands the intersection of <span class=\"text-accent\">design and development</span>.",
   },
   {
     id: 'testimonial-3',
     name: 'Brian Wafula',
-    company: 'Founder, Tawy',
+    company: 'Founder, Eco-Wise',
     quote: 'Collaborating with Joharie in building a mobile app for our startup was a <span class="text-accent">good decision</span>. He seamlessly turned our <span class="text-accent">vision to reality</span> with an appealing, user-friendly <span class="text-accent">mobile app design</span>.',
   },
 ];
@@ -45,54 +45,54 @@ export function Testimonials() {
           // Testimonials
         </div>
       </div>
-      
+
       <div className="w-full px-6 md:px-12">
         <div className="max-w-7xl mx-auto w-full">
           {/* Mobile Layout: Static full-color list for better legibility */}
           <div className="mt-16 flex flex-col gap-32 md:hidden">
-              {reversedTestimonials.map((testimonial, index) => (
-                  <div key={testimonial.id} className="reveal-on-scroll">
-                      <AnimatedTestimonialText text={testimonial.quote} />
-                      <div className="mt-12 flex items-end justify-between border-t border-border/50 pt-8">
-                        <div className="flex items-center gap-6">
-                            {(() => {
-                            const imageData = PlaceHolderImages.find((img) => img.id === testimonial.id);
-                            return imageData ? (
-                                <Image
-                                src={imageData.imageUrl}
-                                alt={`Avatar of ${testimonial.name}`}
-                                width={56}
-                                height={56}
-                                data-ai-hint={imageData.imageHint}
-                                className="w-14 h-14 rounded-full object-cover grayscale"
-                                />
-                            ) : null;
-                            })()}
-                            <div>
-                                <p className="font-code text-foreground text-sm tracking-tight font-medium">// {testimonial.name}</p>
-                                <p className="font-code text-muted-foreground text-[10px] uppercase tracking-[0.2em] mt-1">{testimonial.company}</p>
-                            </div>
-                        </div>
-                        <div className="font-code text-accent text-xs tracking-widest">
-                            {String(testimonials.length - index).padStart(2, '0')} / {String(testimonials.length).padStart(2, '0')}
-                        </div>
-                      </div>
+            {reversedTestimonials.map((testimonial, index) => (
+              <div key={testimonial.id} className="reveal-on-scroll">
+                <AnimatedTestimonialText text={testimonial.quote} />
+                <div className="mt-12 flex items-end justify-between border-t border-border/50 pt-8">
+                  <div className="flex items-center gap-6">
+                    {(() => {
+                      const imageData = PlaceHolderImages.find((img) => img.id === testimonial.id);
+                      return imageData ? (
+                        <Image
+                          src={imageData.imageUrl}
+                          alt={`Avatar of ${testimonial.name}`}
+                          width={56}
+                          height={56}
+                          data-ai-hint={imageData.imageHint}
+                          className="w-14 h-14 rounded-full object-cover grayscale"
+                        />
+                      ) : null;
+                    })()}
+                    <div>
+                      <p className="font-code text-foreground text-sm tracking-tight font-medium">// {testimonial.name}</p>
+                      <p className="font-code text-muted-foreground text-[10px] uppercase tracking-[0.2em] mt-1">{testimonial.company}</p>
+                    </div>
                   </div>
-              ))}
+                  <div className="font-code text-accent text-xs tracking-widest">
+                    {String(testimonials.length - index).padStart(2, '0')} / {String(testimonials.length).padStart(2, '0')}
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
 
           {/* Desktop Layout: Interactive Single View with Reveal Animation */}
           <div className="hidden md:grid grid-cols-[1fr_auto] gap-32 items-center reveal-on-scroll">
             <div className="flex flex-col gap-16">
               <div className="font-code text-accent text-sm tracking-[0.3em]">
-                  {String(activeIndex + 1).padStart(2, '0')} / {String(testimonials.length).padStart(2, '0')}
+                {String(activeIndex + 1).padStart(2, '0')} / {String(testimonials.length).padStart(2, '0')}
               </div>
 
               <AnimatedTestimonialText
-                key={`testimonial-${activeIndex}`} 
+                key={`testimonial-${activeIndex}`}
                 text={activeTestimonial.quote}
               />
-              
+
               <div className="mt-8 border-t border-border/50 pt-12 max-w-sm">
                 <p className="font-code text-foreground text-2xl tracking-tighter font-medium">// {activeTestimonial.name}</p>
                 <p className="font-code text-muted-foreground text-xs uppercase tracking-[0.3em] mt-2">{activeTestimonial.company}</p>
@@ -103,7 +103,7 @@ export function Testimonials() {
               {testimonials.map((testimonial, index) => {
                 const imageData = PlaceHolderImages.find((img) => img.id === testimonial.id);
                 const isActive = activeIndex === index;
-                
+
                 return (
                   <button
                     key={testimonial.id}

@@ -1,0 +1,27 @@
+# https://www.robotstxt.org/robotstxt.html
+
+# Allow all search engine crawlers and AI search bots to crawl the entire site
+User-agent: *
+Allow: /
+
+# Specifically allow major AI search bots to ensure high discoverability on AI platforms
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+# Map the XML sitemap location for search engines
+Sitemap: https://joharie.com/sitemap.xml

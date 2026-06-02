@@ -35,6 +35,7 @@ export default function AboutPage() {
                       fill
                       className="object-cover grayscale"
                       data-ai-hint={avatarImage.imageHint}
+                      priority
                     />
                   </div>
                 )}
@@ -72,12 +73,12 @@ export default function AboutPage() {
         <section className="relative w-full h-[70vh] md:h-[100vh] bg-foreground overflow-hidden">
           <div className="w-full h-full reveal-on-scroll">
             <Image
-              src="/img.png"
-              alt="System Architecture"
+              src="/about.png"
+              alt="Design Process"
               fill
               className="object-cover grayscale"
-              data-ai-hint="system architecture"
-              priority
+              data-ai-hint="design workspace"
+              loading="lazy"
             />
           </div>
         </section>

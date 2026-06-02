@@ -7,22 +7,46 @@
       "imageHint": "background"
     },
     {
-      "id": "project-1",
-      "description": "Screenshot of Project 1",
-      "imageUrl": "https://images.unsplash.com/photo-1693279504914-d08266ecbe66?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHx0ZWNoJTIwcHJvZHVjdHxlbnwwfHx8fDE3Njg4Nzg0MzB8MA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "tech product"
+      "id": "project-mziqee",
+      "description": "Mziqee - Music product launch platform",
+      "imageUrl": "/mziqee.PNG",
+      "imageHint": "music platform"
     },
     {
-      "id": "project-2",
-      "description": "Screenshot of Project 2",
-      "imageUrl": "https://images.unsplash.com/photo-1678690832311-bb6e361989ca?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHx3ZWJzaXRlJTIwZGVzaWdufGVufDB8fHx8MTc2ODg0NDExOHww&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "website design"
+      "id": "project-echo",
+      "description": "Echo Eyes - Sustainable e-commerce platform",
+      "imageUrl": "/eco.PNG",
+      "imageHint": "eco commerce"
     },
     {
-      "id": "project-3",
-      "description": "Screenshot of Project 2",
-      "imageUrl": "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxtb2JpbGUlMjBhcHB8ZW58MHx8fHwxNzY4OTI4MTIyfDA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "mobile app"
+      "id": "project-haven",
+      "description": "The Haven - Real estate landing page",
+      "imageUrl": "/Haven.PNG",
+      "imageHint": "real estate"
+    },
+    {
+      "id": "project-ngazi",
+      "description": "Ngazi - SaaS platform for entrepreneurs",
+      "imageUrl": "/Ngazi.PNG",
+      "imageHint": "saas platform"
+    },
+    {
+      "id": "project-dociq",
+      "description": "Doc IQ - AI document processing",
+      "imageUrl": "/DocIQ.PNG",
+      "imageHint": "document ai"
+    },
+    {
+      "id": "project-air",
+      "description": "AIR - Urban home rental and booking",
+      "imageUrl": "/Air.PNG",
+      "imageHint": "rental booking"
+    },
+    {
+      "id": "project-jet",
+      "description": "Jet - Sports prediction platform",
+      "imageUrl": "/jet.PNG",
+      "imageHint": "sports betting"
     },
     {
       "id": "testimonial-1",
@@ -45,13 +69,13 @@
     {
       "id": "about-image",
       "description": "Image for about section",
-      "imageUrl": "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxwZXJzb24lMjB3b3JraW5nfGVufDB8fHx8MTc2ODk0NDEyNnww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "/about.png",
       "imageHint": "person working"
     },
     {
       "id": "footer-portrait",
       "description": "Portrait for the footer background",
-      "imageUrl": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxwcm9maWxlJTIwcG9ydHJhaXR8ZW58MHx8fHwxNzY4OTU3MzIwfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "/footer1.png",
       "imageHint": "profile portrait"
     }
   ]
